@@ -1,0 +1,283 @@
+<?php
+/** @package    Spot::Model::DAO */
+
+/** import supporting libraries */
+require_once("verysimple/Phreeze/Criteria.php");
+
+/**
+ * ProvisioningnotificationsCriteria allows custom querying for the Provisioningnotifications object.
+ *
+ * WARNING: THIS IS AN AUTO-GENERATED FILE
+ *
+ * This file should generally not be edited by hand except in special circumstances.
+ * Add any custom business logic to the ModelCriteria class which is extended from this class.
+ * Leaving this file alone will allow easy re-generation of all DAOs in the event of schema changes
+ *
+ * @inheritdocs
+ * @package Spot::Model::DAO
+ * @author ClassBuilder
+ * @version 1.0
+ */
+class ProvisioningnotificationsCriteriaDAO extends Criteria
+{
+
+	public $Notifid_Equals;
+	public $Notifid_NotEquals;
+	public $Notifid_IsLike;
+	public $Notifid_IsNotLike;
+	public $Notifid_BeginsWith;
+	public $Notifid_EndsWith;
+	public $Notifid_GreaterThan;
+	public $Notifid_GreaterThanOrEqual;
+	public $Notifid_LessThan;
+	public $Notifid_LessThanOrEqual;
+	public $Notifid_In;
+	public $Notifid_IsNotEmpty;
+	public $Notifid_IsEmpty;
+	public $Notifid_BitwiseOr;
+	public $Notifid_BitwiseAnd;
+	public $Hostname_Equals;
+	public $Hostname_NotEquals;
+	public $Hostname_IsLike;
+	public $Hostname_IsNotLike;
+	public $Hostname_BeginsWith;
+	public $Hostname_EndsWith;
+	public $Hostname_GreaterThan;
+	public $Hostname_GreaterThanOrEqual;
+	public $Hostname_LessThan;
+	public $Hostname_LessThanOrEqual;
+	public $Hostname_In;
+	public $Hostname_IsNotEmpty;
+	public $Hostname_IsEmpty;
+	public $Hostname_BitwiseOr;
+	public $Hostname_BitwiseAnd;
+	public $Installationip_Equals;
+	public $Installationip_NotEquals;
+	public $Installationip_IsLike;
+	public $Installationip_IsNotLike;
+	public $Installationip_BeginsWith;
+	public $Installationip_EndsWith;
+	public $Installationip_GreaterThan;
+	public $Installationip_GreaterThanOrEqual;
+	public $Installationip_LessThan;
+	public $Installationip_LessThanOrEqual;
+	public $Installationip_In;
+	public $Installationip_IsNotEmpty;
+	public $Installationip_IsEmpty;
+	public $Installationip_BitwiseOr;
+	public $Installationip_BitwiseAnd;
+	public $Configuredip_Equals;
+	public $Configuredip_NotEquals;
+	public $Configuredip_IsLike;
+	public $Configuredip_IsNotLike;
+	public $Configuredip_BeginsWith;
+	public $Configuredip_EndsWith;
+	public $Configuredip_GreaterThan;
+	public $Configuredip_GreaterThanOrEqual;
+	public $Configuredip_LessThan;
+	public $Configuredip_LessThanOrEqual;
+	public $Configuredip_In;
+	public $Configuredip_IsNotEmpty;
+	public $Configuredip_IsEmpty;
+	public $Configuredip_BitwiseOr;
+	public $Configuredip_BitwiseAnd;
+	public $Startdate_Equals;
+	public $Startdate_NotEquals;
+	public $Startdate_IsLike;
+	public $Startdate_IsNotLike;
+	public $Startdate_BeginsWith;
+	public $Startdate_EndsWith;
+	public $Startdate_GreaterThan;
+	public $Startdate_GreaterThanOrEqual;
+	public $Startdate_LessThan;
+	public $Startdate_LessThanOrEqual;
+	public $Startdate_In;
+	public $Startdate_IsNotEmpty;
+	public $Startdate_IsEmpty;
+	public $Startdate_BitwiseOr;
+	public $Startdate_BitwiseAnd;
+	public $Status_Equals;
+	public $Status_NotEquals;
+	public $Status_IsLike;
+	public $Status_IsNotLike;
+	public $Status_BeginsWith;
+	public $Status_EndsWith;
+	public $Status_GreaterThan;
+	public $Status_GreaterThanOrEqual;
+	public $Status_LessThan;
+	public $Status_LessThanOrEqual;
+	public $Status_In;
+	public $Status_IsNotEmpty;
+	public $Status_IsEmpty;
+	public $Status_BitwiseOr;
+	public $Status_BitwiseAnd;
+	public $Progress_Equals;
+	public $Progress_NotEquals;
+	public $Progress_IsLike;
+	public $Progress_IsNotLike;
+	public $Progress_BeginsWith;
+	public $Progress_EndsWith;
+	public $Progress_GreaterThan;
+	public $Progress_GreaterThanOrEqual;
+	public $Progress_LessThan;
+	public $Progress_LessThanOrEqual;
+	public $Progress_In;
+	public $Progress_IsNotEmpty;
+	public $Progress_IsEmpty;
+	public $Progress_BitwiseOr;
+	public $Progress_BitwiseAnd;
+	public $Image_Equals;
+	public $Image_NotEquals;
+	public $Image_IsLike;
+	public $Image_IsNotLike;
+	public $Image_BeginsWith;
+	public $Image_EndsWith;
+	public $Image_GreaterThan;
+	public $Image_GreaterThanOrEqual;
+	public $Image_LessThan;
+	public $Image_LessThanOrEqual;
+	public $Image_In;
+	public $Image_IsNotEmpty;
+	public $Image_IsEmpty;
+	public $Image_BitwiseOr;
+	public $Image_BitwiseAnd;
+	public $Firmware_Equals;
+	public $Firmware_NotEquals;
+	public $Firmware_IsLike;
+	public $Firmware_IsNotLike;
+	public $Firmware_BeginsWith;
+	public $Firmware_EndsWith;
+	public $Firmware_GreaterThan;
+	public $Firmware_GreaterThanOrEqual;
+	public $Firmware_LessThan;
+	public $Firmware_LessThanOrEqual;
+	public $Firmware_In;
+	public $Firmware_IsNotEmpty;
+	public $Firmware_IsEmpty;
+	public $Firmware_BitwiseOr;
+	public $Firmware_BitwiseAnd;
+	public $Ram_Equals;
+	public $Ram_NotEquals;
+	public $Ram_IsLike;
+	public $Ram_IsNotLike;
+	public $Ram_BeginsWith;
+	public $Ram_EndsWith;
+	public $Ram_GreaterThan;
+	public $Ram_GreaterThanOrEqual;
+	public $Ram_LessThan;
+	public $Ram_LessThanOrEqual;
+	public $Ram_In;
+	public $Ram_IsNotEmpty;
+	public $Ram_IsEmpty;
+	public $Ram_BitwiseOr;
+	public $Ram_BitwiseAnd;
+	public $Cpu_Equals;
+	public $Cpu_NotEquals;
+	public $Cpu_IsLike;
+	public $Cpu_IsNotLike;
+	public $Cpu_BeginsWith;
+	public $Cpu_EndsWith;
+	public $Cpu_GreaterThan;
+	public $Cpu_GreaterThanOrEqual;
+	public $Cpu_LessThan;
+	public $Cpu_LessThanOrEqual;
+	public $Cpu_In;
+	public $Cpu_IsNotEmpty;
+	public $Cpu_IsEmpty;
+	public $Cpu_BitwiseOr;
+	public $Cpu_BitwiseAnd;
+	public $Diskscount_Equals;
+	public $Diskscount_NotEquals;
+	public $Diskscount_IsLike;
+	public $Diskscount_IsNotLike;
+	public $Diskscount_BeginsWith;
+	public $Diskscount_EndsWith;
+	public $Diskscount_GreaterThan;
+	public $Diskscount_GreaterThanOrEqual;
+	public $Diskscount_LessThan;
+	public $Diskscount_LessThanOrEqual;
+	public $Diskscount_In;
+	public $Diskscount_IsNotEmpty;
+	public $Diskscount_IsEmpty;
+	public $Diskscount_BitwiseOr;
+	public $Diskscount_BitwiseAnd;
+	public $Netintcount_Equals;
+	public $Netintcount_NotEquals;
+	public $Netintcount_IsLike;
+	public $Netintcount_IsNotLike;
+	public $Netintcount_BeginsWith;
+	public $Netintcount_EndsWith;
+	public $Netintcount_GreaterThan;
+	public $Netintcount_GreaterThanOrEqual;
+	public $Netintcount_LessThan;
+	public $Netintcount_LessThanOrEqual;
+	public $Netintcount_In;
+	public $Netintcount_IsNotEmpty;
+	public $Netintcount_IsEmpty;
+	public $Netintcount_BitwiseOr;
+	public $Netintcount_BitwiseAnd;
+	public $Model_Equals;
+	public $Model_NotEquals;
+	public $Model_IsLike;
+	public $Model_IsNotLike;
+	public $Model_BeginsWith;
+	public $Model_EndsWith;
+	public $Model_GreaterThan;
+	public $Model_GreaterThanOrEqual;
+	public $Model_LessThan;
+	public $Model_LessThanOrEqual;
+	public $Model_In;
+	public $Model_IsNotEmpty;
+	public $Model_IsEmpty;
+	public $Model_BitwiseOr;
+	public $Model_BitwiseAnd;
+	public $Serial_Equals;
+	public $Serial_NotEquals;
+	public $Serial_IsLike;
+	public $Serial_IsNotLike;
+	public $Serial_BeginsWith;
+	public $Serial_EndsWith;
+	public $Serial_GreaterThan;
+	public $Serial_GreaterThanOrEqual;
+	public $Serial_LessThan;
+	public $Serial_LessThanOrEqual;
+	public $Serial_In;
+	public $Serial_IsNotEmpty;
+	public $Serial_IsEmpty;
+	public $Serial_BitwiseOr;
+	public $Serial_BitwiseAnd;
+	public $Os_Equals;
+	public $Os_NotEquals;
+	public $Os_IsLike;
+	public $Os_IsNotLike;
+	public $Os_BeginsWith;
+	public $Os_EndsWith;
+	public $Os_GreaterThan;
+	public $Os_GreaterThanOrEqual;
+	public $Os_LessThan;
+	public $Os_LessThanOrEqual;
+	public $Os_In;
+	public $Os_IsNotEmpty;
+	public $Os_IsEmpty;
+	public $Os_BitwiseOr;
+	public $Os_BitwiseAnd;
+        public $Update_Equals;
+	public $Update_NotEquals;
+	public $Update_IsLike;
+	public $Update_IsNotLike;
+	public $Update_BeginsWith;
+	public $Update_EndsWith;
+	public $Update_GreaterThan;
+	public $Update_GreaterThanOrEqual;
+	public $Update_LessThan;
+	public $Update_LessThanOrEqual;
+	public $Update_In;
+	public $Update_IsNotEmpty;
+	public $Update_IsEmpty;
+	public $Update_BitwiseOr;
+	public $Update_BitwiseAnd;
+
+
+}
+
+?>

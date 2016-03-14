@@ -1,0 +1,10 @@
+
+Notice: Trying to get property of non-object in /var/www/SPOT/provisioning/includes/sysproddbWrapper_old.php on line 29
+
+Warning: Invalid argument supplied for foreach() in /var/www/SPOT/provisioning/includes/sysproddbWrapper_old.php on line 30
+
+Notice: Undefined variable: product in /var/www/SPOT/provisioning/includes/sysproddbWrapper_old.php on line 120
+
+Notice: Undefined variable: product in /var/www/SPOT/provisioning/includes/sysproddbWrapper_old.php on line 121
+
+Notice: Undefined index:  in /var/www/SPOT/provisioning/includes/sysproddbWrapper_old.php on line 121

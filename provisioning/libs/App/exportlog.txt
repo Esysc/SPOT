@@ -1,0 +1,503 @@
+
+Debugging On...
+Table Count: 1
+Total Rows: 10
+autoFilter: A0:A1
+freezePane: A1
+A:1 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Hostname
+B:1 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: RH7
+A:2 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: IP address
+B:2 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.130.1.80
+A:3 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Model
+B:3 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Standard PC (i440FX + PIIX, 1996)
+A:4 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Serial Number
+B:4 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Not Specified
+A:5 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Firmware
+B:5 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: QEMU
+A:6 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Operating System
+B:6 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: RedHat
+A:7 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Ram
+B:7 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 2049
+A:8 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Cpu
+B:8 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 1
+A:9 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Disk qty
+B:9 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 1               
+A:10 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Network int qty
+B:10 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 3
+HEADROWS: Array
+(
+)
+
+BODYROWS: Array
+(
+    [0] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => Hostname
+                    [1] => RH7
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [1] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => IP address
+                    [1] => 10.130.1.80
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [2] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => Model
+                    [1] => Standard PC (i440FX + PIIX, 1996)
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [3] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => Serial Number
+                    [1] => Not Specified
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [4] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => Firmware
+                    [1] => QEMU
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [5] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => Operating System
+                    [1] => RedHat
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [6] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => Ram
+                    [1] => 2049
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [7] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => Cpu
+                    [1] => 1
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [8] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => Disk qty
+                    [1] => 1               
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [9] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => Network int qty
+                    [1] => 3
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+)

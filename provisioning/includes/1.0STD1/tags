@@ -1,0 +1,1699 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ADMIN_USER_RIGHT	dbwrapper/dbwrapper_init.php	/^  define("ADMIN_USER_RIGHT", 10);$/;"	d
+ADMIN_USER_RIGHT	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("ADMIN_USER_RIGHT", 10);$/;"	d
+AITBLUSERS	dbwrapper/dbwrapper_init.php	/^  define("AITBLUSERS"     ,"users");\/** \\def name of the SPORT users's table into spot db *\/$/;"	d
+AITBLUSERS	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("AITBLUSERS"     ,"users");\/** \\def name of the SPORT users's table into spot db *\/$/;"	d
+ALLOWED_OPERATORS	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $ALLOWED_OPERATORS = array('>','<','=','!=','<=','>=');$/;"	v
+ALLOWED_OPERATORS	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $ALLOWED_OPERATORS = array('>','<','=','!=','<=','>=');$/;"	v
+APACHE2_LOG	dbwrapper/dbwrapper_mysql_wrapper.php	/^define("APACHE2_LOG", "\/var\/log\/apache2\/error.log");$/;"	d
+APACHE2_LOG	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^define("APACHE2_LOG", "\/var\/log\/apache2\/error.log");$/;"	d
+APC2CATA	dbwrapper/dbwrapper_init.php	/^  define("APC2CATA"         ,"apc2Catalog");$/;"	d
+APC2CATA	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("APC2CATA"         ,"apc2Catalog");$/;"	d
+APCTABLE	dbwrapper/dbwrapper_init.php	/^  define("APCTABLE"         ,"apcCodes");$/;"	d
+APCTABLE	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("APCTABLE"         ,"apcCodes");$/;"	d
+AUTH_LDAP	dbwrapper/dbwrapper_init.php	/^  define("AUTH_LDAP"            ,"CDD517F546B44E6DF7CD913BD8797");$/;"	d
+AUTH_LDAP	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("AUTH_LDAP"            ,"CDD517F546B44E6DF7CD913BD8797");$/;"	d
+AUTH_LOCAL	dbwrapper/dbwrapper_init.php	/^  define("AUTH_LOCAL"           , "0");$/;"	d
+AUTH_LOCAL	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("AUTH_LOCAL"           , "0");$/;"	d
+BOOLCOMP	dbwrapper/dbwrapper_mysql_wrapper.php	/^		$BOOLCOMP = "";$/;"	v
+BOOLCOMP	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		$BOOLCOMP = "";$/;"	v
+CAT_CLUSTERS_ITEM	dbwrapper/dbwrapper_init.php	/^  define("CAT_CLUSTERS_ITEM","cluster_item");$/;"	d
+CAT_CLUSTERS_ITEM	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("CAT_CLUSTERS_ITEM","cluster_item");$/;"	d
+CAT_ENABLED_ITEM	dbwrapper/dbwrapper_init.php	/^  define("CAT_ENABLED_ITEM" ,"enabledItems");$/;"	d
+CAT_ENABLED_ITEM	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("CAT_ENABLED_ITEM" ,"enabledItems");$/;"	d
+CHAR_APPOSTROPHE	dbwrapper/dbwrapper_mysql_wrapper.php	/^define("CHAR_APPOSTROPHE", "`"); \/** \\def Mainly used in low-level functions for building queries *\/$/;"	d
+CHAR_APPOSTROPHE	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^define("CHAR_APPOSTROPHE", "`"); \/** \\def Mainly used in low-level functions for building queries *\/$/;"	d
+CHAR_COMMA	dbwrapper/dbwrapper_mysql_wrapper.php	/^define("CHAR_COMMA", ','); \/** \\def Mainly used in low-level functions for building queries *\/$/;"	d
+CHAR_COMMA	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^define("CHAR_COMMA", ','); \/** \\def Mainly used in low-level functions for building queries *\/$/;"	d
+CHAR_FIELD	dbwrapper/dbwrapper_mysql_wrapper.php	/^define("CHAR_FIELD", "'");\/** \\def Mainly used in low-level functions for building queries *\/$/;"	d
+CHAR_FIELD	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^define("CHAR_FIELD", "'");\/** \\def Mainly used in low-level functions for building queries *\/$/;"	d
+CHAR_RMOVE	dbwrapper/dbwrapper_writer.php	/^		$CHAR_RMOVE = array ( '-' );$/;"	v
+CHAR_RMOVE	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$CHAR_RMOVE = array ( '-' );$/;"	v
+CONFIGPARSER	configParser.php	/^   class CONFIGPARSER$/;"	c
+CONFIG_FILE_PATH	configParser.php	/^   define("CONFIG_FILE_PATH", "\/var\/www\/productiondb\/1.0STD1\/param\/productiondb.cfg");   $/;"	d
+ColToArray	dbwrapper/dbwrapper_models.php	/^    protected function ColToArray($tableName)$/;"	f
+ColToArray	dbwrapper_1.0STD2/dbwrapper_models.php	/^    protected function ColToArray($tableName)$/;"	f
+CorrectedName	dbwrapper/dbwrapper_loader.php	/^			$CorrectedName = end($CorrectedName);$/;"	v
+CorrectedName	dbwrapper/dbwrapper_loader.php	/^			$CorrectedName = explode("_", $parm);$/;"	v
+CorrectedName	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$CorrectedName = end($CorrectedName);$/;"	v
+CorrectedName	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$CorrectedName = explode("_", $parm);$/;"	v
+DBGPATH_LIB	dbwrapper/dbwrapper_mysql_wrapper.php	/^define("DBGPATH_LIB", "\/var\/www\/productiondb\/1.0STD1\/lib\/"); $/;"	d
+DBGPATH_LIB	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^define("DBGPATH_LIB", "\/var\/www\/productiondb\/1.0STD1\/lib\/"); $/;"	d
+DBWInit	dbwrapper/dbwrapper_init.php	/^  class DBWInit extends MYSQL_WRAPPER$/;"	c
+DBWInit	dbwrapper_1.0STD2/dbwrapper_init.php	/^  class DBWInit extends MYSQL_WRAPPER$/;"	c
+DBWLoader	dbwrapper/dbwrapper_loader.php	/^  class DBWLoader extends DBWModels$/;"	c
+DBWLoader	dbwrapper_1.0STD2/dbwrapper_loader.php	/^  class DBWLoader extends DBWModels$/;"	c
+DBWMetadata	dbwrapper/dbwrapper_metadata.php	/^  class DBWMetadata extends DBWMonitor$/;"	c
+DBWMetadata	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^  class DBWMetadata extends DBWMonitor$/;"	c
+DBWModels	dbwrapper/dbwrapper_models.php	/^	class DBWModels extends DBWMetadata$/;"	c
+DBWModels	dbwrapper_1.0STD2/dbwrapper_models.php	/^	class DBWModels extends DBWMetadata$/;"	c
+DBWMonitor	dbwrapper/dbwrapper_monitor.php	/^  class DBWMonitor extends DBWInit$/;"	c
+DBWMonitor	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^  class DBWMonitor extends DBWInit$/;"	c
+DBWRAPPERINIT	dbwrapper/dbwrapper_init.php	/^	class DBWRAPPERINIT extends Exception $/;"	c
+DBWRAPPERINIT	dbwrapper_1.0STD2/dbwrapper_init.php	/^	class DBWRAPPERINIT extends Exception $/;"	c
+DBWRAPPERLOADER	dbwrapper/dbwrapper_loader.php	/^	class DBWRAPPERLOADER extends Exception $/;"	c
+DBWRAPPERLOADER	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	class DBWRAPPERLOADER extends Exception $/;"	c
+DBWRAPPERMetadata	dbwrapper/dbwrapper_metadata.php	/^	class DBWRAPPERMetadata extends Exception $/;"	c
+DBWRAPPERMetadata	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	class DBWRAPPERMetadata extends Exception $/;"	c
+DBWRAPPERModels	dbwrapper/dbwrapper_models.php	/^	class DBWRAPPERModels extends Exception $/;"	c
+DBWRAPPERModels	dbwrapper_1.0STD2/dbwrapper_models.php	/^	class DBWRAPPERModels extends Exception $/;"	c
+DBWRAPPERMonitor	dbwrapper/dbwrapper_monitor.php	/^  	class DBWRAPPERMonitor extends Exception $/;"	c
+DBWRAPPERMonitor	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^  	class DBWRAPPERMonitor extends Exception $/;"	c
+DBWRAPPERSTO	dbwrapper/dbwrapper_storedOrders.php	/^  class DBWRAPPERSTO extends Exception $/;"	c
+DBWRAPPERSTO	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^  class DBWRAPPERSTO extends Exception $/;"	c
+DBWRAPPERWriter	dbwrapper/dbwrapper_writer.php	/^	class DBWRAPPERWriter extends Exception $/;"	c
+DBWRAPPERWriter	dbwrapper_1.0STD2/dbwrapper_writer.php	/^	class DBWRAPPERWriter extends Exception $/;"	c
+DBWSTO	dbwrapper/dbwrapper_storedOrders.php	/^  class DBWSTO extends DBWWriter$/;"	c
+DBWSTO	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^  class DBWSTO extends DBWWriter$/;"	c
+DBWWriter	dbwrapper/dbwrapper_writer.php	/^	class DBWWriter extends DBWLoader$/;"	c
+DBWWriter	dbwrapper_1.0STD2/dbwrapper_writer.php	/^	class DBWWriter extends DBWLoader$/;"	c
+DBWrapper_EX	dbwrapper.php	/^	class DBWrapper_EX extends Exception $/;"	c
+DB_SPEC_PARAMS	dbwrapper/dbwrapper_loader.php	/^		$DB_SPEC_PARAMS = array($/;"	v
+DB_SPEC_PARAMS	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$DB_SPEC_PARAMS = array($/;"	v
+DEBUG	debug.php	/^	class DEBUG$/;"	c
+DEBUG_EX	debug.php	/^	class DEBUG_EX extends Exception $/;"	c
+DEFAULT_ITEM	objects_defs/default.php	/^	class DEFAULT_ITEM$/;"	c
+DEFAULT_SESSION_SAVE_PATH	dbwrapper/dbwrapper_init.php	/^  define("DEFAULT_SESSION_SAVE_PATH", "\/tmp");$/;"	d
+DEFAULT_SESSION_SAVE_PATH	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("DEFAULT_SESSION_SAVE_PATH", "\/tmp");$/;"	d
+DtExplode	dbwrapper/dbwrapper_mysql_wrapper.php	/^					 $DtExplode=explode($sep[0],$value);$/;"	v
+DtExplode	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^					 $DtExplode=explode($sep[0],$value);$/;"	v
+ENABLED_APCTABLE	dbwrapper/dbwrapper_init.php	/^  define("ENABLED_APCTABLE"     ,"apcCodes_enabled");$/;"	d
+ENABLED_APCTABLE	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("ENABLED_APCTABLE"     ,"apcCodes_enabled");$/;"	d
+ENABLE_MODELS	dbwrapper/dbwrapper_init.php	/^  define("ENABLE_MODELS"        ,"enabled_models");$/;"	d
+ENABLE_MODELS	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("ENABLE_MODELS"        ,"enabled_models");$/;"	d
+EXCEPTION_FILE_CONTENT_ERROR	configParser.php	/^   define("EXCEPTION_FILE_CONTENT_ERROR", "+FILE_ERROR_UNREADABLE");  \/\/The file is malformated$/;"	d
+EXCEPTION_FILE_CONTENT_ERROR_EC	configParser.php	/^   define("EXCEPTION_FILE_CONTENT_ERROR_EC", 20);                          \/\/Er code$/;"	d
+EXCEPTION_FILE_ERROR	configParser.php	/^   define("EXCEPTION_FILE_ERROR", "+FILE_ACCESS_ERROR");    \/\/Error message raised when the class can't access the file sysproddb.cfg$/;"	d
+EXCEPTION_FILE_ERROR_EC	configParser.php	/^   define("EXCEPTION_FILE_ERROR_EC", 10);                       \/\/Error code assosicated $/;"	d
+EXCEPTION_KEY_NOT_FOUND	configParser.php	/^   define("EXCEPTION_KEY_NOT_FOUND", "+KEY_NOT_FOUND");         \/\/Error message raised when the key don't exist in the file$/;"	d
+EXCEPTION_KEY_NOT_FOUND_EC	configParser.php	/^   define("EXCEPTION_KEY_NOT_FOUND_EC", 15);                    \/\/Error code assisciated$/;"	d
+EXPORTERS	order/order_exporters.php	/^	class EXPORTERS extends ITEMS$/;"	c
+EXPORTER_EX	order/order_exporters.php	/^	class EXPORTER_EX extends Exception $/;"	c
+FieldNames	dbwrapper/dbwrapper_loader.php	/^			$FieldNames = $this->ColToArray($table);$/;"	v
+FieldNames	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$FieldNames = $this->ColToArray($table);$/;"	v
+GENINFO	order/order_geninfo.php	/^	class GENINFO$/;"	c
+GENINFO_EX	order/order_geninfo.php	/^	class GENINFO_EX extends Exception $/;"	c
+GENINFO_check	order/order_geninfo.php	/^		protected function GENINFO_check()$/;"	f
+HEADER_START	order/order_exporters.php	/^				define("HEADER_START", "{begin_meterial}");$/;"	d
+HEADER_STOP	order/order_exporters.php	/^				define("HEADER_STOP", "{end_meterial}");$/;"	d
+HSTIPCONV	dbwrapper/dbwrapper_init.php	/^  define("HSTIPCONV"            ,"hostnameIP");$/;"	d
+HSTIPCONV	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("HSTIPCONV"            ,"hostnameIP");$/;"	d
+IDENBALED_ITEM	dbwrapper/dbwrapper_init.php	/^  define("IDENBALED_ITEM"   ,"IDEnabledItems");$/;"	d
+IDENBALED_ITEM	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("IDENBALED_ITEM"   ,"IDEnabledItems");$/;"	d
+IMPORTERS	order/order_importers.php	/^	class IMPORTERS extends EXPORTERS$/;"	c
+IMPORTER_EX	order/order_importers.php	/^	class IMPORTER_EX extends Exception $/;"	c
+ITEMS	order/order_items.php	/^	class ITEMS extends GENINFO$/;"	c
+ITEM_EX	order/order_items.php	/^	class ITEM_EX extends Exception $/;"	c
+IndexOfObject	order/order_items.php	/^			$IndexOfObject = $item_definition["db_categoryID"];$/;"	v
+LIBPATH	dbwrapper/dbwrapper_init.php	/^	$LIBPATH = "\/var\/www\/productiondb\/1.0STD1\/lib\/";     \/\/!Path to the main libraries $/;"	v
+LIBPATH	dbwrapper_1.0STD2/dbwrapper_init.php	/^	$LIBPATH = "\/var\/www\/productiondb\/1.0STD1\/lib\/";     \/\/!Path to the main libraries $/;"	v
+LIBPATH	order.php	/^	$LIBPATH="\/var\/www\/productiondb\/1.0STD1\/lib\/";$/;"	v
+LIBPATH	order/order_geninfo.php	/^	$LIBPATH="\/var\/www\/productiondb\/1.0STD1\/lib\/";$/;"	v
+LIB_EXT	dbwrapper/dbwrapper_init.php	/^    $LIB_EXT = "\/var\/www\/productiondb\/1.0STD1\/data\/lib";$/;"	v
+LIB_EXT	dbwrapper_1.0STD2/dbwrapper_init.php	/^    $LIB_EXT = "\/var\/www\/productiondb\/1.0STD1\/data\/lib";$/;"	v
+MAX_TD_LEN	order/order_exporters.php	/^	define("MAX_TD_LEN", 25);$/;"	d
+MIN_GID	order/order_geninfo.php	/^	define("MIN_GID", 100);$/;"	d
+MONTABLE	dbwrapper/dbwrapper_init.php	/^  define("MONTABLE"       , "mon_login");\/** \\def not used by default this table contains all the sessions time \/ location *\/$/;"	d
+MONTABLE	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("MONTABLE"       , "mon_login");\/** \\def not used by default this table contains all the sessions time \/ location *\/$/;"	d
+MYSQL_RET_TYPE	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$this->MYSQL_RET_TYPE =  MYSQLI_ASSOC;$/;"	v
+MYSQL_RET_TYPE	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$this->MYSQL_RET_TYPE = MYSQLI_NUM;$/;"	v
+MYSQL_RET_TYPE	dbwrapper/dbwrapper_mysql_wrapper.php	/^		private $MYSQL_RET_TYPE = MYSQLI_NUM;$/;"	v
+MYSQL_RET_TYPE	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$this->MYSQL_RET_TYPE =  MYSQLI_ASSOC;$/;"	v
+MYSQL_RET_TYPE	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$this->MYSQL_RET_TYPE = MYSQLI_NUM;$/;"	v
+MYSQL_RET_TYPE	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		private $MYSQL_RET_TYPE = MYSQLI_NUM;$/;"	v
+MYSQL_WRAPPER	dbwrapper/dbwrapper_mysql_wrapper.php	/^	class MYSQL_WRAPPER extends mysqli$/;"	c
+MYSQL_WRAPPER	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^	class MYSQL_WRAPPER extends mysqli$/;"	c
+MYSQL_WRAPPER_EX	dbwrapper/dbwrapper_mysql_wrapper.php	/^class MYSQL_WRAPPER_EX extends Exception $/;"	c
+MYSQL_WRAPPER_EX	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^class MYSQL_WRAPPER_EX extends Exception $/;"	c
+NOTIFY	dbwrapper/dbwrapper_notif.php	/^class NOTIFY extends  MYSQL_WRAPPER$/;"	c
+NOTIFY	dbwrapper_1.0STD2/dbwrapper_notif.php	/^class NOTIFY extends  MYSQL_WRAPPER$/;"	c
+NO_GID	objects_defs/default.php	/^	define("NO_GID", 0);$/;"	d
+ORDER	order.php	/^	class ORDER extends IMPORTERS$/;"	c
+Open	debug.php	/^		public function Open($logFilePath)$/;"	f
+OrderAtr	dbwrapper/dbwrapper_writer.php	/^		$OrderAtr = array($/;"	v
+OrderAtr	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$OrderAtr = array($/;"	v
+PAGE_BRK_END	order/order_exporters.php	/^	define("PAGE_BRK_END", '<\/div>');$/;"	d
+PAGE_BRK_START	order/order_exporters.php	/^	define("PAGE_BRK_START",'<div style="PAGE-BREAK-BEFORE: always">');$/;"	d
+PDF	order/order_exporters.php	/^				$PDF = new HTML2PDF('L', 'A4', 'fr',false, 'ISO-8859-1', array(10, 20, 5, 20)); $/;"	v
+PHPLIBPATH	order.php	/^	$PHPLIBPATH="\/var\/www\/productiondb\/1.0STD1\/shlib\/";$/;"	v
+PHPLIBPATH	order/order_geninfo.php	/^	$PHPLIBPATH="\/var\/www\/productiondb\/1.0STD1\/shlib\/";$/;"	v
+POLAROID_FCTTABLE	dbwrapper/dbwrapper_init.php	/^  define("POLAROID_FCTTABLE","Itemfunction");$/;"	d
+POLAROID_FCTTABLE	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("POLAROID_FCTTABLE","Itemfunction");$/;"	d
+POLAROID_HOSTNAME_FLD	dbwrapper/dbwrapper_init.php	/^  define("POLAROID_HOSTNAME_FLD","hostname");$/;"	d
+POLAROID_HOSTNAME_FLD	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("POLAROID_HOSTNAME_FLD","hostname");$/;"	d
+POLAROID_SERIAL_DLF	dbwrapper/dbwrapper_init.php	/^  define("POLAROID_SERIAL_DLF"  , "serial");$/;"	d
+POLAROID_SERIAL_DLF	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("POLAROID_SERIAL_DLF"  , "serial");$/;"	d
+ProgramManager	order/order_geninfo.php	/^			$this->ProgramManager = $value;$/;"	v
+ProgramManager	order/order_geninfo.php	/^		protected $ProgramManager;$/;"	v
+RO_USER_RIGHT	dbwrapper/dbwrapper_init.php	/^  define("RO_USER_RIGHT"   , 1);$/;"	d
+RO_USER_RIGHT	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("RO_USER_RIGHT"   , 1);$/;"	d
+SHLIBPATH	dbwrapper/dbwrapper_init.php	/^	$SHLIBPATH = "\/var\/www\/productiondb\/1.0STD1\/shlib\/"; \/\/!Path to the shared function $/;"	v
+SHLIBPATH	dbwrapper_1.0STD2/dbwrapper_init.php	/^	$SHLIBPATH = "\/var\/www\/productiondb\/1.0STD1\/shlib\/"; \/\/!Path to the shared function $/;"	v
+SHLIBPATH	order.php	/^	$SHLIBPATH="\/usr\/share\/php\/";$/;"	v
+SHLIBPATH	order/order_geninfo.php	/^	$SHLIBPATH="\/usr\/share\/php\/";$/;"	v
+SYSOG_HEADER	debug.php	/^			$SYSOG_HEADER = "[PRODUCTIONDDB][1.0STD1]";$/;"	v
+SolArchitecht	order/order_geninfo.php	/^				$this->SolArchitecht = "";$/;"	v
+SolArchitecht	order/order_geninfo.php	/^		protected $SolArchitecht;     $/;"	v
+SysProd_Act_by_ID	dbwrapper/dbwrapper_notif.php	/^	public function SysProd_Act_by_ID($login)$/;"	f
+SysProd_Act_by_ID	dbwrapper_1.0STD2/dbwrapper_notif.php	/^	public function SysProd_Act_by_ID($login)$/;"	f
+TBLBRANDS	dbwrapper/dbwrapper_init.php	/^  define("TBLBRANDS"    ,"tblBrand");  $/;"	d
+TBLBRANDS	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("TBLBRANDS"    ,"tblBrand");  $/;"	d
+TBLCATALOG	dbwrapper/dbwrapper_init.php	/^  define("TBLCATALOG"      ,"catalog");$/;"	d
+TBLCATALOG	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("TBLCATALOG"      ,"catalog");$/;"	d
+TBLMODELS	dbwrapper/dbwrapper_init.php	/^  define("TBLMODELS"    ,"tblModel");\/** \\def name of the model's table into db *\/$/;"	d
+TBLMODELS	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("TBLMODELS"    ,"tblModel");\/** \\def name of the model's table into db *\/$/;"	d
+TBLNETWORKS	dbwrapper/dbwrapper_init.php	/^  define("TBLNETWORKS"  ,"tblNetworks");\/** \\def name of the network's table into db *\/$/;"	d
+TBLNETWORKS	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("TBLNETWORKS"  ,"tblNetworks");\/** \\def name of the network's table into db *\/$/;"	d
+TBLORDERS	dbwrapper/dbwrapper_init.php	/^  define("TBLORDERS"    ,"tblOrders");\/** \\def name of the order's table into db *\/$/;"	d
+TBLORDERS	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("TBLORDERS"    ,"tblOrders");\/** \\def name of the order's table into db *\/$/;"	d
+TBLSTOREDORDERS	dbwrapper/dbwrapper_init.php	/^  define("TBLSTOREDORDERS", "tblStoredOrders");\/** \\def name of the temporary order's table into db *\/$/;"	d
+TBLSTOREDORDERS	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("TBLSTOREDORDERS", "tblStoredOrders");\/** \\def name of the temporary order's table into db *\/$/;"	d
+TBLSYSPACT	dbwrapper/dbwrapper_init.php	/^  define("TBLSYSPACT"   , "tblSysprodActor");\/** \\def name of the sysprod actors into db *\/$/;"	d
+TBLSYSPACT	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("TBLSYSPACT"   , "tblSysprodActor");\/** \\def name of the sysprod actors into db *\/$/;"	d
+TBLUSERS	dbwrapper/dbwrapper_init.php	/^  define("TBLUSERS"     ,"users");\/** \\def name of the users's table into db Note : By default, the SPOT credentials are used except for admin user*\/$/;"	d
+TBLUSERS	dbwrapper_1.0STD2/dbwrapper_init.php	/^  define("TBLUSERS"     ,"users");\/** \\def name of the users's table into db Note : By default, the SPOT credentials are used except for admin user*\/$/;"	d
+TEMPLATESDIR	order/order_exporters.php	/^			$TEMPLATESDIR = __DIR__."\/templates\/".$template;$/;"	v
+VERSION	dbwrapper/dbwrapper_init.php	/^  $VERSION="1.0STD1"; $/;"	v
+VERSION	dbwrapper_1.0STD2/dbwrapper_init.php	/^  $VERSION="1.0STD1"; $/;"	v
+__call	objects_defs/default.php	/^		public function __call($name, $arguments)\/\/$name, $arguments)$/;"	f
+__call	order/order_items.php	/^		public function __call($name, $arguments)$/;"	f
+__construct	configParser.php	/^      public function __construct()$/;"	f
+__construct	dbwrapper.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper.php	/^		public function __construct($username, $password, $auth_method=AUTH_LOCAL)$/;"	f
+__construct	dbwrapper/dbwrapper_init.php	/^		public function __construct($message, $code = 100, Exception $previous = null) $/;"	f
+__construct	dbwrapper/dbwrapper_init.php	/^    public function __construct($username ,$password, $auth_method)$/;"	f
+__construct	dbwrapper/dbwrapper_loader.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper/dbwrapper_loader.php	/^	public function __construct($username, $password, $auth_method)$/;"	f
+__construct	dbwrapper/dbwrapper_metadata.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper/dbwrapper_metadata.php	/^	public function __construct($username, $password, $auth_method)$/;"	f
+__construct	dbwrapper/dbwrapper_models.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper/dbwrapper_models.php	/^	public function __construct($username, $password, $auth_method)$/;"	f
+__construct	dbwrapper/dbwrapper_monitor.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper/dbwrapper_monitor.php	/^	public function __construct($username, $password, $auth_method)$/;"	f
+__construct	dbwrapper/dbwrapper_mysql_wrapper.php	/^		public function __construct($dbHost, $dbUser, $dbPassword, $dbName, $dbPort=3306, $debugArray)$/;"	f
+__construct	dbwrapper/dbwrapper_mysql_wrapper.php	/^	public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper/dbwrapper_notif.php	/^	public function __construct($dbHost, $dbUser, $dbPassword, $dbName, $dbPort=3306)$/;"	f
+__construct	dbwrapper/dbwrapper_storedOrders.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper/dbwrapper_storedOrders.php	/^	public function __construct($username, $password, $auth_method)$/;"	f
+__construct	dbwrapper/dbwrapper_writer.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper/dbwrapper_writer.php	/^		public function __construct($username, $password, $auth_method)$/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_init.php	/^		public function __construct($message, $code = 100, Exception $previous = null) $/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_init.php	/^    public function __construct($username ,$password, $auth_method)$/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	public function __construct($username, $password, $auth_method)$/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function __construct($username, $password, $auth_method)$/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_models.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function __construct($username, $password, $auth_method)$/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^	public function __construct($username, $password, $auth_method)$/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		public function __construct($dbHost, $dbUser, $dbPassword, $dbName, $dbPort=3306, $debugArray)$/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^	public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_notif.php	/^	public function __construct($dbHost, $dbUser, $dbPassword, $dbName, $dbPort=3306)$/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	public function __construct($username, $password, $auth_method)$/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		public function __construct($username, $password, $auth_method)$/;"	f
+__construct	debug.php	/^		public function __construct($initialState, $logFilePath,$logSize,$circularLog,$showTime=true, $useSyslog=True)$/;"	f
+__construct	debug.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	objects_defs/default.php	/^		public function __construct()$/;"	f
+__construct	order.php	/^		public function __construct($so, $modelList)$/;"	f
+__construct	order/order_exporters.php	/^		protected function __construct($so, $modelList)$/;"	f
+__construct	order/order_exporters.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	order/order_geninfo.php	/^		protected function __construct($salesOrder)$/;"	f
+__construct	order/order_geninfo.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	order/order_importers.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__construct	order/order_importers.php	/^		public function __construct($so, $modelList)$/;"	f
+__construct	order/order_items.php	/^		protected function __construct($so, $modelList)$/;"	f
+__construct	order/order_items.php	/^		public function __construct($message, $code = 0, Exception $previous = null) $/;"	f
+__destruct	configParser.php	/^      public function __destruct()$/;"	f
+__destruct	dbwrapper/dbwrapper_mysql_wrapper.php	/^		public function __destruct()$/;"	f
+__destruct	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		public function __destruct()$/;"	f
+__destruct	debug.php	/^		public function __destruct()$/;"	f
+__get	objects_defs/default.php	/^		public function __get($name)$/;"	f
+__set	objects_defs/default.php	/^		public function __set($name, $value)$/;"	f
+__toString	objects_defs/default.php	/^		public function __toString()$/;"	f
+__unset	objects_defs/default.php	/^		public function __unset($name)$/;"	f
+__wakeup	dbwrapper/dbwrapper_init.php	/^	public function __wakeup() { parent::__wakeup(); }$/;"	f
+__wakeup	dbwrapper/dbwrapper_mysql_wrapper.php	/^		public function __wakeup() $/;"	f
+__wakeup	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function __wakeup() { parent::__wakeup(); }$/;"	f
+__wakeup	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		public function __wakeup() $/;"	f
+_arrayMerge	dbwrapper/dbwrapper_storedOrders.php	/^	protected function _arrayMerge($Srcarray, $array)$/;"	f
+_arrayMerge	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	protected function _arrayMerge($Srcarray, $array)$/;"	f
+_commitTransaction	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function _commitTransaction()$/;"	f
+_commitTransaction	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function _commitTransaction()$/;"	f
+_empty	order/order_exporters.php	/^		private function _empty($val)$/;"	f
+_propertyMerge	dbwrapper/dbwrapper_storedOrders.php	/^	protected function _propertyMerge($prop1, $prop2)$/;"	f
+_propertyMerge	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	protected function _propertyMerge($prop1, $prop2)$/;"	f
+_rollback	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function _rollback()$/;"	f
+_rollback	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function _rollback()$/;"	f
+_startTransaction	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function _startTransaction()$/;"	f
+_startTransaction	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function _startTransaction()$/;"	f
+account	order/order_geninfo.php	/^		protected $account;$/;"	v
+addMethod	dbwrapper/dbwrapper_metadata.php	/^				$addMethod = $this->get_catalog_method($itemId,"add");$/;"	v
+addMethod	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$addMethod = $this->get_catalog_method($itemId,"add");$/;"	v
+add_item	objects_defs/default.php	/^		public function add_item()$/;"	f
+add_method_ref	objects_defs/default.php	/^			$this->add_method_ref = $name;$/;"	v
+add_method_ref	objects_defs/default.php	/^		private $add_method_ref;$/;"	v
+add_network	order/order_geninfo.php	/^		public function add_network($str_name, $str_ip, $str_mask)$/;"	f
+add_to_polaroidArray	dbwrapper/dbwrapper_writer.php	/^	private function add_to_polaroidArray($CrmID, $line)$/;"	f
+add_to_polaroidArray	dbwrapper_1.0STD2/dbwrapper_writer.php	/^	private function add_to_polaroidArray($CrmID, $line)$/;"	f
+adddbquotes	dbwrapper/dbwrapper_metadata.php	/^	private function adddbquotes(&$item1, $key)$/;"	f
+adddbquotes	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	private function adddbquotes(&$item1, $key)$/;"	f
+addfromAPC	dbwrapper/dbwrapper_metadata.php	/^	public function addfromAPC(ORDER &$Order, $apcCode,$apcGID=-1)$/;"	f
+addfromAPC	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function addfromAPC(ORDER &$Order, $apcCode,$apcGID=-1)$/;"	f
+aes	dbwrapper/dbwrapper_init.php	/^				$aes = new AES($key);$/;"	v
+aes	dbwrapper_1.0STD2/dbwrapper_init.php	/^				$aes = new AES($key);$/;"	v
+allowed	order/order_items.php	/^				$allowed = explode(";",$value["allowedItems"]);$/;"	v
+allowed_missing_params	dbwrapper/dbwrapper_loader.php	/^				$allowed_missing_params = array("polaroid_functionID", "cluster", "IDNode");$/;"	v
+allowed_missing_params	dbwrapper_1.0STD2/dbwrapper_loader.php	/^				$allowed_missing_params = array("polaroid_functionID", "cluster", "IDNode");$/;"	v
+analyseExtendedARgs	dbwrapper/dbwrapper_metadata.php	/^	private function analyseExtendedARgs($str)$/;"	f
+analyseExtendedARgs	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	private function analyseExtendedARgs($str)$/;"	f
+analyseFromHostname	order/order_items.php	/^		public function analyseFromHostname($hostname)$/;"	f
+apcCode	order/order_exporters.php	/^			$apcCode    = $this->build_table_apc($item_list["APC"], $material_template);$/;"	v
+apcCode	order/order_items.php	/^							$apcCode = $values["str_apccode"];$/;"	v
+apcCodeIndex	dbwrapper/dbwrapper_metadata.php	/^				$apcCodeIndex    = array_search("str_apccode", $params);$/;"	v
+apcCodeIndex	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$apcCodeIndex    = array_search("str_apccode", $params);$/;"	v
+apcGID	order/order_geninfo.php	/^			$this->apcGID = MIN_GID;$/;"	v
+apcGID	order/order_geninfo.php	/^		protected $apcGID = MIN_GID; \/\/used to create an index of apcItems$/;"	v
+apcGroudIDIndex	dbwrapper/dbwrapper_metadata.php	/^				$apcGroudIDIndex = array_search("int_apcGID", $params);$/;"	v
+apcGroudIDIndex	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$apcGroudIDIndex = array_search("int_apcGID", $params);$/;"	v
+apcID	dbwrapper/dbwrapper_metadata.php	/^		$apcID = $this->getAPCID($code);$/;"	v
+apcID	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$apcID = $this->getAPCID($code);$/;"	v
+apcID_exist	dbwrapper/dbwrapper_metadata.php	/^	private function apcID_exist($apcID)$/;"	f
+apcID_exist	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	private function apcID_exist($apcID)$/;"	f
+apc_code	dbwrapper/dbwrapper_metadata.php	/^				$apc_code = $this->getAPCCode($values[2]);$/;"	v
+apc_code	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$apc_code = $this->getAPCCode($values[2]);$/;"	v
+apc_get_dep	dbwrapper/dbwrapper_metadata.php	/^	public function apc_get_dep($showFull=false)$/;"	f
+apc_get_dep	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function apc_get_dep($showFull=false)$/;"	f
+apc_get_dependencies	dbwrapper/dbwrapper_metadata.php	/^	protected function apc_get_dependencies($apcCode)$/;"	f
+apc_get_dependencies	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function apc_get_dependencies($apcCode)$/;"	f
+apc_group_id	dbwrapper/dbwrapper_metadata.php	/^				$apc_group_id = $Order->getNewGID(); $/;"	v
+apc_group_id	dbwrapper/dbwrapper_metadata.php	/^				$apc_group_id = $Order->getNewGID(True); $/;"	v
+apc_group_id	dbwrapper/dbwrapper_metadata.php	/^			$apc_group_id = $apcGID;$/;"	v
+apc_group_id	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$apc_group_id = $Order->getNewGID(); $/;"	v
+apc_group_id	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$apc_group_id = $Order->getNewGID(True); $/;"	v
+apc_group_id	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^			$apc_group_id = $apcGID;$/;"	v
+apc_id	dbwrapper/dbwrapper_metadata.php	/^		$apc_id = $this->getAPCID($apcCode);$/;"	v
+apc_id	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$apc_id = $this->getAPCID($apcCode);$/;"	v
+apc_list	order/order_items.php	/^			$apc_list    = array();$/;"	v
+args	dbwrapper/dbwrapper_metadata.php	/^				$args = $this->analyseExtendedARgs($values[3]);$/;"	v
+args	dbwrapper/dbwrapper_storedOrders.php	/^		$args = $IDarray;$/;"	v
+args	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$args = $this->analyseExtendedARgs($values[3]);$/;"	v
+args	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		$args = $IDarray;$/;"	v
+argsArray	objects_defs/default.php	/^			$argsArray = func_get_args(); \/\/Values sent to the function $/;"	v
+argsArry	dbwrapper/dbwrapper_metadata.php	/^		$argsArry = array();$/;"	v
+argsArry	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$argsArry = array();$/;"	v
+argsCount	objects_defs/default.php	/^			$argsCount    = func_num_args();$/;"	v
+arr	dbwrapper/dbwrapper_metadata.php	/^		$arr = array( "IDAPC" => $apcID, "ModelID" => $modelID, "extendsArgs" => "cluster=$cluster", "privateShortcut" => $privateShortCut);$/;"	v
+arr	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$arr = array( "IDAPC" => $apcID, "ModelID" => $modelID, "extendsArgs" => "cluster=$cluster", "privateShortcut" => $privateShortCut);$/;"	v
+array	objects_defs/default.php	/^			$array = array();$/;"	v
+arrayDump	dbwrapper/dbwrapper_init.php	/^	protected function arrayDump($array)$/;"	f
+arrayDump	dbwrapper_1.0STD2/dbwrapper_init.php	/^	protected function arrayDump($array)$/;"	f
+asc	dbwrapper/dbwrapper_init.php	/^		$asc == 'true' ? $asc = True : $asc = False;$/;"	v
+asc	dbwrapper/dbwrapper_storedOrders.php	/^												$asc=True$/;"	v
+asc	dbwrapper_1.0STD2/dbwrapper_init.php	/^		$asc == 'true' ? $asc = True : $asc = False;$/;"	v
+asc	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^												$asc=True$/;"	v
+author	configParser.php	/^      private $author  = "DCL";$/;"	v
+basic_select	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function basic_select($tableName, $condition="", $fields='*', $orderBy=Null, $asc=True, $limityFrom=0,$limite_size=0,$Count=False, $dumpTo=NULL)$/;"	f
+basic_select	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function basic_select($tableName, $condition="", $fields='*', $orderBy=Null, $asc=True, $limityFrom=0,$limite_size=0,$Count=False, $dumpTo=NULL)$/;"	f
+buffer	dbwrapper/dbwrapper_models.php	/^      $buffer = array();$/;"	v
+buffer	dbwrapper_1.0STD2/dbwrapper_models.php	/^      $buffer = array();$/;"	v
+build_single_items	order/order_exporters.php	/^		private function build_single_items($items, $template)$/;"	f
+build_table_apc	order/order_exporters.php	/^		private function build_table_apc($APCArry, $template)$/;"	f
+canBeCommited	order.php	/^		public function canBeCommited()$/;"	f
+canBeCommited	order/order_geninfo.php	/^			$this->canBeCommited = false;$/;"	v
+canBeCommited	order/order_geninfo.php	/^		protected $canBeCommited;$/;"	v
+casHostname	dbwrapper/dbwrapper_loader.php	/^			$casHostname = $value[1];$/;"	v
+casHostname	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$casHostname = $value[1];$/;"	v
+casID	dbwrapper/dbwrapper_loader.php	/^			$casID = $value[0];$/;"	v
+casID	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$casID = $value[0];$/;"	v
+casServersList	dbwrapper/dbwrapper_loader.php	/^		$casServersList = $this->basic_select(TBLCASSERVER, "salesOrder = '$salesOrder'", array("ID", "hostname"));$/;"	v
+casServersList	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$casServersList = $this->basic_select(TBLCASSERVER, "salesOrder = '$salesOrder'", array("ID", "hostname"));$/;"	v
+catalogItemId	dbwrapper/dbwrapper_metadata.php	/^		$catalogItemId = parent::basic_select(APC2CATA, "IDAPC='$apc_id'", array("IDItem", "ModelID", "apcChildCode", "extendsArgs", "privateShortcut"));$/;"	v
+catalogItemId	dbwrapper/dbwrapper_metadata.php	/^		$catalogItemId =$this->get_catalogItems($idApc);$/;"	v
+catalogItemId	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$catalogItemId = parent::basic_select(APC2CATA, "IDAPC='$apc_id'", array("IDItem", "ModelID", "apcChildCode", "extendsArgs", "privateShortcut"));$/;"	v
+catalogItemId	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$catalogItemId =$this->get_catalogItems($idApc);$/;"	v
+catalog_conatiner_name	dbwrapper/dbwrapper_metadata.php	/^	protected function catalog_conatiner_name($metadat)$/;"	f
+catalog_conatiner_name	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function catalog_conatiner_name($metadat)$/;"	f
+catalogidItem	dbwrapper/dbwrapper_loader.php	/^					$catalogidItem = $this->get_itemIDFromContainer($current_table);$/;"	v
+catalogidItem	dbwrapper_1.0STD2/dbwrapper_loader.php	/^					$catalogidItem = $this->get_itemIDFromContainer($current_table);$/;"	v
+categoryName	objects_defs/default.php	/^		private $categoryName;$/;"	v
+categoryName	order/order_items.php	/^						$categoryName   = $this->objs_def[$this->items_method[$method_call]["reference"]]->get_category_name();$/;"	v
+categoryName	order/order_items.php	/^					$categoryName   = $this->objs_def[$this->items_method[$method]["reference"]]->get_category_name();$/;"	v
+catgoryLine	order/order_exporters.php	/^				$catgoryLine = "";$/;"	v
+cct_filename	order/order_exporters.php	/^			$cct_filename = pathinfo(str_replace("\\\\", "\\\/", $this->getCCTSnaptshot()), PATHINFO_BASENAME );$/;"	v
+cctsnapshotPath	order/order_geninfo.php	/^			$this->cctsnapshotPath = $val;$/;"	v
+cctsnapshotPath	order/order_geninfo.php	/^		protected $cctsnapshotPath;$/;"	v
+cdt	dbwrapper/dbwrapper_init.php	/^		$cdt = "";$/;"	v
+cdt	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$cdt = " WHERE $condition";$/;"	v
+cdt	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $cdt = "";$/;"	v
+cdt	dbwrapper/dbwrapper_mysql_wrapper.php	/^		$cdt = "";$/;"	v
+cdt	dbwrapper_1.0STD2/dbwrapper_init.php	/^		$cdt = "";$/;"	v
+cdt	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$cdt = " WHERE $condition";$/;"	v
+cdt	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $cdt = "";$/;"	v
+cdt	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		$cdt = "";$/;"	v
+changeIndex	objects_defs/default.php	/^						$changeIndex = true;$/;"	v
+change_sql_user	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function change_sql_user($sql_user, $sql_password)$/;"	f
+change_sql_user	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function change_sql_user($sql_user, $sql_password)$/;"	f
+char	dbwrapper/dbwrapper_writer.php	/^		$char  = 0;$/;"	v
+char	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$char  = 0;$/;"	v
+checkEncoding	dbwrapper/dbwrapper_mysql_wrapper.php	/^		private function checkEncoding($str)$/;"	f
+checkEncoding	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		private function checkEncoding($str)$/;"	f
+child	dbwrapper/dbwrapper_writer.php	/^			$child = parent::basic_select(POLAROID_FCTTABLE, "ID=$childID", array("VALUE", "hstrule"));$/;"	v
+child	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$child = parent::basic_select(POLAROID_FCTTABLE, "ID=$childID", array("VALUE", "hstrule"));$/;"	v
+childField	dbwrapper/dbwrapper_writer.php	/^					$childField = $child[0][1];$/;"	v
+childField	dbwrapper_1.0STD2/dbwrapper_writer.php	/^					$childField = $child[0][1];$/;"	v
+childID	dbwrapper/dbwrapper_writer.php	/^			$childID = $return[2];$/;"	v
+childID	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$childID = $return[2];$/;"	v
+circularLog	debug.php	/^			$this->circularLog = $circularLog;$/;"	v
+circularLog	debug.php	/^		private $circularLog ;$/;"	v
+clCap	order/order_items.php	/^					$clCap = $object->cluster_capable();$/;"	v
+clCap	order/order_items.php	/^			$clCap = NULL;$/;"	v
+cl_list	dbwrapper/dbwrapper_metadata.php	/^		$cl_list = parent::basic_select(CAT_ENABLED_ITEM, "cluster=1", array("IDItem"));$/;"	v
+cl_list	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$cl_list = parent::basic_select(CAT_ENABLED_ITEM, "cluster=1", array("IDItem"));$/;"	v
+classversion	dbwrapper/dbwrapper_init.php	/^	private $classversion = 1.0;$/;"	v
+classversion	dbwrapper_1.0STD2/dbwrapper_init.php	/^	private $classversion = 1.0;$/;"	v
+clientIP	dbwrapper/dbwrapper_monitor.php	/^			$this->clientIP = $_SERVER['REMOTE_ADDR'];$/;"	v
+clientIP	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^			$this->clientIP = $_SERVER['REMOTE_ADDR'];$/;"	v
+cluster	dbwrapper/dbwrapper_metadata.php	/^				$cluster = boolval($args["cluster"]);$/;"	v
+cluster	dbwrapper/dbwrapper_metadata.php	/^			$cluster = '0';$/;"	v
+cluster	dbwrapper/dbwrapper_metadata.php	/^			$cluster = '1';$/;"	v
+cluster	dbwrapper/dbwrapper_writer.php	/^			$cluster        = $this->is_cluster($categoryIndex);$/;"	v
+cluster	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$cluster = boolval($args["cluster"]);$/;"	v
+cluster	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^			$cluster = '0';$/;"	v
+cluster	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^			$cluster = '1';$/;"	v
+cluster	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$cluster        = $this->is_cluster($categoryIndex);$/;"	v
+clusterCapable	objects_defs/default.php	/^			$this->clusterCapable = false;$/;"	v
+clusterCapable	objects_defs/default.php	/^			$this->clusterCapable = true;$/;"	v
+clusterCapable	objects_defs/default.php	/^		private $clusterCapable;$/;"	v
+clusterCount	dbwrapper/dbwrapper_metadata.php	/^				$clusterCount = 0;$/;"	v
+clusterCount	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$clusterCount = 0;$/;"	v
+cluster_capable	objects_defs/default.php	/^		public function cluster_capable()$/;"	f
+cluster_field	dbwrapper/dbwrapper_metadata.php	/^				$cluster_field   = array_search("str_IDNode", $params);$/;"	v
+cluster_field	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$cluster_field   = array_search("str_IDNode", $params);$/;"	v
+cluster_field	objects_defs/default.php	/^			$this->cluster_field = "str_IDNode";$/;"	v
+cluster_field	objects_defs/default.php	/^		private $cluster_field;$/;"	v
+clusters	dbwrapper/dbwrapper_loader.php	/^		$clusters = array();$/;"	v
+clusters	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$clusters = array();$/;"	v
+code_count	order/order_exporters.php	/^				$code_count = count($gid);$/;"	v
+code_name	order/order_exporters.php	/^				$code_name  = $code;$/;"	v
+colCount	order/order_exporters.php	/^			$colCount = count($row);$/;"	v
+col_width	order/order_exporters.php	/^			$col_width = "auto";$/;"	v
+cols	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $cols = array();$/;"	v
+cols	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $cols = array();$/;"	v
+cols	order/order_exporters.php	/^			$cols =  $object[$objectID]->get_report_strings();$/;"	v
+column	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $column = $this->execq("SHOW COLUMNS FROM $tableName");$/;"	v
+column	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $column = $this->execq("SHOW COLUMNS FROM $tableName");$/;"	v
+columnCount	order/order_exporters.php	/^			$columnCount = 0;$/;"	v
+columnName	dbwrapper/dbwrapper_mysql_wrapper.php	/^					$columnName = "*";$/;"	v
+columnName	dbwrapper/dbwrapper_mysql_wrapper.php	/^				$columnName = parent::real_escape_string($columnName);$/;"	v
+columnName	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^					$columnName = "*";$/;"	v
+columnName	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				$columnName = parent::real_escape_string($columnName);$/;"	v
+columnString	order/order_exporters.php	/^				$columnString = $this->draw_table_headers($columns);$/;"	v
+columns	dbwrapper/dbwrapper_models.php	/^      $columns = $this->getColumnNames($tableName);$/;"	v
+columns	dbwrapper_1.0STD2/dbwrapper_models.php	/^      $columns = $this->getColumnNames($tableName);$/;"	v
+columns	order/order_exporters.php	/^				$columns = $indexes["DISPLAY_INDEXES"];$/;"	v
+columns	order/order_exporters.php	/^			$columns = array( 0 => "APC code", 1=>"Brand", 2=> "Model" , 3 => "S\/N" );					$/;"	v
+comment	order/order_geninfo.php	/^		protected $comment;$/;"	v
+condition	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$condition = "WHERE $condition";$/;"	v
+condition	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$condition = explode($operator, $condition);$/;"	v
+condition	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$condition = implode($operator, $condition);$/;"	v
+condition	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$condition = "WHERE $condition";$/;"	v
+condition	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$condition = explode($operator, $condition);$/;"	v
+condition	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$condition = implode($operator, $condition);$/;"	v
+config	configParser.php	/^      private $config;  \/\/The configutation file's hanle$/;"	v
+configuration	dbwrapper/dbwrapper_init.php	/^			$this->configuration = new CONFIGPARSER();  $/;"	v
+configuration	dbwrapper_1.0STD2/dbwrapper_init.php	/^			$this->configuration = new CONFIGPARSER();  $/;"	v
+connectionInfo	dbwrapper/dbwrapper_mysql_wrapper.php	/^		private $connectionInfo = array();$/;"	v
+connectionInfo	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		private $connectionInfo = array();$/;"	v
+container	dbwrapper/dbwrapper_metadata.php	/^				$container = $this->get_catalog_container($itemId);$/;"	v
+container	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$container = $this->get_catalog_container($itemId);$/;"	v
+container	objects_defs/default.php	/^					$this->container = array_merge($this->container, $newArray);$/;"	v
+container	objects_defs/default.php	/^				$this->container = $newArray;$/;"	v
+container	objects_defs/default.php	/^		private $container;$/;"	v
+container	order/order_items.php	/^				$container = $obj->get_container_name();$/;"	v
+container_name	objects_defs/default.php	/^			$this->container_name = $name;$/;"	v
+container_name	objects_defs/default.php	/^		private $container_name;$/;"	v
+container_name	order/order_items.php	/^				$container_name = $this->objs_def[$this->items_method[$method]["reference"]]->get_container_name();$/;"	v
+content	configParser.php	/^		$content = parse_ini_file($this->filePath, true);$/;"	v
+content	dbwrapper/dbwrapper_storedOrders.php	/^		$content = base64_encode(  serialize( $order) ) ;$/;"	v
+content	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		$content = base64_encode(  serialize( $order) ) ;$/;"	v
+count	dbwrapper/dbwrapper_init.php	/^		$count = 0;$/;"	v
+count	dbwrapper/dbwrapper_loader.php	/^		$count = 0;$/;"	v
+count	dbwrapper/dbwrapper_storedOrders.php	/^					$count = $orderBase->merge_orders_items($order);$/;"	v
+count	dbwrapper/dbwrapper_storedOrders.php	/^			$count = $this->sql_count(TBLSTOREDORDERS, "USER = '".$this->getInstancier()."'" , $columnName='*');$/;"	v
+count	dbwrapper/dbwrapper_storedOrders.php	/^			$count = $this->sql_count(TBLSTOREDORDERS, "salesOrder = '$so'" , $columnName='*');$/;"	v
+count	dbwrapper/dbwrapper_storedOrders.php	/^			$count = intval($count[0]);$/;"	v
+count	dbwrapper/dbwrapper_writer.php	/^		$count=0;$/;"	v
+count	dbwrapper_1.0STD2/dbwrapper_init.php	/^		$count = 0;$/;"	v
+count	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$count = 0;$/;"	v
+count	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^					$count = $orderBase->merge_orders_items($order);$/;"	v
+count	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^			$count = $this->sql_count(TBLSTOREDORDERS, "USER = '".$this->getInstancier()."'" , $columnName='*');$/;"	v
+count	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^			$count = $this->sql_count(TBLSTOREDORDERS, "salesOrder = '$so'" , $columnName='*');$/;"	v
+count	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^			$count = intval($count[0]);$/;"	v
+count	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$count=0;$/;"	v
+count	order/order_items.php	/^			$count = 0;$/;"	v
+countItems	dbwrapper/dbwrapper_init.php	/^	public function countItems($salesOrder)$/;"	f
+countItems	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function countItems($salesOrder)$/;"	f
+count_items	order/order_items.php	/^		public function count_items()$/;"	f
+cpt	dbwrapper/dbwrapper_metadata.php	/^		$cpt=0;$/;"	v
+cpt	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$cpt = 0;$/;"	v
+cpt	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$cpt=0;$/;"	v
+cpt	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$cpt = 0;$/;"	v
+cpt	order/order_exporters.php	/^				$cpt  = 0;$/;"	v
+cpt	order/order_exporters.php	/^				$cpt = 1;$/;"	v
+createChildren	dbwrapper/dbwrapper_metadata.php	/^	public function createChildren($apcID, $catalogID, $modelID, $recursive=false, $cluster=false, $privateShortCut=false)$/;"	f
+createChildren	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function createChildren($apcID, $catalogID, $modelID, $recursive=false, $cluster=false, $privateShortCut=false)$/;"	f
+createNewCode	dbwrapper/dbwrapper_metadata.php	/^	public function createNewCode($code, $description="")$/;"	f
+createNewCode	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function createNewCode($code, $description="")$/;"	f
+createProcessedArray	dbwrapper/dbwrapper_mysql_wrapper.php	/^	protected function createProcessedArray($itemValues,$salesOrder,$indexName, $indexValue)$/;"	f
+createProcessedArray	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^	protected function createProcessedArray($itemValues,$salesOrder,$indexName, $indexValue)$/;"	f
+creator	dbwrapper/dbwrapper_writer.php	/^		$creator = $creator[0];$/;"	v
+creator	dbwrapper/dbwrapper_writer.php	/^		$creator = parent::basic_select(TBLORDERS,"Salesorder='$salesOrder'",array("SysprodActor"));$/;"	v
+creator	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$creator = $creator[0];$/;"	v
+creator	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$creator = parent::basic_select(TBLORDERS,"Salesorder='$salesOrder'",array("SysprodActor"));$/;"	v
+crmID	dbwrapper/dbwrapper_writer.php	/^		$crmID = $order->getCRMID();$/;"	v
+crmID	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$crmID = $order->getCRMID();$/;"	v
+curCel	order/order_exporters.php	/^			$curCel = 1;$/;"	v
+curPos	dbwrapper/dbwrapper_mysql_wrapper.php	/^		$curPos = 0;$/;"	v
+curPos	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		$curPos = 0;$/;"	v
+cur_index	order/order_exporters.php	/^			$cur_index = 4;$/;"	v
+cur_so	dbwrapper/dbwrapper_writer.php	/^		$cur_so =  $order->getSalesOrder();$/;"	v
+cur_so	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$cur_so =  $order->getSalesOrder();$/;"	v
+current	order/order_exporters.php	/^					$current = str_replace("{quantity}", count($index) \/ 2, $template);$/;"	v
+current	order/order_exporters.php	/^					$current = str_replace("{quantity}", count($index), $template);$/;"	v
+current	order/order_exporters.php	/^				$current = str_replace("{category}", $category, $current);$/;"	v
+current	order/order_exporters.php	/^				$current = str_replace("{columns}", $columnString, $current);$/;"	v
+current	order/order_exporters.php	/^				$current = str_replace("{description}", $description, $current);$/;"	v
+current	order/order_exporters.php	/^				$current = str_replace("{hosts}",    $catgoryLine, $current);$/;"	v
+current_apc	dbwrapper/dbwrapper_metadata.php	/^			$this->current_apc = $apcCode;$/;"	v
+current_apc	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^			$this->current_apc = $apcCode;$/;"	v
+customerAcronym	order/order_geninfo.php	/^			$this->customerAcronym = strtoupper($val);$/;"	v
+customerAcronym	order/order_geninfo.php	/^		protected $customerAcronym;$/;"	v
+d	dbwrapper/dbwrapper_mysql_wrapper.php	/^					$d = $DtExplode[strpos($fmd,'d')];$/;"	v
+d	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^					$d = $DtExplode[strpos($fmd,'d')];$/;"	v
+data	order/order_exporters.php	/^					$data      = $values["data"];$/;"	v
+databases	dbwrapper/dbwrapper_loader.php	/^		$databases = array();$/;"	v
+databases	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$databases = array();$/;"	v
+datas	order/order_exporters.php	/^					$datas   = array( 0 => "", 1 => "", 2=> "" ,3=> $key);$/;"	v
+dbCharset	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $dbCharset = $this->getDBCharset();$/;"	v
+dbCharset	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $dbCharset = $this->getDBCharset();$/;"	v
+dbCount	dbwrapper/dbwrapper_loader.php	/^		$dbCount = 0;$/;"	v
+dbCount	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$dbCount = 0;$/;"	v
+dbHostname	dbwrapper/dbwrapper_loader.php	/^			$dbHostname = $value[1];$/;"	v
+dbHostname	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$dbHostname = $value[1];$/;"	v
+dbLoginInfo	dbwrapper/dbwrapper_init.php	/^			$dbLoginInfo =  parent::basic_select(TBLUSERS, "U_AD_User = '$username'", array("U_login", "U_password", "U_right","U_AD_User","U_AD_Password"));$/;"	v
+dbLoginInfo	dbwrapper/dbwrapper_init.php	/^			$dbLoginInfo =  parent::basic_select(TBLUSERS, "U_login = '".strtoupper($username)."'", array("U_login", "U_password", "U_right","U_AD_User","U_AD_Password"));$/;"	v
+dbLoginInfo	dbwrapper/dbwrapper_init.php	/^			$dbLoginInfo = $dbLoginInfo[0];$/;"	v
+dbLoginInfo	dbwrapper_1.0STD2/dbwrapper_init.php	/^			$dbLoginInfo =  parent::basic_select(TBLUSERS, "U_AD_User = '$username'", array("U_login", "U_password", "U_right","U_AD_User","U_AD_Password"));$/;"	v
+dbLoginInfo	dbwrapper_1.0STD2/dbwrapper_init.php	/^			$dbLoginInfo =  parent::basic_select(TBLUSERS, "U_login = '".strtoupper($username)."'", array("U_login", "U_password", "U_right","U_AD_User","U_AD_Password"));$/;"	v
+dbLoginInfo	dbwrapper_1.0STD2/dbwrapper_init.php	/^			$dbLoginInfo = $dbLoginInfo[0];$/;"	v
+dbServId	dbwrapper/dbwrapper_loader.php	/^			$dbServId = $value[0];$/;"	v
+dbServId	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$dbServId = $value[0];$/;"	v
+dbServersList	dbwrapper/dbwrapper_loader.php	/^		$dbServersList = $this->basic_select(TBLDBSERVER, "salesOrder = '$salesOrder'", array("ID", "hostname"));$/;"	v
+dbServersList	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$dbServersList = $this->basic_select(TBLDBSERVER, "salesOrder = '$salesOrder'", array("ID", "hostname"));$/;"	v
+db_id	objects_defs/default.php	/^			$this->db_id = $id;$/;"	v
+db_id	objects_defs/default.php	/^		private $db_id;$/;"	v
+db_items	dbwrapper/dbwrapper_loader.php	/^		$db_items = $this->e_select(  $item_name,  $fields , $useLike, "*", $strict);$/;"	v
+db_items	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$db_items = $this->e_select(  $item_name,  $fields , $useLike, "*", $strict);$/;"	v
+db_key	dbwrapper/dbwrapper_writer.php	/^									$db_key = $db_key[1];$/;"	v
+db_key	dbwrapper/dbwrapper_writer.php	/^									$db_key = explode("_", $keyName);$/;"	v
+db_key	dbwrapper_1.0STD2/dbwrapper_writer.php	/^									$db_key = $db_key[1];$/;"	v
+db_key	dbwrapper_1.0STD2/dbwrapper_writer.php	/^									$db_key = explode("_", $keyName);$/;"	v
+dbwrapper	dbwrapper.php	/^	class dbwrapper extends DBWSTO$/;"	c
+debug	configParser.php	/^        $this->debug =  $this->get("DEBUG");$/;"	v
+debug	configParser.php	/^      private $debug = false; $/;"	v
+debug	dbwrapper/dbwrapper_init.php	/^			$this->debug = (bool)$this->configuration->get("DEBUG");$/;"	v
+debug	dbwrapper/dbwrapper_init.php	/^    private $debug; \/\/ attributes that indicated if the object was instanciated with debug mode $/;"	v
+debug	dbwrapper_1.0STD2/dbwrapper_init.php	/^			$this->debug = (bool)$this->configuration->get("DEBUG");$/;"	v
+debug	dbwrapper_1.0STD2/dbwrapper_init.php	/^    private $debug; \/\/ attributes that indicated if the object was instanciated with debug mode $/;"	v
+debug	debug.php	/^			$this->debug = $initialState;$/;"	v
+debug	debug.php	/^		protected $debug;$/;"	v
+debugObj	dbwrapper/dbwrapper_mysql_wrapper.php	/^				$this->debugObj = NULL;$/;"	v
+debugObj	dbwrapper/dbwrapper_mysql_wrapper.php	/^				$this->debugObj = new DEBUG($/;"	v
+debugObj	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected $debugObj;$/;"	v
+debugObj	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				$this->debugObj = NULL;$/;"	v
+debugObj	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				$this->debugObj = new DEBUG($/;"	v
+debugObj	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected $debugObj;$/;"	v
+debugParams	dbwrapper/dbwrapper_init.php	/^		$debugParams = array($/;"	v
+debugParams	dbwrapper_1.0STD2/dbwrapper_init.php	/^		$debugParams = array($/;"	v
+deconnect	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function deconnect()$/;"	f
+deconnect	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function deconnect()$/;"	f
+delete_field	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function delete_field($tableName, $colName, $condition)$/;"	f
+delete_field	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function delete_field($tableName, $colName, $condition)$/;"	f
+delete_row	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function delete_row($tableName, $condition)$/;"	f
+delete_row	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function delete_row($tableName, $condition)$/;"	f
+dep	dbwrapper/dbwrapper_metadata.php	/^				$dep = array_merge($dep, $this->apc_get_dependencies($hwCode));$/;"	v
+dep	dbwrapper/dbwrapper_metadata.php	/^		$dep = array();$/;"	v
+dep	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$dep = array_merge($dep, $this->apc_get_dependencies($hwCode));$/;"	v
+dep	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$dep = array();$/;"	v
+description	objects_defs/default.php	/^			$this->description = $description;$/;"	v
+description	objects_defs/default.php	/^		private $description;$/;"	v
+description	order/order_exporters.php	/^				$description = "";$/;"	v
+description	order/order_exporters.php	/^				$description = $object[$objectID]->get_description();$/;"	v
+destContainer	dbwrapper/dbwrapper_writer.php	/^			$destContainer  = $this->get_catalog_container($categoryIndex);$/;"	v
+destContainer	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$destContainer  = $this->get_catalog_container($categoryIndex);$/;"	v
+disable_model	dbwrapper/dbwrapper_models.php	/^	public function disable_model($id)$/;"	f
+disable_model	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function disable_model($id)$/;"	f
+disable_sanity_checks	objects_defs/default.php	/^		public function disable_sanity_checks()$/;"	f
+disable_sanity_checks	order/order_items.php	/^		public function disable_sanity_checks()$/;"	f
+doSanityCheck	objects_defs/default.php	/^			$this->doSanityCheck = false;$/;"	v
+doSanityCheck	objects_defs/default.php	/^			$this->doSanityCheck = true;$/;"	v
+doSanityCheck	objects_defs/default.php	/^		private $doSanityCheck;$/;"	v
+downloadReport	order/order_exporters.php	/^		public function downloadReport($array_return=False)$/;"	f
+draw_cell_tick	order/order_exporters.php	/^		private function draw_cell_tick($cellVal)$/;"	f
+draw_cell_value	order/order_exporters.php	/^		private function draw_cell_value($cellVal)$/;"	f
+draw_cells	order/order_exporters.php	/^		private function draw_cells($row, $unshed_indexs)$/;"	f
+draw_current_cell	order/order_exporters.php	/^		private function draw_current_cell($cellVal)$/;"	f
+draw_table_headers	order/order_exporters.php	/^		private function draw_table_headers($columns)$/;"	f
+dumpArgs	dbwrapper/dbwrapper_mysql_wrapper.php	/^				$dumpArgs = "";$/;"	v
+dumpArgs	dbwrapper/dbwrapper_mysql_wrapper.php	/^				$dumpArgs = "INTO DUMPFILE '$dumpTo'";$/;"	v
+dumpArgs	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				$dumpArgs = "";$/;"	v
+dumpArgs	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				$dumpArgs = "INTO DUMPFILE '$dumpTo'";$/;"	v
+dumpConfig	configParser.php	/^      public function dumpConfig()$/;"	f
+dumpConfig	dbwrapper/dbwrapper_init.php	/^	public function dumpConfig()$/;"	f
+dumpConfig	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function dumpConfig()$/;"	f
+dump_Item_metadata	dbwrapper/dbwrapper_metadata.php	/^	public function dump_Item_metadata($itemID)$/;"	f
+dump_Item_metadata	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function dump_Item_metadata($itemID)$/;"	f
+e_select	dbwrapper/dbwrapper_mysql_wrapper.php	/^	protected function e_select($table, $ValIndexedByFName ,$useLike=True, $fieldsToShow="*", $strict=True, $likeExtended=false)$/;"	f
+e_select	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^	protected function e_select($table, $ValIndexedByFName ,$useLike=True, $fieldsToShow="*", $strict=True, $likeExtended=false)$/;"	f
+enable_model	dbwrapper/dbwrapper_models.php	/^	public function enable_model($id)$/;"	f
+enable_model	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function enable_model($id)$/;"	f
+enable_sanity_checks	objects_defs/default.php	/^		public function enable_sanity_checks()$/;"	f
+enable_sanity_checks	order/order_items.php	/^		public function enable_sanity_checks()$/;"	f
+encryptionBorards	order/order_exporters.php	/^							$encryptionBorards = explode(";", ";;");$/;"	v
+encryptionBorards	order/order_exporters.php	/^							$encryptionBorards = explode(";", $item_values["str_zephyrsSerials"]);$/;"	v
+errorHanle	dbwrapper/dbwrapper_init.php	/^	private $errorHanle = Null;$/;"	v
+errorHanle	dbwrapper_1.0STD2/dbwrapper_init.php	/^	private $errorHanle = Null;$/;"	v
+errorLog	dbwrapper/dbwrapper_init.php	/^			$this->errorLog = $this->configuration->get("errorLog");$/;"	v
+errorLog	dbwrapper/dbwrapper_init.php	/^    private $errorLog; \/\/file name $/;"	v
+errorLog	dbwrapper_1.0STD2/dbwrapper_init.php	/^			$this->errorLog = $this->configuration->get("errorLog");$/;"	v
+errorLog	dbwrapper_1.0STD2/dbwrapper_init.php	/^    private $errorLog; \/\/file name $/;"	v
+excpectedParamType	dbwrapper/dbwrapper_loader.php	/^		$excpectedParamType = array();$/;"	v
+excpectedParamType	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$excpectedParamType = array();$/;"	v
+excpeted	dbwrapper/dbwrapper_loader.php	/^		$excpeted = array();$/;"	v
+excpeted	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$excpeted = array();$/;"	v
+execq	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function execq($query)$/;"	f
+execq	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function execq($query)$/;"	f
+exportPolaroid	dbwrapper/dbwrapper_metadata.php	/^	public function exportPolaroid($datas)$/;"	f
+exportPolaroid	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function exportPolaroid($datas)$/;"	f
+export_pdf	order/order_exporters.php	/^		public function export_pdf($template)$/;"	f
+field	dbwrapper/dbwrapper_metadata.php	/^			$field = explode("=", $minorField);$/;"	v
+field	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^			$field = explode("=", $minorField);$/;"	v
+field	objects_defs/default.php	/^						$field =  $this->get_cluster_field();$/;"	v
+fieldToShow	dbwrapper/dbwrapper_loader.php	/^		$fieldToShow = array$/;"	v
+fieldToShow	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$fieldToShow = array$/;"	v
+fields	dbwrapper/dbwrapper_init.php	/^		$fields = array($/;"	v
+fields	dbwrapper/dbwrapper_loader.php	/^		$fields = $this->sIBContent_removeEmptyCells($ValIndexedByFName);$/;"	v
+fields	dbwrapper/dbwrapper_loader.php	/^		$fields = $this->sIBContent_strip_typeInVarName($fields);$/;"	v
+fields	dbwrapper_1.0STD2/dbwrapper_init.php	/^		$fields = array($/;"	v
+fields	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$fields = $this->sIBContent_removeEmptyCells($ValIndexedByFName);$/;"	v
+fields	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$fields = $this->sIBContent_strip_typeInVarName($fields);$/;"	v
+file	configParser.php	/^		$file = fopen($this->filePath, 'w');$/;"	v
+file	dbwrapper/dbwrapper_metadata.php	/^		$file = fopen("\/tmp\/metadata-$itemID.xml", "rb");$/;"	v
+file	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$file = fopen("\/tmp\/metadata-$itemID.xml", "rb");$/;"	v
+file	objects_defs/default.php	/^			$file = fopen("\/tmp\/default.log",'a');$/;"	v
+filePath	configParser.php	/^        $this->filePath = $pathToConfig;$/;"	v
+filePath	configParser.php	/^      private $filePath = "";   $/;"	v
+filename	order/order_exporters.php	/^					$filename = "SO_".strval($this->getSalesOrder()).'_sysprod-installation_report.pdf';$/;"	v
+finalize	debug.php	/^		public function finalize()$/;"	f
+fmd	dbwrapper/dbwrapper_mysql_wrapper.php	/^					 $fmd=str_replace($sep[0],'',$format);$/;"	v
+fmd	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^					 $fmd=str_replace($sep[0],'',$format);$/;"	v
+fmt	order/order_exporters.php	/^			$fmt = "";$/;"	v
+fmt_datas	order/order_exporters.php	/^			$fmt_datas = array();$/;"	v
+format	dbwrapper/dbwrapper_mysql_wrapper.php	/^		 $format=strtolower($format);$/;"	v
+format	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		 $format=strtolower($format);$/;"	v
+formattedHostname	dbwrapper/dbwrapper_writer.php	/^		$formattedHostname = "";$/;"	v
+formattedHostname	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$formattedHostname = "";$/;"	v
+found	objects_defs/default.php	/^					$found = true;$/;"	v
+found	objects_defs/default.php	/^			$found = false;$/;"	v
+freeze_apcCode	dbwrapper/dbwrapper_models.php	/^	public function freeze_apcCode($apcCode)$/;"	f
+freeze_apcCode	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function freeze_apcCode($apcCode)$/;"	f
+fullLine	order/order_exporters.php	/^			$fullLine = "";$/;"	v
+funcToCall	dbwrapper/dbwrapper_loader.php	/^					$funcToCall = $this->getAddOrderMethodForTable( $order, $current_table);$/;"	v
+funcToCall	dbwrapper_1.0STD2/dbwrapper_loader.php	/^					$funcToCall = $this->getAddOrderMethodForTable( $order, $current_table);$/;"	v
+functioName	dbwrapper/dbwrapper_loader.php	/^		$functioName =  "remove_".$table;$/;"	v
+functioName	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$functioName =  "remove_".$table;$/;"	v
+function	dbwrapper/dbwrapper_writer.php	/^			$function = $this->polaroid_findFctFromHst($line[POLAROID_HOSTNAME_FLD]);$/;"	v
+function	dbwrapper/dbwrapper_writer.php	/^			$function = array ( "function" => $function[0]);$/;"	v
+function	dbwrapper/dbwrapper_writer.php	/^			$function = parent::basic_select(POLAROID_FCTTABLE, "ID='0'",array("VALUE"));$/;"	v
+function	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$function = $this->polaroid_findFctFromHst($line[POLAROID_HOSTNAME_FLD]);$/;"	v
+function	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$function = array ( "function" => $function[0]);$/;"	v
+function	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$function = parent::basic_select(POLAROID_FCTTABLE, "ID='0'",array("VALUE"));$/;"	v
+functionName	dbwrapper/dbwrapper_loader.php	/^		$functionName = $this->get_catalog_method($this->get_itemIDFromContainer($container),"add");$/;"	v
+functionName	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$functionName = $this->get_catalog_method($this->get_itemIDFromContainer($container),"add");$/;"	v
+functionParamters	dbwrapper/dbwrapper_loader.php	/^					$functionParamters  = $this->loadData_build_arguments($this->get_catalog_paramsBymethod($catalogidItem, $funcToCall),$itemLine);$/;"	v
+functionParamters	dbwrapper_1.0STD2/dbwrapper_loader.php	/^					$functionParamters  = $this->loadData_build_arguments($this->get_catalog_paramsBymethod($catalogidItem, $funcToCall),$itemLine);$/;"	v
+genSo	dbwrapper/dbwrapper_storedOrders.php	/^		$genSo = $orderBase->getSalesOrder();$/;"	v
+genSo	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		$genSo = $orderBase->getSalesOrder();$/;"	v
+generateReportPDF	order/order_exporters.php	/^		public function generateReportPDF($memory=False)$/;"	f
+get	configParser.php	/^      public function get($key)$/;"	f
+getAPCCatalog	dbwrapper/dbwrapper_metadata.php	/^	public function getAPCCatalog()$/;"	f
+getAPCCatalog	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function getAPCCatalog()$/;"	f
+getAPCCode	dbwrapper/dbwrapper_metadata.php	/^	protected function getAPCCode($id)$/;"	f
+getAPCCode	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function getAPCCode($id)$/;"	f
+getAPCDescription	dbwrapper/dbwrapper_metadata.php	/^	public function getAPCDescription($hw)$/;"	f
+getAPCDescription	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function getAPCDescription($hw)$/;"	f
+getAPCID	dbwrapper/dbwrapper_metadata.php	/^	public function getAPCID($hw)$/;"	f
+getAPCID	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function getAPCID($hw)$/;"	f
+getAPCStatus	dbwrapper/dbwrapper_metadata.php	/^	public function getAPCStatus($hw)$/;"	f
+getAPCStatus	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function getAPCStatus($hw)$/;"	f
+getAddOrderMethodForTable	dbwrapper/dbwrapper_loader.php	/^	protected function getAddOrderMethodForTable(ORDER $order, $container)$/;"	f
+getAddOrderMethodForTable	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	protected function getAddOrderMethodForTable(ORDER $order, $container)$/;"	f
+getBrandFromID	dbwrapper/dbwrapper_models.php	/^	public function getBrandFromID($idBrand)$/;"	f
+getBrandFromID	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function getBrandFromID($idBrand)$/;"	f
+getBrandIDFromName	dbwrapper/dbwrapper_models.php	/^	public function getBrandIDFromName($brandName)$/;"	f
+getBrandIDFromName	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function getBrandIDFromName($brandName)$/;"	f
+getBrands	dbwrapper/dbwrapper_models.php	/^	public function getBrands()$/;"	f
+getBrands	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function getBrands()$/;"	f
+getCCTSnaptshot	order/order_geninfo.php	/^		public function getCCTSnaptshot()$/;"	f
+getCRMID	order/order_geninfo.php	/^		public function getCRMID()$/;"	f
+getColumnNames	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function getColumnNames($tableName)$/;"	f
+getColumnNames	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function getColumnNames($tableName)$/;"	f
+getComments	order/order_geninfo.php	/^		public function getComments()$/;"	f
+getConfig	configParser.php	/^      public function getConfig()$/;"	f
+getConfigArray	dbwrapper/dbwrapper_init.php	/^	public function getConfigArray()$/;"	f
+getConfigArray	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function getConfigArray()$/;"	f
+getConnectionSource	dbwrapper/dbwrapper_init.php	/^	public function getConnectionSource()$/;"	f
+getConnectionSource	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function getConnectionSource()$/;"	f
+getCustomer	order/order_geninfo.php	/^		public function getCustomer()$/;"	f
+getDBCharset	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function getDBCharset()$/;"	f
+getDBCharset	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function getDBCharset()$/;"	f
+getDisabledItems	dbwrapper/dbwrapper_models.php	/^	public function getDisabledItems($modelID=NULL)$/;"	f
+getDisabledItems	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function getDisabledItems($modelID=NULL)$/;"	f
+getEndDate	order/order_geninfo.php	/^		public function getEndDate()$/;"	f
+getFullModelsFromDB	dbwrapper/dbwrapper_models.php	/^	public function getFullModelsFromDB($modelID=NULL)$/;"	f
+getFullModelsFromDB	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function getFullModelsFromDB($modelID=NULL)$/;"	f
+getHostInfo	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function getHostInfo()$/;"	f
+getHostInfo	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function getHostInfo()$/;"	f
+getInstancier	dbwrapper/dbwrapper_init.php	/^	public function getInstancier() { return $this->session["login"]; }$/;"	f
+getInstancier	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function getInstancier() { return $this->session["login"]; }$/;"	f
+getItemFromSo	dbwrapper/dbwrapper_loader.php	/^	protected function getItemFromSo($table,$salesOrder,$cid=NULL)$/;"	f
+getItemFromSo	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	protected function getItemFromSo($table,$salesOrder,$cid=NULL)$/;"	f
+getItemFullList	dbwrapper/dbwrapper_models.php	/^    protected function getItemFullList()$/;"	f
+getItemFullList	dbwrapper_1.0STD2/dbwrapper_models.php	/^    protected function getItemFullList()$/;"	f
+getItemList	dbwrapper/dbwrapper_models.php	/^    protected function getItemList()$/;"	f
+getItemList	dbwrapper_1.0STD2/dbwrapper_models.php	/^    protected function getItemList()$/;"	f
+getItemNamFromID	dbwrapper/dbwrapper_metadata.php	/^	public function getItemNamFromID($ID, $showNewName=False)$/;"	f
+getItemNamFromID	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function getItemNamFromID($ID, $showNewName=False)$/;"	f
+getItems	dbwrapper/dbwrapper_loader.php	/^	public function getItems($showNewName=False)$/;"	f
+getItems	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	public function getItems($showNewName=False)$/;"	f
+getItems	order/order_items.php	/^		public function getItems($legacyIndex=False)$/;"	f
+getItemsById	order/order_items.php	/^		public function getItemsById()$/;"	f
+getLastFailedQuery	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function getLastFailedQuery()$/;"	f
+getLastFailedQuery	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function getLastFailedQuery()$/;"	f
+getLastIid	dbwrapper/dbwrapper_mysql_wrapper.php	/^	protected function getLastIid()$/;"	f
+getLastIid	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^	protected function getLastIid()$/;"	f
+getMYSQLFieldType	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function getMYSQLFieldType($field, $table)$/;"	f
+getMYSQLFieldType	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function getMYSQLFieldType($field, $table)$/;"	f
+getMaintenanceEnabled	dbwrapper/dbwrapper_monitor.php	/^	public function getMaintenanceEnabled()$/;"	f
+getMaintenanceEnabled	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^	public function getMaintenanceEnabled()$/;"	f
+getMethods	order/order_items.php	/^			$getMethods = array();$/;"	v
+getModelContainer	dbwrapper/dbwrapper_metadata.php	/^	public function getModelContainer($includeID=False)$/;"	f
+getModelContainer	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function getModelContainer($includeID=False)$/;"	f
+getModelFromID	order/order_items.php	/^		public function getModelFromID($id)$/;"	f
+getModelName	dbwrapper/dbwrapper_models.php	/^	protected function getModelName($id)$/;"	f
+getModelName	dbwrapper_1.0STD2/dbwrapper_models.php	/^	protected function getModelName($id)$/;"	f
+getModels	order/order_items.php	/^		public function getModels($item_name=null)$/;"	f
+getModelsColName	dbwrapper/dbwrapper_models.php	/^	public function getModelsColName()$/;"	f
+getModelsColName	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function getModelsColName()$/;"	f
+getModelsFromCatalogName	dbwrapper/dbwrapper_models.php	/^	public function getModelsFromCatalogName($catID)$/;"	f
+getModelsFromCatalogName	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function getModelsFromCatalogName($catID)$/;"	f
+getModelsFromDB	dbwrapper/dbwrapper_models.php	/^	public function getModelsFromDB($modelID=NULL)$/;"	f
+getModelsFromDB	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function getModelsFromDB($modelID=NULL)$/;"	f
+getNetwork	dbwrapper/dbwrapper_loader.php	/^	protected function getNetwork($salesorder)$/;"	f
+getNetwork	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	protected function getNetwork($salesorder)$/;"	f
+getNetwork	order/order_geninfo.php	/^		public function getNetwork($name)$/;"	f
+getNetworks	order/order_geninfo.php	/^		public function getNetworks()$/;"	f
+getNewGID	order/order_geninfo.php	/^		public function getNewGID($no_apc=False)$/;"	f
+getOrder	dbwrapper/dbwrapper_init.php	/^    public function getOrder($initialSalesOrder=-1)$/;"	f
+getOrder	dbwrapper_1.0STD2/dbwrapper_init.php	/^    public function getOrder($initialSalesOrder=-1)$/;"	f
+getOrderObject	dbwrapper/dbwrapper_storedOrders.php	/^	public function getOrderObject($orderId)$/;"	f
+getOrderObject	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	public function getOrderObject($orderId)$/;"	f
+getOrders	dbwrapper/dbwrapper_init.php	/^	public function getOrders($orderBy="",$asc='true',$salesOrder="", $from=0, $to=0)$/;"	f
+getOrders	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function getOrders($orderBy="",$asc='true',$salesOrder="", $from=0, $to=0)$/;"	f
+getOrdersCount	dbwrapper/dbwrapper_init.php	/^	public function getOrdersCount()$/;"	f
+getOrdersCount	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function getOrdersCount()$/;"	f
+getPgm	order/order_geninfo.php	/^		public function getPgm()$/;"	f
+getPolaroidFunction	dbwrapper/dbwrapper_models.php	/^	public function getPolaroidFunction($modelID)$/;"	f
+getPolaroidFunction	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function getPolaroidFunction($modelID)$/;"	f
+getProdEndDate	order/order_geninfo.php	/^		public function getProdEndDate()$/;"	f
+getProdStartDate	order/order_geninfo.php	/^		public function getProdStartDate()$/;"	f
+getProgramManager	order/order_geninfo.php	/^		public function getProgramManager()$/;"	f
+getRealEndDate	order/order_geninfo.php	/^		public function getRealEndDate()$/;"	f
+getRealStartDate	order/order_geninfo.php	/^		public function getRealStartDate()$/;"	f
+getRelease	order/order_geninfo.php	/^		public function getRelease()$/;"	f
+getRemoveOrderMethodsForTable	dbwrapper/dbwrapper_loader.php	/^	protected function getRemoveOrderMethodsForTable(ORDER $order, $table)$/;"	f
+getRemoveOrderMethodsForTable	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	protected function getRemoveOrderMethodsForTable(ORDER $order, $table)$/;"	f
+getSQLState	dbwrapper/dbwrapper_mysql_wrapper.php	/^		public function getSQLState()$/;"	f
+getSQLState	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		public function getSQLState()$/;"	f
+getSalesOrder	order/order_geninfo.php	/^		public function getSalesOrder()$/;"	f
+getSearchByGeneralInformation	dbwrapper/dbwrapper_loader.php	/^	public function getSearchByGeneralInformation()$/;"	f
+getSearchByGeneralInformation	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	public function getSearchByGeneralInformation()$/;"	f
+getSiteEngineer	order/order_geninfo.php	/^		public function getSiteEngineer()$/;"	f
+getSolArch	order/order_geninfo.php	/^		public function getSolArch()$/;"	f
+getStartDate	order/order_geninfo.php	/^		public function getStartDate()$/;"	f
+getStoredOrderIDFromSo	dbwrapper/dbwrapper_storedOrders.php	/^	public function getStoredOrderIDFromSo($salesOrder,$showOrigin=false)$/;"	f
+getStoredOrderIDFromSo	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	public function getStoredOrderIDFromSo($salesOrder,$showOrigin=false)$/;"	f
+getStoredOrderSoFromID	dbwrapper/dbwrapper_storedOrders.php	/^	private function getStoredOrderSoFromID($id)$/;"	f
+getStoredOrderSoFromID	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	private function getStoredOrderSoFromID($id)$/;"	f
+getStoredOrders	dbwrapper/dbwrapper_storedOrders.php	/^	public function getStoredOrders($filter="")$/;"	f
+getStoredOrders	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	public function getStoredOrders($filter="")$/;"	f
+getSysprodActor	order/order_geninfo.php	/^		public function getSysprodActor()$/;"	f
+getSysprodActors	dbwrapper/dbwrapper_init.php	/^	public function getSysprodActors()$/;"	f
+getSysprodActors	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function getSysprodActors()$/;"	f
+get_add_KeyName_fromIDItem	dbwrapper/dbwrapper_metadata.php	/^	public function get_add_KeyName_fromIDItem($IDItem, $showWType=False)$/;"	f
+get_add_KeyName_fromIDItem	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function get_add_KeyName_fromIDItem($IDItem, $showWType=False)$/;"	f
+get_add_parameters_array	objects_defs/default.php	/^		public function get_add_parameters_array()$/;"	f
+get_add_parameters_expected_position	objects_defs/default.php	/^		public function get_add_parameters_expected_position( $paramater_name)$/;"	f
+get_add_parameters_fromIDItem	dbwrapper/dbwrapper_metadata.php	/^	public function get_add_parameters_fromIDItem($IDItem, $forceDisplay=true)$/;"	f
+get_add_parameters_fromIDItem	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function get_add_parameters_fromIDItem($IDItem, $forceDisplay=true)$/;"	f
+get_autommit_status	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function get_autommit_status()$/;"	f
+get_autommit_status	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function get_autommit_status()$/;"	f
+get_catalogItems	dbwrapper/dbwrapper_metadata.php	/^	protected function get_catalogItems($ApcID)$/;"	f
+get_catalogItems	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function get_catalogItems($ApcID)$/;"	f
+get_catalog_category	dbwrapper/dbwrapper_metadata.php	/^	protected function get_catalog_category($IDitem)$/;"	f
+get_catalog_category	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function get_catalog_category($IDitem)$/;"	f
+get_catalog_container	dbwrapper/dbwrapper_metadata.php	/^	public function get_catalog_container($IDItem)$/;"	f
+get_catalog_container	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function get_catalog_container($IDItem)$/;"	f
+get_catalog_item_name	dbwrapper/dbwrapper_metadata.php	/^	protected function get_catalog_item_name($metadat)$/;"	f
+get_catalog_item_name	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function get_catalog_item_name($metadat)$/;"	f
+get_catalog_metadata	dbwrapper/dbwrapper_metadata.php	/^	protected function get_catalog_metadata($IDItem)$/;"	f
+get_catalog_metadata	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function get_catalog_metadata($IDItem)$/;"	f
+get_catalog_method	dbwrapper/dbwrapper_metadata.php	/^	public function get_catalog_method($IDItem,$type)$/;"	f
+get_catalog_method	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function get_catalog_method($IDItem,$type)$/;"	f
+get_catalog_order_array	dbwrapper/dbwrapper_metadata.php	/^	protected function get_catalog_order_array($IDItem)$/;"	f
+get_catalog_order_array	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function get_catalog_order_array($IDItem)$/;"	f
+get_catalog_params	dbwrapper/dbwrapper_metadata.php	/^	protected function get_catalog_params($IDItem, $type)$/;"	f
+get_catalog_params	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function get_catalog_params($IDItem, $type)$/;"	f
+get_catalog_paramsBymethod	dbwrapper/dbwrapper_metadata.php	/^	protected function get_catalog_paramsBymethod($IDItem, $methods)$/;"	f
+get_catalog_paramsBymethod	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function get_catalog_paramsBymethod($IDItem, $methods)$/;"	f
+get_catalog_paramsBymethods	dbwrapper/dbwrapper_metadata.php	/^	protected function get_catalog_paramsBymethods($IDItem, $methodsArry=NULL)$/;"	f
+get_catalog_paramsBymethods	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function get_catalog_paramsBymethods($IDItem, $methodsArry=NULL)$/;"	f
+get_catalog_table	dbwrapper/dbwrapper_metadata.php	/^	public function get_catalog_table($IDItem)$/;"	f
+get_catalog_table	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function get_catalog_table($IDItem)$/;"	f
+get_category_name	objects_defs/default.php	/^		public function get_category_name()$/;"	f
+get_cluster_field	objects_defs/default.php	/^		public function get_cluster_field()$/;"	f
+get_columns	order/order_exporters.php	/^		private function get_columns($objectID, $data)$/;"	f
+get_container_name	objects_defs/default.php	/^		public function get_container_name()$/;"	f
+get_db_name	dbwrapper/dbwrapper_mysql_wrapper.php	/^		public function get_db_name()$/;"	f
+get_db_name	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		public function get_db_name()$/;"	f
+get_description	objects_defs/default.php	/^		public function get_description()$/;"	f
+get_display_report_param	objects_defs/default.php	/^		public function get_display_report_param($param)$/;"	f
+get_id	objects_defs/default.php	/^		public function get_id()$/;"	f
+get_ip_from_hostname	dbwrapper/dbwrapper_metadata.php	/^	public function get_ip_from_hostname($hostname)$/;"	f
+get_ip_from_hostname	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function get_ip_from_hostname($hostname)$/;"	f
+get_item	objects_defs/default.php	/^		public function get_item()$/;"	f
+get_itemIDFromContainer	dbwrapper/dbwrapper_metadata.php	/^	protected function get_itemIDFromContainer($container)$/;"	f
+get_itemIDFromContainer	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function get_itemIDFromContainer($container)$/;"	f
+get_itemID_list	dbwrapper/dbwrapper_metadata.php	/^	public function get_itemID_list()$/;"	f
+get_itemID_list	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function get_itemID_list()$/;"	f
+get_item_list	order/order_items.php	/^		public function get_item_list()$/;"	f
+get_item_objects	order/order_items.php	/^		public function get_item_objects($id=-1)$/;"	f
+get_items_list	order/order_items.php	/^		protected function get_items_list()$/;"	f
+get_key_name	objects_defs/default.php	/^		public function get_key_name()$/;"	f
+get_logo	objects_defs/default.php	/^		public function get_logo()$/;"	f
+get_mandatory_parameters	objects_defs/default.php	/^		public function get_mandatory_parameters()$/;"	f
+get_max_gid	objects_defs/default.php	/^		public function get_max_gid()$/;"	f
+get_methodByType	order/order_items.php	/^		public function get_methodByType($type)$/;"	f
+get_method_paramFromItemID	dbwrapper/dbwrapper_metadata.php	/^	protected function get_method_paramFromItemID($container, $methods)$/;"	f
+get_method_paramFromItemID	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function get_method_paramFromItemID($container, $methods)$/;"	f
+get_methods_list	order/order_items.php	/^		public function get_methods_list()$/;"	f
+get_min_gid	order/order_geninfo.php	/^		public function get_min_gid()$/;"	f
+get_modelCpuNumber	dbwrapper/dbwrapper_models.php	/^	public function get_modelCpuNumber($modelID)$/;"	f
+get_modelCpuNumber	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function get_modelCpuNumber($modelID)$/;"	f
+get_mon_login	dbwrapper/dbwrapper_monitor.php	/^	public function get_mon_login()$/;"	f
+get_mon_login	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^	public function get_mon_login()$/;"	f
+get_nb_param	objects_defs/default.php	/^		public function get_nb_param()$/;"	f
+get_nt_credential	dbwrapper/dbwrapper_init.php	/^	public function get_nt_credential()$/;"	f
+get_nt_credential	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function get_nt_credential()$/;"	f
+get_obj_def	order/order_items.php	/^		public function get_obj_def()$/;"	f
+get_obj_ref_from_container	order/order_items.php	/^		public function get_obj_ref_from_container($ctn)$/;"	f
+get_object_ref_from_DBID	order/order_items.php	/^		public function get_object_ref_from_DBID($db_id)$/;"	f
+get_param_default_value	objects_defs/default.php	/^		public function get_param_default_value($param)$/;"	f
+get_parameters_method	order/order_items.php	/^		public function get_parameters_method($method)$/;"	f
+get_previous_sto	dbwrapper/dbwrapper_storedOrders.php	/^	public function get_previous_sto($salesOrder)$/;"	f
+get_previous_sto	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	public function get_previous_sto($salesOrder)$/;"	f
+get_report_string	objects_defs/default.php	/^		public function get_report_string($param)$/;"	f
+get_report_strings	objects_defs/default.php	/^		public function get_report_strings()$/;"	f
+get_session_path	dbwrapper/dbwrapper_init.php	/^	private function get_session_path()$/;"	f
+get_session_path	dbwrapper_1.0STD2/dbwrapper_init.php	/^	private function get_session_path()$/;"	f
+get_sp_lib	dbwrapper/dbwrapper_init.php	/^	public function get_sp_lib()$/;"	f
+get_sp_lib	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function get_sp_lib()$/;"	f
+get_sp_site_url	dbwrapper/dbwrapper_init.php	/^	public function get_sp_site_url()$/;"	f
+get_sp_site_url	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function get_sp_site_url()$/;"	f
+get_sp_url	dbwrapper/dbwrapper_init.php	/^	public function get_sp_url()$/;"	f
+get_sp_url	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function get_sp_url()$/;"	f
+get_supported_version	dbwrapper/dbwrapper_metadata.php	/^	protected function get_supported_version($metadata)$/;"	f
+get_supported_version	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function get_supported_version($metadata)$/;"	f
+getcustomerAcronym	order/order_geninfo.php	/^		public function getcustomerAcronym()$/;"	f
+gid	objects_defs/default.php	/^					$gid = $this->container[$key]["int_apcGID"]; \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/TO BE REMOVED$/;"	v
+gid	objects_defs/default.php	/^			$gid = 0;$/;"	v
+gid	order/order_items.php	/^					$gid = call_user_func_array(array($/;"	v
+goodPos	dbwrapper/dbwrapper_loader.php	/^					$goodPos = intval($goodPos);$/;"	v
+goodPos	dbwrapper/dbwrapper_loader.php	/^				$goodPos = array_search(strtolower($pramName), array_map('strtolower', array_values($excpeted)));$/;"	v
+goodPos	dbwrapper_1.0STD2/dbwrapper_loader.php	/^					$goodPos = intval($goodPos);$/;"	v
+goodPos	dbwrapper_1.0STD2/dbwrapper_loader.php	/^				$goodPos = array_search(strtolower($pramName), array_map('strtolower', array_values($excpeted)));$/;"	v
+groupID	order/order_items.php	/^							$groupID = intval($values["int_apcGID"]);$/;"	v
+hasPreviouslySavedOrder	dbwrapper/dbwrapper_storedOrders.php	/^	public function hasPreviouslySavedOrder()$/;"	f
+hasPreviouslySavedOrder	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	public function hasPreviouslySavedOrder()$/;"	f
+head	dbwrapper.php	/^		private $head = "[DBWrapper]";$/;"	v
+head	dbwrapper/dbwrapper_init.php	/^		private $head = "[DBWInit]";$/;"	v
+head	dbwrapper/dbwrapper_loader.php	/^		private $head = "[DBWLoader]";$/;"	v
+head	dbwrapper/dbwrapper_metadata.php	/^		private $head = "[DBWMetadata]";$/;"	v
+head	dbwrapper/dbwrapper_models.php	/^		private $head = "[DBWModels]";$/;"	v
+head	dbwrapper/dbwrapper_monitor.php	/^		private $head = "[DBWMonitor]";$/;"	v
+head	dbwrapper/dbwrapper_mysql_wrapper.php	/^	private $head = "[MYSQL_WRAPPER_EX]";$/;"	v
+head	dbwrapper/dbwrapper_storedOrders.php	/^		private $head = "[DBWStoredOrders]";$/;"	v
+head	dbwrapper/dbwrapper_writer.php	/^		private $head = "[DBWWriter]";$/;"	v
+head	dbwrapper_1.0STD2/dbwrapper_init.php	/^		private $head = "[DBWInit]";$/;"	v
+head	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		private $head = "[DBWLoader]";$/;"	v
+head	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		private $head = "[DBWMetadata]";$/;"	v
+head	dbwrapper_1.0STD2/dbwrapper_models.php	/^		private $head = "[DBWModels]";$/;"	v
+head	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^		private $head = "[DBWMonitor]";$/;"	v
+head	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^	private $head = "[MYSQL_WRAPPER_EX]";$/;"	v
+head	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		private $head = "[DBWStoredOrders]";$/;"	v
+head	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		private $head = "[DBWWriter]";$/;"	v
+head	debug.php	/^		private $head = "[DEBUG_EX]";$/;"	v
+head	order/order_exporters.php	/^		private $head = "[ORDER_EXPORT]";$/;"	v
+head	order/order_geninfo.php	/^		private $head = "[ORDER_GENINFO]";$/;"	v
+head	order/order_importers.php	/^		private $head = "[IMPORTER_EX]";$/;"	v
+head	order/order_items.php	/^		private $head = "[ORDER_ITEM]";$/;"	v
+header	dbwrapper/dbwrapper_mysql_wrapper.php	/^				$header = "[PDB ".$this->version."]";$/;"	v
+header	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				$header = "[PDB ".$this->version."]";$/;"	v
+host_line	order/order_exporters.php	/^				$host_line = "";$/;"	v
+hostname	dbwrapper/dbwrapper_loader.php	/^					$hostname = $item["hostname"];$/;"	v
+hostname	dbwrapper_1.0STD2/dbwrapper_loader.php	/^					$hostname = $item["hostname"];$/;"	v
+htmlFile	order/order_exporters.php	/^		private $htmlFile = null;$/;"	v
+hw	order/order_exporters.php	/^								$hw = $this->getModelFromID(intval($paramVal));$/;"	v
+hwCode	dbwrapper/dbwrapper_metadata.php	/^				$hwCode =  $this->getAPCCode(intval($values[3]));$/;"	v
+hwCode	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$hwCode =  $this->getAPCCode(intval($values[3]));$/;"	v
+hwCodes	dbwrapper/dbwrapper_metadata.php	/^			$hwCodes = parent::basic_select(APCTABLE, "", array("APC"));$/;"	v
+hwCodes	dbwrapper/dbwrapper_metadata.php	/^			$hwCodes = parent::basic_select(ENABLED_APCTABLE, "", array("APC"));$/;"	v
+hwCodes	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^			$hwCodes = parent::basic_select(APCTABLE, "", array("APC"));$/;"	v
+hwCodes	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^			$hwCodes = parent::basic_select(ENABLED_APCTABLE, "", array("APC"));$/;"	v
+i	dbwrapper/dbwrapper_metadata.php	/^		$i=0;$/;"	v
+i	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$i=0;$/;"	v
+i	objects_defs/default.php	/^			$i =  0;$/;"	v
+i	order/order_items.php	/^			$i = count( $this->objs_def );$/;"	v
+id	dbwrapper/dbwrapper_metadata.php	/^		$id = $this->getAPCID($code);$/;"	v
+id	dbwrapper/dbwrapper_storedOrders.php	/^			$id = $this->getOrderObject($value);$/;"	v
+id	dbwrapper/dbwrapper_writer.php	/^						$id = parent::getAPCID($value["str_apccode"]);$/;"	v
+id	dbwrapper/dbwrapper_writer.php	/^		$id   = $return[0];$/;"	v
+id	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$id = $this->getAPCID($code);$/;"	v
+id	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^			$id = $this->getOrderObject($value);$/;"	v
+id	dbwrapper_1.0STD2/dbwrapper_writer.php	/^						$id = parent::getAPCID($value["str_apccode"]);$/;"	v
+id	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$id   = $return[0];$/;"	v
+idApc	dbwrapper/dbwrapper_metadata.php	/^		$idApc = $this->getAPCID($apcCode);$/;"	v
+idApc	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$idApc = $this->getAPCID($apcCode);$/;"	v
+idClu	dbwrapper/dbwrapper_loader.php	/^							$idClu = $item["IDNode"];$/;"	v
+idClu	dbwrapper_1.0STD2/dbwrapper_loader.php	/^							$idClu = $item["IDNode"];$/;"	v
+idItem	order/order_items.php	/^					$idItem         = $this->items_method[$method]["reference"];$/;"	v
+idList	dbwrapper/dbwrapper_loader.php	/^		$idList = $this->get_itemID_list();$/;"	v
+idList	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$idList = $this->get_itemID_list();$/;"	v
+idMaster	dbwrapper/dbwrapper_writer.php	/^									$idMaster =  $this->basic_select($destContainer, "salesOrder = $cur_so AND `$db_key` = '$master'", array("ID"));$/;"	v
+idMaster	dbwrapper_1.0STD2/dbwrapper_writer.php	/^									$idMaster =  $this->basic_select($destContainer, "salesOrder = $cur_so AND `$db_key` = '$master'", array("ID"));$/;"	v
+ids	dbwrapper/dbwrapper_metadata.php	/^		$ids = $this->get_catalogItems($id);$/;"	v
+ids	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$ids = $this->get_catalogItems($id);$/;"	v
+in	dbwrapper/dbwrapper_metadata.php	/^		$in = $this->get_catalog_paramsBymethods($IDItem, NULL);$/;"	v
+in	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$in = $this->get_catalog_paramsBymethods($IDItem, NULL);$/;"	v
+indexHasBennFound	objects_defs/default.php	/^					$indexHasBennFound = true;$/;"	v
+indexHasBennFound	objects_defs/default.php	/^			$indexHasBennFound = false; \/\/Flag to know if an index has been found $/;"	v
+indexes	order/order_exporters.php	/^				$indexes = $this->get_columns($objectID, $items);$/;"	v
+insertNewModel	dbwrapper/dbwrapper_models.php	/^	public function insertNewModel($fields)$/;"	f
+insertNewModel	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function insertNewModel($fields)$/;"	f
+insert_into	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function insert_into($ValuesIndexByField, $table, $REMOVE_TYPE_FLAG=False) $/;"	f
+insert_into	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function insert_into($ValuesIndexByField, $table, $REMOVE_TYPE_FLAG=False) $/;"	f
+insertedObj	dbwrapper/dbwrapper_metadata.php	/^		$insertedObj = base64_encode(serialize($object));$/;"	v
+insertedObj	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$insertedObj = base64_encode(serialize($object));$/;"	v
+isConnected	dbwrapper/dbwrapper_init.php	/^    private $isConnected = False;$/;"	v
+isConnected	dbwrapper/dbwrapper_mysql_wrapper.php	/^		public function isConnected()$/;"	f
+isConnected	dbwrapper_1.0STD2/dbwrapper_init.php	/^    private $isConnected = False;$/;"	v
+isConnected	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		public function isConnected()$/;"	f
+isReadOnlyAccess	dbwrapper/dbwrapper_init.php	/^	public function isReadOnlyAccess()$/;"	f
+isReadOnlyAccess	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function isReadOnlyAccess()$/;"	f
+isSuperUser	dbwrapper/dbwrapper_init.php	/^	protected function isSuperUser()$/;"	f
+isSuperUser	dbwrapper_1.0STD2/dbwrapper_init.php	/^	protected function isSuperUser()$/;"	f
+isValidIP	order/order_geninfo.php	/^		public function isValidIP($str_ip)$/;"	f
+is_cluster	dbwrapper/dbwrapper_metadata.php	/^	protected function is_cluster($IDItem)$/;"	f
+is_cluster	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function is_cluster($IDItem)$/;"	f
+is_cluster_capable	order/order_items.php	/^		public function is_cluster_capable($container_name)$/;"	f
+is_cluster_member	objects_defs/default.php	/^		public function is_cluster_member($key)$/;"	f
+is_date	dbwrapper/dbwrapper_mysql_wrapper.php	/^		private function is_date($value, $format = 'd\/m\/Y')$/;"	f
+is_date	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		private function is_date($value, $format = 'd\/m\/Y')$/;"	f
+is_item_cluster	dbwrapper/dbwrapper_metadata.php	/^	public function is_item_cluster($IDItem)$/;"	f
+is_item_cluster	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function is_item_cluster($IDItem)$/;"	f
+is_uniq	objects_defs/default.php	/^		private function is_uniq($value,$param)$/;"	f
+item	dbwrapper/dbwrapper_loader.php	/^				$item = array_combine(array_keys($FieldNames),$content );$/;"	v
+item	dbwrapper_1.0STD2/dbwrapper_loader.php	/^				$item = array_combine(array_keys($FieldNames),$content );$/;"	v
+item	order/order_items.php	/^			$item = $this->getItems();$/;"	v
+item1	dbwrapper/dbwrapper_metadata.php	/^		$item1 = '"'.$item1.'"';$/;"	v
+item1	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$item1 = '"'.$item1.'"';$/;"	v
+itemBelongsToSo	dbwrapper/dbwrapper_init.php	/^		$itemBelongsToSo = array();$/;"	v
+itemBelongsToSo	dbwrapper_1.0STD2/dbwrapper_init.php	/^		$itemBelongsToSo = array();$/;"	v
+itemIDExist	dbwrapper/dbwrapper_metadata.php	/^	private function itemIDExist($itemID)$/;"	f
+itemIDExist	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	private function itemIDExist($itemID)$/;"	f
+itemId	dbwrapper/dbwrapper_metadata.php	/^				$itemId  = $values[0];$/;"	v
+itemId	dbwrapper/dbwrapper_metadata.php	/^				$itemId  = intval($values[0]);$/;"	v
+itemId	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$itemId  = $values[0];$/;"	v
+itemId	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$itemId  = intval($values[0]);$/;"	v
+itemList	dbwrapper/dbwrapper_init.php	/^		$itemList = $this->getModelContainer(True);$/;"	v
+itemList	dbwrapper/dbwrapper_models.php	/^      $itemList = $this->getItemList();$/;"	v
+itemList	dbwrapper_1.0STD2/dbwrapper_init.php	/^		$itemList = $this->getModelContainer(True);$/;"	v
+itemList	dbwrapper_1.0STD2/dbwrapper_models.php	/^      $itemList = $this->getItemList();$/;"	v
+itemName	dbwrapper/dbwrapper_models.php	/^		$itemName = $itemName[0];$/;"	v
+itemName	dbwrapper/dbwrapper_models.php	/^		$itemName = $this->getItemNamFromID($catID);$/;"	v
+itemName	dbwrapper_1.0STD2/dbwrapper_models.php	/^		$itemName = $itemName[0];$/;"	v
+itemName	dbwrapper_1.0STD2/dbwrapper_models.php	/^		$itemName = $this->getItemNamFromID($catID);$/;"	v
+itemSuccessFullyLoaded	dbwrapper/dbwrapper_loader.php	/^		$itemSuccessFullyLoaded = 0;$/;"	v
+itemSuccessFullyLoaded	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$itemSuccessFullyLoaded = 0;$/;"	v
+item_list	dbwrapper/dbwrapper_metadata.php	/^		$item_list = $this->getItems(true);$/;"	v
+item_list	dbwrapper/dbwrapper_writer.php	/^		$item_list = $order->getItemsById(True);$/;"	v
+item_list	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$item_list = $this->getItems(true);$/;"	v
+item_list	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$item_list = $order->getItemsById(True);$/;"	v
+item_list	order/order_exporters.php	/^			$item_list  = $this->get_items_list();$/;"	v
+item_list	order/order_items.php	/^			$item_list = array();$/;"	v
+item_name	dbwrapper/dbwrapper_loader.php	/^		$item_name = $ValIndexedByFName["itemName"] ;$/;"	v
+item_name	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$item_name = $ValIndexedByFName["itemName"] ;$/;"	v
+items	dbwrapper/dbwrapper_loader.php	/^			$items = array();$/;"	v
+items	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$items = array();$/;"	v
+items	order/order_items.php	/^				$items = call_user_func(array($this, $method_call));$/;"	v
+items_extended_informations	order/order_items.php	/^		private $items_extended_informations;$/;"	v
+items_list	order/order_exporters.php	/^			$items_list = $this->getItems();$/;"	v
+items_method	order/order_items.php	/^		private $items_method;$/;"	v
+itmName	dbwrapper/dbwrapper_metadata.php	/^				$itmName = $itmName[0];$/;"	v
+itmName	dbwrapper/dbwrapper_metadata.php	/^				$itmName = $itmName[1];$/;"	v
+itmName	dbwrapper/dbwrapper_metadata.php	/^				$itmName = $this->getItemNamFromID($itemId, True);$/;"	v
+itmName	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$itmName = $itmName[0];$/;"	v
+itmName	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$itmName = $itmName[1];$/;"	v
+itmName	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$itmName = $this->getItemNamFromID($itemId, True);$/;"	v
+key	dbwrapper/dbwrapper_init.php	/^				$key = $this->configuration->get("aes_key");$/;"	v
+key	dbwrapper/dbwrapper_metadata.php	/^		$key = array_search($method, $param);$/;"	v
+key	dbwrapper/dbwrapper_mysql_wrapper.php	/^						$key = $tempArray[1];$/;"	v
+key	dbwrapper/dbwrapper_mysql_wrapper.php	/^				$key = explode("_",$field_name);$/;"	v
+key	dbwrapper/dbwrapper_writer.php	/^					$key = $index;$/;"	v
+key	dbwrapper/dbwrapper_writer.php	/^			$key = false;$/;"	v
+key	dbwrapper_1.0STD2/dbwrapper_init.php	/^				$key = $this->configuration->get("aes_key");$/;"	v
+key	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$key = array_search($method, $param);$/;"	v
+key	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^						$key = $tempArray[1];$/;"	v
+key	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				$key = explode("_",$field_name);$/;"	v
+key	dbwrapper_1.0STD2/dbwrapper_writer.php	/^					$key = $index;$/;"	v
+key	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$key = false;$/;"	v
+key	objects_defs/default.php	/^						$key = "no_serial".strval($this->unsetkey++);$/;"	v
+key	objects_defs/default.php	/^					$key =  $argsArray[$paramPos];$/;"	v
+key	objects_defs/default.php	/^			$key = NULL;$/;"	v
+keyName	dbwrapper/dbwrapper_loader.php	/^					$keyName = $this->get_add_KeyName_fromIDItem($cid, True);$/;"	v
+keyName	dbwrapper/dbwrapper_writer.php	/^			$keyName        = $this->get_add_KeyName_fromIDItem($categoryIndex);$/;"	v
+keyName	dbwrapper_1.0STD2/dbwrapper_loader.php	/^					$keyName = $this->get_add_KeyName_fromIDItem($cid, True);$/;"	v
+keyName	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$keyName        = $this->get_add_KeyName_fromIDItem($categoryIndex);$/;"	v
+keyName	objects_defs/default.php	/^					$this->keyName = $paramName;$/;"	v
+keyName	objects_defs/default.php	/^		private $keyName;$/;"	v
+keyOfItem	dbwrapper/dbwrapper_metadata.php	/^				$keyOfItem = $this->get_add_KeyName_fromIDItem($itemId);$/;"	v
+keyOfItem	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$keyOfItem = $this->get_add_KeyName_fromIDItem($itemId);$/;"	v
+keyVal	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$keyVal =  $keyVal[1];$/;"	v
+keyVal	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$keyVal = $indexName;$/;"	v
+keyVal	dbwrapper/dbwrapper_mysql_wrapper.php	/^		$keyVal = explode("_", $indexName);$/;"	v
+keyVal	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$keyVal =  $keyVal[1];$/;"	v
+keyVal	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$keyVal = $indexName;$/;"	v
+keyVal	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		$keyVal = explode("_", $indexName);$/;"	v
+key_master	objects_defs/default.php	/^				$key_master = $this->container[$key][$this->cluster_field];$/;"	v
+keysArray	objects_defs/default.php	/^			$keysArray = array(); \/\/Array containing the keys to be inserted$/;"	v
+lastElement	dbwrapper/dbwrapper_mysql_wrapper.php	/^		$lastElement = count($ValIndexedByFName) - 1;$/;"	v
+lastElement	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		$lastElement = count($ValIndexedByFName) - 1;$/;"	v
+lastFailedQuery	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$this->lastFailedQuery = "";$/;"	v
+lastFailedQuery	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$this->lastFailedQuery = $query;	$/;"	v
+lastFailedQuery	dbwrapper/dbwrapper_mysql_wrapper.php	/^	  	protected $lastFailedQuery; \/\/Added 2.7.2014	$/;"	v
+lastFailedQuery	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$this->lastFailedQuery = "";$/;"	v
+lastFailedQuery	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$this->lastFailedQuery = $query;	$/;"	v
+lastFailedQuery	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^	  	protected $lastFailedQuery; \/\/Added 2.7.2014	$/;"	v
+lastIndex	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$lastIndex = strlen($condition) - 1;$/;"	v
+lastIndex	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$lastIndex = strlen($condition) - 1;$/;"	v
+lastInsertedID	dbwrapper/dbwrapper_mysql_wrapper.php	/^			 $this->lastInsertedID = $this->insert_id;$/;"	v
+lastInsertedID	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			 $this->lastInsertedID = $this->insert_id;$/;"	v
+lastMySQLResult	dbwrapper/dbwrapper_mysql_wrapper.php	/^		private $lastMySQLResult = Null;   \/\/use to save the last id for example$/;"	v
+lastMySQLResult	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		private $lastMySQLResult = Null;   \/\/use to save the last id for example$/;"	v
+limit	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$limit = "LIMIT $limityFrom,$limite_size"; $/;"	v
+limit	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $limit = "";$/;"	v
+limit	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$limit = "LIMIT $limityFrom,$limite_size"; $/;"	v
+limit	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $limit = "";$/;"	v
+lineToAdd	dbwrapper/dbwrapper_writer.php	/^		$lineToAdd = array();$/;"	v
+lineToAdd	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$lineToAdd = array();$/;"	v
+listTableItemForSo	dbwrapper/dbwrapper_init.php	/^	protected function listTableItemForSo($salesOrder)$/;"	f
+listTableItemForSo	dbwrapper_1.0STD2/dbwrapper_init.php	/^	protected function listTableItemForSo($salesOrder)$/;"	f
+list_sql_log	dbwrapper/dbwrapper_monitor.php	/^	public function list_sql_log()$/;"	f
+list_sql_log	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^	public function list_sql_log()$/;"	f
+loadData	dbwrapper/dbwrapper_loader.php	/^	protected function loadData($salesOrder,  $models)$/;"	f
+loadData	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	protected function loadData($salesOrder,  $models)$/;"	f
+loadData_build_arguments	dbwrapper/dbwrapper_loader.php	/^	protected function loadData_build_arguments($params, $valuesIndexByParmName)$/;"	f
+loadData_build_arguments	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	protected function loadData_build_arguments($params, $valuesIndexByParmName)$/;"	f
+load_template	order/order_exporters.php	/^		private function load_template($template)$/;"	f
+load_user	dbwrapper/dbwrapper_init.php	/^    public function load_user($username,$password, $auth_method)$/;"	f
+load_user	dbwrapper_1.0STD2/dbwrapper_init.php	/^    public function load_user($username,$password, $auth_method)$/;"	f
+loaded_template	order/order_exporters.php	/^			$loaded_template   = $this->load_template($template);$/;"	v
+logFilePath	dbwrapper/dbwrapper_mysql_wrapper.php	/^				$this->logFilePath = "";$/;"	v
+logFilePath	dbwrapper/dbwrapper_mysql_wrapper.php	/^				$this->logFilePath = $debugArray["logFilePath"]; \/\/used in __waekup$/;"	v
+logFilePath	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected $logFilePath;$/;"	v
+logFilePath	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				$this->logFilePath = "";$/;"	v
+logFilePath	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				$this->logFilePath = $debugArray["logFilePath"]; \/\/used in __waekup$/;"	v
+logFilePath	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected $logFilePath;$/;"	v
+logFilePath	debug.php	/^			$this->logFilePath = $logFilePath;$/;"	v
+logFilePath	debug.php	/^		protected $logFilePath;$/;"	v
+logHandle	debug.php	/^					$this->logHandle = fopen($this->logFilePath,'w');$/;"	v
+logHandle	debug.php	/^				$this->logHandle = fopen($this->logFilePath, 'a') or die("Cannot create file or in use!");$/;"	v
+logHandle	debug.php	/^				$this->logHandle = fopen($this->logFilePath, 'w');$/;"	v
+logHandle	debug.php	/^		public $logHandle;$/;"	v
+logSize	debug.php	/^			$this->logSize = 2048 * $logSize;$/;"	v
+logSize	debug.php	/^		protected $logSize;$/;"	v
+logo	objects_defs/default.php	/^			$this->logo = base64_encode($logo);$/;"	v
+logo	objects_defs/default.php	/^		private $logo;$/;"	v
+m	dbwrapper/dbwrapper_mysql_wrapper.php	/^					$m = $DtExplode[strpos($fmd,'m')];$/;"	v
+m	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^					$m = $DtExplode[strpos($fmd,'m')];$/;"	v
+majorField	dbwrapper/dbwrapper_metadata.php	/^		$majorField = explode(";", $str);$/;"	v
+majorField	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$majorField = explode(";", $str);$/;"	v
+mandatoryParam	dbwrapper/dbwrapper_writer.php	/^			$mandatoryParam = $objects[$order->get_object_ref_from_DBID($categoryIndex)]->get_mandatory_parameters();$/;"	v
+mandatoryParam	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$mandatoryParam = $objects[$order->get_object_ref_from_DBID($categoryIndex)]->get_mandatory_parameters();$/;"	v
+mandatoryParams	objects_defs/default.php	/^			$mandatoryParams = array();$/;"	v
+material	order/order_exporters.php	/^				$material = substr($template, $metrial_header_pos , $metrial_footer_pos - $metrial_header_pos);$/;"	v
+material_end_header	order/order_exporters.php	/^				$material_end_header = strlen(HEADER_START);$/;"	v
+material_start_footer	order/order_exporters.php	/^				$material_start_footer = $material_start_footer - $material_end_header;$/;"	v
+material_start_footer	order/order_exporters.php	/^				$material_start_footer = strpos($material,HEADER_STOP); $/;"	v
+material_template	order/order_exporters.php	/^			$material_template = $loaded_template["METERIAL"];$/;"	v
+max_args	objects_defs/default.php	/^			$max_args = count($parameters);$/;"	v
+max_gid	objects_defs/default.php	/^			$this->max_gid = $id;$/;"	v
+max_gid	objects_defs/default.php	/^		private $max_gid;$/;"	v
+mergeStoredOrder	dbwrapper/dbwrapper_storedOrders.php	/^	public function mergeStoredOrder($IDarray, $header="merged")$/;"	f
+mergeStoredOrder	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	public function mergeStoredOrder($IDarray, $header="merged")$/;"	f
+merge_container	objects_defs/default.php	/^		public function merge_container($newArray)$/;"	f
+merge_networks	order/order_geninfo.php	/^		public function merge_networks($appendArray)$/;"	f
+merge_orders_items	order/order_items.php	/^		public function merge_orders_items($order)$/;"	f
+message	dbwrapper.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper/dbwrapper_init.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper/dbwrapper_loader.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper/dbwrapper_metadata.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper/dbwrapper_models.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper/dbwrapper_monitor.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$message = "[PDB $version]";$/;"	v
+message	dbwrapper/dbwrapper_mysql_wrapper.php	/^		$message = $this->head.$message;$/;"	v
+message	dbwrapper/dbwrapper_storedOrders.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper/dbwrapper_writer.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper_1.0STD2/dbwrapper_init.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper_1.0STD2/dbwrapper_models.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$message = "[PDB $version]";$/;"	v
+message	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		$message = $this->head.$message;$/;"	v
+message	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^			$message = $this->head.$message;$/;"	v
+message	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$message = $this->head.$message;$/;"	v
+message	debug.php	/^			$message = $this->head.$message;$/;"	v
+message	order/order_exporters.php	/^			$message = $this->head.$message;$/;"	v
+message	order/order_geninfo.php	/^			$message = $this->head.$message;$/;"	v
+message	order/order_importers.php	/^			$message = $this->head.$message;$/;"	v
+message	order/order_items.php	/^			$message = $this->head.$message;$/;"	v
+messageHeader	dbwrapper/dbwrapper_mysql_wrapper.php	/^		private $messageHeader =  "[MYSQL_WRAPPER]";$/;"	v
+messageHeader	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		private $messageHeader =  "[MYSQL_WRAPPER]";$/;"	v
+metadata	dbwrapper/dbwrapper_metadata.php	/^		$metadata = $this->get_catalog_metadata($IDItem); $/;"	v
+metadata	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$metadata = $this->get_catalog_metadata($IDItem); $/;"	v
+metadata_item_name	dbwrapper/dbwrapper_metadata.php	/^	protected function metadata_item_name($IDItem)$/;"	f
+metadata_item_name	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function metadata_item_name($IDItem)$/;"	f
+metadata_method_category	dbwrapper/dbwrapper_metadata.php	/^	protected function metadata_method_category($metadata)$/;"	f
+metadata_method_category	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function metadata_method_category($metadata)$/;"	f
+metadata_method_name	dbwrapper/dbwrapper_metadata.php	/^	protected function metadata_method_name($metadata, $type)$/;"	f
+metadata_method_name	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function metadata_method_name($metadata, $type)$/;"	f
+metadata_method_param	dbwrapper/dbwrapper_metadata.php	/^	protected function metadata_method_param($metadata, $type)$/;"	f
+metadata_method_param	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function metadata_method_param($metadata, $type)$/;"	f
+metadata_method_param_getdefval	dbwrapper/dbwrapper_metadata.php	/^	protected function metadata_method_param_getdefval($type, $defval)$/;"	f
+metadata_method_param_getdefval	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function metadata_method_param_getdefval($type, $defval)$/;"	f
+metadata_supported	dbwrapper/dbwrapper_metadata.php	/^	protected function metadata_supported($IDItem,$order)$/;"	f
+metadata_supported	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function metadata_supported($IDItem,$order)$/;"	f
+metadta	dbwrapper/dbwrapper_metadata.php	/^		$metadta = $this->get_catalog_metadata($IDItem);$/;"	v
+metadta	dbwrapper/dbwrapper_metadata.php	/^		$metadta = $this->get_catalog_metadata($IDitem);$/;"	v
+metadta	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$metadta = $this->get_catalog_metadata($IDItem);$/;"	v
+metadta	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$metadta = $this->get_catalog_metadata($IDitem);$/;"	v
+method	dbwrapper/dbwrapper_metadata.php	/^		$method = $in[$methods];$/;"	v
+method	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$method = $in[$methods];$/;"	v
+methods	objects_defs/default.php	/^			$this->methods = array();$/;"	v
+methods	objects_defs/default.php	/^		private $methods;$/;"	v
+methods	order/order_items.php	/^			$methods = $this->get_methodByType("get");$/;"	v
+methodsTab	dbwrapper/dbwrapper_loader.php	/^		$methodsTab = $order->get_methods_list();$/;"	v
+methodsTab	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$methodsTab = $order->get_methods_list();$/;"	v
+metrial_footer_pos	order/order_exporters.php	/^			$metrial_footer_pos = strpos($template, HEADER_STOP) + strlen(HEADER_STOP);$/;"	v
+metrial_header_pos	order/order_exporters.php	/^			$metrial_header_pos = strpos($template, HEADER_START);$/;"	v
+min_args	objects_defs/default.php	/^			$min_args = 0;$/;"	v
+model	dbwrapper/dbwrapper_metadata.php	/^				$model = $model[0];		$/;"	v
+model	dbwrapper/dbwrapper_metadata.php	/^				$model = $this->getModelsFromDB(intval($values["_modelId"]));$/;"	v
+model	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$model = $model[0];		$/;"	v
+model	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$model = $this->getModelsFromDB(intval($values["_modelId"]));$/;"	v
+modelID	dbwrapper/dbwrapper_metadata.php	/^				$modelID = $values[1];$/;"	v
+modelID	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$modelID = $values[1];$/;"	v
+modelIDExist	dbwrapper/dbwrapper_models.php	/^	public function modelIDExist($modelID)$/;"	f
+modelIDExist	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function modelIDExist($modelID)$/;"	f
+modelIdex	dbwrapper/dbwrapper_metadata.php	/^				$modelIdex       = array_search("int_modelID", $params);$/;"	v
+modelIdex	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$modelIdex       = array_search("int_modelID", $params);$/;"	v
+modelList	order/order_items.php	/^			$this->modelList = $modelList;$/;"	v
+modelList	order/order_items.php	/^		private $modelList;$/;"	v
+model_disabled	dbwrapper/dbwrapper_models.php	/^	protected function model_disabled($id)$/;"	f
+model_disabled	dbwrapper_1.0STD2/dbwrapper_models.php	/^	protected function model_disabled($id)$/;"	f
+model_line	order/order_items.php	/^					$model_line = array();$/;"	v
+models	dbwrapper/dbwrapper_init.php	/^	  $models = $this->getModelsFromDB();$/;"	v
+models	dbwrapper_1.0STD2/dbwrapper_init.php	/^	  $models = $this->getModelsFromDB();$/;"	v
+models	order/order_items.php	/^			$models = $this->modelList;$/;"	v
+mstNode	objects_defs/default.php	/^						$mstNode = $this->container[$key][$this->get_cluster_field()];$/;"	v
+mst_hst	dbwrapper/dbwrapper_loader.php	/^							$mst_hst = $mst_hst[0];$/;"	v
+mst_hst	dbwrapper/dbwrapper_loader.php	/^							$mst_hst = parent::basic_select($table, "salesorder = '$salesOrder' and ID='$idClu'", array($keyName));$/;"	v
+mst_hst	dbwrapper_1.0STD2/dbwrapper_loader.php	/^							$mst_hst = $mst_hst[0];$/;"	v
+mst_hst	dbwrapper_1.0STD2/dbwrapper_loader.php	/^							$mst_hst = parent::basic_select($table, "salesorder = '$salesOrder' and ID='$idClu'", array($keyName));$/;"	v
+nbItem	dbwrapper/dbwrapper_loader.php	/^		$nbItem = count($valuesIndexByParmName);$/;"	v
+nbItem	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$nbItem = count($valuesIndexByParmName);$/;"	v
+networkLine	order/order_exporters.php	/^				$networkLine = "No network(s) defined";$/;"	v
+networkLine	order/order_exporters.php	/^			$networkLine = "";$/;"	v
+networks	dbwrapper/dbwrapper_writer.php	/^		$networks = $this->delete_row(TBLNETWORKS, "Salesorder = $salesOrder");$/;"	v
+networks	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$networks = $this->delete_row(TBLNETWORKS, "Salesorder = $salesOrder");$/;"	v
+networks	order/order_geninfo.php	/^				$this->networks = $appendArray;$/;"	v
+networks	order/order_geninfo.php	/^				$this->networks = array_merge($this->getNetworks(), $appendArray);$/;"	v
+networks	order/order_geninfo.php	/^		protected $networks;$/;"	v
+newIndex	objects_defs/default.php	/^			$newIndex = str_replace( ' ', '', $newIndex );$/;"	v
+newStr	objects_defs/default.php	/^			$newStr = "";$/;"	v
+niceCategoryName	dbwrapper/dbwrapper_writer.php	/^			$niceCategoryName = $objects[$order->get_object_ref_from_DBID($categoryIndex)]->get_category_name();$/;"	v
+niceCategoryName	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$niceCategoryName = $objects[$order->get_object_ref_from_DBID($categoryIndex)]->get_category_name();$/;"	v
+objID	order/order_items.php	/^						$objID = $this->items_method[$method_call]["reference"];$/;"	v
+objIndex	order/order_items.php	/^				$objIndex = $this->objs_def[$this->items_method[$method]["reference"]]->get_id();$/;"	v
+object	order/order_exporters.php	/^			$object = $this->get_obj_def();$/;"	v
+objectID	order/order_exporters.php	/^				$objectID  = $index["_objID_"];$/;"	v
+objects	dbwrapper/dbwrapper_writer.php	/^		$objects   = $order->get_obj_def();$/;"	v
+objects	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$objects   = $order->get_obj_def();$/;"	v
+objs_def	order/order_items.php	/^		private $objs_def;$/;"	v
+operande	dbwrapper/dbwrapper_mysql_wrapper.php	/^		$operande = "";$/;"	v
+operande	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		$operande = "";$/;"	v
+operator	dbwrapper/dbwrapper_mysql_wrapper.php	/^					$operator = $condition[$cpt];$/;"	v
+operator	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $operator = "";$/;"	v
+operator	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^					$operator = $condition[$cpt];$/;"	v
+operator	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $operator = "";$/;"	v
+order	dbwrapper/dbwrapper_init.php	/^	 $order = new ORDER($initialSalesOrder, $models);$/;"	v
+order	dbwrapper/dbwrapper_loader.php	/^		$order = new ORDER($salesOrder,$models);$/;"	v
+order	dbwrapper/dbwrapper_storedOrders.php	/^				$order = $this->getOrderObject($idOfStoOrder);$/;"	v
+order	dbwrapper/dbwrapper_storedOrders.php	/^			$order    = $order[0];$/;"	v
+order	dbwrapper/dbwrapper_storedOrders.php	/^		$order =  $this->basic_select(TBLSTOREDORDERS, "ID=".$orderId, array("object"));$/;"	v
+order	dbwrapper_1.0STD2/dbwrapper_init.php	/^	 $order = new ORDER($initialSalesOrder, $models);$/;"	v
+order	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$order = new ORDER($salesOrder,$models);$/;"	v
+order	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^				$order = $this->getOrderObject($idOfStoOrder);$/;"	v
+order	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^			$order    = $order[0];$/;"	v
+order	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		$order =  $this->basic_select(TBLSTOREDORDERS, "ID=".$orderId, array("object"));$/;"	v
+orderAlreadyStored	dbwrapper/dbwrapper_storedOrders.php	/^	public function orderAlreadyStored($so)$/;"	f
+orderAlreadyStored	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	public function orderAlreadyStored($so)$/;"	f
+orderBase	dbwrapper/dbwrapper_storedOrders.php	/^		$orderBase = $this->getOrderObject($IDarray[0]);$/;"	v
+orderBase	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		$orderBase = $this->getOrderObject($IDarray[0]);$/;"	v
+orderBy	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$orderBy = "";$/;"	v
+orderBy	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$orderBy = "ORDER BY ".$orderBy;$/;"	v
+orderBy	dbwrapper/dbwrapper_storedOrders.php	/^												$orderBy='salesOrder', $/;"	v
+orderBy	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$orderBy = "";$/;"	v
+orderBy	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$orderBy = "ORDER BY ".$orderBy;$/;"	v
+orderBy	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^												$orderBy='salesOrder', $/;"	v
+orderComment	order/order_geninfo.php	/^		protected $orderComment;$/;"	v
+orderDescription	order/order_geninfo.php	/^		protected $orderDescription;$/;"	v
+orderExist	dbwrapper/dbwrapper_init.php	/^	public function orderExist($initialSalesOrder)$/;"	f
+orderExist	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function orderExist($initialSalesOrder)$/;"	f
+orderObj	dbwrapper/dbwrapper_storedOrders.php	/^			$orderObj = unserialize(base64_decode($order));$/;"	v
+orderObj	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^			$orderObj = unserialize(base64_decode($order));$/;"	v
+orderStored	dbwrapper/dbwrapper_writer.php	/^			$orderStored = $this->getStoredOrderIDFromSo($cur_so);$/;"	v
+orderStored	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$orderStored = $this->getStoredOrderIDFromSo($cur_so);$/;"	v
+origin	dbwrapper/dbwrapper_storedOrders.php	/^		$origin = $this->getStoredOrderSoFromID($id);$/;"	v
+origin	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		$origin = $this->getStoredOrderSoFromID($id);$/;"	v
+out	dbwrapper/dbwrapper_init.php	/^		$out = $this->basic_select(TBLORDERS, $cdt="Salesorder = $initialSalesOrder");$/;"	v
+out	dbwrapper/dbwrapper_init.php	/^		$out = count($out) > 0;$/;"	v
+out	dbwrapper/dbwrapper_init.php	/^		$out= $this->basic_select(TBLORDERS, "","*",Null,False,0,0,True);$/;"	v
+out	dbwrapper/dbwrapper_loader.php	/^						$out = call_user_func_array(array($order, $funcToCall), $functionParamters);$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^				$out = call_user_func_array(array($Order, $addMethod), $parameters);$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		 $out = base64_decode($out[0]);$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		 $out = parent::basic_select(TBLCATALOG, "IDItem='$id' AND enabled='1'", "object");$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		 $out = unserialize($out);$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out =  $this->delete_row(APC2CATA, "id=$id");$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out =  parent::basic_select(APCTABLE, "APC='".$hw."'", array("IDAPC"));$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out =  parent::basic_select(APCTABLE, "APC='".$hw."'", array("apc_description"));$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out =  parent::basic_select(APCTABLE, "APC='".$hw."'", array("status"));$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out =  parent::basic_select(APCTABLE, "IDAPC='".$id."'", array("APC"));$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out = $out[0];$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out = (string)$metadata->methods[0]->{ $type }["call"];$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out = array();$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out = parent::basic_select(APC2CATA, "IDAPC=$ApcID", array("IDItem", "ModelID", "id", "apcChildCode"));$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out = parent::basic_select(CAT_ENABLED_ITEM, "container='$container'", "IDItem");$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out = parent::basic_select(TBLCATALOG, "IDItem='$IDItem' AND enabled='1'", "metadata");$/;"	v
+out	dbwrapper/dbwrapper_metadata.php	/^		$out = parent::basic_select(TBLCATALOG, "IDItem='$itemID'", "enabled");$/;"	v
+out	dbwrapper/dbwrapper_models.php	/^			$out =  $this->basic_select(TBLMODELS, "IDModel='$id'", array("enabled"));$/;"	v
+out	dbwrapper/dbwrapper_models.php	/^			$out = $out[0];$/;"	v
+out	dbwrapper/dbwrapper_models.php	/^			$out = $this->basic_select(TBLMODELS,"IDModel='$modelID'", "cpu_number");$/;"	v
+out	dbwrapper/dbwrapper_models.php	/^		$out = $this->basic_select(TBLMODELS,"IDModel='$modelID'", "IDModel");$/;"	v
+out	dbwrapper/dbwrapper_models.php	/^		$out= $this->basic_select(array(TBLMODELS,POLAROID_FCTTABLE),TBLMODELS.".polaroid_functionID=".POLAROID_FCTTABLE.".ID AND IDModel='$modelID'",array(POLAROID_FCTTABLE.".VALUE"));$/;"	v
+out	dbwrapper/dbwrapper_models.php	/^		$out= parent::basic_select(TBLMODELS, "IDModel=$id","Model");$/;"	v
+out	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$out =  $this->execq("SELECT @@autocommit");$/;"	v
+out	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$out =  parent::rollback();$/;"	v
+out	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$out = $out[0];$/;"	v
+out	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$out = $this->execq($query);$/;"	v
+out	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$out= $this->execq("SELECT DATABASE()");$/;"	v
+out	dbwrapper/dbwrapper_notif.php	/^		$out = parent::basic_select("users", "U_login=$login", "U_id");$/;"	v
+out	dbwrapper/dbwrapper_storedOrders.php	/^			$out = $this->basic_select(TBLSTOREDORDERS, "salesOrder = '$salesOrder'", array("ID","origin"));$/;"	v
+out	dbwrapper/dbwrapper_storedOrders.php	/^		$out =  $this->basic_select(TBLSTOREDORDERS, "ID='".$id."'", array("salesOrder","origin"));	$/;"	v
+out	dbwrapper/dbwrapper_storedOrders.php	/^		$out = parent::basic_select(TBLSTOREDORDERS, "salesOrder=$salesOrder","ID");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_init.php	/^		$out = $this->basic_select(TBLORDERS, $cdt="Salesorder = $initialSalesOrder");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_init.php	/^		$out = count($out) > 0;$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_init.php	/^		$out= $this->basic_select(TBLORDERS, "","*",Null,False,0,0,True);$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_loader.php	/^						$out = call_user_func_array(array($order, $funcToCall), $functionParamters);$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$out = call_user_func_array(array($Order, $addMethod), $parameters);$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		 $out = base64_decode($out[0]);$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		 $out = parent::basic_select(TBLCATALOG, "IDItem='$id' AND enabled='1'", "object");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		 $out = unserialize($out);$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out =  $this->delete_row(APC2CATA, "id=$id");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out =  parent::basic_select(APCTABLE, "APC='".$hw."'", array("IDAPC"));$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out =  parent::basic_select(APCTABLE, "APC='".$hw."'", array("apc_description"));$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out =  parent::basic_select(APCTABLE, "APC='".$hw."'", array("status"));$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out =  parent::basic_select(APCTABLE, "IDAPC='".$id."'", array("APC"));$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out = $out[0];$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out = (string)$metadata->methods[0]->{ $type }["call"];$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out = array();$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out = parent::basic_select(APC2CATA, "IDAPC=$ApcID", array("IDItem", "ModelID", "id", "apcChildCode"));$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out = parent::basic_select(CAT_ENABLED_ITEM, "container='$container'", "IDItem");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out = parent::basic_select(TBLCATALOG, "IDItem='$IDItem' AND enabled='1'", "metadata");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$out = parent::basic_select(TBLCATALOG, "IDItem='$itemID'", "enabled");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_models.php	/^			$out =  $this->basic_select(TBLMODELS, "IDModel='$id'", array("enabled"));$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_models.php	/^			$out = $out[0];$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_models.php	/^			$out = $this->basic_select(TBLMODELS,"IDModel='$modelID'", "cpu_number");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_models.php	/^		$out = $this->basic_select(TBLMODELS,"IDModel='$modelID'", "IDModel");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_models.php	/^		$out= $this->basic_select(array(TBLMODELS,POLAROID_FCTTABLE),TBLMODELS.".polaroid_functionID=".POLAROID_FCTTABLE.".ID AND IDModel='$modelID'",array(POLAROID_FCTTABLE.".VALUE"));$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_models.php	/^		$out= parent::basic_select(TBLMODELS, "IDModel=$id","Model");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$out =  $this->execq("SELECT @@autocommit");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$out =  parent::rollback();$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$out = $out[0];$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$out = $this->execq($query);$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$out= $this->execq("SELECT DATABASE()");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_notif.php	/^		$out = parent::basic_select("users", "U_login=$login", "U_id");$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^			$out = $this->basic_select(TBLSTOREDORDERS, "salesOrder = '$salesOrder'", array("ID","origin"));$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		$out =  $this->basic_select(TBLSTOREDORDERS, "ID='".$id."'", array("salesOrder","origin"));	$/;"	v
+out	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		$out = parent::basic_select(TBLSTOREDORDERS, "salesOrder=$salesOrder","ID");$/;"	v
+out	objects_defs/default.php	/^			$out = array();$/;"	v
+out	order/order_exporters.php	/^			$out = $cellVal;$/;"	v
+out	order/order_exporters.php	/^			$out = array();$/;"	v
+out	order/order_items.php	/^				$out = call_user_func(array($this, $method));$/;"	v
+output	order/order_exporters.php	/^				$output = PAGE_BRK_START;$/;"	v
+param	dbwrapper/dbwrapper_metadata.php	/^		$param = $this->get_catalog_params($this->get_itemIDFromContainer($container));$/;"	v
+param	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$param = $this->get_catalog_params($this->get_itemIDFromContainer($container));$/;"	v
+paramArray	dbwrapper/dbwrapper_metadata.php	/^		$paramArray = array();$/;"	v
+paramArray	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$paramArray = array();$/;"	v
+paramDefVal	objects_defs/default.php	/^					$paramDefVal = $parameter["defval"];$/;"	v
+paramDefVal	objects_defs/default.php	/^					$paramDefVal = NULL;$/;"	v
+paramName	objects_defs/default.php	/^				$paramName     = $parameter["name"];$/;"	v
+paramNames	dbwrapper/dbwrapper_metadata.php	/^		$paramNames = array();$/;"	v
+paramNames	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$paramNames = array();$/;"	v
+paramOptional	objects_defs/default.php	/^				$paramOptional = $parameter["optionnal"];$/;"	v
+paramPos	objects_defs/default.php	/^				$paramPos      = $parameter["pos"];$/;"	v
+paramType	objects_defs/default.php	/^				$paramType     = $parameter["type"];$/;"	v
+paramVal	dbwrapper/dbwrapper_loader.php	/^					$paramVal = "";$/;"	v
+paramVal	dbwrapper/dbwrapper_loader.php	/^				$paramVal = parent::getAPCCode($paramVal);$/;"	v
+paramVal	dbwrapper_1.0STD2/dbwrapper_loader.php	/^					$paramVal = "";$/;"	v
+paramVal	dbwrapper_1.0STD2/dbwrapper_loader.php	/^				$paramVal = parent::getAPCCode($paramVal);$/;"	v
+param_col_count	order/order_exporters.php	/^		private function param_col_count($category, $param)$/;"	f
+parameters	dbwrapper/dbwrapper_metadata.php	/^				$parameters = array();$/;"	v
+parameters	dbwrapper/dbwrapper_metadata.php	/^				$parameters = array_pad($parameters, count($params), NULL);$/;"	v
+parameters	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$parameters = array();$/;"	v
+parameters	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$parameters = array_pad($parameters, count($params), NULL);$/;"	v
+parameters	objects_defs/default.php	/^				$parameters = $this->methods[$this->add_method_ref]["PARAMS"];$/;"	v
+parameters	objects_defs/default.php	/^			$parameters = $this->methods[$this->add_method_ref]["PARAMS"];$/;"	v
+params	dbwrapper/dbwrapper_metadata.php	/^				$params    = $this->get_add_parameters_fromIDItem($itemId) ;$/;"	v
+params	dbwrapper/dbwrapper_metadata.php	/^		$params = $this->get_catalog_params($IDItem, "add");$/;"	v
+params	dbwrapper/dbwrapper_metadata.php	/^		$params = array();$/;"	v
+params	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$params    = $this->get_add_parameters_fromIDItem($itemId) ;$/;"	v
+params	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$params = $this->get_catalog_params($IDItem, "add");$/;"	v
+params	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$params = array();$/;"	v
+params	objects_defs/default.php	/^			$params = $this->set_report_options($params);$/;"	v
+pathToConfig	configParser.php	/^	$pathToConfig = CONFIG_FILE_PATH;$/;"	v
+pdfFile	order/order_exporters.php	/^		private $pdfFile = null;$/;"	v
+pendDate	order/order_geninfo.php	/^			$this->pendDate = DateTime::createFromFormat("d-m-Y",date("d-m-Y")); $/;"	v
+pendDate	order/order_geninfo.php	/^		protected $pendDate; $/;"	v
+polaroid_export	dbwrapper/dbwrapper_writer.php	/^	public function polaroid_export($destPath="\/tmp")$/;"	f
+polaroid_export	dbwrapper_1.0STD2/dbwrapper_writer.php	/^	public function polaroid_export($destPath="\/tmp")$/;"	f
+polaroid_fieldsArray	dbwrapper/dbwrapper_writer.php	/^			$this->polaroid_fieldsArray = array();$/;"	v
+polaroid_fieldsArray	dbwrapper/dbwrapper_writer.php	/^	private $polaroid_fieldsArray;$/;"	v
+polaroid_fieldsArray	dbwrapper_1.0STD2/dbwrapper_writer.php	/^			$this->polaroid_fieldsArray = array();$/;"	v
+polaroid_fieldsArray	dbwrapper_1.0STD2/dbwrapper_writer.php	/^	private $polaroid_fieldsArray;$/;"	v
+polaroid_findFctFromHst	dbwrapper/dbwrapper_writer.php	/^	private function polaroid_findFctFromHst($hostname)$/;"	f
+polaroid_findFctFromHst	dbwrapper_1.0STD2/dbwrapper_writer.php	/^	private function polaroid_findFctFromHst($hostname)$/;"	f
+polaroid_formatHostname	dbwrapper/dbwrapper_writer.php	/^	private function polaroid_formatHostname($hostname)$/;"	f
+polaroid_formatHostname	dbwrapper_1.0STD2/dbwrapper_writer.php	/^	private function polaroid_formatHostname($hostname)$/;"	f
+polaroid_formatSN	dbwrapper/dbwrapper_writer.php	/^	private function polaroid_formatSN($sn)$/;"	f
+polaroid_formatSN	dbwrapper_1.0STD2/dbwrapper_writer.php	/^	private function polaroid_formatSN($sn)$/;"	f
+pramName	dbwrapper/dbwrapper_loader.php	/^				$pramName = "apccode";$/;"	v
+pramName	dbwrapper_1.0STD2/dbwrapper_loader.php	/^				$pramName = "apccode";$/;"	v
+prepareExportPolaroid	order/order_exporters.php	/^		public function prepareExportPolaroid()$/;"	f
+prevOrder	dbwrapper/dbwrapper_storedOrders.php	/^		$prevOrder = $this->get_previous_sto($so);$/;"	v
+prevOrder	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		$prevOrder = $this->get_previous_sto($so);$/;"	v
+printdbg	configParser.php	/^      private function printdbg($message="")$/;"	f
+printdbg	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function printdbg($message)$/;"	f
+printdbg	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function printdbg($message)$/;"	f
+printdbg	debug.php	/^		public function printdbg($message, $displayTime=False)$/;"	f
+printdbg	order/order_geninfo.php	/^		protected function printdbg($message)$/;"	f
+privateShort	dbwrapper/dbwrapper_metadata.php	/^				$privateShort = boolval($values[4]);$/;"	v
+privateShort	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$privateShort = boolval($values[4]);$/;"	v
+proceceedArry	dbwrapper/dbwrapper_writer.php	/^					$proceceedArry = $this->createProcessedArray( $value, $cur_so ,$keyName, $entryID);$/;"	v
+proceceedArry	dbwrapper_1.0STD2/dbwrapper_writer.php	/^					$proceceedArry = $this->createProcessedArray( $value, $cur_so ,$keyName, $entryID);$/;"	v
+pruge_login_log	dbwrapper/dbwrapper_monitor.php	/^	public function pruge_login_log()$/;"	f
+pruge_login_log	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^	public function pruge_login_log()$/;"	f
+pstartDate	order/order_geninfo.php	/^			$this->pstartDate = DateTime::createFromFormat("d-m-Y",date("d-m-Y")); $/;"	v
+pstartDate	order/order_geninfo.php	/^		protected $pstartDate; $/;"	v
+qry	dbwrapper/dbwrapper_metadata.php	/^				$qry = $this->search_sn($values[2], $serial);$/;"	v
+qry	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$qry = "SET NAMES '".$charset."'";$/;"	v
+qry	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $qry = $this->query($query);$/;"	v
+qry	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$qry = $this->search_sn($values[2], $serial);$/;"	v
+qry	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$qry = "SET NAMES '".$charset."'";$/;"	v
+qry	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $qry = $this->query($query);$/;"	v
+query	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$query = "DESCRIBE $table $field";$/;"	v
+query	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$query = "DESCRIBE $table $field";$/;"	v
+rCol	dbwrapper/dbwrapper_mysql_wrapper.php	/^					$rCol = explode('.',$Column);$/;"	v
+rCol	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^					$rCol = explode('.',$Column);$/;"	v
+realEndDate	order/order_geninfo.php	/^			$this->realEndDate = DateTime::createFromFormat("d-m-Y",date("d-m-Y"));$/;"	v
+realEndDate	order/order_geninfo.php	/^		protected $realEndDate;$/;"	v
+realStartDate	order/order_geninfo.php	/^			$this->realStartDate = DateTime::createFromFormat("d-m-Y",date("d-m-Y"));$/;"	v
+realStartDate	order/order_geninfo.php	/^		protected $realStartDate;$/;"	v
+reconnect	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function reconnect()$/;"	f
+reconnect	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function reconnect()$/;"	f
+regexp	dbwrapper/dbwrapper_mysql_wrapper.php	/^				 $regexp = str_replace(']'.$sep[0].'[', ']\\\\' . $sep[0].'[', $regexp);$/;"	v
+regexp	dbwrapper/dbwrapper_mysql_wrapper.php	/^				 $regexp = str_replace('d','[0-3]?[0-9]', $regexp);$/;"	v
+regexp	dbwrapper/dbwrapper_mysql_wrapper.php	/^				 $regexp = str_replace('m','[0-1]?[0-9]', $format);$/;"	v
+regexp	dbwrapper/dbwrapper_mysql_wrapper.php	/^				 $regexp = str_replace('y','[0-9]{4}', $regexp);$/;"	v
+regexp	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				 $regexp = str_replace(']'.$sep[0].'[', ']\\\\' . $sep[0].'[', $regexp);$/;"	v
+regexp	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				 $regexp = str_replace('d','[0-3]?[0-9]', $regexp);$/;"	v
+regexp	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				 $regexp = str_replace('m','[0-1]?[0-9]', $format);$/;"	v
+regexp	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				 $regexp = str_replace('y','[0-9]{4}', $regexp);$/;"	v
+register_item	order/order_items.php	/^		public function register_item($item_definition, $itemObject)$/;"	f
+register_items	dbwrapper/dbwrapper_loader.php	/^	public function register_items(ORDER &$Order)$/;"	f
+register_items	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	public function register_items(ORDER &$Order)$/;"	f
+register_new_item	dbwrapper/dbwrapper_loader.php	/^	public function register_new_item(&$Order, $IDItem)$/;"	f
+register_new_item	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	public function register_new_item(&$Order, $IDItem)$/;"	f
+release	order/order_geninfo.php	/^		protected $release;$/;"	v
+reload_config	configParser.php	/^      public function reload_config()$/;"	f
+remoteNode	order/order_items.php	/^						$remoteNode = $this->objs_def[$this->items_method[$method_call]["reference"]]->is_cluster_member($index);$/;"	v
+removeChildren	dbwrapper/dbwrapper_metadata.php	/^	public function removeChildren($id)$/;"	f
+removeChildren	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function removeChildren($id)$/;"	f
+removeCode	dbwrapper/dbwrapper_metadata.php	/^	public function removeCode($code)$/;"	f
+removeCode	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function removeCode($code)$/;"	f
+removeNoneChar	objects_defs/default.php	/^		private function removeNoneChar($str)$/;"	f
+removeOrder	dbwrapper/dbwrapper_writer.php	/^	public function removeOrder($salesOrder)$/;"	f
+removeOrder	dbwrapper_1.0STD2/dbwrapper_writer.php	/^	public function removeOrder($salesOrder)$/;"	f
+removeStoredOrder	dbwrapper/dbwrapper_storedOrders.php	/^	public function removeStoredOrder($id)$/;"	f
+removeStoredOrder	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	public function removeStoredOrder($id)$/;"	f
+remove_childrens	dbwrapper/dbwrapper_metadata.php	/^	protected function remove_childrens($id)$/;"	f
+remove_childrens	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function remove_childrens($id)$/;"	f
+remove_item	objects_defs/default.php	/^		public function remove_item($key)$/;"	f
+remove_network	order/order_geninfo.php	/^		public function remove_network($name)$/;"	f
+removedChildrens	dbwrapper/dbwrapper_metadata.php	/^		$removedChildrens = $this->remove_childrens($id);$/;"	v
+removedChildrens	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$removedChildrens = $this->remove_childrens($id);$/;"	v
+replace	configParser.php	/^	  public function replace()$/;"	f
+report	objects_defs/default.php	/^			$this->report = array();$/;"	v
+report	objects_defs/default.php	/^		private $report;$/;"	v
+results	dbwrapper/dbwrapper_metadata.php	/^			$results = array();$/;"	v
+results	dbwrapper/dbwrapper_mysql_wrapper.php	/^			  $results = array();$/;"	v
+results	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^			$results = array();$/;"	v
+results	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			  $results = array();$/;"	v
+retVal	objects_defs/default.php	/^						$retVal = $parameters[$i]["defval"];$/;"	v
+retVal	objects_defs/default.php	/^			$retVal = NULL;$/;"	v
+retreiveCatalogObject	dbwrapper/dbwrapper_metadata.php	/^	protected function retreiveCatalogObject($id)$/;"	f
+retreiveCatalogObject	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	protected function retreiveCatalogObject($id)$/;"	f
+return	dbwrapper/dbwrapper_metadata.php	/^		$return = array();$/;"	v
+return	dbwrapper/dbwrapper_writer.php	/^		$return = $return[0];$/;"	v
+return	dbwrapper/dbwrapper_writer.php	/^		$return = parent::e_select(POLAROID_FCTTABLE, array("hstrule" => $this->polaroid_formatHostname($hostname)), True,$/;"	v
+return	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$return = array();$/;"	v
+return	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$return = $return[0];$/;"	v
+return	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$return = parent::e_select(POLAROID_FCTTABLE, array("hstrule" => $this->polaroid_formatHostname($hostname)), True,$/;"	v
+returnedArray	dbwrapper/dbwrapper_mysql_wrapper.php	/^ 		$returnedArray = array($keyVal => isset($indexValue)?$indexValue : NULL ) ;$/;"	v
+returnedArray	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^ 		$returnedArray = array($keyVal => isset($indexValue)?$indexValue : NULL ) ;$/;"	v
+returnedArray	order/order_items.php	/^			$returnedArray = array( );$/;"	v
+root	dbwrapper/dbwrapper_metadata.php	/^		$root =  $metadata->methods;$/;"	v
+root	dbwrapper/dbwrapper_metadata.php	/^		$root = $root->{$type}->param;$/;"	v
+root	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$root =  $metadata->methods;$/;"	v
+root	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$root = $root->{$type}->param;$/;"	v
+rows	dbwrapper/dbwrapper_mysql_wrapper.php	/^			 $rows = $this->affected_rows;$/;"	v
+rows	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			 $rows = $this->affected_rows;$/;"	v
+sIBContent_removeEmptyCells	dbwrapper/dbwrapper_loader.php	/^	protected function sIBContent_removeEmptyCells($array)$/;"	f
+sIBContent_removeEmptyCells	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	protected function sIBContent_removeEmptyCells($array)$/;"	f
+sIBContent_strip_typeInVarName	dbwrapper/dbwrapper_loader.php	/^	protected function sIBContent_strip_typeInVarName($array)$/;"	f
+sIBContent_strip_typeInVarName	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	protected function sIBContent_strip_typeInVarName($array)$/;"	f
+salesOrder	order/order_geninfo.php	/^			$this->salesOrder = $salesOrder;$/;"	v
+salesOrder	order/order_geninfo.php	/^		protected $salesOrder;$/;"	v
+sanitize_csv	dbwrapper/dbwrapper_metadata.php	/^	private function sanitize_csv(&$datas)$/;"	f
+sanitize_csv	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	private function sanitize_csv(&$datas)$/;"	f
+saveOrder	dbwrapper/dbwrapper_writer.php	/^    public function saveOrder(ORDER $order, $write=True)$/;"	f
+saveOrder	dbwrapper_1.0STD2/dbwrapper_writer.php	/^    public function saveOrder(ORDER $order, $write=True)$/;"	f
+save_login_log	dbwrapper/dbwrapper_monitor.php	/^	public function save_login_log()$/;"	f
+save_login_log	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^	public function save_login_log()$/;"	f
+searchByGeneralInformation	dbwrapper/dbwrapper_loader.php	/^	public function searchByGeneralInformation($ValIndexedByFName, $useLike=True, $fieldsToShow="*", $strict=True)$/;"	f
+searchByGeneralInformation	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	public function searchByGeneralInformation($ValIndexedByFName, $useLike=True, $fieldsToShow="*", $strict=True)$/;"	f
+searchItemByContent	dbwrapper/dbwrapper_loader.php	/^	public function searchItemByContent($ValIndexedByFName, $useLike=True, $strict=True)$/;"	f
+searchItemByContent	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	public function searchItemByContent($ValIndexedByFName, $useLike=True, $strict=True)$/;"	f
+search_serial	dbwrapper/dbwrapper_metadata.php	/^	public function search_serial($serial, $id_item=-1)$/;"	f
+search_serial	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function search_serial($serial, $id_item=-1)$/;"	f
+search_sn	dbwrapper/dbwrapper_metadata.php	/^	private function search_sn($table, $serial)$/;"	f
+search_sn	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	private function search_sn($table, $serial)$/;"	f
+sep	dbwrapper/dbwrapper_mysql_wrapper.php	/^			 $sep = str_replace(array('m','d','y'),'', $format);$/;"	v
+sep	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			 $sep = str_replace(array('m','d','y'),'', $format);$/;"	v
+session	dbwrapper/dbwrapper_init.php	/^		$this->session = array$/;"	v
+session	dbwrapper_1.0STD2/dbwrapper_init.php	/^		$this->session = array$/;"	v
+set	configParser.php	/^      public function set($key, $newVal)$/;"	f
+setCCTSnapshotPath	order/order_geninfo.php	/^		public function setCCTSnapshotPath($val)$/;"	f
+setCRMID	order/order_geninfo.php	/^		public function setCRMID($val)$/;"	f
+setComments	order/order_geninfo.php	/^		public function setComments($comment)$/;"	f
+setConfigFile	configParser.php	/^      private function setConfigFile()$/;"	f
+setConfigParam	dbwrapper/dbwrapper_init.php	/^	public function setConfigParam($paramName, $paramVal)$/;"	f
+setConfigParam	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function setConfigParam($paramName, $paramVal)$/;"	f
+setCustomer	order/order_geninfo.php	/^		public function setCustomer($customer)$/;"	f
+setDBCharset	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function setDBCharset($charset)$/;"	f
+setDBCharset	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function setDBCharset($charset)$/;"	f
+setDatabaseForSalesOrder	dbwrapper/dbwrapper_loader.php	/^	protected function setDatabaseForSalesOrder(ORDER &$order, $salesOrder)$/;"	f
+setDatabaseForSalesOrder	dbwrapper_1.0STD2/dbwrapper_loader.php	/^	protected function setDatabaseForSalesOrder(ORDER &$order, $salesOrder)$/;"	f
+setEndDate	order/order_geninfo.php	/^		public function setEndDate($dateISO)$/;"	f
+setMaintenanceMode	dbwrapper/dbwrapper_monitor.php	/^	public function setMaintenanceMode($enabled)$/;"	f
+setMaintenanceMode	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^	public function setMaintenanceMode($enabled)$/;"	f
+setModelList	order/order_items.php	/^		public function setModelList($modelList)$/;"	f
+setPGM	order/order_geninfo.php	/^		public function setPGM($value)$/;"	f
+setProdEndDate	order/order_geninfo.php	/^		public function setProdEndDate($newDate)$/;"	f
+setProdStartDate	order/order_geninfo.php	/^		public function setProdStartDate($dateISO)$/;"	f
+setProgramManager	order/order_geninfo.php	/^		public function setProgramManager($value)$/;"	f
+setRealEndDate	order/order_geninfo.php	/^		public function setRealEndDate($endDate)$/;"	f
+setRealStartDate	order/order_geninfo.php	/^		public function setRealStartDate($dateISO)$/;"	f
+setRelease	order/order_geninfo.php	/^		public function setRelease($newVal)$/;"	f
+setSalesOrder	order/order_geninfo.php	/^		public function setSalesOrder($so)$/;"	f
+setSiteEngineer	order/order_geninfo.php	/^		public function setSiteEngineer($newVal)$/;"	f
+setSolArchitecht	order/order_geninfo.php	/^		public function setSolArchitecht($newVal)$/;"	f
+setStartDate	order/order_geninfo.php	/^		public function setStartDate($dateISO)$/;"	f
+setSysprodActor	order/order_geninfo.php	/^		public function setSysprodActor($newVal)$/;"	f
+set_add_method	objects_defs/default.php	/^		public function set_add_method($name, $params)$/;"	f
+set_category_name	objects_defs/default.php	/^		public function set_category_name($val)$/;"	f
+set_cluster_capable	objects_defs/default.php	/^		public function set_cluster_capable()$/;"	f
+set_container_name	objects_defs/default.php	/^		public function set_container_name($name)$/;"	f
+set_description	objects_defs/default.php	/^		public function set_description($description)$/;"	f
+set_display_report_param	objects_defs/default.php	/^		public function set_display_report_param($param, $value)$/;"	f
+set_get_method	objects_defs/default.php	/^		public function set_get_method($name, $params)$/;"	f
+set_id	objects_defs/default.php	/^		public function set_id($id)$/;"	f
+set_logo	objects_defs/default.php	/^		public function set_logo($b64Logo)$/;"	f
+set_max_gid	objects_defs/default.php	/^		public function set_max_gid($id)$/;"	f
+set_name	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function set_name($charset)$/;"	f
+set_name	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function set_name($charset)$/;"	f
+set_new_container	order/order_importers.php	/^		public function set_new_container($src_array, $new_array)$/;"	f
+set_remove_method	objects_defs/default.php	/^		public function set_remove_method($name, $params)$/;"	f
+set_report_options	objects_defs/default.php	/^		private function set_report_options($parameters)$/;"	f
+set_report_string	objects_defs/default.php	/^		public function set_report_string($param, $str)$/;"	f
+set_session_path	dbwrapper/dbwrapper_init.php	/^	private function set_session_path()$/;"	f
+set_session_path	dbwrapper_1.0STD2/dbwrapper_init.php	/^	private function set_session_path()$/;"	f
+set_update_method	objects_defs/default.php	/^		public function set_update_method($name, $params)$/;"	f
+setcustomerAcronym	order/order_geninfo.php	/^		public function setcustomerAcronym($val)$/;"	f
+showTime	debug.php	/^			$this->showTime = $showTime;$/;"	v
+showTime	debug.php	/^		private $showTime;$/;"	v
+singleCode	order/order_exporters.php	/^			$singleCode = $this->build_single_items($item_list["SINGLE"], $material_template);$/;"	v
+single_list	order/order_items.php	/^			$single_list = array();$/;"	v
+sndObj	order/order_items.php	/^			$sndObj = $order->get_item_list();$/;"	v
+so	dbwrapper/dbwrapper_loader.php	/^					$so = $temp["salesorder"];$/;"	v
+so	dbwrapper/dbwrapper_storedOrders.php	/^			$so = $id->getSalesOrder();$/;"	v
+so	dbwrapper/dbwrapper_storedOrders.php	/^		$so = $order->getSalesOrder();$/;"	v
+so	dbwrapper_1.0STD2/dbwrapper_loader.php	/^					$so = $temp["salesorder"];$/;"	v
+so	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^			$so = $id->getSalesOrder();$/;"	v
+so	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		$so = $order->getSalesOrder();$/;"	v
+soList	dbwrapper/dbwrapper_loader.php	/^		$soList = array();$/;"	v
+soList	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$soList = array();$/;"	v
+sortedArray	dbwrapper/dbwrapper_loader.php	/^		$sortedArray = array();$/;"	v
+sortedArray	dbwrapper/dbwrapper_loader.php	/^		$sortedArray = array_pad($sortedArray, $nbItem, NULL);$/;"	v
+sortedArray	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$sortedArray = array();$/;"	v
+sortedArray	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$sortedArray = array_pad($sortedArray, $nbItem, NULL);$/;"	v
+spUploadActived	dbwrapper/dbwrapper_init.php	/^	public function spUploadActived()$/;"	f
+spUploadActived	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function spUploadActived()$/;"	f
+sql_count	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function sql_count($tableName, $condition="", $columnName='*')$/;"	f
+sql_count	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function sql_count($tableName, $condition="", $columnName='*')$/;"	f
+sql_query	dbwrapper/dbwrapper_mysql_wrapper.php	/^				$sql_query = "SELECT COUNT(".$columnName.") FROM ".$tableName;$/;"	v
+sql_query	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$sql_query = "SELECT $stFlName $dumpArgs FROM $tableName $cdt $orderBy $limit";$/;"	v
+sql_query	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$sql_query = "SELECT COUNT($stFlName) FROM $tableName $cdt $orderBy $limit";$/;"	v
+sql_query	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$sql_query = rtrim($sql_query, ",");$/;"	v
+sql_query	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $sql_query = "DELETE FROM ".$tableName." $condition";$/;"	v
+sql_query	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $sql_query = "INSERT INTO ".$table." (";$/;"	v
+sql_query	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $sql_query = "UPDATE ".$table. " SET ";$/;"	v
+sql_query	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				$sql_query = "SELECT COUNT(".$columnName.") FROM ".$tableName;$/;"	v
+sql_query	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$sql_query = "SELECT $stFlName $dumpArgs FROM $tableName $cdt $orderBy $limit";$/;"	v
+sql_query	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$sql_query = "SELECT COUNT($stFlName) FROM $tableName $cdt $orderBy $limit";$/;"	v
+sql_query	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$sql_query = rtrim($sql_query, ",");$/;"	v
+sql_query	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $sql_query = "DELETE FROM ".$tableName." $condition";$/;"	v
+sql_query	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $sql_query = "INSERT INTO ".$table." (";$/;"	v
+sql_query	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $sql_query = "UPDATE ".$table. " SET ";$/;"	v
+stFlName	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$stFlName = parent::real_escape_string($fields);$/;"	v
+stFlName	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$stFlName = rtrim($stFlName, CHAR_COMMA);$/;"	v
+stFlName	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$stFlName = trim($stFlName, CHAR_COMMA);$/;"	v
+stFlName	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $stFlName = "";$/;"	v
+stFlName	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$stFlName = parent::real_escape_string($fields);$/;"	v
+stFlName	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$stFlName = rtrim($stFlName, CHAR_COMMA);$/;"	v
+stFlName	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$stFlName = trim($stFlName, CHAR_COMMA);$/;"	v
+stFlName	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $stFlName = "";$/;"	v
+start_syslog	debug.php	/^		public function start_syslog()$/;"	f
+storeOrder	dbwrapper/dbwrapper_storedOrders.php	/^	public function storeOrder($order, $origin="internal", $status=0, $message="")$/;"	f
+storeOrder	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^	public function storeOrder($order, $origin="internal", $status=0, $message="")$/;"	f
+str	dbwrapper/dbwrapper_metadata.php	/^		$str = "";$/;"	v
+str	dbwrapper/dbwrapper_metadata.php	/^		$str = file_get_contents("\/tmp\/metadata-$itemID.xml");$/;"	v
+str	dbwrapper/dbwrapper_writer.php	/^		$str = "";$/;"	v
+str	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$str = "";$/;"	v
+str	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$str = file_get_contents("\/tmp\/metadata-$itemID.xml");$/;"	v
+str	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$str = "";$/;"	v
+str	order/order_exporters.php	/^			$str = "<TR>";$/;"	v
+str1	dbwrapper/dbwrapper_mysql_wrapper.php	/^						$str1 = iconv(mb_detect_encoding($str),"UTF-8",$str);$/;"	v
+str1	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^						$str1 = iconv(mb_detect_encoding($str),"UTF-8",$str);$/;"	v
+switch_mysql_rt_ASSOC	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function switch_mysql_rt_ASSOC()$/;"	f
+switch_mysql_rt_ASSOC	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function switch_mysql_rt_ASSOC()$/;"	f
+switch_mysql_rt_NUM	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function switch_mysql_rt_NUM()$/;"	f
+switch_mysql_rt_NUM	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function switch_mysql_rt_NUM()$/;"	f
+switch_mysql_rt_default	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function switch_mysql_rt_default()$/;"	f
+switch_mysql_rt_default	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function switch_mysql_rt_default()$/;"	f
+syslog	debug.php	/^			$this->syslog = $useSyslog;$/;"	v
+syslog	debug.php	/^		private $syslog;$/;"	v
+syslog_message	debug.php	/^		public function syslog_message($priority, $message)$/;"	f
+syslog_msg	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function syslog_msg($priority, $message)$/;"	f
+syslog_msg	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function syslog_msg($priority, $message)$/;"	f
+sysprodActor	order/order_geninfo.php	/^		   $this->sysprodActor = strtoupper($newVal);$/;"	v
+sysprodActor	order/order_geninfo.php	/^		protected $sysprodActor;     $/;"	v
+systemID	order/order_geninfo.php	/^			$this->systemID = $val;$/;"	v
+systemID	order/order_geninfo.php	/^		protected $systemID;$/;"	v
+table	dbwrapper/dbwrapper_metadata.php	/^			$table =  $this->get_catalog_container($id_item);$/;"	v
+table	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $table = parent::real_escape_string($table);$/;"	v
+table	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^			$table =  $this->get_catalog_container($id_item);$/;"	v
+table	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $table = parent::real_escape_string($table);$/;"	v
+tableName	dbwrapper/dbwrapper_mysql_wrapper.php	/^				$tableName = parent::real_escape_string($tableName);$/;"	v
+tableName	dbwrapper/dbwrapper_mysql_wrapper.php	/^		  $tableName = parent::real_escape_string($tableName);$/;"	v
+tableName	dbwrapper/dbwrapper_mysql_wrapper.php	/^		 $tableName = parent::real_escape_string($tableName);$/;"	v
+tableName	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^				$tableName = parent::real_escape_string($tableName);$/;"	v
+tableName	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		  $tableName = parent::real_escape_string($tableName);$/;"	v
+tableName	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		 $tableName = parent::real_escape_string($tableName);$/;"	v
+table_name	dbwrapper/dbwrapper_metadata.php	/^				$table_name = $values[2];$/;"	v
+table_name	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^				$table_name = $values[2];$/;"	v
+tables	dbwrapper/dbwrapper_writer.php	/^		$tables = $this->listTableItemForSo($salesOrder);$/;"	v
+tables	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$tables = $this->listTableItemForSo($salesOrder);$/;"	v
+tblOrderFields	dbwrapper/dbwrapper_loader.php	/^		$tblOrderFields = $tblOrderFields[0];$/;"	v
+tblOrderFields	dbwrapper/dbwrapper_loader.php	/^		$tblOrderFields = $this->basic_select(TBLORDERS, "Salesorder = '$salesOrder'", $fieldToShow); \/\/Warning we're dependant of the order!!! $/;"	v
+tblOrderFields	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$tblOrderFields = $tblOrderFields[0];$/;"	v
+tblOrderFields	dbwrapper_1.0STD2/dbwrapper_loader.php	/^		$tblOrderFields = $this->basic_select(TBLORDERS, "Salesorder = '$salesOrder'", $fieldToShow); \/\/Warning we're dependant of the order!!! $/;"	v
+tds	order/order_exporters.php	/^				$tds = "<TR><TD>".implode("<\/TD><\/TR><TR><TD>", $tds)."<\/TD><\/TR>";$/;"	v
+tds	order/order_exporters.php	/^				$tds = explode(";", $cellVal);$/;"	v
+temp	dbwrapper/dbwrapper_loader.php	/^					$temp = array_combine($temp, $item);$/;"	v
+temp	dbwrapper/dbwrapper_loader.php	/^					$temp = array_map('strtolower', array_keys($item));$/;"	v
+temp	dbwrapper_1.0STD2/dbwrapper_loader.php	/^					$temp = array_combine($temp, $item);$/;"	v
+temp	dbwrapper_1.0STD2/dbwrapper_loader.php	/^					$temp = array_map('strtolower', array_keys($item));$/;"	v
+tempArray	dbwrapper/dbwrapper_mysql_wrapper.php	/^					$tempArray = explode("_",$key);$/;"	v
+tempArray	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^					$tempArray = explode("_",$key);$/;"	v
+temp_autorized	dbwrapper/dbwrapper_monitor.php	/^		$this->temp_autorized = true;$/;"	v
+temp_autorized	dbwrapper_1.0STD2/dbwrapper_monitor.php	/^		$this->temp_autorized = true;$/;"	v
+template	order/order_exporters.php	/^				$template = substr($template, 0, $metrial_header_pos ).substr($template, $metrial_footer_pos, strlen($template));$/;"	v
+template	order/order_exporters.php	/^			$template          = $loaded_template["TEMPLATE"];$/;"	v
+template	order/order_exporters.php	/^			$template   = str_replace("{genDate}", date("d-m-Y"), $template);				$/;"	v
+template	order/order_exporters.php	/^			$template   = str_replace("{nwkName} :&nbsp; {IP}\/{mask}", $networkLine, $template);	$/;"	v
+template	order/order_exporters.php	/^			$template = file_get_contents($TEMPLATESDIR);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{PlanStartDate}" , $this->getEndDate()                         , $template);			$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{ProgramManager}", $this->utf82ansi($this->getProgramManager()), $template);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{Release}"       , $this->getRelease()                         , $template);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{SalesOrder}"    , $this->getSalesOrder()                      , $template);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{SiteEngineer}"  , $this->utf82ansi($this->getSiteEngineer())  , $template);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{cctsnaptshot}"  , $cct_filename                               , $template);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{comment}"		  , substr( htmlspecialchars($this->getComments()), 0, 50), $template);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{crmID}"         , $this->getCRMID()                           , $template);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{customer_acry}" , $this->getcustomerAcronym()                 , $template);			$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{customer}"      , $this->getCustomer()                        , $template);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{material}", $singleCode.$apcCode, $template);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{pEndDate}"      , $this->getProdEndDate()                     , $template);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{pdbverion}"     , $this->version                              , $template);$/;"	v
+template	order/order_exporters.php	/^			$template = str_replace("{sysprodActor}"  , $this->getSysprodActor()                    , $template);$/;"	v
+tmp	dbwrapper/dbwrapper_init.php	/^			$tmp = $this->sql_count($index, "SalesOrder = '$salesOrder'");$/;"	v
+tmp	dbwrapper/dbwrapper_loader.php	/^			$tmp = $this->basic_select(TBLDATABASE, "IDCas = $casID",array("SID", "Size", "SOP","MOP", "IP"));$/;"	v
+tmp	dbwrapper/dbwrapper_loader.php	/^			$tmp = $this->basic_select(TBLDATABASE, "IDDBServer = $dbServId",array("SID", "Size", "SOP","MOP","IP"));$/;"	v
+tmp	dbwrapper_1.0STD2/dbwrapper_init.php	/^			$tmp = $this->sql_count($index, "SalesOrder = '$salesOrder'");$/;"	v
+tmp	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$tmp = $this->basic_select(TBLDATABASE, "IDCas = $casID",array("SID", "Size", "SOP","MOP", "IP"));$/;"	v
+tmp	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$tmp = $this->basic_select(TBLDATABASE, "IDDBServer = $dbServId",array("SID", "Size", "SOP","MOP","IP"));$/;"	v
+tmp	order/order_items.php	/^			$tmp = array();$/;"	v
+transactionPending	dbwrapper/dbwrapper_mysql_wrapper.php	/^		private $transactionPending = false;$/;"	v
+transactionPending	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		private $transactionPending = false;$/;"	v
+trs	order/order_exporters.php	/^				$trs = "<th align='center'>".implode("<\/th align='center'><th>", array_keys($tds))."<\/th>";$/;"	v
+unsetCount	objects_defs/default.php	/^			$unsetCount=0;$/;"	v
+unset_gid	objects_defs/default.php	/^		public function unset_gid($gid)$/;"	f
+unsetkey	objects_defs/default.php	/^			$this->unsetkey = 0;$/;"	v
+unsetkey	objects_defs/default.php	/^		private $unsetkey;$/;"	v
+unshowed_cols_index	order/order_exporters.php	/^			$unshowed_cols_index = array();$/;"	v
+update	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected function update($ValuesIndexByField, $table, $condition)$/;"	f
+update	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected function update($ValuesIndexByField, $table, $condition)$/;"	f
+updateCFGFile	dbwrapper/dbwrapper_init.php	/^	public function updateCFGFile()$/;"	f
+updateCFGFile	dbwrapper_1.0STD2/dbwrapper_init.php	/^	public function updateCFGFile()$/;"	f
+updateCatalogObjects	dbwrapper/dbwrapper_metadata.php	/^	public function updateCatalogObjects($ID, $object)$/;"	f
+updateCatalogObjects	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^	public function updateCatalogObjects($ID, $object)$/;"	f
+updateModel	dbwrapper/dbwrapper_models.php	/^	public function updateModel($modelID, $newFields)$/;"	f
+updateModel	dbwrapper_1.0STD2/dbwrapper_models.php	/^	public function updateModel($modelID, $newFields)$/;"	f
+updateVisio	dbwrapper/dbwrapper_notif.php	/^	public function updateVisio($ValuesIndexByField, $table, $salesOrder)$/;"	f
+updateVisio	dbwrapper_1.0STD2/dbwrapper_notif.php	/^	public function updateVisio($ValuesIndexByField, $table, $salesOrder)$/;"	f
+update_item	objects_defs/default.php	/^		public function update_item($key, $param, $value)$/;"	f
+update_item_index	objects_defs/default.php	/^		private function update_item_index($oldIndex, $newIndex)$/;"	f
+update_network	order/order_geninfo.php	/^		public function update_network($name, $str_ip, $mask)$/;"	f
+user	dbwrapper/dbwrapper_init.php	/^	private $user;$/;"	v
+user	dbwrapper/dbwrapper_storedOrders.php	/^			$user = "SharePoint";$/;"	v
+user	dbwrapper/dbwrapper_storedOrders.php	/^			$user = $this->getInstancier();$/;"	v
+user	dbwrapper_1.0STD2/dbwrapper_init.php	/^	private $user;$/;"	v
+user	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^			$user = "SharePoint";$/;"	v
+user	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^			$user = $this->getInstancier();$/;"	v
+utf82ansi	order/order_exporters.php	/^		private function utf82ansi($str)$/;"	f
+val	dbwrapper/dbwrapper_loader.php	/^			$val = "";$/;"	v
+val	dbwrapper/dbwrapper_loader.php	/^			$val = explode('_',$key);$/;"	v
+val	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$val = "";$/;"	v
+val	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$val = explode('_',$key);$/;"	v
+vals	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$vals      = rtrim($vals, ",");$/;"	v
+vals	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$vals = "";$/;"	v
+vals	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$vals      = rtrim($vals, ",");$/;"	v
+vals	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$vals = "";$/;"	v
+value	dbwrapper/dbwrapper_loader.php	/^			$value = $this->basic_select($table, "salesorder = '$salesOrder'");$/;"	v
+value	dbwrapper/dbwrapper_mysql_wrapper.php	/^						$value = "%".parent::real_escape_string($value)."%" ; $/;"	v
+value	dbwrapper/dbwrapper_mysql_wrapper.php	/^					$value = mb_convert_encoding($value, $dbCharset,  mb_detect_encoding($value) );$/;"	v
+value	dbwrapper/dbwrapper_writer.php	/^		$value = $return[1];$/;"	v
+value	dbwrapper_1.0STD2/dbwrapper_loader.php	/^			$value = $this->basic_select($table, "salesorder = '$salesOrder'");$/;"	v
+value	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^						$value = "%".parent::real_escape_string($value)."%" ; $/;"	v
+value	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^					$value = mb_convert_encoding($value, $dbCharset,  mb_detect_encoding($value) );$/;"	v
+value	dbwrapper_1.0STD2/dbwrapper_writer.php	/^		$value = $return[1];$/;"	v
+valueIndexedByColName	dbwrapper/dbwrapper_loader.php	/^				$valueIndexedByColName = $this->getItemFromSo($current_table,$salesOrder, $modleID);$/;"	v
+valueIndexedByColName	dbwrapper_1.0STD2/dbwrapper_loader.php	/^				$valueIndexedByColName = $this->getItemFromSo($current_table,$salesOrder, $modleID);$/;"	v
+values	dbwrapper/dbwrapper_metadata.php	/^		$values = array();$/;"	v
+values	dbwrapper/dbwrapper_storedOrders.php	/^		$values = array("USER" => $user, "object" => $content, "salesOrder" => $so, "creationDate" => date("d-m-Y"), "origin" => $origin, "version" => "1.0STD1", "status" => $status, "message" => $message);$/;"	v
+values	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^		$values = array();$/;"	v
+values	dbwrapper_1.0STD2/dbwrapper_storedOrders.php	/^		$values = array("USER" => $user, "object" => $content, "salesOrder" => $so, "creationDate" => date("d-m-Y"), "origin" => $origin, "version" => "1.0STD1", "status" => $status, "message" => $message);$/;"	v
+valuesArray	objects_defs/default.php	/^			$valuesArray = array(); \/\/Array containing the values to be inserted$/;"	v
+var	dbwrapper/dbwrapper_metadata.php	/^					$var = explode("_", $value["name"]);$/;"	v
+var	dbwrapper_1.0STD2/dbwrapper_metadata.php	/^					$var = explode("_", $value["name"]);$/;"	v
+var_ex	objects_defs/default.php	/^		private function var_ex($message)$/;"	f
+version	configParser.php	/^      private $version = 1 ;$/;"	v
+version	dbwrapper/dbwrapper_mysql_wrapper.php	/^			$version = $this->version;$/;"	v
+version	dbwrapper/dbwrapper_mysql_wrapper.php	/^		protected $version = "1.0STD2";$/;"	v
+version	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^			$version = $this->version;$/;"	v
+version	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^		protected $version = "1.0STD2";$/;"	v
+version	objects_defs/default.php	/^		public  $version = "1.0";$/;"	v
+version	order.php	/^		public $version = "1.0.1";$/;"	v
+version	order/order_geninfo.php	/^		protected $version = "1.1STD1";$/;"	v
+y	dbwrapper/dbwrapper_mysql_wrapper.php	/^					$y = $DtExplode[strpos($fmd,'y')];$/;"	v
+y	dbwrapper_1.0STD2/dbwrapper_mysql_wrapper.php	/^					$y = $DtExplode[strpos($fmd,'y')];$/;"	v
