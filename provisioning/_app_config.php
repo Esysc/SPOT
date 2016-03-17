@@ -126,7 +126,8 @@ GlobalConfig::$ROUTE_MAP = array(
     //Set Attributes page (for new production DB)
     'GET:setattr' => array('route' => 'Default.SetAttrSysDB'),
     // Set specifications (generic one, free data to insert no DB related)
-    'GET:setspecs' => array('route' => 'Default.setSpecsDb'),
+    //'GET:setspecs' => array('route' => 'Default.setSpecsDb'),
+    'GET:setspecs' => array('route' => 'Default.setSpecsDbTesting'),
     // SEt Assembled on all items globally
     'GET:setassgly' => array('route' => 'Default.setAssemblyGly'),
    
@@ -363,7 +364,7 @@ GlobalConfig::$ROUTE_MAP = array(
     'GET:randompass' => array('route' => 'Charts.RandomPass'),
     'POST:randompass' => array('route' => 'Charts.RandomPass'),
     //Set extended attr on production DB
-    'GET:sysproddb' => array('route' => 'Sysproddb.FormView'),
+    //'GET:sysproddb' => array('route' => 'Sysproddb.FormView'),
     //Assemble childs and parents on orders stored in sysprodDB
     'GET:treebuilder' => array('route' => 'Sysproddb.TreeBuilder'),
     // Get cvsweb netwrok sysprod

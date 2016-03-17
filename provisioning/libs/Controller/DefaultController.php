@@ -65,6 +65,10 @@ class DefaultController extends AppBaseController
         {
             $this->Render('SetSpecsDb.tpl');
         }
+        public function setSpecsDbTesting() 
+        {
+            $this->Render('setSpecsTesting.tpl');
+        }
         /**
          * Production monitoring display
          * 

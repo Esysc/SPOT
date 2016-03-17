@@ -17,6 +17,8 @@ $(document).ready(function () {
 
 
     $.ajaxSettings.data = null; // hack for google chrome
+    
+    
 
     function disableF5(e) {
         if ((e.which || e.keyCode) == 116) {

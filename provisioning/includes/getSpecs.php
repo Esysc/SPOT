@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Php scripèt to get specifications name from sysprod db
+ * Php script to get specifications name from sysprod db
  */
 require "share.php";
 require "config.php";
 $url = URL_SYSPRODDB . '/GetSpecifications';
 
-    $results = curlPost($url, false);
+    $results = curlGet($url, false);
   
 echo $results;
 ?>

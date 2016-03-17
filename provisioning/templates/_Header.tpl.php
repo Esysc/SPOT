@@ -446,11 +446,12 @@
                                                 echo 'class="active"';
                                             }
                                             ?>><a href="./setipalias">Set ip alias on MGT</a></li>
-                                            <!--<li <?php
-                                            if ($this->nav == 'createcsv') {
+                                            <li <?php
+                                            if ($this->nav == 'instmod') {
                                                 echo 'class="active"';
                                             }
-                                            ?>><a href="./createcsv">Crete csv to import in OLD DB</a></li>-->
+                                            ?>><a href="./instmod">PRE CCT preparation</a></li>
+                                            
 
 
                                         </ul>
@@ -524,7 +525,7 @@
                     </ul>
                     <ul class="nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Production DB <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">SysLog DB <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li <?php
                                 if ($this->nav == 'tblorderses') {
@@ -543,17 +544,17 @@
                                                 echo 'class="active"';
                                             }
                                             ?>><a href="./treebuilder">Build Tree in a order</a></li>
-                                            <li <?php
+                                           <!-- <li <?php
                                             if ($this->nav == 'setattr') {
                                                 echo 'class="active"';
                                             }
-                                            ?>><a href="./setattr">Set hostname ip attributes new DB</a></li>
+                                            ?>><a href="./setattr">Set hostname ip attributes new DB</a></li> -->
 
                                             <li <?php
                                             if ($this->nav == 'setspecs') {
                                                 echo 'class="active"';
                                             }
-                                            ?>><a href="./setspecs">Set specs, ack and assemble new DB</a></li>
+                                            ?>><a href="./setspecs">Set Specifications</a></li>
                                             <li <?php
                                             if ($this->nav == 'setassgly') {
                                                 echo 'class="active"';
