@@ -5,6 +5,14 @@ $this->assign('nav', 'instmod');
 $this->display('_Header.tpl.php');
 ?>
 <link href="bootstrap/css/jquery-labelauty.css" rel="stylesheet" />
+<style>
+    body #modalMonitor {
+        /* new custom width */
+        width: 100%;
+        /* must be half of the width, minus scrollbar on the left (30px) */
+        margin-left: -50%;
+    }
+</style>
 <script>
 
     $(document).ready(function () {
@@ -451,7 +459,7 @@ $this->display('_Header.tpl.php');
             function createTR(data) {
                 var commandId = data.remotecommandid;
                 var e = $('<table id="stdout' + commandId + '" class="table-bordered table-responsive table table-striped"></table>');
-                $('#servermsg').append(e);
+                $('#monitorContainer').append(e);
             }
             ;
             function monitoring(data) {
@@ -465,23 +473,16 @@ $this->display('_Header.tpl.php');
                         type: "GET",
                         success: function (data) {
                             var arguments = data.arguments;
-                            var parsed = $.parseJSON(arguments);
-                            var arr = [];
-                            $.each(parsed, function (i, val) {
-                                arr.push(val);
-                            });
-                            var evaluation = arr[0];
-                            var command = evaluation.split('-');
-
+                            
                             //stdout ID if you want the modal to display
-                            $('#stdout' + commandId).html('<tr><th>Host</th><th>Module</th><th>Params</th><th>Return messages</th></tr><tr><td>' + command[1] + '</td><td>' + command[2] + '</td><td>' + command[4] + ' ' + command[5] + ' '+command[6]+'</td><td><pre>' + data.returnstdout + " " + data.returnstderr + '</pre></td><tr>');
+                            $('#stdout' + commandId).html('<tr><th>Params</th><th>Return messages</th></tr><tr><td>' + arguments + '</td><td><pre>' + data.returnstdout + " " + data.returnstderr + '</pre></td><tr>');
                         }
                     });
                 }, 4000);
             }
             ;
             $(document).on('click', '#Results', function (e) {
-                $('#basicModal').modal();
+                $('#modalMonitor').modal();
             });
         });
     });</script>
@@ -560,6 +561,23 @@ $this->display('_Header.tpl.php');
 
     </form>
     <button class='pull-right btn btn-primary' id='start'>Start !</button>
+    <div class="modal hide fade" id="modalMonitor">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">&times;</a>
+            <h3>
+                <i class="icon-road"></i> Running Processes
+                
+            </h3>
+        </div>
+        <div class="modal-body">
+            <div id="modelAlert"></div>
+            <div id="monitorContainer"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" >Cancel</button>
+
+        </div>
+    </div>
 
 </div> <!-- /container -->
 
