@@ -81,7 +81,7 @@ if (isset($_POST['data'])) {
         $_SESSION['newclients'] = $_SESSION['csvclients'];
     }
 
-    var_dump($_SESSION);
+//    var_dump($_SESSION);
 
     /*  $Jdata = trim($Jdata, "{");
       $Jdata = trim($Jdata, "}");

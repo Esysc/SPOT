@@ -16,7 +16,8 @@ function mail_attachment($filename, $path, $mailto, $from_mail, $from_name, $rep
     $header .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
     $header .= $message."\r\n\r\n";
     $header .= "--".$uid."\r\n";
-    $header .= "Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8; name=\"".$filename."\"\r\n";
+    $header .= "Content-Type: application/vnd.ms-excel; charset=UTF-8; name=\"".$filename."\"\r\n";
+   // $header .= "Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8; name=\"".$filename."\"\r\n";
     $header .= "Content-Disposition: attachment; filename=\"".$filename."\"; size=\"".$file_size."\";\n";
     $header .= "Content-Transfer-Encoding: base64\n\n".chunk_split(base64_encode($content))."\n";
     $header .= "--".$uid."--";

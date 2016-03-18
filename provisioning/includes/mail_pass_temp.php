@@ -11,7 +11,7 @@ $options = Array('base_dn'            => 'DC=hq,DC=k,DC=grp',
 
 
 
-$my_file = $_SESSION['filename'].'.xlsx';
+$my_file = $_SESSION['filename'].'.xls';
 		$my_path = $_SERVER['DOCUMENT_ROOT']."/SPOT/log/";
 		$my_name = 'SPOT System Production';
 		//$my_name = 'sysprod_sw_delivery'.$domain;

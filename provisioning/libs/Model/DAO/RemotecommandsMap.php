@@ -33,9 +33,9 @@ class RemotecommandsMap implements IDaoMap
 		{
 			$fm = Array();
 			$fm["Remotecommandid"] = new FieldMap("Remotecommandid","remoteCommands","remoteCommandID",true,FM_TYPE_INT,15,null,true);
-			$fm["Salesorder"] = new FieldMap("Salesorder","remoteCommands","salesOrder",false,FM_TYPE_INT,10,null,false);
+			$fm["Salesorder"] = new FieldMap("Salesorder","remoteCommands","salesOrder",false,FM_TYPE_INT,20,null,false);
 			$fm["Rack"] = new FieldMap("Rack","remoteCommands","rack",false,FM_TYPE_INT,10,null,false);
-			$fm["Shelf"] = new FieldMap("Shelf","remoteCommands","shelf",false,FM_TYPE_VARCHAR,10,null,false);
+			$fm["Shelf"] = new FieldMap("Shelf","remoteCommands","shelf",false,FM_TYPE_VARCHAR,20,null,false);
 			$fm["Clientaddress"] = new FieldMap("Clientaddress","remoteCommands","clientAddress",false,FM_TYPE_VARCHAR,15,null,false);
 			$fm["Arguments"] = new FieldMap("Arguments","remoteCommands","Arguments",false,FM_TYPE_VARCHAR,100000,null,false);
 			$fm["Exesequence"] = new FieldMap("Exesequence","remoteCommands","exeSequence",false,FM_TYPE_INT,4,null,false);

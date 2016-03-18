@@ -545,7 +545,7 @@ if ($debug) {
 
 function saveExcelToLocalFile($objWriter, $filename) {
     // make sure you have permission to write to directory
-    $filePath = '/var/www/SPOT/log/' . $filename . '.xlsx';
+    $filePath = '/var/www/SPOT/log/' . $filename . '.xls';
     
     $objWriter->save($filePath);
     

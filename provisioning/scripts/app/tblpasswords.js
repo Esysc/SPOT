@@ -374,19 +374,20 @@ var page = {
             debug: true,
             confidential: 'Strictly Confidential'
         };
+       
         var JstrtoSend = JSON.stringify(Jdata)
         var session = 'data=' + JstrtoSend;
-
+ 
         app.showProgress('modelLoader');
         // reload session within new values
         $.ajax({
-            url: "/SPOT/provisioning/includes/loadSession.php",
+            url: "includes/loadSession.php",
             type: "POST",
             data: session,
             wait: true,
             success: function () {
                 // All OK , pass to phase 2
-                var url = "/SPOT/provisioning/includes/excelexport_pass.php";
+                var url = "includes/excelexport_pass.php";
 
 
                 $.ajax({

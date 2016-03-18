@@ -107,7 +107,7 @@ $this->display('_Header.tpl.php');
             var SO = SOarr[0].trim();
             // Get all data from DB x salesorder
             $.ajax({
-                url: '/SPOT/provisioning/includes/treeBuilder.php?salesorder=' + SO,
+                url: 'includes/treeBuilder.php?salesorder=' + SO,
                 type: "GET",
                 async: false,
                 cache: false,
@@ -118,7 +118,7 @@ $this->display('_Header.tpl.php');
                     $('#msg').html('');
                     var Obj = $.parseJSON(jsonResult);
                     $.each(Obj, function (key, value) {
-                        var optVal = value.item_id;
+                        var optVal = value.order_item_id;
                         var optText = optVal + " - " + value.model_name + " - " + value.product_ref;
                         $('#items')
                                 .append($("<option></option>")

@@ -4,31 +4,10 @@ $this->assign('nav', 'instmod');
 
 $this->display('_Header.tpl.php');
 ?>
-<style>
-    fieldset {
-        width: 50%;
-    }
-    label {
-        float: left;
-    }
-    .item {
-        float: right;
-        width: 100%;
-    }
-    br {
-        display: block;
-        margin: 10px 0;
-    }
-    p {
-        width: 100%;
-        font-weight: bold;
-            
-    }
-</style>
+<link href="bootstrap/css/jquery-labelauty.css" rel="stylesheet" />
 <script>
 
     $(document).ready(function () {
-
         $('#details').on('click', function () {
             $('#basicModal').show();
         });
@@ -196,40 +175,55 @@ $this->display('_Header.tpl.php');
                                                                 case '1':
                                                                     $('#check').html('');
                                                                     var modules = data.returnstdout;
+                                                                    if (modules === '')
+                                                                        modules = data.returnstderr;
                                                                     var MODarr = modules.split(' ');
                                                                     $.get("/SPOT/provisioning/api/tblprogresses?salesorder=" + SO, function (jsonResult) {
                                                                         $('.network').show();
                                                                         var Jdata = jsonResult.rows[0].data;
                                                                         var Jsonspecs = JSON.parse(Jdata);
                                                                         var tr;
-                                                                        tr = ("<tr><th><center>HOSTS</center></th><th><center>MODULES</center></th></tr>");
                                                                         $.each(Jsonspecs.clients, function (i, o) {
 
-                                                                            tr = tr + "<tr><th>" + o.hostname + "<br />IP: " + o.ip + "</th>";
-                                                                            tr = tr + "<td>";
-                                                                            tr = tr + "<fieldset><input type='hidden' value='" + o.ip + "' class='ipaddress' id='host_" + i + "' />";
+                                                                            tr = tr + "<tr><th colspan='2'><center>" + o.hostname + " - IP: " + o.ip + "</center><button class='btn btn-primary uncheck pull-right' id='uncheck_" + i + "'>Toggle all</button></th></tr>";
+                                                                            tr = tr + "<tr><td  colspan='2'>";
+                                                                            tr = tr + '<div class="row">';
+                                                                            tr = tr + '<div class="items">';
+                                                                            tr = tr + "<input type='hidden' value='" + o.ip + "' class='ipaddress' id='host_" + i + "' />";
+                                                                            var refer = 0;
+                                                                            var counter = 0
                                                                             $.each(MODarr, function (index, value) {
-                                                                                var Ychecked = "";
-                                                                                var Nchecked = "checked";
+
                                                                                 var mod = baseName(value);
                                                                                 if (value.toLowerCase().indexOf("mgt") < 0) {
-                                                                                    if (value.toLowerCase().indexOf("nse") >= 0) {
-                                                                                        Ychecked = 'checked';
-                                                                                        Nchecked = "";
-                                                                                    }
-                                                                                    tr = tr + "<div class='item'>";
-                                                                                    tr = tr + "<label class='checkbox'><input class='checkbox-inline' type='checkbox' value='" + value + "'  id='host_" + i + "_" + index + "' checked/>";
-                                                                                    tr = tr + "" + mod + "</label>";
-                                                                                    tr = tr + '<label class="radio-inline pull-right">Install ? <input name="optionInst_' + i + "_" + index + '" ' + Ychecked + ' type="radio"  class="host_' + i + '_' + index + '" value="Y" > Yes&nbsp;';
-                                                                                    tr = tr + '<input name="optionInst_' + i + "_" + index + '" ' + Nchecked + ' type="radio"  value="N" class="host_' + i + '_' + index + '">  No</label></div>';
+
+                                                                                    var downloadId = "host_" + i + "_download_" + counter;
+                                                                                    var installId = "host_" + i + "_install_" + counter;
+                                                                                    tr = tr + "<div class='checkboxes span6'>";
+                                                                                    tr = tr + "<input  type='checkbox' value='" + value + "'  id='" + downloadId + "' checked class='" + downloadId + " uncheck_" + i + "'/>";
+                                                                                    tr = tr + "<label for='" + downloadId + "'></label>";
+                                                                                    tr = tr + "<span class='badge badge-info modules'>" + mod + " Download</span></div><div class='checkboxes span6'>"
+                                                                                    tr = tr + '<input  type="checkbox"  id="' + installId + '"  class="' + installId + ' uncheck_' + i + '" value="1" />';
+                                                                                    tr = tr + "<label for='" + installId + "'></label>";
+                                                                                    tr = tr + "<span class='badge badge-info install'>Install</span></div>";
+                                                                                    $(document).on('click', '.' + installId, function () {
+                                                                                        $('.' + installId).is(':checked') ? $('#' + downloadId).attr('checked', true) : $('#' + downloadId).attr('checked', true);
+                                                                                    });
+                                                                                    $(document).on('click', '.' + downloadId, function () {
+                                                                                        $('.' + downloadId).is(':checked') ? $('#' + downloadId).attr('checked', true) : $('#' + installId).attr('checked', false);
+                                                                                    })
+                                                                                    counter++
                                                                                 }
+
+                                                                                refer = counter; // update index value to loop later
+
                                                                             });
-                                                                            tr = tr + "</fieldset>";
-                                                                            tr = tr + "</td></tr>";
+                                                                            tr = tr + "<input type='hidden' id='host_" + i + "_index' value='" + refer + "' />";
+                                                                            //    tr = tr + "</div>";
+                                                                            tr = tr + "</div></div></td></tr>";
                                                                         });
-                                                                        tr = tr + "<tr><th colspan='2'><button class='pull-right btn btn-primary' id='start'>Start !</button></th></tr>"
                                                                         $('.main tr:last').after(tr);
-                                                                        console.log(tr);
+                                                                        $('#start').css('visibility', 'visible');
                                                                     });
                                                                     break;
                                                                 case '2':
@@ -242,6 +236,8 @@ $this->display('_Header.tpl.php');
                                                                 default:
                                                                     $.ajax(this);
                                                             }
+
+
                                                         }
                                                     });
                                                 }
@@ -281,12 +277,21 @@ $this->display('_Header.tpl.php');
                 });
             });
         });
-        // $('#salesel').trigger("change")
-        //   $('*[required]').before("<span class='icon-star' style='color:red'></span>");
 
-
+        $(document).on('click', '.uncheck', function () {
+            var myId = $(this).attr('id');
+            var checkboxes = $('.' + myId);
+            if (checkboxes.is(':checked')) {
+                checkboxes.prop('checked', false);
+            }
+            else
+            {
+                checkboxes.prop('checked', true);
+            }
+        })
 
         $(document).on('click', '#start', function (e) {
+
             if ($('*[required]').val() === '') {
 
                 $('#msg').hide();
@@ -296,7 +301,6 @@ $this->display('_Header.tpl.php');
                 setTimeout(function () {
                     $('#msg').fadeOut(2000);
                 }, 3000);
-                console.log($('*[required]'));
                 return false;
             } else {
                 $('#msg').hide();
@@ -304,8 +308,8 @@ $this->display('_Header.tpl.php');
             }
             $('#start').after("<button class='pull-right btn btn-primary' id='Results'>Get Results !</button>");
             $('#start').remove();
-            var ipaddress = "-ip " + $('#ipaddress').val();
-            var netmask = "-n " + $('#netmask').val();
+            var ipaddress = " -ip " + $('#ipaddress').val();
+            var netmask = " -n " + $('#netmask').val();
             var ipaliasID = 7;
             var datastring;
             var args = {
@@ -314,86 +318,107 @@ $this->display('_Header.tpl.php');
             };
             var argsIP = JSON.stringify(args);
             //  validate(e);
+            var input;
             var hosts = [];
-            var modules = [];
-            var install = [];
-            var options = [];
-            $('fieldset').each(function () {
-                var input = $(this).find(' input.ipaddress');
-                var host = "-H " + input.val();
-                hosts.push(host);
-                $(this).find('input.checkbox-inline:checked').each(function () {
-                    var module = $(this).val();
-                    var mod = baseName(module);
-                    if (mod.toLowerCase().indexOf("nse") >= 0)
-                        options.push('-s nsesoft -b nse1 -u root');
-                    if (mod.toLowerCase().indexOf("nge") >= 0)
-                        options.push('-s ngesoft -b nge1 -u operator');
-                    if (mod.toLowerCase().indexOf("nre") >= 0)
-                        options.push('-s nresoft -b nre1 -u root');
-                    if (mod.toLowerCase().indexOf("nsm") >= 0)
-                        options.push('-s nsmsoft -b nsm1 -u operator');
-                    if (mod.toLowerCase().indexOf("noe") >= 0)
-                        options.push('-s noesoft -b noe1 -u oracle');
-                    modules.push("-M " + module);
-                    var id = $(this).attr('id');
-                    //The id of checkboxes is the class of the radio button
+            var keys = [];
 
-                    var check = $('.' + id + ':checked').val();
-                    install.push("-I " + check);
-                });
+
+            $('.items').each(function () {
+                var modules;
+                var install;
+                var options;
+                input = $(this).find(' input.ipaddress');
+                var host = "-H " + input.val();
+                var hostId = input.attr('id');
+                var index = $('#' + hostId + '_index').val();
+                for (var i = 0; i < index; i++) {
+                    var str;
+                    if (i == 0) {
+                        str = '0';
+                    } else {
+                        str = i;
+                    }
+
+                    var download = hostId + "_download_" + str;
+                    var checkId = hostId + "_install_" + str;
+                    if ($('#' + download).is(':checked')) {
+
+                        var module = $('#' + download).val().replace(/(\r\n|\n|\r)/gm, "");
+                        var mod = baseName(module);
+                        if (mod.toLowerCase().indexOf("nse") >= 0)
+                            options = ' -s nsesoft -b nse1 -u root ';
+                        if (mod.toLowerCase().indexOf("nge") >= 0)
+                            options = ' -s ngesoft -b nge1 -u operator ';
+                        if (mod.toLowerCase().indexOf("nre") >= 0)
+                            options = ' -s nresoft -b nre1 -u root ';
+                        if (mod.toLowerCase().indexOf("nsm") >= 0)
+                            options = ' -s nsmsoft -b nsm1 -u operator ';
+                        if (mod.toLowerCase().indexOf("noe") >= 0)
+                            options = ' -s noesoft -b noe1 -u oracle ';
+                        modules = " -M " + module + " ";
+                        $('#' + checkId).is(':checked') ? install = " -I Yes " : install = " -I No ";
+
+                        hosts.push(host + modules + options + install);
+                        keys.push(input.val());
+
+                    }
+                }
             });
-            var scriptID = 13;
+            console.log(keys);
+            var unsetAlias = 13;
+            var scriptID = 21;
             var clientaddress = '<?php echo GlobalConfig::$SYSPROD_SERVER->MGT; ?>';
-            var rack = 25;
-            var shelf = "Z";
+            var rack = 100;
+
             var exesequence = 1;
             var executionFlag = 1;
-            
+            var counter = 1;
             //Ok all values prsed, can we proceed to send to remote servers
             $.each(hosts, function (index, host) {
                 var argstring = {};
-                $.each(modules, function (index1, module) {
-                    argstring = {
-                        "0": host,
-                        "1": module,
-                        "2": install[index1],
-                        "3": options[index1],
-                        "4": " &"
-                    };
-                    datastring = JSON.stringify(argstring);
-                     var number = 1 + Math.floor(Math.random() * 6);
-                    var command = {
-                        salesorder: number,
-                        rack: rack,
-                        shelf: shelf,
-                        clientaddress: clientaddress,
-                        arguments: datastring,
-                        exesequence: exesequence,
-                        returnstdout: "Waiting for command execution",
-                        executionflag: executionFlag,
-                        scriptid: scriptID
+                var shelf = keys[index];
+
+                argstring = {
+                    "0": host,
+                    "1": " &"
+                };
+                datastring = JSON.stringify(argstring);
+                var number = index + counter;
+                var salesOrder = SO + number;
+                var command = {
+                    salesorder: salesOrder,
+                    rack: rack,
+                    shelf: shelf,
+                    clientaddress: clientaddress,
+                    arguments: datastring,
+                    exesequence: exesequence,
+                    returnstdout: "Waiting for command execution",
+                    executionflag: executionFlag,
+                    scriptid: scriptID
+
+                }
+                var Jcommand = JSON.stringify(command);
+                console.log(Jcommand);
+                var url = "/SPOT/provisioning/api/remotecommands/";
+                //Post the remote command to get executed
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: Jcommand,
+                    wait: true,
+                    success: createTR,
+                    error: function (data) {
+                        $('#errormsg').html("An error occured:  " + data.statusText + " " + data.responseText);
+                        console.log(data);
+                        $('#errormsg').show();
 
                     }
-                    var Jcommand = JSON.stringify(command);
-                    var url = "/SPOT/provisioning/api/remotecommands/";
-                    //Post the remote command to get executed
-                    $.ajax({
-                        url: url,
-                        type: "POST",
-                        data: Jcommand,
-                        wait: true,
-                        success: createTR,
-                        error: function (data) {
-                            $('#errormsg').html("An error occured:  " + data.statusText + " " + data.responseText);
-                            console.log(data);
-                            $('#errormsg').show();
-                           
-                        }
-                    }).done(monitoring);
-                });
+                }).done(monitoring);
+
+                counter++;
             });
             // Send set alias IP command as last command because will be the first to be run
+            var shelf = "Z";
             var command = {
                 salesorder: SO,
                 rack: rack,
@@ -425,10 +450,8 @@ $this->display('_Header.tpl.php');
             });
             function createTR(data) {
                 var commandId = data.remotecommandid;
-                var e = $('<table id="stdout' + commandId + '" class="able-bordered table-responsive table table-striped"></table>');
-
+                var e = $('<table id="stdout' + commandId + '" class="table-bordered table-responsive table table-striped"></table>');
                 $('#servermsg').append(e);
-             
             }
             ;
             function monitoring(data) {
@@ -444,13 +467,14 @@ $this->display('_Header.tpl.php');
                             var arguments = data.arguments;
                             var parsed = $.parseJSON(arguments);
                             var arr = [];
-                                    $.each(parsed , function(i, val) {
-                                        arr.push(val);
-                                    });
-                                    var host = arr[0].split('H');
-                                    var command = baseName(arr[1]);
-                            
-                            $('#stdout' + commandId).html('<tr><th>Host</th><th>Module</th><th>Params</th><th>Return messages</th></tr><tr><td>' + host[1] + '</td><td>'+command+'</td><td>' + arr[3] +'</td><td>' + data.returnstdout + " " + data.returnstderr+'</td><tr>');
+                            $.each(parsed, function (i, val) {
+                                arr.push(val);
+                            });
+                            var evaluation = arr[0];
+                            var command = evaluation.split('-');
+
+                            //stdout ID if you want the modal to display
+                            $('#stdout' + commandId).html('<tr><th>Host</th><th>Module</th><th>Params</th><th>Return messages</th></tr><tr><td>' + command[1] + '</td><td>' + command[2] + '</td><td>' + command[4] + ' ' + command[5] + ' '+command[6]+'</td><td><pre>' + data.returnstdout + " " + data.returnstderr + '</pre></td><tr>');
                         }
                     });
                 }, 4000);
@@ -530,11 +554,12 @@ $this->display('_Header.tpl.php');
                 </td>
 
             </tr>
+
         </table>
 
 
     </form>
-
+    <button class='pull-right btn btn-primary' id='start'>Start !</button>
 
 </div> <!-- /container -->
 
