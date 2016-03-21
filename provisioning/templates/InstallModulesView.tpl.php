@@ -203,7 +203,7 @@ $this->display('_Header.tpl.php');
                                                                             $.each(MODarr, function (index, value) {
 
                                                                                 var mod = baseName(value);
-                                                                                if (value.toLowerCase().indexOf("mgt") < 0) {
+                                                                                if (value.toLowerCase().indexOf("mgt") < 0 && value.toLowerCase().indexOf("vio")  < 0) {
 
                                                                                     var downloadId = "host_" + i + "_download_" + counter;
                                                                                     var installId = "host_" + i + "_install_" + counter;
@@ -316,6 +316,8 @@ $this->display('_Header.tpl.php');
             }
             $('#start').after("<button class='pull-right btn btn-primary' id='Results'>Get Results !</button>");
             $('#start').remove();
+            $('input[type=checkbox]').prop('disabled','true');
+            $('.uncheck').remove();
             var ipaddress = " -ip " + $('#ipaddress').val();
             var netmask = " -n " + $('#netmask').val();
             var ipaliasID = 7;
@@ -378,7 +380,7 @@ $this->display('_Header.tpl.php');
             var clientaddress = '<?php echo GlobalConfig::$SYSPROD_SERVER->MGT; ?>';
             var rack = 100;
 
-            var exesequence = 1;
+            var exesequence = 0; //putting zero no return of stdout and stderr
             var executionFlag = 1;
             var counter = 1;
             //Ok all values prsed, can we proceed to send to remote servers
@@ -475,7 +477,7 @@ $this->display('_Header.tpl.php');
                             var arguments = data.arguments;
                             
                             //stdout ID if you want the modal to display
-                            $('#stdout' + commandId).html('<tr><th>Params</th><th>Return messages</th></tr><tr><td>' + arguments + '</td><td><pre>' + data.returnstdout + " " + data.returnstderr + '</pre></td><tr>');
+                            $('#stdout' + commandId).html('<tr><th>Running command: ' + arguments + '</th></tr><tr><td><pre>' + data.returnstdout + " " + data.returnstderr + '</pre></td><tr>');
                         }
                     });
                 }, 4000);

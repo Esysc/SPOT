@@ -257,7 +257,7 @@ function isDuplicate($table, $subnet_tmp) {
 }
 
 function jsonToHtml($array) {
-    $html = "<table><thead>";
+    $html = "<table class='table-condensed table-bordered'><thead>";
 
     foreach ($array as $key => $sub_array) {
         if ($key == 0) {
@@ -351,14 +351,14 @@ function apiWrapper($url, $user = 'hotline', $pass = 'hotline') {
     return $result;
 }
 
-function apiPOST($url, $content) {
+function apiPOST($url, $content, $method = "POST" ) {
 
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     // curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_USERAGENT, 'perl');
