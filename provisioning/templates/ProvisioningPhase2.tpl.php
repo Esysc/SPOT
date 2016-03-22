@@ -61,6 +61,7 @@ $imagespxe[0] = $_SESSION['imagename'];
 
 
     $(document).ready(function () {
+        
         var loading;
         var curruser;
         $.get("/SPOT/provisioning/api/tempdata/MESSAGE", function (data) {
@@ -307,40 +308,7 @@ if (isset($_SESSION['CSV'])) {
                 change(function () {
                     findDuplicate();
                 });
-        /* $('.checkdup').
-         change(function() {
-         
-         var $current = $(this);
-         var currentid = $current.attr('id');
-         $('.check' + currentid).remove();
-         var loopid = '';
-         if ($current.val() !== '') {
-         $('.checkdup').
-         each(function() {
-         loopid = $(this).attr('id');
-         // $('.check' + loopid).remove();
-         
-         var cur = $(this).val();
-         if (cur === $current.val() && $(this).attr('id') != $current.attr('id'))
-         {
-         $('#errormsg').html("Duplicate value found:   <b>" + cur + "</b>. The other field value id is : " + $(this).attr('id'));
-         $('#errormsg').show();
-         console.log($current);
-         $current.after('<b class="badge badge-warning check' + currentid + '">Duplicate value found. Check id: ' + $(this).attr('id') + '</b>');
-         $(this).after('<b class="badge badge-warning check' + loopid + '">Duplicate value found. Check id: ' + currentid + '</b>');
-         setTimeout(function() {
-         $('#errormsg').fadeOut(5000);
-         }, 6000);
-         
-         
-         return false;
-         } 
-         
-         });
-         }
-         
-         });
-         */
+        
         function findDuplicate() {
             $('.checkbadge').remove();
             var textArr = $(".checkdup").get();
@@ -402,7 +370,7 @@ if (isset($_SESSION['CSV'])) {
                 setTimeout(function () {
                     $('#errormsg').fadeOut(2000);
                 }, 3000);
-                console.log($('*[required="required"]'));
+              //  console.log($('*[required="required"]'));
                 return false;
             } else {
                 $('#errormsg').hide();
@@ -462,7 +430,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                     url: "/SPOT/provisioning/api/tblprogress/" + id,
                     data: stringSend,
                     success: function (data) {
-                        console.log('successfully removed emtpy racks from tblprogress');
+                     //   console.log('successfully removed emtpy racks from tblprogress');
                     }
 
                 });
@@ -481,16 +449,16 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
             var indexTbl;
             getClients().done(function (data) {
                 obj = JSON.parse(data.rows[0].data);
-                console.log(obj);
+            //    console.log(obj);
                 indexTbl = getindex(obj);
-                console.log('index tbl is inside the function: ' + indexTbl);
+              //  console.log('index tbl is inside the function: ' + indexTbl);
                 return indexTbl;
             });
             //get stored values in tbl progress
 
             function getindex(x) {
                 var count = 0;
-                console.log(x);
+              //  console.log(x);
                 var toparse = x.clients;
                 var i;
                 for (i in toparse) {
@@ -498,13 +466,13 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                         count++;
                     }
                 }
-                console.log('coubt is: ' + count)
+            //    console.log('coubt is: ' + count)
                 return count;
             }
             //console.log(obj);
             // var indexTbl = getindex(obj);
 
-            console.log('index tbl is: ' + indexTbl);
+          //  console.log('index tbl is: ' + indexTbl);
             var temp = {};
             /*
              * Client specific data
@@ -532,7 +500,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                 var mirror = $("input[name=raidconfig" + level + "]:checked").val();
                 var paging = $('#paging' + level).val();
                 var disksize = $('#disksize' + level).val();
-                console.log('machinetype ' + machinetype);
+          //      console.log('machinetype ' + machinetype);
                 /*
                  * Update tbl progress
                  * 
@@ -686,7 +654,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                  */
                                 index++;
                                 if (workgroup !== '' && typeof workgroup !== 'undefined') {
-                                    console.log('workgroup not empty');
+                              //      console.log('workgroup not empty');
                                     argstring[index] = "-d";
                                     index++;
                                     argstring[index] = workgroup;
@@ -768,7 +736,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                 //  var clientaddress = '<?php // echo GlobalConfig::$SYSPROD_SERVER->DRBL;                  ?>';
 
                                 var clientaddress = $.trim($("#clientaddress" + level).val());
-                                console.log("clientaddress: " + clientaddress);
+                          //      console.log("clientaddress: " + clientaddress);
                                 break;
                         }
                         // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                  ?>';
@@ -780,7 +748,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                  * Now datastring contains all arguments for wrappers, lets prepare to insert in DB later
                  */
                 var datastring = JSON.stringify(argstring);
-                console.log(datastring);
+           //    console.log(datastring);
                 /*
                  * Prepare send to table provisioningactions
                  */
@@ -811,7 +779,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                     url: "/SPOT/provisioning/api/provisioningaction/",
                     data: provactionsJson,
                     success: function (data) {
-                        console.log('data sent to provisioningactions table');
+          //              console.log('data sent to provisioningactions table');
                     }
                 });
                 /*
@@ -852,8 +820,8 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                 }
                 $.each(temp, function (i, val) {
                     Jdata.clients[i] = temp[i];
-                    console.log('Adding Client ID: ' + i);
-                    console.log(temp);
+               //     console.log('Adding Client ID: ' + i);
+                //    console.log(temp);
                 });
                 var JSONdata = JSON.stringify(Jdata);
                 var toSend = {data: JSONdata};
@@ -863,7 +831,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                     url: "/SPOT/provisioning/api/tblprogress/" + id,
                     data: stringSend,
                     success: function (data) {
-                        console.log('Successfully updated from tblprogress');
+                  //      console.log('Successfully updated from tblprogress');
                     }
 
                 });
@@ -1051,9 +1019,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                         <script>
                                             $('#deleteRow<?php echo $key; ?>').click(function (event) {
                                                 event.preventDefault();
-                                                // var saved =  $('#myTable').clone();
-                                                // $('#myTable').remove();
-
+                                            
                                                 var numItems = $('.removeButton').length;
                                                 if (numItems == 1) {
                                                     $('#servermsg').html('You cannot remove the last element.');
@@ -1081,7 +1047,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                                             data: cleandata
                                                         });
                                                         $.ajax(this);
-                                                        console.log('Retry the request');
+                                                   //     console.log('Retry the request');
                                                     } else {
                                                         var label = '';
                                                         var client = '';
@@ -1105,14 +1071,14 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                                                     type: "GET",
                                                                     wait: true,
                                                                     success: function (temp) {
-                                                                        console.log(temp);
+                                                                     //   console.log(temp);
                                                                         var ip = temp.data;
                                                                         if (ip === '') {
                                                                             $.ajax(this);
-                                                                            console.log("ip value not yet set so retry request");
+                                                                  //          console.log("ip value not yet set so retry request");
                                                                         } else {
                                                                             $('#clientaddress<?php echo $key; ?>').val(ip);
-                                                                            console.log('IP of dhcp client is: ' + ip);
+                                                                     //       console.log('IP of dhcp client is: ' + ip);
                                                                             $('#clientaddressShow<?php echo $key; ?>').html('<span class="label label-success">The dhcp address is: ' + ip + '</span>')
 
 
@@ -1120,7 +1086,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
 
                                                                     },
                                                                     error: function () {
-                                                                        console.log("error retreiving client dhcp ip address");
+                                                                     //   console.log("error retreiving client dhcp ip address");
                                                                     }
                                                                 });
                                                                 client = '<span class=\'label label-warning\' data-toggle="tooltip" title=\'Client PXE Linux/Windows\'>pxe</span>';
@@ -1175,7 +1141,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                                 },
                                                 error: function () {
                                                     $.ajax(this);
-                                                    console.log('Retry the request');
+                                              //      console.log('Retry the request');
                                                 },
                                                 complete: function () {
 

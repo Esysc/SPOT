@@ -146,6 +146,13 @@ span.jqtree-dragging {
 
 #DataTable {
   position: relative;
-  overflowY: scroll;
+  //overflowY: scroll;
+  overflow: auto;
 }
                         
+ul.jqtree-tree .jqtree-element {
+    margin: 6px 0;
+    border-radius: 10px;
+    width: 600px
+   
+}   

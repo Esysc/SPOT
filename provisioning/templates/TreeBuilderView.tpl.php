@@ -76,35 +76,7 @@ $this->display('_Header.tpl.php');
         $('#salesel').chosen({
             width: "100%"
         });
-        // Get all the sales order in the tblprogress table used for tests purposes
-        /*
-         $.ajax({
-         url: "/SPOT/provisioning/api/tblprogresses",
-         // url: "http://spmgt.my.compnay.com/SPOT/provisioning/includes/getOrdersSysproddb.php",
-         type: "GET",
-         async: false,
-         cache: false,
-         wait: true,
-         success: function (jsonResult) {
-         console.log(jsonResult);
-         var Jdata = jsonResult.rows;
-         // 
-         
-         // $('#salesel').attr('enabled', 'true');
-         
-         $.each(Jdata, function (i, o) {
-         
-         var Jfield = JSON.parse(o.data);
-         var customerACR = Jfield.CustomerACR;
-         if (Jfield.completed == true) {
-         $('#salesel').append(
-         '<option>' + o.salesorder + '|' + customerACR + '</option>'
-         ).trigger("chosen:updated");
-         }
-         });
-         }
-         });
-         */
+
 
         $.ajax({
             url: "/SPOT/provisioning/includes/getOrdersSysproddb.php",
@@ -120,15 +92,7 @@ $this->display('_Header.tpl.php');
 
                     $('#salesel').append('<option>' + o + '</option>').trigger("chosen:updated");
                 });
-                /*
-                 //  var Jfield = JSON.parse(o.data);
-                 //  var customerACR = Jfield.CustomerACR;
-                 if (Jfield.completed == true) {
-                 $('#salesel').append(
-                 '<option>' + o.salesorder + '|' + customerACR + '</option>'
-                 ).trigger("chosen:updated");
-                 }
-                 */
+
 
             }
         });
@@ -294,9 +258,9 @@ $this->display('_Header.tpl.php');
                                     var $element = $(selected_node.element);
                                     var $title = $element.children('div').children('.jqtree-title');
                                     if (control) {
-                                        console.log('ctrl pressed');
+                                       
                                         if (selected_node.id == undefined) {
-                                            console.log('The multiple selection functions require that nodes have an id');
+                                            
                                             cancontinue = false;
                                         }
                                         if ($tree.tree('isNodeSelected', selected_node)) {
@@ -381,10 +345,10 @@ $this->display('_Header.tpl.php');
 
                         $tree.on('tree.move', function (event) {
 
-                            console.log('______________________________________');
+                          /*  console.log('______________________________________');
                             console.log('moved_node', event.move_info.moved_node.name);
                             console.log('target_node', event.move_info.target_node.name);
-                            console.log('position', event.move_info.position);
+                            console.log('position', event.move_info.position); */
 
 
                             var myNode = event.move_info.moved_node;
@@ -399,20 +363,20 @@ $this->display('_Header.tpl.php');
                                     if (typeof targetsDad === 'undefined') {
                                         // node has no dad, so it's a dad candidate
                                         var family = ('father=' + 0 + '&child=' + myNode);
-                                        console.log(family);
+                                      
                                         linked_to_order_item_id = '';
                                         isChild = false;
                                     } else {
                                         //get your target's dad as your dad
                                         var family = ('father=' + targetsDad + '&child=' + myNode);
-                                        console.log(family);
+                                       
                                         linked_to_order_item_id = targetsDad;
                                         isChild = true;
                                     }
                                 } else if (!(myXDad === targetsDad)) {
                                     //get target's dad as your dad
                                     var family = ('father=' + 0 + '&child=' + myNode);
-                                    console.log(family);
+                                   
                                     linked_to_order_item_id = '';
                                     isChild = false;
                                 }
@@ -421,7 +385,7 @@ $this->display('_Header.tpl.php');
 
                             if (event.move_info.position == 'inside') {
                                 var family = ('father=' + target + '&child=' + event.move_info.moved_node.id)
-                                console.log(family);
+                               
                                 linked_to_order_item_id = target;
                                 isChild = true;
                             }
@@ -508,7 +472,7 @@ $this->display('_Header.tpl.php');
 
                 });
 
-                console.log(post);
+             
                 $.ajax({
                     url: url,
                     type: "POST",
@@ -538,23 +502,6 @@ Please report any issue to @acs.</b>');
                     }
                 })
             });
-            /* $.ajax({
-             url: url,
-             type: "POST",
-             data: {data: JSON.stringify(postdata)},
-             dataType: 'json',
-             wait: true,
-             success: function (data) {
-             
-             
-             
-             $('#results').html('');
-             
-             
-             
-             
-             }
-             });*/
 
         });
 
@@ -603,19 +550,19 @@ Please report any issue to @acs.</b>');
     <table class="table table-bordered table-striped table-responsive results">
         <tr>
             <th>
-                <div class="row-fluid">
-                    <div class="span4">
-                        Tree Table 
-                    </div>
-                    <div class="span4">
-                        <span id="tot" class="badge badge-inverse"></span>
-                        <i class="icon-hand-down res"></i><span id="infos" class="badge badge-important res" title="Click to reset"></span>
-                    </div>
-                    <div class="span4">
-                       tip:  *CTRL-Click to multiselect
-                    </div>
-                </div>
-            </th>
+        <div class="row-fluid">
+            <div class="span4">
+                Tree Table 
+            </div>
+            <div class="span4">
+                <span id="tot" class="badge badge-inverse"></span>
+                <i class="icon-hand-down res"></i><span id="infos" class="badge badge-important res" title="Click to reset"></span>
+            </div>
+            <div class="span4">
+                tip:  *CTRL-Click to multiselect
+            </div>
+        </div>
+        </th>
         </tr>
         <tr>
             <td id="results">

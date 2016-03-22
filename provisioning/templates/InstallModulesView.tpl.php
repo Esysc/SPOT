@@ -203,7 +203,7 @@ $this->display('_Header.tpl.php');
                                                                             $.each(MODarr, function (index, value) {
 
                                                                                 var mod = baseName(value);
-                                                                                if (value.toLowerCase().indexOf("mgt") < 0 && value.toLowerCase().indexOf("vio")  < 0) {
+                                                                                if (value.toLowerCase().indexOf("mgt") < 0 && value.toLowerCase().indexOf("vio") < 0) {
 
                                                                                     var downloadId = "host_" + i + "_download_" + counter;
                                                                                     var installId = "host_" + i + "_install_" + counter;
@@ -316,7 +316,7 @@ $this->display('_Header.tpl.php');
             }
             $('#start').after("<button class='pull-right btn btn-primary' id='Results'>Get Results !</button>");
             $('#start').remove();
-            $('input[type=checkbox]').prop('disabled','true');
+            $('input[type=checkbox]').prop('disabled', 'true');
             $('.uncheck').remove();
             var ipaddress = " -ip " + $('#ipaddress').val();
             var netmask = " -n " + $('#netmask').val();
@@ -474,10 +474,10 @@ $this->display('_Header.tpl.php');
                         url: url,
                         type: "GET",
                         success: function (data) {
+
                             var arguments = data.arguments;
-                            
                             //stdout ID if you want the modal to display
-                            $('#stdout' + commandId).html('<tr><th>Running command: ' + arguments + '</th></tr><tr><td><pre>' + data.returnstdout + " " + data.returnstderr + '</pre></td><tr>');
+                            $('#stdout' + commandId).html('<tr><th>Running commandt ' + arguments + '</th></tr><tr><td><pre>' + data.returnstdout + " " + data.returnstderr + '</pre></td><tr>');
                         }
                     });
                 }, 4000);
@@ -568,7 +568,7 @@ $this->display('_Header.tpl.php');
             <a class="close" data-dismiss="modal">&times;</a>
             <h3>
                 <i class="icon-road"></i> Running Processes
-                
+
             </h3>
         </div>
         <div class="modal-body">
