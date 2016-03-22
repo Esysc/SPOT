@@ -14,7 +14,7 @@ require_once("config.php");
 
 $ID = $_POST['commandid'];
 $line = $_POST['content'];
-
+loggit($priority, var_dump($_POST));
 //url to get actual value and update as well 
 $url = SITE_URL . "/SPOT/provisioning/api/remotecommands/$ID";
 $json_table_content = apiWrapper($url);

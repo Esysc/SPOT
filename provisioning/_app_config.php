@@ -123,13 +123,14 @@ GlobalConfig::$ROUTE_MAP = array(
     'DELETE:api/customconfig/(:num)' => array('route' => 'Customconfig.Delete', 'params' => array('configId' => 2)),
     // Create CVS page (for old production DB)
     'GET:createcsv' => array('route' => 'Default.CreateCsv'),
-    //Set Attributes page (for new production DB)
-    'GET:setattr' => array('route' => 'Default.SetAttrSysDB'),
     // Set specifications (generic one, free data to insert no DB related)
-    //'GET:setspecs' => array('route' => 'Default.setSpecsDb'),
-    'GET:setspecs' => array('route' => 'Default.setSpecsDbTesting'),
-    // SEt Assembled on all items globally
+    'GET:setspecs' => array('route' => 'Default.setSpecsDb'), // SEt Assembled on all items globally
     'GET:setassgly' => array('route' => 'Default.setAssemblyGly'),
+    //Run commander
+    'GET:commander' => array('route' => 'Default.runCommander'),
+    //Give the route for the log wrapper
+    
+    'POST:api/logWrapper/(:num)' => array('route' => 'Default.logWrapper', 'params' => array('remotecommandid' => 2)),
    
 // Networkequipment
     'GET:networkequipments' => array('route' => 'Networkequipment.ListView'),
