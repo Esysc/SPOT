@@ -41,8 +41,8 @@ class RemotecommandsMap implements IDaoMap
 			$fm["Exesequence"] = new FieldMap("Exesequence","remoteCommands","exeSequence",false,FM_TYPE_INT,4,null,false);
 			$fm["Scriptid"] = new FieldMap("Scriptid","remoteCommands","scriptID",false,FM_TYPE_INT,4,null,false);
 			$fm["Returncode"] = new FieldMap("Returncode","remoteCommands","returnCode",false,FM_TYPE_INT,4,null,true);
-			$fm["Returnstdout"] = new FieldMap("Returnstdout","remoteCommands","returnStdout",false,FM_TYPE_VARCHAR,10000,null,true);
-			$fm["Returnstderr"] = new FieldMap("Returnstderr","remoteCommands","returnStderr",false,FM_TYPE_VARCHAR,10000,null,true);
+			$fm["Returnstdout"] = new FieldMap("Returnstdout","remoteCommands","returnStdout",false,FM_TYPE_VARCHAR,10000000,null,true);
+			$fm["Returnstderr"] = new FieldMap("Returnstderr","remoteCommands","returnStderr",false,FM_TYPE_VARCHAR,10000000,null,true);
 			$fm["Executionflag"] = new FieldMap("Executionflag","remoteCommands","executionFlag",false,FM_TYPE_INT,4,null,true);
 			$fm["Logtime"] = new FieldMap("Logtime","remoteCommands","logTime",true,FM_TYPE_TIMESTAMP,null,"CURRENT_TIMESTAMP",false);
 			$fm["Exectime"] = new FieldMap("Exectime","remoteCommands","execTime",false,FM_TYPE_VARCHAR,25,null,true);

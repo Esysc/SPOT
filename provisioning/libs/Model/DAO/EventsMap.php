@@ -34,7 +34,7 @@ class EventsMap implements IDaoMap
 			$fm = Array();
 			$fm["Id"] = new FieldMap("Id","events","id",true,FM_TYPE_INT,11,null,true);
 			$fm["Title"] = new FieldMap("Title","events","title",false,FM_TYPE_VARCHAR,50,null,false);
-			$fm["Content"] = new FieldMap("Content","events","content",false,FM_TYPE_LONGTEXT,1000,null,false);
+			$fm["Content"] = new FieldMap("Content","events","content",false,FM_TYPE_LONGTEXT,10000000000,null,false);
 			$fm["Userid"] = new FieldMap("Userid","events","userID",false,FM_TYPE_VARCHAR,50,null,false);
 			$fm["Date"] = new FieldMap("Date","events","date",false,FM_TYPE_VARCHAR,20,null,false);
 		}

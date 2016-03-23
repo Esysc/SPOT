@@ -99,10 +99,10 @@ class DefaultController extends AppBaseController {
 
         $pk = $this->GetRouter()->GetUrlParam('remotecommandid');
         $remotecommands = $this->Phreezer->Get('Remotecommands', $pk);
-
-
-        $remotecommands->Returnstdout .= $this->SafeGetVal($json, 'returnstdout', $remotecommands->Returnstdout);
-        
+        $filecontentout = $remotecommands->Returnstdout;
+        $line = $this->SafeGetVal($json, 'returnstdout', $remotecommands->Returnstdout);
+        $remotecommands->Returnstdout = "$line"."\n$filecontentout";
+       
       
 
 

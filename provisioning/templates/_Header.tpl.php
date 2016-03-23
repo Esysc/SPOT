@@ -451,7 +451,7 @@
                                                 echo 'class="active"';
                                             }
                                             ?>><a href="./instmod">PRE CCT preparation</a></li>
-                                            
+
 
 
                                         </ul>
@@ -525,45 +525,46 @@
                     </ul>
                     <ul class="nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">SysLog DB <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li <?php
                                 if ($this->nav == 'tblorderses') {
                                     echo 'class="active"';
                                 }
-                                ?>><a href="./tblorderses">Query DB (Old Version)</a></li>
+                                ?>><a href="./tblorderses">Query Sysprod DB</a></li>
                                 <li>
-                                    <a href="http://sysproddb.my.compnay.com/sales_order.php" target="_blank">(Query DB (NEW)</a>
+                                    <a href="http://sysproddb.my.compnay.com/sales_order.php" target="_blank">Query Syslog DB</a>
                                 </li>
                                 <?php if ($_SESSION['right'] == 10) { ?>
                                     <li class="menu-item dropdown dropdown-submenu">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">DB Wrappers (rest API calls)</a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Syslog DB Wrappers </a>
                                         <ul class="dropdown-menu">
                                             <li <?php
                                             if ($this->nav == 'treebuilder') {
                                                 echo 'class="active"';
                                             }
                                             ?>><a href="./treebuilder">Build Tree in a order</a></li>
-                                           <!-- <li <?php
-                                            if ($this->nav == 'setattr') {
-                                                echo 'class="active"';
-                                            }
-                                            ?>><a href="./setattr">Set hostname ip attributes new DB</a></li> -->
 
                                             <li <?php
                                             if ($this->nav == 'setspecs') {
                                                 echo 'class="active"';
                                             }
                                             ?>><a href="./setspecs">Set Specifications</a></li>
-                                            <li <?php
+                                            <!-- <li <?php
                                             if ($this->nav == 'setassgly') {
                                                 echo 'class="active"';
                                             }
-                                            ?>><a href="./setassgly">Assemble Globally a given sales order</a></li>
+                                            ?>><a href="./setassgly">Assemble Globally a given sales order</a></li> -->
+
 
                                         </ul>
                                     </li>
-                                <?php } ?>
+                                    <li <?php
+                                    if ($this->nav == 'commander') {
+                                        echo 'class="active"';
+                                    }
+                                    ?>><a href="./commander">Run commander</a></li>
+                                    <?php } ?>
 
 
                             </ul>

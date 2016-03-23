@@ -35,7 +35,7 @@ $this->display('_Header.tpl.php');
 
             var argument = {
                 "0": "-u " + user,
-                "1": "-c \"" + command + "\""
+                "1": '-c \'' + command + '\''
             };
             var datastring = JSON.stringify(argument);
             var command = {
@@ -116,9 +116,9 @@ $this->display('_Header.tpl.php');
             <div class=" ui-state-highlight ">Select a host from the list below and copy/paste your pattern.
             </div>
             Examples:
-            <div class="ui-state-highlight"><code> ls -la /home </code> <cite class="pull-right">Note the dollar sign is escaped</cite></div>
-            <div class=" ui-state-highlight "><code> for i in a b c;do echo \$i;done </code> <cite class="pull-right">Note the dollar sign is escaped</cite></div>
-            <div class=" ui-state-highlight "><code> winexe -U administrator%***REMOVED*** //10.0.142.31 \"cmd /c dir\" </code><cite class="pull-right"> Note the quotes are escaped</cite></div>
+            <div class="ui-state-highlight"><code> ls -la /home </code> <cite class="pull-right">Simple command</cite></div>
+            <div class=" ui-state-highlight "><code> for i in a b c;do echo $i;done </code> <cite class="pull-right">Oneliner loop </cite></div>
+            <div class=" ui-state-highlight "><code> winexe -U administrator%***REMOVED*** //10.0.142.31 "cmd /c dir" </code><cite class="pull-right">Complex command with double quotes</cite></div>
         </div>
         </th>
         </tr>

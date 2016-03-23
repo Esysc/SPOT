@@ -474,10 +474,10 @@ $this->display('_Header.tpl.php');
                         url: url,
                         type: "GET",
                         success: function (data) {
-
+                            var error = data.returncode;
                             var arguments = data.arguments;
                             //stdout ID if you want the modal to display
-                            $('#stdout' + commandId).html('<tr><th>Running commandt ' + arguments + '</th></tr><tr><td><pre>' + data.returnstdout + " " + data.returnstderr + '</pre></td><tr>');
+                            $('#stdout' + commandId).html('<tr><th>Running commandt ' + arguments + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: '+error+'</code></pre></td><tr>');
                         }
                     });
                 }, 4000);
