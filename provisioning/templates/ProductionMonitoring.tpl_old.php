@@ -63,16 +63,14 @@ $this->display('_Header.tpl.php');
     .rotation-nav-controls .rotation-item {
         position: absolute;
         z-index: 1000;
-        bottom: -5%;
+        bottom: 2%;
         width: 5%;
 
     }
     .rotation-nav-controls .rotation-prev {
-       
         left: 5%;
     }
     .rotation-nav-controls .rotation-next {
-        
         right: 5%;
     }
 
@@ -86,15 +84,9 @@ $this->display('_Header.tpl.php');
         height: 100%;
     }
 
-
-
-
-
-
 </style>
-
 <script src="scripts/jquery.rotation.min.js"></script>
-<script src="scripts/jquery.simplePagination.js"></script>  
+
 <script>
     $('document').ready(function () {
         var style = $('<style>.Hosts { width : 30%; }</style>');
@@ -164,7 +156,7 @@ $this->display('_Header.tpl.php');
                             $('#success').hide();
                             var tbl = $('#sysproddb');
                             var table = '';
-                            var td = '<tbody>';
+                            var td = '<tbody id="myTable">';
                             var bgcolor_num = '';
                             $.each(jsonobj, function (index, item) {
 
@@ -192,9 +184,9 @@ $this->display('_Header.tpl.php');
                                     // console.log(jcell[key]);
                                 }
                                 table = '<thead><tr>' + th + '</tr></thead>';
-                                td += '</tr>';
+                                td += '</tr></tbody>';
                             });
-                            table += td + '</tbody>';
+                            table += td;
                             if (table !== '') {
                                 tbl.html(table);
                                 $('.data').tooltip();
@@ -213,7 +205,7 @@ $this->display('_Header.tpl.php');
 
                                     });
                                 });
-                              
+
                             } else
                             {
                                 $('#servermsg').html('<strong>No data retreived.</strong>');
@@ -251,10 +243,7 @@ $this->display('_Header.tpl.php');
                 $('#failed').show();
             }
         });
-
-
-    });
-</script>
+    });</script>
 
 <div class="Maincontainer">
 
@@ -277,9 +266,8 @@ $this->display('_Header.tpl.php');
     <div class="alert alert-danger" id="failed" role="alert" style="display:none"></div>
     <input type="hidden" id="username" value="<?php if (isset($_SESSION['login'])) echo $_SESSION['login']; ?>" />
 
-    
 
-    <table class="table table-bordered table-responsive pager" id="sysproddb">
+    <table class="table table-bordered table-responsive" id="sysproddb">
 
 
 
@@ -301,11 +289,6 @@ $this->display('_Header.tpl.php');
 
 
 </div> 
-
-
-</body>
-</html>
-
 <script>
     $(document).ready(function () {
         var timer1;
@@ -323,12 +306,12 @@ $this->display('_Header.tpl.php');
             clearTimeout(timer1)
             clearInterval(interval);
             clearTimeout(timer2);
-
+           
             $(".go").show();
             $(".stop").hide();
         });
 
-           scrollPage();
+        scrollPage();
 
 
         function scrollPage() {
@@ -363,7 +346,6 @@ $this->display('_Header.tpl.php');
             // add zero in front of numbers < 10
             return i;
         }
-
 
 
     });

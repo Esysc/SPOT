@@ -43,7 +43,7 @@
         <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-57-precomposed.png" />
 
         <script src="scripts/jquery-1.8.2.min.js" ></script>
-
+        
 
         <script src="bootstrap/js/codemirror.js" type="text/javascript"></script>
         <script type="text/javascript" src="scripts/libs/LAB.min.js"></script>

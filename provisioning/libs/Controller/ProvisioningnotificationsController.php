@@ -190,6 +190,8 @@ class ProvisioningnotificationsController extends AppBaseController {
             $provisioningnotifications->Notifid = $this->SafeGetVal($json, 'notifid', $provisioningnotifications->Notifid);
 
             $provisioningnotifications->Hostname = $this->SafeGetVal($json, 'hostname', $provisioningnotifications->Hostname);
+            
+            $provisioningnotifications->Installationip = $this->SafeGetVal($json, 'installationip') ? $this->SafeGetVal($json, 'installationip') : $provisioningnotifications->Installationip ;
            // $provisioningnotifications->Installationip = $this->SafeGetVal($json, 'installationip', $provisioningnotifications->Installationip);
             $provisioningnotifications->Configuredip = $this->SafeGetVal($json, 'configured ip', $provisioningnotifications->Configuredip);
             //$provisioningnotifications->Startdate = date('Y-m-d H:i:s',strtotime($this->SafeGetVal($json, 'startdate', $provisioningnotifications->Startdate)));

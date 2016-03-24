@@ -20,6 +20,7 @@ $this->display('_Header.tpl.php');
             }
             var url = "/SPOT/provisioning/api/remotecommands/";
             $("#DataTable").html('');
+            $('#monitorContainer').html('');
             $("#modalMonitor").show();
             e.preventDefault();
             var command = $('#command').val();

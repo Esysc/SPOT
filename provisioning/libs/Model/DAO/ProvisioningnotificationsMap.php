@@ -34,7 +34,7 @@ class ProvisioningnotificationsMap implements IDaoMap
 			$fm = Array();
 			$fm["Notifid"] = new FieldMap("Notifid","provisioningNotifications","notifID",true,FM_TYPE_VARCHAR,100,null,false);
 			$fm["Hostname"] = new FieldMap("Hostname","provisioningNotifications","hostname",false,FM_TYPE_TEXT,null,null,false);
-			$fm["Installationip"] = new FieldMap("Installationip","provisioningNotifications","installationIP",false,FM_TYPE_VARCHAR,2000,null,false);
+			$fm["Installationip"] = new FieldMap("Installationip","provisioningNotifications","installationIP",false,FM_TYPE_VARCHAR,100000,null,false);
 			$fm["Configuredip"] = new FieldMap("Configuredip","provisioningNotifications","configuredIP",false,FM_TYPE_TEXT,null,null,false);
 			$fm["Startdate"] = new FieldMap("Startdate","provisioningNotifications","startDate",false,FM_TYPE_TIMESTAMP,null,"CURRENT_TIMESTAMP",false);
 			$fm["Status"] = new FieldMap("Status","provisioningNotifications","status",false,FM_TYPE_TEXT,null,null,false);
