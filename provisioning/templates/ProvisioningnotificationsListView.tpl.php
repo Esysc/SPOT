@@ -17,31 +17,7 @@ $this->display('_Header.tpl.php');
                 page.init();
         }, 1000);
     });</script>
-<script>
-<?php GlobalConfig::$SYSPROD_SERVER->MGT; ?>
-    $(document).ready(function () {
 
-        $('body').on('click', '.command', function (e) {
-            //e.preventDefault();
-            var COMMANDURI = $(this).attr('url');
-
-            $.ajax({
-                url: COMMANDURI,
-                method: 'GET',
-                success: function (data) {
-                    $('.results').html('<pre>' + data.returnstdout + '</pre>');
-                },
-                error: function (data) {
-                    console.log(data);
-                    $('.results').html('<pre>The log has been already removed</pre>');
-                }
-
-            });
-
-        });
-
-    });
-</script>
 <style>
     .showprogress {
         white-space: nowrap;
@@ -391,7 +367,7 @@ $this->display('_Header.tpl.php');
         <%  if (_.escape(item.get('os').toLowerCase().indexOf('redhat')) >= 0) { %>
         <% img = '<img  title="RHEL" alt="RHEL" src="data:image/png;base64,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"/>' %>
         <% } %>
-        <% htmlDiv = '<table class="collection table table-bordered table-hover table-responsive table-striped">' %>'
+        <% htmlDiv = '<table class="collection table table-bordered table-hover table-responsive table-striped">' %>
         <% htmlDiv = htmlDiv + '<thead>' %>
         <% htmlDiv = htmlDiv + '<tr>' %>
         <% htmlDiv = htmlDiv +  '<td><strong>Hostname</strong></td>' %>
@@ -479,6 +455,33 @@ $this->display('_Header.tpl.php');
 <?php
 //$this->display('_Footer.tpl.php');
 ?>
+<script>
 
+    $(document).ready(function () {
+
+        $('body').off().on('click', '.command', function (e) {
+            
+            //e.preventDefault();
+             e.stopPropagation();
+            var COMMANDURI = $(this).attr('url');
+            
+            $.ajax({
+                url: COMMANDURI,
+                method: 'GET',
+                success: function (data) {
+                    $('.results').html('<pre>' + data.returnstdout + '</pre>');
+                },
+                error: function (data) {
+                    console.log(data);
+                    console.log(COMMANDURI);
+                    $('.results').html('<pre>The log has been already removed</pre>');
+                }
+
+            });
+ 
+        });
+
+    });
+</script>
 </body>
 </html>

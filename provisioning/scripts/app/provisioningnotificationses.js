@@ -182,6 +182,9 @@ var page = {
      */
     showDetailDialog: function (m) {
 
+        //Remove html in .results div
+        
+        $('.results').html('');
         // show the modal dialog
         $('#provisioningnotificationsDetailDialog').modal({show: true});
 
@@ -240,6 +243,7 @@ var page = {
         }
 
         $('.timepicker-default').timepicker({defaultTime: 'value'});
+        
 
 
         if (showDeleteButton) {
@@ -273,15 +277,15 @@ var page = {
                                 console.log(base64img);
                                 var url = 'libs/App/pdfexport.php?var=datatoPdf&debug=true&title=' + title + '&image=imageOS';
                                 url = url + (-1 === url.indexOf('?') ? '?' : '&') + "__=" + Number(new Date())
-                               
-                                $('#provisioningnotificationsDetailDialog').modal('hide');
-                               
-                                window.location.href = url;
-                                
-                                
-                                }
 
-                            
+                                $('#provisioningnotificationsDetailDialog').modal('hide');
+
+                                window.location.href = url;
+
+
+                            }
+
+
                         });
                     }
 
