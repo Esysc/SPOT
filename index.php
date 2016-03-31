@@ -6,3 +6,5 @@
  * and open the template in the editor.
  */
 header('Location: provisioning/index.php');
+
+echo "test";
