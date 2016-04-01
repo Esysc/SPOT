@@ -68,11 +68,11 @@ $this->display('_Header.tpl.php');
 
     }
     .rotation-nav-controls .rotation-prev {
-       
+
         left: 5%;
     }
     .rotation-nav-controls .rotation-next {
-        
+
         right: 5%;
     }
 
@@ -87,14 +87,31 @@ $this->display('_Header.tpl.php');
     }
 
 
-
+    .carousel-indicators li {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin: 5px;
+        text-indent: 0;
+        cursor: pointer;
+        border: none;
+        border-radius: 50%;
+        background-color: #0000ff;
+        box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);    
+    }
+    .carousel-indicators .active {
+        width: 24px;
+        height: 24px;
+        margin: 5px;
+        background-color: #ffff99;
+    }
 
 
 
 </style>
 
 <script src="scripts/jquery.rotation.min.js"></script>
-<script src="scripts/jquery.simplePagination.js"></script>  
+
 <script>
     $('document').ready(function () {
         var style = $('<style>.Hosts { width : 30%; }</style>');
@@ -213,7 +230,7 @@ $this->display('_Header.tpl.php');
 
                                     });
                                 });
-                              
+
                             } else
                             {
                                 $('#servermsg').html('<strong>No data retreived.</strong>');
@@ -253,19 +270,24 @@ $this->display('_Header.tpl.php');
         });
 
 
+
     });
 </script>
 
 <div class="Maincontainer">
 
     <center>
-        <button class="btn btn-success go">Start Automatic Scrolling</button>
-        <button class="btn btn- stop">Stop Automatic Scrolling</button>
+        <!-- <button class="btn btn-success go">Start Automatic Scrolling</button>
+         <button class="btn btn- stop">Stop Automatic Scrolling</button> -->
         <i class="icon-th-list"></i> <?php echo $this->title; ?> 
     <!--    <span id=loader class="loader progress progress-striped active"><span class="bar"></span></span> -->
         <time class=" badge badge-info"></time>
-        <span  class="alive text-info text-right pull-right" ></span>
+        
+        <span  class="alive text-info text-right pull-left" ></span>
+        <span id="count" class="badge badge-inverse"></span>
+
     </center>
+
 
 
     <!-- underscore template for the collection -->
@@ -277,7 +299,10 @@ $this->display('_Header.tpl.php');
     <div class="alert alert-danger" id="failed" role="alert" style="display:none"></div>
     <input type="hidden" id="username" value="<?php if (isset($_SESSION['login'])) echo $_SESSION['login']; ?>" />
 
-    
+
+    <div id="carousel">
+
+    </div>
 
     <table class="table table-bordered table-responsive pager" id="sysproddb">
 
@@ -289,15 +314,15 @@ $this->display('_Header.tpl.php');
 
 
     </table>
-    <span class="alive text-info text-right pull-right" ></span>
+   <!--  <span class="alive text-info text-right pull-right" ></span>
 
-    <center>
+   <center>
         <button class="btn btn-success go">Start Automatic Scrolling</button>
         <button class="btn btn- stop">Stop Automatic Scrolling</button>
         <i class="icon-th-list"></i> <?php echo $this->title; ?> <time class=" badge badge-info"></time>
-    <!--    <span id=loader class="loader progress progress-striped active"><span class="bar"></span></span> -->
+     
 
-    </center>
+    </center> -->
 
 
 </div> 
@@ -327,8 +352,8 @@ $this->display('_Header.tpl.php');
             $(".go").show();
             $(".stop").hide();
         });
-
-           scrollPage();
+        // Commented out because, the scroll has been implemented in a more elegant way 
+        //scrollPage();
 
 
         function scrollPage() {
@@ -363,8 +388,47 @@ $this->display('_Header.tpl.php');
             // add zero in front of numbers < 10
             return i;
         }
+        var myCarousel = $("#carousel");
 
 
+
+
+        function moveRows(index) {
+
+            myCarousel.html("<ol class='carousel-indicators'></ol>");
+            var indicators = $(".carousel-indicators");
+            var i = 0;
+            $('#sysproddb > tbody  > tr').each(function () {
+                ++i;
+                var active;
+                if (i == index) {
+                    active = "class='active'";
+                } else {
+                    active = "";
+                }
+                $('<li data-target="#carousel-example-generic" data-slide-to="' + i + '" ' + active + '></li>').appendTo(indicators);
+            });
+            var firstTR = $('tbody tr').first();
+            firstTR.animate({opacity: 0},
+            function () {
+                $('tbody').append(firstTR);
+            });
+            firstTR.animate({opacity: 1});
+        }
+        var count = 0;
+
+        setInterval(function () {
+            var $slides = $('#sysproddb tbody tr');
+            var index = ++count;
+            var total = $slides.length;
+
+            if (index == total)
+                count = 0;
+
+            $("#count").html('First row is  n. ' + index + ' of ' + total);
+
+            moveRows(index);
+        }, 5000);
 
     });
 </script>
