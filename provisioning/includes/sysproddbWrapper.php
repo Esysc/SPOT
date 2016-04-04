@@ -110,7 +110,7 @@ function getHW($table, $SN) {
     }
     $HW = "Not Found";
     if ($product !== "") {
-        if (array_key_exists('product ref', $html_arr))
+        if (array_key_exists('product ref', $html_arr[$product]))
             $HW = $html_arr[$product]['product ref'];
     }
     return $HW;
