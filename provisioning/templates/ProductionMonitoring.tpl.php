@@ -93,6 +93,9 @@ $this->display('_Header.tpl.php');
         height: 24px;
         margin: 5px;
         text-indent: 0;
+        text-align: center;
+        font-weight: bold;
+        color: #FFFFFF;
         cursor: pointer;
         border: none;
         border-radius: 50%;
@@ -104,9 +107,12 @@ $this->display('_Header.tpl.php');
         height: 24px;
         margin: 5px;
         background-color: #ffff99;
+        color: #00F3B3;
     }
 
-
+    .backgroundYellow{
+        background: yellow;
+    }
 
 </style>
 
@@ -114,6 +120,7 @@ $this->display('_Header.tpl.php');
 
 <script>
     $('document').ready(function () {
+        $('body').css('overflow', 'hidden')
         var style = $('<style>.Hosts { width : 30%; }</style>');
         $('html > head').append(style);
         $('.navbar').hide();
@@ -257,8 +264,12 @@ $this->display('_Header.tpl.php');
                     });
                 })();
                 function startFlashing() {
-                    $('.3858176').effect("highlight", {color: 'yellow'}, 3000, startFlashing);
+                    //$('.3858176').effect("highlight", {color: 'yellow'}, 500, startFlashing);
                     // $('.3858176').effect("bounce", "slow");
+
+                    setInterval(function () {
+                        $('.3858176').toggleClass('backgroundYellow');
+                    }, 1000);
                 }
             },
             error: function (xhr, status, error) {
@@ -282,7 +293,7 @@ $this->display('_Header.tpl.php');
         <i class="icon-th-list"></i> <?php echo $this->title; ?> 
     <!--    <span id=loader class="loader progress progress-striped active"><span class="bar"></span></span> -->
         <time class=" badge badge-info"></time>
-        
+
         <span  class="alive text-info text-right pull-left" ></span>
         <span id="count" class="badge badge-inverse"></span>
 
@@ -304,7 +315,7 @@ $this->display('_Header.tpl.php');
 
     </div>
 
-    <table class="table table-bordered table-responsive pager" id="sysproddb">
+    <table class="table table-bordered table-responsive" id="sysproddb">
 
 
 
@@ -404,9 +415,9 @@ $this->display('_Header.tpl.php');
                 if (i == index) {
                     active = "class='active'";
                 } else {
-                    active = "";
+                    active = "class=''";
                 }
-                $('<li data-target="#carousel-example-generic" data-slide-to="' + i + '" ' + active + '></li>').appendTo(indicators);
+                $('<li data-target="#carousel-example-generic" data-slide-to="' + i + '" ' + active + '>' + i + '</li>').appendTo(indicators);
             });
             var firstTR = $('tbody tr').first();
             firstTR.animate({opacity: 0},
@@ -421,7 +432,10 @@ $this->display('_Header.tpl.php');
             var $slides = $('#sysproddb tbody tr');
             var index = ++count;
             var total = $slides.length;
-
+            if (total == 0) {
+              $("#count").html('No schedules found');
+            return;
+            }
             if (index == total)
                 count = 0;
 

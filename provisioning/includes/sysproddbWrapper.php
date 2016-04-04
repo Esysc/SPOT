@@ -15,6 +15,7 @@ $bgcolor['Validated'] = 16776960;
 $bgcolor['Finished'] = 3858176;
 $bgcolor['On Hold'] = 16776960;
 $bgcolor['R28 - Delivered to SysProd'] = 16098560;
+$bgcolor['P27 - Picked up'] = 3858176;
 
 function innerHTML($el) {
     $doc = new DOMDocument();
@@ -176,7 +177,7 @@ foreach ($share_value_arr as $key => $subtemp) {
         $parsing = json_decode($json);
 
         $end[$key]['bgcolor'] = $bgcolor[$status];
-        if (strpos($status, 'Progress') !== false && strpos($packstatus, 'Delivered') !== false)
+        if (strpos($status, 'Progress') !== false && strpos($packstatus, 'Delivered') !== false || strpos($status, 'Picked') == false  )
             $end[$key]['bgcolor'] = $bgcolor[$packstatus];
         if ($parsing->totalResults != 0) {
             $data = $parsing->rows[0]->data;
@@ -187,7 +188,7 @@ foreach ($share_value_arr as $key => $subtemp) {
 
             $clients = $data_decoded->clients;
             $client_table = "";
-            if (strpos($status, 'Progress') !== false || strpos($status, 'Finished') !== false || strpos($status, 'On Hold') !== false) {
+            if (strpos($status, 'Progress') !== false || strpos($status, 'Finished') !== false || strpos($status, 'On Hold') !== false ) {
 
                 $client_table = '<ul  class="rotation rotation-list">';
                 $counter = 1;
