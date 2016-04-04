@@ -15,7 +15,7 @@ $bgcolor['Validated'] = 16776960;
 $bgcolor['Finished'] = 3858176;
 $bgcolor['On Hold'] = 16776960;
 $bgcolor['R28 - Delivered to SysProd'] = 16098560;
-$bgcolor['P27 - Picked up'] = 3858176;
+$bgcolor['P27 - Picked up'] = 66015;
 
 function innerHTML($el) {
     $doc = new DOMDocument();
@@ -28,6 +28,8 @@ function innerHTML($el) {
 // generic function to get the contents of an HTML block
 function get_inner_html($node) {
     $innerHTML = '';
+    if (!is_object($node))
+        return false;
     $children = $node->childNodes;
     foreach ($children as $child) {
         $innerHTML .= $child->ownerDocument->saveXML($child);
@@ -94,10 +96,10 @@ function getHW($table, $SN) {
     $html = "<table>" . get_inner_html($table) . "</table>";
     $html_arr = getdata($html);
 // performing the search.....
-
+    $product = "";
     foreach ($html_arr as $key => $arr) {
 
-        $product = "";
+
         if (isset($arr['item sn'])) {
             if ($arr['item sn'] === $SN) {
                 // echo $arr['item sn'];
@@ -108,7 +110,8 @@ function getHW($table, $SN) {
     }
     $HW = "Not Found";
     if ($product !== "") {
-        $HW = $html_arr[$product]['product ref'];
+        if (array_key_exists('product ref', $html_arr))
+            $HW = $html_arr[$product]['product ref'];
     }
     return $HW;
 }
@@ -158,11 +161,12 @@ foreach ($xml->channel->item as $Item) {
 $end = array();
 //var_dump($temp);
 foreach ($share_value_arr as $key => $subtemp) {
-    $status = $subtemp['Status'];
-    $packstatus = $subtemp['PackingStatus'];
+    $status = (array_key_exists('Status', $subtemp) ? $subtemp['Status'] : '');
+    $packstatus = (array_key_exists('PackingStatus', $subtemp) ? $subtemp['PackingStatus'] : '' );
     $startshelf = '';
-    $tmpRack = $subtemp['HWPlacement'];
-    
+    $tmpRack = (array_key_exists('HWPlacement', $subtemp) ? $subtemp['HWPlacement'] : '');
+
+    //echo "$packstatus";
     if (strpos($status, 'Packed') !== false || strpos($status, 'Progress') !== false || strpos($status, 'Hold') !== false || strpos($status, 'Finished') !== false) {
 
         // Get the values stocked in SPOT db and the values stocked in syslog DB
@@ -177,18 +181,20 @@ foreach ($share_value_arr as $key => $subtemp) {
         $parsing = json_decode($json);
 
         $end[$key]['bgcolor'] = $bgcolor[$status];
-        if (strpos($status, 'Progress') !== false && strpos($packstatus, 'Delivered') !== false || strpos($status, 'Picked') == false  )
+        if ((strpos($status, 'Progress') !== false && strpos($packstatus, 'Delivered') !== false ) || strpos($packstatus, 'Picked') !== false )
             $end[$key]['bgcolor'] = $bgcolor[$packstatus];
         if ($parsing->totalResults != 0) {
             $data = $parsing->rows[0]->data;
             $data_decoded = json_decode($data);
             // $CustomerACR = " | $data_decoded->CustomerACR</br />";
             // $orderdescription = $data_decoded->orderdescription;
-            $network = $data_decoded->network;
+            
+            $network = (isset($data_decoded->network) ? $data_decoded->network : '');
 
-            $clients = $data_decoded->clients;
+            $clients = (isset($data_decoded->clients) ? $data_decoded->clients : '');
             $client_table = "";
-            if (strpos($status, 'Progress') !== false || strpos($status, 'Finished') !== false || strpos($status, 'On Hold') !== false ) {
+            if ((strpos($status, 'Progress') !== false || strpos($status, 'Finished') !== false || strpos($status, 'On Hold') !== false ) && strpos($packstatus, 'Picked') === false) {
+                // echo $packstatus;
 
                 $client_table = '<ul  class="rotation rotation-list">';
                 $counter = 1;
@@ -223,8 +229,7 @@ foreach ($share_value_arr as $key => $subtemp) {
                 }
                 $client_table .= "</ul>";
             }
-            if (strpos($status, 'Packed') !== false) {
-
+            if (strpos($status, 'Packed') !== false || strpos($packstatus, 'Picked') !== false) {
                 $startshelf = "Transfered In R27";
                 $stopshelf = "Transfered In R27";
             } else {
@@ -263,15 +268,18 @@ foreach ($share_value_arr as $key => $subtemp) {
 
 
         isset($subtemp["SysProdActor"]) ? $end[$key]["User"] = $subtemp["SysProdActor"] : $end[$key]["User"] = "Logistics";
+        if ( ! array_key_exists("PackingStatus", $subtemp)) $subtemp["PackingStatus"] = '';
         $end[$key]["Status"] = $subtemp["Status"] . "<br />" . $subtemp["PackingStatus"];
         isset($subtemp["RealStart"]) ? $START = $subtemp["RealStart"] : $START = $subtemp["PlannedStart"];
         isset($subtemp["RealEnd"]) ? $END = $subtemp["RealEnd"] : $END = $subtemp["PlannedEnd"];
         isset($subtemp["ExpShipment"]) ? $SHIP = "Exp. ship: " . $subtemp["ExpShipment"] : $SHIP = "";
         $end[$key]["Schedule"] = "Start: $START<br />End: $END<br />$SHIP";
 
-        $tmpRack = $subtemp['HWPlacement'];
-        if( trim($startshelf) === '' ) $startshelf = "Rack(s): ".$tmpRack;
-        if ( trim($stopshelf) === '' ) $stopshelf = "Rack(s): ".$tmpRack;
+        //$tmpRack = $subtemp['HWPlacement'];
+        if (trim($startshelf) === '')
+            $startshelf = "Rack(s): " . $tmpRack;
+        if (trim($stopshelf) === '')
+            $stopshelf = "Rack(s): " . $tmpRack;
         $end[$key]['Quantity'] = "Machines : " . $subtemp["#Machines"];
         $end[$key]['Quantity'] .= "<br />Racks : " . $subtemp["#Racks"];
         $end[$key]['From Rack'] = $startshelf;
