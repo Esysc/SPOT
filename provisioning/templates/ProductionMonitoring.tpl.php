@@ -86,11 +86,27 @@ $this->display('_Header.tpl.php');
         height: 100%;
     }
 
+    .nav {
+        position: relative;
+        bottom: 60px;
+        min-height: 30px;
+        width: auto;
+
+    }
+
+    .carousel-indicators{
+        position:relative; 
+        
+        left:40%
+        
+    }
 
     .carousel-indicators li {
+
+
         display: inline-block;
-        width: 24px;
-        height: 24px;
+        width: 18px;
+        height: 18px;
         margin: 5px;
         text-indent: 0;
         text-align: center;
@@ -103,8 +119,8 @@ $this->display('_Header.tpl.php');
         box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);    
     }
     .carousel-indicators .active {
-        width: 24px;
-        height: 24px;
+        width: 18px;
+        height: 18px;
         margin: 5px;
         background-color: #ffff99;
         color: #00F3B3;
@@ -114,13 +130,15 @@ $this->display('_Header.tpl.php');
         background: yellow;
     }
 
+
 </style>
 
 <script src="scripts/jquery.rotation.min.js"></script>
 
 <script>
     $('document').ready(function () {
-        $('body').css('overflow', 'hidden')
+
+        // $('body').css('overflow', 'hidden')
         var style = $('<style>.Hosts { width : 30%; }</style>');
         $('html > head').append(style);
         $('.navbar').hide();
@@ -259,7 +277,8 @@ $this->display('_Header.tpl.php');
                             interval: 3000,
                             duration: 1000,
                         });
-                        setTimeout(update, 120000); // function refers to itself
+                        //setTimeout(update, 120000); // function refers to itself
+                        update;
                         startFlashing();
                     });
                 })();
@@ -285,6 +304,8 @@ $this->display('_Header.tpl.php');
     });
 </script>
 
+
+
 <div class="Maincontainer">
 
     <center>
@@ -295,7 +316,7 @@ $this->display('_Header.tpl.php');
         <time class=" badge badge-info"></time>
 
         <span  class="alive text-info text-right pull-left" ></span>
-        <span id="count" class="badge badge-inverse"></span>
+        <span id="count" class="badge badge-inverse"></span><span id="refresh" class="badge badge-important pull-right"></span>
 
     </center>
 
@@ -310,10 +331,14 @@ $this->display('_Header.tpl.php');
     <div class="alert alert-danger" id="failed" role="alert" style="display:none"></div>
     <input type="hidden" id="username" value="<?php if (isset($_SESSION['login'])) echo $_SESSION['login']; ?>" />
 
+</div>
 
-    <div id="carousel">
+<div id="carousel" class="nav">
 
-    </div>
+</div>
+
+<div class="Maincontainer">
+
 
     <table class="table table-bordered table-responsive" id="sysproddb">
 
@@ -427,24 +452,48 @@ $this->display('_Header.tpl.php');
             firstTR.animate({opacity: 1});
         }
         var count = 0;
+        var time = new Date().getTime();
+        var timeParRow = 10000
+        var timetoRefresh, timeDiff;
+        var countDown;
 
         setInterval(function () {
             var $slides = $('#sysproddb tbody tr');
             var index = ++count;
+
             var total = $slides.length;
+            timetoRefresh = timeParRow * (total + 1) + 120000;
             if (total == 0) {
-              $("#count").html('No schedules found');
-            return;
+                $("#count").html('No schedules found');
+                return;
             }
+            var nowTime = new Date().getTime();
+            timeDiff = nowTime - time;
+            countDown = parseInt((timetoRefresh - timeDiff) / 1000 + 1);
+            CountTime(countDown);
+            if (timeDiff >= timetoRefresh)
+                window.location.reload(true);
+
             if (index == total)
                 count = 0;
 
             $("#count").html('First row is  n. ' + index + ' of ' + total);
 
             moveRows(index);
-        }, 5000);
+        }, timeParRow);
+        var i;
+        $('#refresh').html('Calculating next refresh....');
+        function CountTime(countDown) {
+            var Time = countDown;
+            clearInterval(i);
+            i = setInterval(function () {
 
+                $('#refresh').html('Next refresh in ' + Time + ' sec.');
+                Time--;
+            }, 1000);
+        }
     });
+
 </script>
 
 <?php

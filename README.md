@@ -11,11 +11,11 @@ Web application source code
 
 
 [TODO]
-### How do I get set up? ###
+### What I would like to do (my be in other life?) ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
+* Real time monitoring without polling
+* Bootstrap4 migration
+* Jquery > 2.0 migration
+* 
 * How to run tests
 * Deployment instructions
