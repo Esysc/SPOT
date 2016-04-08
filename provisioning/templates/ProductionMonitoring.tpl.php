@@ -96,9 +96,9 @@ $this->display('_Header.tpl.php');
 
     .carousel-indicators{
         position:relative; 
-        
+
         left:40%
-        
+
     }
 
     .carousel-indicators li {
@@ -316,7 +316,7 @@ $this->display('_Header.tpl.php');
         <time class=" badge badge-info"></time>
 
         <span  class="alive text-info text-right pull-left" ></span>
-        <span id="count" class="badge badge-inverse"></span><span id="refresh" class="badge badge-important pull-right"></span>
+        <span id="count" class="badge badge-inverse"></span>
 
     </center>
 
@@ -336,6 +336,7 @@ $this->display('_Header.tpl.php');
 <div id="carousel" class="nav">
 
 </div>
+<div id="countdown" class="nav"></div>
 
 <div class="Maincontainer">
 
@@ -377,14 +378,12 @@ $this->display('_Header.tpl.php');
         $(".go").click(function () {
             location.reload();
         });
-
 // Stop animation when button is clicked
         $(".stop").click(function () {
             $("html, body").stop();
             clearTimeout(timer1)
             clearInterval(interval);
             clearTimeout(timer2);
-
             $(".go").show();
             $(".stop").hide();
         });
@@ -405,7 +404,6 @@ $this->display('_Header.tpl.php');
                     $('html, body').animate({scrollTop: 0}, 16000);
                 }, 16000);
             }, 16000);
-
         }
         function startTime() {
             var today = new Date();
@@ -425,10 +423,6 @@ $this->display('_Header.tpl.php');
             return i;
         }
         var myCarousel = $("#carousel");
-
-
-
-
         function moveRows(index) {
 
             myCarousel.html("<ol class='carousel-indicators'></ol>");
@@ -456,11 +450,9 @@ $this->display('_Header.tpl.php');
         var timeParRow = 10000
         var timetoRefresh, timeDiff;
         var countDown;
-
         setInterval(function () {
             var $slides = $('#sysproddb tbody tr');
             var index = ++count;
-
             var total = $slides.length;
             timetoRefresh = timeParRow * (total + 1) + 120000;
             if (total == 0) {
@@ -473,24 +465,35 @@ $this->display('_Header.tpl.php');
             CountTime(countDown);
             if (timeDiff >= timetoRefresh)
                 window.location.reload(true);
-
             if (index == total)
                 count = 0;
-
             $("#count").html('First row is  n. ' + index + ' of ' + total);
-
             moveRows(index);
         }, timeParRow);
         var i;
-        $('#refresh').html('Calculating next refresh....');
+        $('#countdown').html('<center><span class="badge badge-important">Calculating next refresh....</span>');
         function CountTime(countDown) {
-            var Time = countDown;
+            var Time = countDown + 1;
+            var timeRow = parseInt(timeParRow / 1000);
+            var carousel = $("#countdown");
             clearInterval(i);
             i = setInterval(function () {
-
-                $('#refresh').html('Next refresh in ' + Time + ' sec.');
+                $(carousel).html('<center><span class="badge badge-important">Next row shift </span><span class="badge bage-success">' + timeRow + ' sec.</span><span class="badge badge-important">Next Page Refresh </span><span class="badge bage-success">' + Time + ' sec. </span></canter>');
                 Time--;
+                timeRow--;
+                if (timeRow == 1) {
+                    clearInterval(i);
+                    correctTime(Time,timeRow,carousel);
+                }
             }, 1000);
+        }
+
+        function correctTime(Time, timeRow, carousel) {
+            setTimeout(function () {
+                
+                $(carousel).html('<center><span class="badge badge-important">Next row shift </span><span class="badge bage-success">' + timeRow + ' sec.</span><span class="badge badge-important">Next Page Refresh </span><span class="badge bage-success">' + Time + ' sec. </span></canter>');
+            },1000);
+
         }
     });
 

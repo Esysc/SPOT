@@ -233,7 +233,10 @@ $this->display('_Header.tpl.php');
             var url = $(this).attr("value");
             $("#DataTable").html('');
             e.preventDefault();
-            var sales_order_ref = $("#salesel option:selected").text();
+            var stringToParse = $("#salesel option:selected").text();
+            var arr = stringToParse.split('|');
+            var sales_order_ref = arr[0];
+
             var r = confirm("Are you sure to assemble all items in Sales order " + sales_order_ref + "? \n This action cannot undone!");
             if (r == false)
                 return;
@@ -253,13 +256,16 @@ $this->display('_Header.tpl.php');
                 success: function (data) {
 
 
-
                     $('#results').html('');
 
                     $("#DataTable").append('<p>Sales Order ' + sales_order_ref + ' Message from server:</p> ' + data);
 
+                    console.log('success');
 
+                },
+                error: function (data) {
 
+                    console.log('error');
                 }
             });
         });
