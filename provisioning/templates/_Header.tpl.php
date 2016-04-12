@@ -43,7 +43,7 @@
         <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-57-precomposed.png" />
 
         <script src="scripts/jquery-1.8.2.min.js" ></script>
-        
+
 
         <script src="bootstrap/js/codemirror.js" type="text/javascript"></script>
         <script type="text/javascript" src="scripts/libs/LAB.min.js"></script>
@@ -69,6 +69,7 @@
                     .script("scripts/libs/backbone-relational.js").wait()
                     .script("scripts/jquery.webui-popover.js").wait()
                     .script("scripts/placeholder.js").wait()
+                    .script("scripts/socket.io.js").wait()
 
         </script>
 
@@ -98,6 +99,7 @@
       <script src="libs/Controller/razorflow_php/static/rf/js/razorflow.devtools.min.js" type="text/javascript"></script> -->
         <script src="scripts/placeholder.js"></script>
         <script src="scripts/chartphp.js"></script>
+        <script src="scripts/socket.io.js"></script>
        <!--  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script> -->
         <link rel="stylesheet" href="styles/chartphp.css">
         <link rel="stylesheet" href="bootstrap/css/jquery-ui.css">

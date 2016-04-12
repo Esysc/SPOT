@@ -231,7 +231,7 @@ $this->display('_Header.tpl.php');
         });
         $('#assemble').on('click', function (e) {
             var url = $(this).attr("value");
-            $("#DataTable").html('');
+           // $("#DataTable").html('');
             e.preventDefault();
             var stringToParse = $("#salesel option:selected").text();
             var arr = stringToParse.split('|');

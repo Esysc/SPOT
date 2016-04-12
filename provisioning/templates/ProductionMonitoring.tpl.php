@@ -287,8 +287,8 @@ $this->display('_Header.tpl.php');
                     // $('.3858176').effect("bounce", "slow");
 
                     setInterval(function () {
-                        $('.3858176').toggleClass('backgroundYellow');
-                    }, 1000);
+                        $('.3858176').toggleClass('backgroundYellow', 1000);
+                    }, 2000);
                 }
             },
             error: function (xhr, status, error) {

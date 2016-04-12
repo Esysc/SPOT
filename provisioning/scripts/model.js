@@ -908,15 +908,22 @@ model.RemotecommandsCollection = model.AbstractCollection.extend({
  * Sysprodracks Backbone Model
  */
 model.SysprodracksModel = Backbone.Model.extend({
-    urlRoot: 'api/sysprodracks',
-    idAttribute: 'idracks',
-    idracks: '',
-    reponse: '',
-    defaults: {
-        'idracks': null,
-        'reponse': ''
-    }
+	urlRoot: 'api/sysprodracks',
+	idAttribute: 'idracks',
+	idracks: '',
+	reponse: '',
+	machinetype: '',
+	ipaddress: '',
+	timestamp: '',
+	defaults: {
+		'idracks': null,
+		'reponse': '',
+		'machinetype': '',
+		'ipaddress': '',
+		'timestamp': ''
+	}
 });
+
 
 /**
  * Sysprodracks Backbone Collection

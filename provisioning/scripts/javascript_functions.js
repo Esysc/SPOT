@@ -10,7 +10,7 @@ $(document).ready(function () {
         var imglblcontainer = $('#imglblcontainer' + id);
         var imageName = $(this).find(":selected").text();
 
-        imglblcontainer.html('<div class="imglabel label label-info"><center>' + imageName + '</center></div>');
+        imglblcontainer.html('<span class="imglabel label label-success">Selected: ' + imageName + '</span>');
 
 
     });

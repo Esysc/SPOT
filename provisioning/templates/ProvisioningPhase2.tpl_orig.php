@@ -16,7 +16,6 @@ $content = json_decode($JSONdata, true);
 $imgname = $_SESSION['imagename'];
 $imgtarget = $_SESSION['imagetarget'];
 $ostarg = $_SESSION['ostarget'];
-
 foreach ($content['rows'] as $value) {
     //1 AIX - BOOTP
     //2 LINUX/WINDOWS - PXE
@@ -45,7 +44,6 @@ $imagespxe[0] = $_SESSION['imagename'];
   array_multisort($APC, $APCDesc); */
 //var_dump($_SESSION);
 ?>
-<link href="bootstrap/css/jquery-labelauty.css" rel="stylesheet" />
 <script type="text/javascript">
     $LAB.script("scripts/app/provisioningphase2.js").wait(function () {
         $(document).ready(function () {
@@ -60,13 +58,7 @@ $imagespxe[0] = $_SESSION['imagename'];
 
 <script type="text/javascript">
 
-    localStorage.setItem("options", "<?php
-foreach ($imagename as $kvalue => $image) {
-    $optvalue = $imagetarget[$kvalue] . "|" . $image . "|" . $ostarget[$kvalue];
 
-    echo "<option value='$optvalue'>$image</option>";
-};
-?>");
 
     $(document).ready(function () {
         var loading;
@@ -75,6 +67,7 @@ foreach ($imagename as $kvalue => $image) {
             var status = data.status;
             curruser = "<?php echo $_SESSION['login']; ?>";
             curruser = curruser.toLowerCase();
+
             if (status.toLowerCase().indexOf(curruser) < 0) {
                 loading = setInterval(blink, 710);
             } else {
@@ -112,6 +105,7 @@ foreach ($imagename as $kvalue => $image) {
                     if (data.status.toLowerCase().indexOf(curruser) < 0) {
                         var updateobj = {};
                         updateobj.status = update;
+
                         $.ajax({
                             url: "/SPOT/provisioning/api/tempdata/MESSAGE",
                             type: "PUT",
@@ -123,7 +117,6 @@ foreach ($imagename as $kvalue => $image) {
             });
         });
         $('[data-toggle="tooltip"]').tooltip();
-
         $('.detect').on('click', function () {
             var id = $(this).attr('id');
             var idrackname = id.replace("detect", "rackname");
@@ -134,14 +127,12 @@ foreach ($imagename as $kvalue => $image) {
             var shelf = $('#' + idshelf).val();
             var content = {reponse: "99"};
             var Jcontent = JSON.stringify(content);
-           
             $.ajax({
                 url: "/SPOT/provisioning/api/sysprodracks/" + rackname,
                 type: "PUT",
                 data: Jcontent,
                 async: true
             });
-            $('.imagename').trigger('change');
             var clientaddress = '<?php echo GlobalConfig::$SYSPROD_SERVER->DRBL; ?>';
             var scriptid = "0"; //The id for checkRacks script
 
@@ -170,7 +161,9 @@ foreach ($imagename as $kvalue => $image) {
                 async: true,
                 success: function () {
 
-
+                    $('#servermsg').html('<center>Successfully sent the command to rescan the rack shelf  '
+                            + rackname + '<br />Refresh the <a href="' + window.location.href + '">page </a>now to see new notification. <br /><strong>Note that any modification will be lost</strong></center>');
+                    $('#basicModal').modal();
                 }
             });
         });
@@ -217,11 +210,6 @@ foreach ($imagename as $kvalue => $image) {
         $('.bootsms').chosen({width: '50%'});
         $('.paging').chosen({width: '50%'});
         $('.disksize').chosen({width: '50%'});
-        $('.imagename').chosen({allow_single_deselect: true,
-            display_disabled_options: false,
-            width: '250px'
-        });
-
         /* var apccode = $('.apccode');
          apccode.chosen({allow_single_deselect: true}); */
         // don't let the width to be "0"
@@ -319,6 +307,7 @@ if (isset($_SESSION['CSV'])) {
                 change(function () {
                     findDuplicate();
                 });
+
         function findDuplicate() {
             $('.checkbadge').remove();
             var textArr = $(".checkdup").get();
@@ -698,7 +687,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                 var scriptID = 5;
                                 var clientaddress = $.trim($("#clientaddress" + level).val());
                                 // Next line is commented out because the script is run from client directly
-                                // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                         ?>';
+                                // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;     ?>';
                                 break;
                             case 'LINUX':
 
@@ -743,13 +732,13 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                 }
 
 
-                                //  var clientaddress = '<?php // echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                          ?>';
+                                //  var clientaddress = '<?php // echo GlobalConfig::$SYSPROD_SERVER->DRBL;                      ?>';
 
                                 var clientaddress = $.trim($("#clientaddress" + level).val());
                                 //      console.log("clientaddress: " + clientaddress);
                                 break;
                         }
-                        // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                          ?>';
+                        // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                      ?>';
                         break;
                 }
 
@@ -1026,8 +1015,140 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                         <p id="detect<?php echo $key; ?>" class="btn btn-mini btn-success detect"><i class="icon-eye-open icon-white"></i>Detect again</p>
 
                                         <div id="clientaddressShow<?php echo $key; ?>"></div>
-                                        <input type="hidden" class="<?php echo $value['rackname']; ?> sectionSettings"  id ="<?php echo $key; ?>" value="" />
+                                        <script>
+                                         
+                                            $('#deleteRow<?php echo $key; ?>').click(function (event) {
+                                                event.preventDefault();
 
+                                                var numItems = $('.removeButton').length;
+                                                if (numItems == 1) {
+                                                    $('#servermsg').html('You cannot remove the last element.');
+                                                    $('#basicModal').modal();
+                                                } else {
+                                                    $('#tr<?php echo $key; ?>').remove();
+                                                    $('.pager').remove();
+                                                    $('#pagination').after('<ul class="pagination  pager" id="myPager"></ul>');
+                                                    page.pageMe();
+                                                }
+                                            });
+                                            $.ajax({
+                                                url: "/SPOT/provisioning/api/sysprodracks/<?php echo $value['rackname']; ?>",
+                                                type: "GET",
+                                                success: function (data) {
+
+                                                    var reponse = data.reponse;
+                                                    if (reponse.length === 2) {
+                                                        // Clean values on tempdata
+                                                        var clean = {data: ''};
+                                                        var cleandata = JSON.stringify(clean);
+                                                        $.ajax({
+                                                            url: "/SPOT/provisioning/api/tempdata/<?php echo $value['rackname']; ?>",
+                                                            type: "PUT",
+                                                            data: cleandata
+                                                        });
+                                                        $.ajax(this);
+                                                        //     console.log('Retry the request');
+                                                    } else {
+                                                        var label = '';
+                                                        var client = '';
+                                                        var selects = $('#imagename<?php echo $key; ?>');
+                                                        switch (reponse) {
+
+                                                            case '1':
+                                                                client = '<span class=\'label label-success\' data-toggle="tooltip" title=\'Client Power AIX\'>bootp</span>';
+                                                                $('#deleteRow<?php echo $key; ?>').show();
+                                                                $('#pbootsms<?php echo $key; ?>').show();
+                                                                $('#imagedata<?php echo $key; ?>').show();
+                                                                $('#imgaix<?php echo $key; ?>').show();
+                                                                $('#piloipaddress<?php echo $key; ?>').remove();
+                                                                var removal = 2;
+                                                                label = 'AIX images:';
+                                                                //  $("#imagename<?php echo $key; ?> option[value^='2|']").remove();
+                                                                break;
+                                                            case '2':
+                                                                $.ajax({
+                                                                    url: "/SPOT/provisioning/api/tempdata/<?php echo $value['rackname']; ?>",
+                                                                    type: "GET",
+                                                                    wait: true,
+                                                                    success: function (temp) {
+                                                                        //   console.log(temp);
+                                                                        var ip = temp.data;
+                                                                        if (ip === '') {
+                                                                            $.ajax(this);
+                                                                            //          console.log("ip value not yet set so retry request");
+                                                                        } else {
+                                                                            $('#clientaddress<?php echo $key; ?>').val(ip);
+                                                                            //       console.log('IP of dhcp client is: ' + ip);
+                                                                            $('#clientaddressShow<?php echo $key; ?>').html('<span class="label label-success">The dhcp address is: ' + ip + '</span>')
+
+
+                                                                        }
+
+                                                                    },
+                                                                    error: function () {
+                                                                        //   console.log("error retreiving client dhcp ip address");
+                                                                    }
+                                                                });
+                                                                client = '<span class=\'label label-warning\' data-toggle="tooltip" title=\'Client PXE Linux/Windows\'>pxe</span>';
+                                                                $('#deleteRow<?php echo $key; ?>').show();
+                                                                $('#piloipaddress<?php echo $key; ?>').show();
+                                                                $('#windows<?php echo $key; ?>').show();
+                                                                $('#imgwin<?php echo $key; ?>').show();
+                                                                $('#imgrhel<?php echo $key; ?>').show();
+                                                                label = 'RH/WIN images:';
+                                                                var removal = 1;
+                                                                break;
+                                                            case '4':
+                                                                client = '<span class=\'label label-default\'  data-toggle="tooltip" title=\'Client Undefined. If this is not a VM click the button to delete this client. If this is a physical machine, check the connections and run this page again\'>undef</span>';
+                                                                $('#deleteRow<?php echo $key; ?>').show();
+                                                                $('#detect<?php echo $key; ?>').show();
+                                                                $('#imagedata<?php echo $key; ?>').show();
+                                                                $('#pbootsms<?php echo $key; ?>').remove();
+                                                                $('#imgaix<?php echo $key; ?>').show();
+                                                                $('#imgaix<?php echo $key; ?>').after('<b>?</b>');
+                                                                $('#piloipaddress<?php echo $key; ?>').remove();
+                                                                var removal = 2;
+                                                                label = 'AIX images:';
+                                                                break;
+                                                        }
+
+
+
+
+
+
+
+                                                        $('#<?php echo $value['rackname']; ?>').html(client + '');
+                                                        selects.find("option[value^='" + removal + "']")
+                                                                // .attr('disabled', true).addClass('disabled');
+                                                                .remove();
+                                                        var optGrps = $("#optgroup<?php echo $key; ?>");
+                                                        optGrps.attr('label', label);
+                                                        //   optGrps.label = label
+
+
+
+                                                        selects.trigger("change");
+                                                        selects.after('<input type="hidden" class="machinetype" id="machinetype<?php echo $key; ?>" value="' + reponse + '" />');
+                                                        selects.show();
+                                                        selects.chosen({allow_single_deselect: true,
+                                                            display_disabled_options: false,
+                                                            width: '250px',
+                                                            include_group_label_in_selected: label
+                                                        });
+                                                    }
+
+                                                },
+                                                error: function () {
+                                                    $.ajax(this);
+                                                    //      console.log('Retry the request');
+                                                },
+                                                complete: function () {
+
+                                                }
+
+
+                                            });</script>
 
 
                                         <p id="<?php echo $value['rackname']; ?>"><img src="/SPOT/provisioning/images/loader.gif" data-toggle="tooltip" title="Please, patience while I'm checking the connections...." /></p>
@@ -1072,27 +1193,19 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                     </td>
                                     <td>
 
-                                        <div class="label label-info" id="optgroup<?php echo $key; ?>"></div>
+
                                         <select id="imagename<?php echo $key; ?>" name="imagename<?php echo $key; ?>" class="chosen imagename" required="required">
+                                            <optgroup id="optgroup<?php echo $key; ?>" label="test">
+                                                <?php
+                                                foreach ($imagename as $kvalue => $image) {
+                                                    $optvalue = $imagetarget[$kvalue] . "|" . $image . "|" . $ostarget[$kvalue];
 
-                                        </select>
-                                        <script>
-
-                                            $('#deleteRow<?php echo $key; ?>').click(function (event) {
-                                                event.preventDefault();
-                                                var numItems = $('.removeButton').length;
-                                                if (numItems == 1) {
-                                                    $('#servermsg').html('You cannot remove the last element.');
-                                                    $('#basicModal').modal();
-                                                } else {
-                                                    $('#tr<?php echo $key; ?>').remove();
-                                                    $('.pager').remove();
-                                                    $('#pagination').after('<ul class="pagination  pager" id="myPager"></ul>');
-                                                    page.pageMe();
+                                                    echo "<option value='$optvalue'>$image</option>";
                                                 }
-                                            });
+                                                ?>
+                                            </optgroup>
+                                        </select>
 
-                                        </script>
 
                                         <div id="imglblcontainerimagename<?php echo $key; ?>"></div>
                                     </td>
@@ -1161,10 +1274,9 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                             <label for="productkey<?php echo $key; ?>">Product Key</label>
                                             <input type="text" name="productkey<?php echo $key; ?>"  class="productkey checkdup" id="productkey<?php echo $key; ?>" placeholder="xxxxx-xxxxx-xxxxx-xxxxx-xxxxx" />
 
-                                            <div class='checkboxes span6'>
-                                                <input type="checkbox"  name="radmin<?php echo $key; ?>"  id="radmin<?php echo $key; ?>" value="1" /><label for="radmin<?php echo $key; ?>"></label>
-                                                <span class='badge badge-info modules'>Radmin activation</span>
-                                            </div>
+
+                                            <label for="radmin<?php echo $key; ?>"> Radmin Activation</label><input type="checkbox"  name="radmin<?php echo $key; ?>"  id="radmin<?php echo $key; ?>" value="1" />
+
 
                                         </div>
 
@@ -1219,94 +1331,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
 
 
     </div> <!-- /container -->
-    <script>
-        $(document).ready(function () {
 
-
-            $(".sectionSettings").on("change", function () {
-
-                var removal;
-                var settings = $(this).val();
-                if (!JSON.parse(settings))
-                    return;
-                var decoded = JSON.parse(settings);
-                var id = $(this).attr('id');
-
-                if (decoded.reponse == 99) {
-                     $("#" + decoded.idracks).html('<img src="/SPOT/provisioning/images/loader.gif" data-toggle="tooltip" title="Please, patience while I\'m checking the connections...." />');
-                    return;
-                }
-                    
-                $('#deleteRow' + id).show();
-                var label = '';
-                var client = '';
-                var selects = $('#imagename' + id);
-                var boot = decoded.machinetype
-                switch (decoded.reponse) {
-
-                    case '1':
-                        client = '<span class=\'label label-success\' data-toggle="tooltip" title=\'Client Power AIX\'>' + boot + '</span>';
-                        $('#detect' + id + ', #piloipaddress' + id + ', #windows' + id + ', #imgwin' + id + ',#imgrhel' + id).hide();
-                        $('#pbootsms' + id + ', #imagedata' + id + ', #imgaix' + id).show();
-                        $('#clientaddressShow' + id).html('');
-                        removal = 2;
-                        label = 'AIX images:';
-                        break;
-                    case '2':
-                        $('#detect' + id + ', #pbootsms' + id + ', #imagedata' + id).hide();
-                        var ip = decoded.ipaddress;
-                        $('#clientaddress' + id).val(ip);
-                        $('#clientaddressShow' + id).html('<span class="label label-success">The dhcp address is: ' + ip + '</span>')
-                        client = '<span class=\'label label-warning\' data-toggle="tooltip" title=\'Client PXE Linux/Windows\'>pxe</span>';
-                        $('#piloipaddress' + id + ', #windows' + id + ', #imgwin' + id + ',#imgrhel' + id).show();
-                        label = 'RH/WIN images:';
-                        removal = 1;
-                        break;
-                    case '4':
-
-                        client = '<span class=\'label label-default\'  data-toggle="tooltip" title=\'Client Undefined. If this is not a VM click the button to delete this client. If this is a physical machine, check the connections and run this page again\'>undef</span>';
-                        $('#clientaddressShow' + id).html('');
-                        $('#detect' + id + ', #imagedata' + id + ', #imgaix' + id).show();
-                        $('#questionMark'+id).remove();
-                        $('#imgaix' + id).after('<b id="questionMark'+id+'">?</b>');
-                        $('#piloipaddress' + id + ', #windows' + id + ', #imgwin' + id + ', #imgrhel' + id + ', #pbootsms' + id).hide();
-                        removal = 2;
-                        label = 'AIX images:';
-                        break;
-                }
-
-                $('#' + decoded.idracks).html(client + '');
-                selects.chosen('destroy');
-                selects.empty().append(localStorage.getItem("options")).trigger('chosen:updated');
-
-                selects.find("option[value^='" + removal + "']").remove().trigger('chosen:updated');
-
-
-                var optGrps = $("#optgroup" + id);
-                optGrps.html(label);
-                //   optGrps.label = label
-
-                // selects.trigger("change");
-                $('#machinetype' + id).remove();
-                selects.show();
-                selects.after('<input type="hidden" class="machinetype" id="machinetype' + id + '" value="' + decoded.reponse + '" />');
-                selects.chosen({allow_single_deselect: true,
-                    display_disabled_options: false,
-                    width: '250px'
-                });
-
-
-
-
-
-            });
-
-            $('input:checkbox').on('click', function () {
-                console.log($(this).val())
-            });
-            console.log($('input:checkbox').val());
-        })
-    </script>
     <?php
 } // End of if exist a selected order for thi session
 $this->display('_Footer.tpl.php');

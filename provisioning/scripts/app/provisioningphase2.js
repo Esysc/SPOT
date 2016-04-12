@@ -19,13 +19,52 @@ var page = {
      *
      */
 
-    init: function() {
+    init: function () {
+
+        /*
+         * 
+         * Set connection to websocket and retrieve the rack object
+         * The rack object contains all racks information and is actualized every 2 seconds
+         * need connection to chx-sysprod-01:8000 where node is running
+         * 
+         */
+        $(window).on('beforeunload', function () {
+            socket.close();
+        });
 
 
+        var socket = io.connect('http://chx-sysprod-01:8000');
+        socket.on('reconnecting', function () {
+            message('System', 'Attempting to re-connect to the server');
+        });
+        socket.on('error', function (e) {
+            message('System', e ? e : 'A unknown error occurred');
+        });
+        socket.on('notification', function (data) {
+
+            $.each(data.idracks, function (key, value) {
+               
 
 
+                $('.sectionSettings').each(function () {
+                    
+                    if ( $(this).attr('class').indexOf(value.idracks) >=0 && value.idracks !== '') {
+                         var modifyDom = JSON.stringify(value);
+                        var nowValue = $(this).val();
+                        if (nowValue !== modifyDom) {
+                            console.log('changed:' + modifyDom)
+                            $(this).val(modifyDom);
+                            $(this).trigger('change');
+                            $('.imagename').trigger('change');
+                        }
+                    }
+                });
 
 
+            });
+
+
+        });
 
         // ensure initialization only occurs once
         if (page.isInitialized || page.isInitializing)
@@ -36,31 +75,30 @@ var page = {
         /* setInterval(function() {
          $('.pager').remove();
          $('#pagination').after('<ul class="pagination  pager" id="myPager"></ul>'); */
-       page.pageMe();
-       // page.applyPage();
+        page.pageMe();
+        // page.applyPage();
 
         /* }, 1000); */
-         
+
 
 
     },
-    pageMe: function() {
+    pageMe: function () {
         var $this = $('#paginationTable'),
                 defaults = {
                     perPage: 4,
                     showPrevNext: true,
                     hidePageNumbers: false
                 },
-              
         settings = defaults;
         var listElement = $this;
         var perPage = settings.perPage;
         var children = listElement.children('.items');
-        
-       
-        
+
+
+
         var pager = $('.pager');
-        
+
         if (typeof settings.childSelector != "undefined") {
             children = listElement.find(settings.childSelector);
         }
@@ -96,16 +134,16 @@ var page = {
         pager.children().eq(1).addClass("active");
         children.hide();
         children.slice(0, perPage).show();
-        pager.find('li .page_link').click(function() {
+        pager.find('li .page_link').click(function () {
             var clickedPage = $(this).html().valueOf() - 1;
             goTo(clickedPage, perPage);
             return false;
         });
-        pager.find('li .prev_link').click(function() {
+        pager.find('li .prev_link').click(function () {
             previous();
             return false;
         });
-        pager.find('li .next_link').click(function() {
+        pager.find('li .next_link').click(function () {
             next();
             return false;
         });
@@ -151,7 +189,7 @@ var page = {
 
 
     }
-    
+
 };
 
 

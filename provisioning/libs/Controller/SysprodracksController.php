@@ -52,7 +52,7 @@ class SysprodracksController extends AppBaseController
 			// TODO: this will limit results based on all properties included in the filter list 
 			$filter = RequestUtil::Get('filter');
 			if ($filter) $criteria->AddFilter(
-				new CriteriaFilter('Idracks,Reponse'
+				new CriteriaFilter('Idracks,Reponse,Machinetype,Ipaddress,Timestamp'
 				, '%'.$filter.'%')
 			);
 
@@ -152,6 +152,11 @@ class SysprodracksController extends AppBaseController
 
 			$sysprodracks->Idracks = $this->SafeGetVal($json, 'idracks');
 			$sysprodracks->Reponse = $this->SafeGetVal($json, 'reponse');
+			$sysprodracks->Machinetype = $this->SafeGetVal($json, 'machinetype');
+			$sysprodracks->Ipaddress = $this->SafeGetVal($json, 'ipaddress');
+                        $today = date("Y-m-d H:i:s");
+                        $sysprodracks->Timestamp = $today;
+			//$sysprodracks->Timestamp = date('Y-m-d H:i:s',strtotime($this->SafeGetVal($json, 'timestamp')));
 
 			$sysprodracks->Validate();
 			$errors = $sysprodracks->GetValidationErrors();
@@ -198,6 +203,11 @@ class SysprodracksController extends AppBaseController
 			// $sysprodracks->Idracks = $this->SafeGetVal($json, 'idracks', $sysprodracks->Idracks);
 
 			$sysprodracks->Reponse = $this->SafeGetVal($json, 'reponse', $sysprodracks->Reponse);
+			$sysprodracks->Machinetype = $this->SafeGetVal($json, 'machinetype', $sysprodracks->Machinetype);
+			$sysprodracks->Ipaddress = $this->SafeGetVal($json, 'ipaddress', $sysprodracks->Ipaddress);
+                        $today = date("Y-m-d H:i:s");
+                        $sysprodracks->Timestamp = $today;
+			//$sysprodracks->Timestamp = date('Y-m-d H:i:s',strtotime($this->SafeGetVal($json, 'timestamp', $sysprodracks->Timestamp)));
 
 			$sysprodracks->Validate();
 			$errors = $sysprodracks->GetValidationErrors();

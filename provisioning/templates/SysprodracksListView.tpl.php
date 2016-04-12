@@ -36,6 +36,9 @@
 			<tr>
 				<th id="header_Idracks">Idracks<% if (page.orderBy == 'Idracks') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
 				<th id="header_Reponse">Reponse<% if (page.orderBy == 'Reponse') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
+				<th id="header_Machinetype">Machinetype<% if (page.orderBy == 'Machinetype') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
+				<th id="header_Ipaddress">Ipaddress<% if (page.orderBy == 'Ipaddress') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
+				<th id="header_Timestamp">Timestamp<% if (page.orderBy == 'Timestamp') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -43,6 +46,9 @@
 			<tr id="<%= _.escape(item.get('idracks')) %>">
 				<td><%= _.escape(item.get('idracks') || '') %></td>
 				<td><%= _.escape(item.get('reponse') || '') %></td>
+				<td><%= _.escape(item.get('machinetype') || '') %></td>
+				<td><%= _.escape(item.get('ipaddress') || '') %></td>
+				<td><%if (item.get('timestamp')) { %><%= _date(app.parseDate(item.get('timestamp'))).format('MMM D, YYYY h:mm A') %><% } else { %>NULL<% } %></td>
 			</tr>
 		<% }); %>
 		</tbody>
@@ -66,6 +72,34 @@
 					<label class="control-label" for="reponse">Reponse</label>
 					<div class="controls inline-inputs">
 						<input type="text" class="input-xlarge" id="reponse" placeholder="Reponse" value="<%= _.escape(item.get('reponse') || '') %>">
+						<span class="help-inline"></span>
+					</div>
+				</div>
+				<div id="machinetypeInputContainer" class="control-group">
+					<label class="control-label" for="machinetype">Machinetype</label>
+					<div class="controls inline-inputs">
+						<input type="text" class="input-xlarge" id="machinetype" placeholder="Machinetype" value="<%= _.escape(item.get('machinetype') || '') %>">
+						<span class="help-inline"></span>
+					</div>
+				</div>
+				<div id="ipaddressInputContainer" class="control-group">
+					<label class="control-label" for="ipaddress">Ipaddress</label>
+					<div class="controls inline-inputs">
+						<input type="text" class="input-xlarge" id="ipaddress" placeholder="Ipaddress" value="<%= _.escape(item.get('ipaddress') || '') %>">
+						<span class="help-inline"></span>
+					</div>
+				</div>
+				<div id="timestampInputContainer" class="control-group">
+					<label class="control-label" for="timestamp">Timestamp</label>
+					<div class="controls inline-inputs">
+						<div class="input-append date date-picker" data-date-format="yyyy-mm-dd">
+							<input id="timestamp" type="text" value="<%= _date(app.parseDate(item.get('timestamp'))).format('YYYY-MM-DD') %>" />
+							<span class="add-on"><i class="icon-calendar"></i></span>
+						</div>
+						<div class="input-append bootstrap-timepicker-component">
+							<input id="timestamp-time" type="text" class="timepicker-default input-small" value="<%= _date(app.parseDate(item.get('timestamp'))).format('h:mm A') %>" />
+							<span class="add-on"><i class="icon-time"></i></span>
+						</div>
 						<span class="help-inline"></span>
 					</div>
 				</div>

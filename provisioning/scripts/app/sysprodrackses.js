@@ -264,7 +264,10 @@ var page = {
 
 		page.sysprodracks.save({
 			'idracks': $('input#idracks').val(),
-			'reponse': $('input#reponse').val()
+			'reponse': $('input#reponse').val(),
+			'machinetype': $('input#machinetype').val(),
+			'ipaddress': $('input#ipaddress').val(),
+			'timestamp': $('input#timestamp').val()+' '+$('input#timestamp-time').val()
 		}, {
 			wait: true,
 			success: function(){

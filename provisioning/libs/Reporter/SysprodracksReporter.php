@@ -19,18 +19,14 @@ class SysprodracksReporter extends Reporter
 {
 
 	// the properties in this class must match the columns returned by GetCustomQuery().
-	// 'CustomFieldExample' is an example that is not part of the `sysprodRacks` table
+	// 'CustomFieldExample' is an example that is not part of the `sysprodracks` table
 	public $CustomFieldExample;
 
-	public $Rack;
-	public $Shelf;
-	public $Ebsorder;
-	public $Itemdata;
-	public $Cycladesip;
-	public $Cycladesport;
-	public $Switchip;
-	public $Switchport;
-	public $Bootpip;
+	public $Idracks;
+	public $Reponse;
+	public $Machinetype;
+	public $Ipaddress;
+	public $Timestamp;
 
 	/*
 	* GetCustomQuery returns a fully formed SQL statement.  The result columns
@@ -44,16 +40,12 @@ class SysprodracksReporter extends Reporter
 	{
 		$sql = "select
 			'custom value here...' as CustomFieldExample
-			,`sysprodRacks`.`rack` as Rack
-			,`sysprodRacks`.`shelf` as Shelf
-			,`sysprodRacks`.`eBSOrder` as Ebsorder
-			,`sysprodRacks`.`itemData` as Itemdata
-			,`sysprodRacks`.`cycladesIP` as Cycladesip
-			,`sysprodRacks`.`cycladesPort` as Cycladesport
-			,`sysprodRacks`.`switchIP` as Switchip
-			,`sysprodRacks`.`switchPort` as Switchport
-			,`sysprodRacks`.`bootpIP` as Bootpip
-		from `sysprodRacks`";
+			,`sysprodracks`.`idracks` as Idracks
+			,`sysprodracks`.`reponse` as Reponse
+			,`sysprodracks`.`machinetype` as Machinetype
+			,`sysprodracks`.`ipaddress` as Ipaddress
+			,`sysprodracks`.`timestamp` as Timestamp
+		from `sysprodracks`";
 
 		// the criteria can be used or you can write your own custom logic.
 		// be sure to escape any user input with $criteria->Escape()
@@ -74,7 +66,7 @@ class SysprodracksReporter extends Reporter
 	*/
 	static function GetCustomCountQuery($criteria)
 	{
-		$sql = "select count(1) as counter from `sysprodRacks`";
+		$sql = "select count(1) as counter from `sysprodracks`";
 
 		// the criteria can be used or you can write your own custom logic.
 		// be sure to escape any user input with $criteria->Escape()

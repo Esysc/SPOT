@@ -6,7 +6,7 @@ require_once("verysimple/Phreeze/IDaoMap.php");
 
 /**
  * SysprodracksMap is a static class with functions used to get FieldMap and KeyMap information that
- * is used by Phreeze to map the SysprodracksDAO to the sysprodRacks datastore.
+ * is used by Phreeze to map the SysprodracksDAO to the sysprodracks datastore.
  *
  * WARNING: THIS IS AN AUTO-GENERATED FILE
  *
@@ -32,8 +32,11 @@ class SysprodracksMap implements IDaoMap
 		if ($fm == null)
 		{
 			$fm = Array();
-			$fm["Idracks"] = new FieldMap("Idracks","sysprodRacks","idracks",true,FM_TYPE_CHAR,15,null,false);
-			$fm["Reponse"] = new FieldMap("Reponse","sysprodRacks","reponse",false,FM_TYPE_CHAR,50,null,false);
+			$fm["Idracks"] = new FieldMap("Idracks","sysprodracks","idracks",true,FM_TYPE_CHAR,15,null,false);
+			$fm["Reponse"] = new FieldMap("Reponse","sysprodracks","reponse",false,FM_TYPE_CHAR,50,null,false);
+			$fm["Machinetype"] = new FieldMap("Machinetype","sysprodracks","machinetype",false,FM_TYPE_CHAR,50,null,false);
+			$fm["Ipaddress"] = new FieldMap("Ipaddress","sysprodracks","ipaddress",false,FM_TYPE_CHAR,50,null,false);
+			$fm["Timestamp"] = new FieldMap("Timestamp","sysprodracks","timestamp",false,FM_TYPE_TIMESTAMP,null,"CURRENT_TIMESTAMP",false);
 		}
 		return $fm;
 	}
