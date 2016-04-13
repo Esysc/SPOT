@@ -21,50 +21,7 @@ var page = {
 
     init: function () {
 
-        /*
-         * 
-         * Set connection to websocket and retrieve the rack object
-         * The rack object contains all racks information and is actualized every 2 seconds
-         * need connection to chx-sysprod-01:8000 where node is running
-         * 
-         */
-        $(window).on('beforeunload', function () {
-            socket.close();
-        });
 
-
-        var socket = io.connect('http://chx-sysprod-01:8000');
-        socket.on('reconnecting', function () {
-            message('System', 'Attempting to re-connect to the server');
-        });
-        socket.on('error', function (e) {
-            message('System', e ? e : 'A unknown error occurred');
-        });
-        socket.on('notification', function (data) {
-
-            $.each(data.idracks, function (key, value) {
-               
-
-
-                $('.sectionSettings').each(function () {
-                    
-                    if ( $(this).attr('class').indexOf(value.idracks) >=0 && value.idracks !== '') {
-                         var modifyDom = JSON.stringify(value);
-                        var nowValue = $(this).val();
-                        if (nowValue !== modifyDom) {
-                            console.log('changed:' + modifyDom)
-                            $(this).val(modifyDom);
-                            $(this).trigger('change');
-                            $('.imagename').trigger('change');
-                        }
-                    }
-                });
-
-
-            });
-
-
-        });
 
         // ensure initialization only occurs once
         if (page.isInitialized || page.isInitializing)
@@ -81,7 +38,76 @@ var page = {
         /* }, 1000); */
 
 
+        /*
+         * 
+         * Set connection to websocket and retrieve the rack object
+         * The rack object contains all racks information and is actualized every 2 seconds
+         * need connection to chx-sysprod-01:8000 where node is running
+         * 
+         */
+        $(window).on('beforeunload', function () {
+            socket.close();
+        });
 
+
+        var socket = io.connect('http://chx-sysprod-01:8000');
+        socket.on('reconnecting', function () {
+            page.showAlarm('sysprodracksSocket', 'notif3', 'System Attempting to re-connect to http://chx-sysprod-01:8000. NOTE!!! This is a blocking issue for PXE clients, POWER IBM clients could still be installed');
+
+        });
+        socket.on('error', function (e) {
+            page.showAlarm('sysprodracksSocket', 'notif3', 'System ' + e + ' Attempting to re-connect to http://chx-sysprod-01:8000. NOTE!!! This is a blocking issue for PXE clients, POWER IBM clients could still be installed');
+
+        });
+        socket.on('notification', function (data) {
+
+            page.dismissAlarm('sysprodracksSocket', 'notif3', 'GOOD! http://chx-sysprod-01:8000 is available again!');
+            $.each(data.idracks, function (key, value) {
+
+
+
+                $('.sectionSettings').each(function () {
+
+                    if ($(this).attr('class').indexOf(value.idracks) >= 0 && value.idracks !== '') {
+                        var modifyDom = JSON.stringify(value);
+                        var nowValue = $(this).val();
+                        if (nowValue !== modifyDom) {
+                            console.log('changed:' + modifyDom)
+                            $(this).val(modifyDom);
+                            $(this).trigger('change');
+                            $('.imagename').trigger('change');
+                        }
+                    }
+                });
+
+
+            });
+
+
+        });
+
+
+
+
+
+
+    },
+    showAlarm: function (id1, id2, msg) {
+        $('#' + id1).removeClass('alert-success');
+        $('#' + id1).addClass('alert-danger');
+        $('#' + id2).html(msg);
+        $('#' + id1).slideDown(400);
+    },
+    dismissAlarm: function (id1, id2, msg) {
+        if ($('#' + id1).is(':visible'))
+        {
+            $('#' + id1).removeClass('alert-danger');
+            $('#' + id1).addClass('alert-success');
+            $('#' + id2).html(msg);
+            setTimeout(function () {
+                $('#' + id1).slideUp(400);
+            }, 5000);
+        }
     },
     pageMe: function () {
         var $this = $('#paginationTable'),
@@ -189,6 +215,7 @@ var page = {
 
 
     }
+
 
 };
 

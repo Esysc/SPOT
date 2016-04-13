@@ -130,7 +130,7 @@ $this->display('_Header.tpl.php');
         background: yellow;
     }
 
-
+   
 </style>
 
 <script src="scripts/jquery.rotation.min.js"></script>
@@ -154,7 +154,13 @@ $this->display('_Header.tpl.php');
             var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
             return (yiq >= 128) ? 'black' : 'white';
         }
-
+        function rgb2hex(rgb) {
+            rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+            return (rgb && rgb.length === 4) ? +
+                    ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+                    ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+                    ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : '';
+        }
 
         //check if HQ servers  are all alive before to continue
         var sysproddb = 'sysproddb.my.compnay.com';
@@ -299,10 +305,14 @@ $this->display('_Header.tpl.php');
             }
         });
 
+        $('.span2').each(function () {
+            $(this).css('font-weight', 'bold');
 
+        });
 
     });
 </script>
+
 
 
 
@@ -317,6 +327,19 @@ $this->display('_Header.tpl.php');
 
         <span  class="alive text-info text-right pull-left" ></span>
         <span id="count" class="badge badge-inverse"></span>
+        <div class="pull-right">
+            <div class="row">
+
+                <span class=" span2" style="background-color:#0101DF;color:white">Packed - Picked up</span>
+                <span class=" span2" style="background-color:#FF0040;color:white">In Progress</span>
+
+                <span class=" span2" style="background-color:#3ADF00;color:black">Finished</span>
+                <span class=" span2" style="background-color:#FFFF00;color:black">On Hold</span>
+                <span class=" span2" style="background-color:#F5A500;color:black">Delivered</span>
+
+            </div>
+
+        </div>
 
     </center>
 
@@ -483,18 +506,19 @@ $this->display('_Header.tpl.php');
                 timeRow--;
                 if (timeRow == 1) {
                     clearInterval(i);
-                    correctTime(Time,timeRow,carousel);
+                    correctTime(Time, timeRow, carousel);
                 }
             }, 1000);
         }
 
         function correctTime(Time, timeRow, carousel) {
             setTimeout(function () {
-                
+
                 $(carousel).html('<center><span class="badge badge-important">Next row shift </span><span class="badge bage-success">' + timeRow + ' sec.</span><span class="badge badge-important">Next Page Refresh </span><span class="badge bage-success">' + Time + ' sec. </span></canter>');
-            },1000);
+            }, 1000);
 
         }
+
     });
 
 </script>

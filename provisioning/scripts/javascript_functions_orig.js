@@ -17,8 +17,8 @@ $(document).ready(function () {
 
 
     $.ajaxSettings.data = null; // hack for google chrome
-
-
+    
+    
 
     function disableF5(e) {
         if ((e.which || e.keyCode) == 116) {
@@ -33,8 +33,8 @@ $(document).ready(function () {
     $('a.pmon').on('click', function (e) {
         e.preventDefault();
         window.open($(this).attr("href"), "Production Scheduling", "menubar=no,toolbar=no,width=2048,height=2048,scrollbars=yes");
-
-
+       
+		
     });
 
 // To disable f5
@@ -52,23 +52,6 @@ $(document).ready(function () {
         e.preventDefault();
 
     });
-    function showAlarm(id1,id2,msg) {
-        $('#' + id1).removeClass('alert-success');
-            $('#' + id1).addClass('alert-danger');
-            $('#' + id2).html(msg);
-             $('#' + id1).slideDown(400);
-    }
-    function dismissAlarm(id1, id2, msg) {
-        if ($('#' + id1).is(':visible'))
-        {
-            $('#' + id1).removeClass('alert-danger');
-            $('#' + id1).addClass('alert-success');
-            $('#' + id2).html(msg);
-            setTimeout(function () {
-                $('#' + id1).slideUp(400);
-            }, 5000);
-        }
-    }
     function IPAddressKeyOnly(e) {
         var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode;
         if (keyCode != 46 && keyCode > 31 && (keyCode < 48 || keyCode > 57))
@@ -77,171 +60,163 @@ $(document).ready(function () {
     }
     var popcontent = '';
     var BGscriptname = '';
-    var count, d;
-    var socketCommands = io.connect('http://chx-sysprod-01:8001');
-    socketCommands.on('reconnecting', function () {
-        showAlarm('remotecommandsSocket', 'notif1', 'Warning Attempting to re-connect to http://chx-sysprod-01:8001. This is not a big issue, it\' only about monitoring');
-       
-    });
-    socketCommands.on('error', function (e) {
-         showAlarm('remotecommandsSocket', 'notif1', 'System' + e + '. This is not a big issue, it\' only about monitoring');
-       
-    });
-    socketCommands.on('data', function (data) {
-        dismissAlarm('remotecommandsSocket', 'notif1', 'GOOD! http://chx-sysprod-01:8001 is available again!');
+    
+    var bgcommands = function () {
 
-        d = new Date();
+        var d = new Date();
         popcontent = '<p class="alert alert-info"><strong>Last checked: ' + d.toLocaleTimeString() + '</strong></p>';
-        count = 0;
+        var count = 0;
         $('#ok').remove();
         $('#monitoring').remove();
-        if (data) {
-            var objects = data.rows;
-            if (objects.length > 0) {
-
-                popcontent += '<table class="table table-striped table-bordered table-condensed table-responsive table-hover"><tr><th><strong><center>Scripts</center></strong></th></tr>';
-
-                $.each(objects, function (key, val) {
-                    count++;
-                    popcontent += '<tr><td><strong>Exe n. ' + count + '</strong></tr></td>';
-                    popcontent += '<tr><td><strong>CommandID: </strong>' + val.remotecommandid + '</td></tr>';
-                    popcontent += '<tr><td><strong>Server:  </strong> ' + val.clientaddress + '</td></tr>';
-
-                    $.ajax({
-                        url: '/SPOT/provisioning/api/provisioningscriptses?scriptid_Equals=' + val.scriptid,
-                        async: false,
-                        success: function (data) {
-                            var objs = data.rows[0];
-
-                            BGscriptname = objs.scriptname;
-
-                        }
-
-                    });
-
-                    popcontent += '<tr><td><strong>Script:  </strong>' + BGscriptname + '</td></tr>';
-                    popcontent += '<tr><td><strong>Timestamp:  </strong>' + val.logtime + '</td></tr>';
 
 
-                });
-                $('#ok').remove();
-                $('#monitoring').remove();
-                $('#pendings').after('<a  id="monitoring"></a>');
+        $.ajax({
+            url: '/SPOT/provisioning/api/remotecommandses?executionflag_In=9,0&scriptid_NotEquals=14', //The script id mondwrapper_2.0 not to show here
+            async: false,
+            success: function (results) {
+
+                if (results) {
+                    var objects = results.rows;
+                    // console.log(objects); 
+
+                    if (objects.length > 0) {
+
+                        popcontent += '<table class="table table-striped table-bordered table-condensed table-responsive table-hover"><tr><th><strong><center>Scripts</center></strong></th></tr>';
+
+                        $.each(objects, function (key, val) {
+                            count++;
+                            popcontent += '<tr><td><strong>Exe n. ' + count + '</strong></tr></td>';
+                            popcontent += '<tr><td><strong>CommandID: </strong>' + val.remotecommandid + '</td></tr>';
+                            popcontent += '<tr><td><strong>Server:  </strong> ' + val.clientaddress + '</td></tr>';
+
+                            $.ajax({
+                                url: '/SPOT/provisioning/api/provisioningscriptses?scriptid_Equals=' + val.scriptid,
+                                async: false,
+                                success: function (data) {
+                                    var objs = data.rows[0];
+
+                                    BGscriptname = objs.scriptname;
+
+                                }
+
+                            });
+
+                            popcontent += '<tr><td><strong>Script:  </strong>' + BGscriptname + '</td></tr>';
+                            popcontent += '<tr><td><strong>Timestamp:  </strong>' + val.logtime + '</td></tr>';
+
+                        });
+                        $('#ok').remove();
+                        $('#monitoring').remove();
+                        $('#pendings').after('<a  id="monitoring"></a>');
 
 
-                popcontent += '</table>';
-                // $('#monitoring').html('<img src="/SPOT/provisioning/images/on.gif"/>');
-                $('#monitoring').html('Background operations <span class="badge badge-warning">' + count + '</span>');
+                        popcontent += '</table>';
+                        // $('#monitoring').html('<img src="/SPOT/provisioning/images/on.gif"/>');
+                        $('#monitoring').html('Background operations <span class="badge badge-warning">' + count + '</span>');
 
-                // $this.webuiPopover().hide();
-                $('#monitoring').webuiPopover({
-                    title: 'Processes still executing..',
-                    content: popcontent,
-                    placement: 'bottom-left',
-                    trigger: 'hover',
-                    animation: 'pop',
-                    type: 'html',
-                    cache: true
-                });
-
-
+                        // $this.webuiPopover().hide();
+                        $('#monitoring').webuiPopover({
+                            title: 'Processes still executing..',
+                            content: popcontent,
+                            placement: 'bottom-left',
+                            trigger: 'hover',
+                            animation: 'pop',
+                            type: 'html',
+                            cache: true
+                        });
 
 
+
+
+                    }
+
+                }
+            }
+        });
+        $.ajax({
+            url: '/SPOT/provisioning/api/provisioningnotificationses?progress_LessThan=100',
+            async: false,
+            success: function (results) {
+                if (results) {
+                    var objects = results.rows;
+                    // console.log(objects); 
+
+                    if (objects.length > 0) {
+
+                        popcontent += '</p><table class="table table-striped table-bordered table-condensed table-responsive table-hover"><tr><th><strong><center>Provisioning</center></strong></th></tr>';
+                        var index = 0;
+                        $.each(objects, function (key, val) {
+                            index++;
+                            count++;
+                            popcontent += '<tr><td><strong>Provisioning n. ' + index + '</strong></tr></td>';
+                            popcontent += '<tr><td><strong>Notifid: </strong>' + val.notifid + '</td></tr>';
+                            popcontent += '<tr><td><strong>Hostname:  </strong> ' + val.hostname + '</td></tr>';
+                            popcontent += '<tr><td><strong>Progress:  </strong><div class="progress progress-striped active"><div class="bar" role="progressbar" aria-valuenow="' + val.progress + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + val.progress + '%"> <span class="sr-only" >' + val.progress + '% Complete</span></div></div>' + val.status + '</td></tr>';
+                            popcontent += '<tr><td><strong>Timestamp:  </strong>' + val.update + '</td></tr>';
+
+                        });
+
+
+
+
+                        popcontent += '</table>';
+                        // $('#monitoring').html('<img src="/SPOT/provisioning/images/on.gif"/>');
+                        $('#ok').remove();
+                        $('#monitoring').remove();
+                        $('#pendings').after('<a  id="monitoring"></a>');
+                        $('#monitoring').html('Background operations <span class="badge badge-warning">' + count + '</span>');
+                        // $this.webuiPopover().hide();
+                        $('#monitoring').webuiPopover({
+                            title: 'Processes still executing..',
+                            content: popcontent,
+                            placement: 'bottom-left',
+                            trigger: 'hover',
+                            animation: 'pop',
+                            type: 'html',
+                            cache: true
+                        });
+
+
+                    }
+
+                }
             }
 
+        });
+        if (popcontent === '<p class="alert alert-info"><strong>Last checked: ' + d.toLocaleTimeString() + '</strong></p>') {
+            $('#monitoring').remove();
+            $('#ok').remove();
+            $('#pendings').after('<a  id="ok"></a>');
+            $('#ok').html('Background operations <span class="badge badge-info">' + count + '</span>');
+            $('#ok').webuiPopover({
+                title: 'No pending operations..',
+                content: popcontent,
+                placement: 'bottom-left',
+                trigger: 'hover',
+                animation: 'pop',
+                type: 'html',
+                cache: true
+            });
+
+
+
         }
-    });
-
-
-
-
-    var socketCommands = io.connect('http://chx-sysprod-01:8002');
-    socketCommands.on('reconnecting', function () {
-        showAlarm('provisioningSocket', 'notif2', 'System Attempting to re-connect to http://chx-sysprod-01:8002. This is not a big issue, it\' only about monitoring');
-        
-    });
-    socketCommands.on('error', function (e) {
-        showAlarm('provisioningSocket', 'notif2', 'System' + e + ' conecting  to http://chx-sysprod-01:8002. This is not a big issue, it\' only about monitoring');
-       
-    });
-    socketCommands.on('data', function (data) {
-       
-        dismissAlarm('provisioningSocket', 'notif2', 'GOOD! http://chx-sysprod-01:8002 is available again!');
-
-
-        if (data) {
-            var objects = data.rows;
-
-            if (objects.length > 0) {
-                popcontent += '</p><table class="table table-striped table-bordered table-condensed table-responsive table-hover"><tr><th><strong><center>Provisioning</center></strong></th></tr>';
-                var index = 0;
-                $.each(objects, function (key, val) {
-                    index++;
-                    count++;
-                    popcontent += '<tr><td><strong>Provisioning n. ' + index + '</strong></tr></td>';
-                    popcontent += '<tr><td><strong>Notifid: </strong>' + val.notifid + '</td></tr>';
-                    popcontent += '<tr><td><strong>Hostname:  </strong> ' + val.hostname + '</td></tr>';
-                    popcontent += '<tr><td><strong>Progress:  </strong><div class="progress progress-striped active"><div class="bar" role="progressbar" aria-valuenow="' + val.progress + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + val.progress + '%"> <span class="sr-only" >' + val.progress + '% Complete</span></div></div>' + val.status + '</td></tr>';
-                    popcontent += '<tr><td><strong>Timestamp:  </strong>' + val.update + '</td></tr>';
-
-                });
-
-                popcontent += '</table>';
-                // $('#monitoring').html('<img src="/SPOT/provisioning/images/on.gif"/>');
-                $('#ok').remove();
-                $('#monitoring').remove();
-                $('#pendings').after('<a  id="monitoring"></a>');
-                $('#monitoring').html('Background operations <span class="badge badge-warning">' + count + '</span>');
-                // $this.webuiPopover().hide();
-                $('#monitoring').webuiPopover({
-                    title: 'Processes still executing..',
-                    content: popcontent,
-                    placement: 'bottom-left',
-                    trigger: 'hover',
-                    animation: 'pop',
-                    type: 'html',
-                    cache: true
-                });
+        $('.bgop').on('click', function () {
+            //    $('#myModalLabel').text('Background Operations Details: (' + count + ' current)')
+            var cssclass = '';
+            if (count == 0) {
+                cssclass = 'class="label label-info"';
+            } else
+            {
+                cssclass = 'class="label label-warning"';
             }
-
-        }
-
-
-
-
-
-    });
-    d = new Date();
-    if (popcontent === '<p class="alert alert-info"><strong>Last checked: ' + d.toLocaleTimeString() + '</strong></p>') {
-        $('#monitoring').remove();
-        $('#ok').remove();
-        $('#pendings').after('<a  id="ok"></a>');
-        $('#ok').html('Background operations <span class="badge badge-info">' + count + '</span>');
-        $('#ok').webuiPopover({
-            title: 'No pending operations..',
-            content: popcontent,
-            placement: 'bottom-left',
-            trigger: 'hover',
-            animation: 'pop',
-            type: 'html',
-            cache: true
+            $('#servermsg').html('<h5>Background Operations Details:</h5> <center><p ' + cssclass + '>  ' + count + ' current</p></center>' + popcontent);
+            $('#basicModal').modal();
         });
 
-
-
-    }
-    $('.bgop').on('click', function () {
-        //    $('#myModalLabel').text('Background Operations Details: (' + count + ' current)')
-        var cssclass = '';
-        if (count == 0) {
-            cssclass = 'class="label label-info"';
-        } else
-        {
-            cssclass = 'class="label label-warning"';
-        }
-        $('#servermsg').html('<h5>Background Operations Details:</h5> <center><p ' + cssclass + '>  ' + count + ' current</p></center>' + popcontent);
-        $('#basicModal').modal();
-    });
+    };
+    bgcommands();
+    setInterval(bgcommands, 10000);
 
 
 

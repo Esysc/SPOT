@@ -56,7 +56,10 @@ $imagespxe[0] = $_SESSION['imagename'];
             if (!page.isInitialized)
                 page.init();
         }, 1000);
-    });</script>
+
+    });
+    
+</script>
 
 <script type="text/javascript">
 
@@ -134,7 +137,7 @@ foreach ($imagename as $kvalue => $image) {
             var shelf = $('#' + idshelf).val();
             var content = {reponse: "99"};
             var Jcontent = JSON.stringify(content);
-           
+
             $.ajax({
                 url: "/SPOT/provisioning/api/sysprodracks/" + rackname,
                 type: "PUT",
@@ -698,7 +701,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                 var scriptID = 5;
                                 var clientaddress = $.trim($("#clientaddress" + level).val());
                                 // Next line is commented out because the script is run from client directly
-                                // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                         ?>';
+                                // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                          ?>';
                                 break;
                             case 'LINUX':
 
@@ -743,13 +746,13 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                 }
 
 
-                                //  var clientaddress = '<?php // echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                          ?>';
+                                //  var clientaddress = '<?php // echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                           ?>';
 
                                 var clientaddress = $.trim($("#clientaddress" + level).val());
                                 //      console.log("clientaddress: " + clientaddress);
                                 break;
                         }
-                        // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                          ?>';
+                        // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                           ?>';
                         break;
                 }
 
@@ -1233,10 +1236,10 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                 var id = $(this).attr('id');
 
                 if (decoded.reponse == 99) {
-                     $("#" + decoded.idracks).html('<img src="/SPOT/provisioning/images/loader.gif" data-toggle="tooltip" title="Please, patience while I\'m checking the connections...." />');
+                    $("#" + decoded.idracks).html('<img src="/SPOT/provisioning/images/loader.gif" data-toggle="tooltip" title="Please, patience while I\'m checking the connections...." />');
                     return;
                 }
-                    
+
                 $('#deleteRow' + id).show();
                 var label = '';
                 var client = '';
@@ -1267,8 +1270,8 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                         client = '<span class=\'label label-default\'  data-toggle="tooltip" title=\'Client Undefined. If this is not a VM click the button to delete this client. If this is a physical machine, check the connections and run this page again\'>undef</span>';
                         $('#clientaddressShow' + id).html('');
                         $('#detect' + id + ', #imagedata' + id + ', #imgaix' + id).show();
-                        $('#questionMark'+id).remove();
-                        $('#imgaix' + id).after('<b id="questionMark'+id+'">?</b>');
+                        $('#questionMark' + id).remove();
+                        $('#imgaix' + id).after('<b id="questionMark' + id + '">?</b>');
                         $('#piloipaddress' + id + ', #windows' + id + ', #imgwin' + id + ', #imgrhel' + id + ', #pbootsms' + id).hide();
                         removal = 2;
                         label = 'AIX images:';

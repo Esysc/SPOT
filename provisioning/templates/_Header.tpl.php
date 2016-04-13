@@ -647,6 +647,19 @@
                 </div>
             </div>
         </div>
+        <!-- socket notification errors -->
+        <div class="alert  fade in hide" id="remotecommandsSocket">
+
+            <center> <strong id="notif1"></strong> </center>
+        </div>
+        <div class="alert  fade in hide" id="provisioningSocket">
+
+            <center>  <strong id="notif2"></strong> </center>
+        </div>
+        <div class="alert  fade in hide" id="sysprodracksSocket">
+
+            <center><strong id="notif3"></strong> </center>
+        </div>
 
         <?php
         // Remember to put here the public view sites
