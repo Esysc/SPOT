@@ -9,6 +9,25 @@ $this->display('_Header.tpl.php');
         $('#details').on('click', function () {
             $('#basicModal').show();
         });
+        
+        $(document).on('change', '.salesorder', function() {
+            var salesorder = $(this).val();
+           
+            var SOarr = salesorder.split('|');
+            var SO = SOarr[0];
+            var crm_system_id;
+             $.ajax({
+                url: '/SPOT/provisioning/includes/getOrderSysproddb.php?sales_order_ref='+SO,
+                type: 'GET',
+                
+                success: function (data) {
+                   var obj = JSON.parse(data);
+                   crm_system_id = obj.crm_system_id;
+                   if (typeof crm_system_id !== 'undefined')
+                   $('#crmid').val(crm_system_id);
+                }
+            });
+        });
         function generatePassword(len) {
             var pwd = [], cc = String.fromCharCode, R = Math.random, rnd, i;
             pwd.push(cc(48 + (0 | R() * 10))); // push a number
@@ -38,7 +57,7 @@ $this->display('_Header.tpl.php');
         // Get all the sales order in the tblprogress table
         $.get("/SPOT/provisioning/api/tblprogresses", function (jsonResult) {
             var Jdata = jsonResult.rows;
-            console.log(Jdata);
+         //   console.log(Jdata);
             // $('#salesel').attr('enabled', 'true');
             $.each(Jdata, function (i, o) {
 
@@ -55,6 +74,8 @@ $this->display('_Header.tpl.php');
             var salesorder = $('.salesorder').val();
             var SOarr = salesorder.split('|');
             var SO = SOarr[0].trim();
+
+
             $.get("/SPOT/provisioning/api/tblprogresses?salesorder=" + SO, function (jsonResult) {
                 var Jdata = jsonResult.rows[0].data;
                 console.log('salesel change function' + Jdata);
@@ -113,6 +134,7 @@ $this->display('_Header.tpl.php');
                 // $('.salesel').show()
                 $('#salesel').on('change', function () {
                     $('.salesorder').val($('#salesel').val());
+                    $('.salesorder').trigger('change');
                     $('.password').show();
                     // $('.network').remove();
                 });
@@ -156,6 +178,8 @@ $this->display('_Header.tpl.php');
             var oracle = $('.oracle').val();
             var oldroot = $('.oldroot').val();
             var oldoperator = $('.oldoperator').val();
+            var crm_system_id = $('#crmid').val();
+            if (crm_system_id === '') crm_system_id = "CHANGE_ME";
             var exesequence = 0;
             var executionFlag = 0;
             var ipaddress = $('#ipaddress').val();
@@ -173,15 +197,16 @@ $this->display('_Header.tpl.php');
             var SOarr = salesorder.split('|');
             var TEST = /^[a-zA-Z]+$/.test(SOarr[1]);
 
-            
-            if (! TEST) {
+
+            if (!TEST) {
                 var msg = "<strong>The customer acronym cannot be empty!</strong>";
                 $('#servermsg').html(msg);
 
                 $('#basicModal').modal();
                 return false;
-                }
+            }
             var SO = SOarr[0].trim();
+
 
 
             var argument = argument = {
@@ -196,7 +221,9 @@ $this->display('_Header.tpl.php');
                 "8": "-oldoperator",
                 "9": oldoperator,
                 "10": "-so",
-                "11": "'" + salesorder + "'"
+                "11": "'" + salesorder + "'",
+                "12": "-crmid ",
+                "13": crm_system_id 
             };
 
             if (scriptID == 8) {
@@ -540,6 +567,8 @@ $this->display('_Header.tpl.php');
                 </td>
                 <td colspan="2">
                     <input name="salesorder" id="salesorder" required class="salesorder form-control" placeholder="xxxxxxxx|ZZZ" type="text"  />
+                    <label for="crmid" class="sr-only"><b>CRM ID</b></label>
+                    <input type="text" id="crmid" />
                 </td>
 
             </tr>

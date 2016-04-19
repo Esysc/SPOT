@@ -24,6 +24,7 @@ $racks = $arr;
 $startshelf = (isset($_SESSION['startshelf']) ? $_SESSION['startshelf'] : '');
 $stopshelf = (isset($_SESSION['stopshelf']) ? $_SESSION['stopshelf'] : '');
 ?>
+
 <script>
 
     /*
@@ -278,7 +279,8 @@ $stopshelf = (isset($_SESSION['stopshelf']) ? $_SESSION['stopshelf'] : '');
                                     wait: true,
                                     success: function () {
                                         // All OK , pass to phase 2
-                                        window.location.href = "/SPOT/provisioning/provisioning2";
+                                      //
+                                       window.location.href = "/SPOT/provisioning/provisioning2";
 
                                     }
                                 });

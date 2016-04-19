@@ -72,7 +72,7 @@ var page = {
                         var modifyDom = JSON.stringify(value);
                         var nowValue = $(this).val();
                         if (nowValue !== modifyDom) {
-                            console.log('changed:' + modifyDom)
+                            console.log('changed:' + nowValue + ' vs '+ modifyDom)
                             $(this).val(modifyDom);
                             $(this).trigger('change');
                             $('.imagename').trigger('change');

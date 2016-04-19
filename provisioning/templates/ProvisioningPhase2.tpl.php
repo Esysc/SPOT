@@ -844,7 +844,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                     url: "/SPOT/provisioning/api/tblprogress/" + id,
                     data: stringSend,
                     success: function (data) {
-                        //      console.log('Successfully updated from tblprogress');
+                            console.log('Successfully updated from tblprogress');
                     }
 
                 });

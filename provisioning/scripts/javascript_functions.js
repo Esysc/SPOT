@@ -77,8 +77,9 @@ $(document).ready(function () {
     }
     var popcontent = '';
     var BGscriptname = '';
-    var count, d;
-    var socketCommands = io.connect('http://chx-sysprod-01:8001');
+    var count, 
+    d = new Date();
+    var socketCommands = io.connect('ws://chx-sysprod-01:8001');
     socketCommands.on('reconnecting', function () {
         showAlarm('remotecommandsSocket', 'notif1', 'Warning Attempting to re-connect to http://chx-sysprod-01:8001. This is not a big issue, it\' only about monitoring');
        
@@ -155,7 +156,7 @@ $(document).ready(function () {
 
 
 
-    var socketCommands = io.connect('http://chx-sysprod-01:8002');
+    var socketCommands = io.connect('ws://chx-sysprod-01:8002');
     socketCommands.on('reconnecting', function () {
         showAlarm('provisioningSocket', 'notif2', 'System Attempting to re-connect to http://chx-sysprod-01:8002. This is not a big issue, it\' only about monitoring');
         
@@ -165,7 +166,7 @@ $(document).ready(function () {
        
     });
     socketCommands.on('data', function (data) {
-       
+        d = new Date();
         dismissAlarm('provisioningSocket', 'notif2', 'GOOD! http://chx-sysprod-01:8002 is available again!');
 
 
@@ -211,7 +212,7 @@ $(document).ready(function () {
 
 
     });
-    d = new Date();
+   
     if (popcontent === '<p class="alert alert-info"><strong>Last checked: ' + d.toLocaleTimeString() + '</strong></p>') {
         $('#monitoring').remove();
         $('#ok').remove();
@@ -228,8 +229,7 @@ $(document).ready(function () {
         });
 
 
-
-    }
+   }
     $('.bgop').on('click', function () {
         //    $('#myModalLabel').text('Background Operations Details: (' + count + ' current)')
         var cssclass = '';
