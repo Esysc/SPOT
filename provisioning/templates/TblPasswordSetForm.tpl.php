@@ -9,22 +9,21 @@ $this->display('_Header.tpl.php');
         $('#details').on('click', function () {
             $('#basicModal').show();
         });
-        
-        $(document).on('change', '.salesorder', function() {
+
+        $(document).on('change', '.salesorder', function () {
             var salesorder = $(this).val();
-           
+
             var SOarr = salesorder.split('|');
             var SO = SOarr[0];
             var crm_system_id;
-             $.ajax({
-                url: '/SPOT/provisioning/includes/getOrderSysproddb.php?sales_order_ref='+SO,
+            $.ajax({
+                url: '/SPOT/provisioning/includes/getOrderSysproddb.php?sales_order_ref=' + SO,
                 type: 'GET',
-                
                 success: function (data) {
-                   var obj = JSON.parse(data);
-                   crm_system_id = obj.crm_system_id;
-                   if (typeof crm_system_id !== 'undefined')
-                   $('#crmid').val(crm_system_id);
+                    var obj = JSON.parse(data);
+                    crm_system_id = obj.crm_system_id;
+                    if (typeof crm_system_id !== 'undefined')
+                        $('#crmid').val(crm_system_id);
                 }
             });
         });
@@ -57,7 +56,7 @@ $this->display('_Header.tpl.php');
         // Get all the sales order in the tblprogress table
         $.get("/SPOT/provisioning/api/tblprogresses", function (jsonResult) {
             var Jdata = jsonResult.rows;
-         //   console.log(Jdata);
+            //   console.log(Jdata);
             // $('#salesel').attr('enabled', 'true');
             $.each(Jdata, function (i, o) {
 
@@ -179,7 +178,8 @@ $this->display('_Header.tpl.php');
             var oldroot = $('.oldroot').val();
             var oldoperator = $('.oldoperator').val();
             var crm_system_id = $('#crmid').val();
-            if (crm_system_id === '') crm_system_id = "CHANGE_ME";
+            if (crm_system_id === '')
+                crm_system_id = "CHANGE_ME";
             var exesequence = 0;
             var executionFlag = 0;
             var ipaddress = $('#ipaddress').val();
@@ -222,8 +222,8 @@ $this->display('_Header.tpl.php');
                 "9": oldoperator,
                 "10": "-so",
                 "11": "'" + salesorder + "'",
-                "12": "-crmid ",
-                "13": crm_system_id 
+                "12": "-crmid",
+                "13": crm_system_id
             };
 
             if (scriptID == 8) {
@@ -238,7 +238,7 @@ $this->display('_Header.tpl.php');
                     console.log(Jsonspecs);
                     if (Jsonspecs.completed == true) {
                         var counter = 0;
-                        var index = 11; // the same as argstringend
+                        var index = 13; // the same as argstringend
                         var SOservers = '';
                         $.each(Jsonspecs.clients, function (i, o) {
                             counter++;
@@ -259,7 +259,7 @@ $this->display('_Header.tpl.php');
                             console.log('IN THE LOOP: ' + argument);
                         });
                         $('#servermsg').html(SOservers);
-                        $('.results').after('<p id="detals" class="pull-right btn btn-mini">Click for details...</p>');
+                        $('.results').after('<p id="details" class="pull-right btn btn-mini">Click for details...</p>');
 
 
                         var exesequence = 0;
@@ -326,11 +326,13 @@ $this->display('_Header.tpl.php');
             }
 
             if (scriptID == 9) {
-
-                argument[12] = "-ip";
-                argument[13] = ipaddress;
-                argument[14] = "-netmask";
-                argument[15] = netmask;
+                /*
+                 * Take care to increment those index if you add common parameters in the argument object creation
+                 */
+                argument[14] = "-ip";
+                argument[15] = ipaddress;
+                argument[16] = "-netmask";
+                argument[17] = netmask;
                 var exesequence = 0;
                 var executionFlag = 0;
                 var datastring = JSON.stringify(argument);
