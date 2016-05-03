@@ -295,6 +295,7 @@
                                         echo 'class="active"';
                                     }
                                     ?>><a href="./sysprodracksmappings">Racks Mappings</a></li>
+                                    <li><a target="_blank" href="http://spmon01.my.compnay.com:7767/dashboard">Sysprod Monitoring</a></li>
 
                                 </ul>
                             </li>
@@ -566,6 +567,11 @@
                                         echo 'class="active"';
                                     }
                                     ?>><a href="./commander">Run commander</a></li>
+                                    
+                                    <li><a target="_blank" href="http://x.x.x.206:82">Gitlab</a></li>
+                                    <li><a target="_blank" href="http://x.x.x.206/backuppc">BackupPc</a></li>
+                                    
+                                    
                                     <?php } ?>
 
 
