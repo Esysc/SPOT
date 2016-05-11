@@ -1,14 +1,15 @@
 // Original JavaScript code by Chirp Internet: www.chirp.com.au
 // Please acknowledge use of this code by including this header.
 
-function AjaxRequest()
+function AjaxRequest(id)
 {
+    id = typeof id !== 'undefined' ? id : "progress";
 	var req;
 	var method = "GET";
 	var nocache = false;
 	var handler;
 
-	var progress = document.getElementById("progress");
+	var progress = document.getElementById(id);
 	var show = function(){
 		progress.style.display = "block";
 	}

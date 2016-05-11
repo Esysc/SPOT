@@ -356,8 +356,6 @@ function apiPOST($url, $content, $method = "POST" ) {
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    // curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -371,7 +369,7 @@ function apiPOST($url, $content, $method = "POST" ) {
     curl_setopt($ch, CURLOPT_POSTFIELDS, $content);
 
     $result = curl_exec($ch);
-    echo var_dump($result);
+    //echo var_dump($result);
     curl_close($ch);
     // return var_dump($content);
 }

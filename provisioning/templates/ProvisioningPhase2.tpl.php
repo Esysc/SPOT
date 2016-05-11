@@ -58,7 +58,7 @@ $imagespxe[0] = $_SESSION['imagename'];
         }, 1000);
 
     });
-    
+
 </script>
 
 <script type="text/javascript">
@@ -701,7 +701,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                 var scriptID = 5;
                                 var clientaddress = $.trim($("#clientaddress" + level).val());
                                 // Next line is commented out because the script is run from client directly
-                                // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                          ?>';
+                                // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                            ?>';
                                 break;
                             case 'LINUX':
 
@@ -746,13 +746,13 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                 }
 
 
-                                //  var clientaddress = '<?php // echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                           ?>';
+                                //  var clientaddress = '<?php // echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                             ?>';
 
                                 var clientaddress = $.trim($("#clientaddress" + level).val());
                                 //      console.log("clientaddress: " + clientaddress);
                                 break;
                         }
-                        // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                           ?>';
+                        // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                             ?>';
                         break;
                 }
 
@@ -844,7 +844,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                     url: "/SPOT/provisioning/api/tblprogress/" + id,
                     data: stringSend,
                     success: function (data) {
-                            console.log('Successfully updated from tblprogress');
+                        console.log('Successfully updated from tblprogress');
                     }
 
                 });
@@ -978,7 +978,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
             <p class="pagenum"></p>
         </div>
         <!-- Begin machines form -->
-
+        
         <form class="form-horizontal" id="provisioningForm" onsubmit="return false;">
             <fieldset>
                 <table class="collection table table-bordered">
@@ -1163,6 +1163,9 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
 
                                             <label for="productkey<?php echo $key; ?>">Product Key</label>
                                             <input type="text" name="productkey<?php echo $key; ?>"  class="productkey checkdup" id="productkey<?php echo $key; ?>" placeholder="xxxxx-xxxxx-xxxxx-xxxxx-xxxxx" />
+                                            <span><i class="icon-check-sign grabpk"  id="progress<?php echo $key; ?>" title="Click here to read the firmware PK" name="clientaddress<?php echo $key; ?>_productkey<?php echo $key; ?>"></i>
+                                             <img src="/SPOT/provisioning/images/loader.gif" data-toggle="tooltip" id="imgprogress<?php echo $key; ?>" title="Please, patience while I\'m checking the PK...." style="display:none"/>  
+                                            </span>
 
                                             <div class='checkboxes span6'>
                                                 <input type="checkbox"  name="radmin<?php echo $key; ?>"  id="radmin<?php echo $key; ?>" value="1" /><label for="radmin<?php echo $key; ?>"></label>
@@ -1224,8 +1227,25 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
     </div> <!-- /container -->
     <script>
         $(document).ready(function () {
-
-
+            
+            $('.productkey').on('change', function(){
+                if ($(this).val() === '') $(this).next('i').show();
+            });
+            $('.grabpk').on('click', function () {
+                
+                var name = $(this).attr('name');
+                var parsed = name.split('_');
+                var id = "img" + $(this).attr('id');
+                $(this).hide();
+                /*
+                 * parsed[0] contains id for ipaddress
+                 * parsed[1] contains name for the field to fill
+                 */
+                var ipaddress = $('#' + parsed[0]).val();
+                grabPK(ipaddress, parsed[1], id );
+                
+                
+            })
             $(".sectionSettings").on("change", function () {
 
                 var removal;

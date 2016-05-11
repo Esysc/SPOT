@@ -549,6 +549,12 @@ function IPAddressKeyOnly(e) {
     return true;
 }
 
+function grabPK (ip, name, id) {
+    var req = new AjaxRequest(id);
+    req.setMethod('POST');
+    var params = "ip=" + encodeURIComponent(ip) + "&id=" + encodeURIComponent(name) ;
+    req.loadXMLDoc("includes/grabPK.php", params);
+}
 
 function checkUniq(field, value)
 {
