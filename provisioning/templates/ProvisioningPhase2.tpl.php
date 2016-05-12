@@ -1229,20 +1229,23 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
         $(document).ready(function () {
             
             $('.productkey').on('change', function(){
-                if ($(this).val() === '') $(this).next('i').show();
+                if ($(this).val() === '') $(this).next('i').find('.grabpk').show();
             });
             $('.grabpk').on('click', function () {
                 
                 var name = $(this).attr('name');
                 var parsed = name.split('_');
                 var id = "img" + $(this).attr('id');
+                var scriptID = 27;
                 $(this).hide();
                 /*
                  * parsed[0] contains id for ipaddress
                  * parsed[1] contains name for the field to fill
+                 * id is the spinning to show while loading
+                 * scriptID the script to execute
                  */
                 var ipaddress = $('#' + parsed[0]).val();
-                grabPK(ipaddress, parsed[1], id );
+                runScript(ipaddress, parsed[1], id, scriptID );
                 
                 
             })

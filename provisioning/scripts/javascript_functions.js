@@ -548,12 +548,19 @@ function IPAddressKeyOnly(e) {
         return false;
     return true;
 }
-
-function grabPK (ip, name, id) {
+/*
+ * 
+ * @param {ip address} ip
+ * @param {string} name
+ * @param {string} id
+ * @param {number} scriptID
+ * @returns {content of stdout in @name ele}
+ */
+function runScript (ip, name, id, scriptID) {
     var req = new AjaxRequest(id);
     req.setMethod('POST');
-    var params = "ip=" + encodeURIComponent(ip) + "&id=" + encodeURIComponent(name) ;
-    req.loadXMLDoc("includes/grabPK.php", params);
+    var params = "ip=" + encodeURIComponent(ip) + "&id=" + encodeURIComponent(name) + "&scriptID=" + scriptID ;
+    req.loadXMLDoc("includes/runScript.php", params);
 }
 
 function checkUniq(field, value)
