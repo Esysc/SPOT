@@ -570,6 +570,7 @@
                                     
                                     <li><a target="_blank" href="http://x.x.x.206:82">Gitlab</a></li>
                                     <li><a target="_blank" href="http://x.x.x.206/backuppc">BackupPc</a></li>
+                                    <li><a target="_blank" href="http://x.x.x.206:18081/#browse/welcome">NuGet Repos</a></li>
                                     
                                     
                                     <?php } ?>

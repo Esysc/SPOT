@@ -256,7 +256,7 @@ $this->display('_Header.tpl.php');
                 success: function (data) {
 
 
-                    $('#results').html('');
+                    $('#results').html('').show();
 
                     $("#DataTable").append('<p>Sales Order ' + sales_order_ref + ' Message from server:</p> ' + data);
 
