@@ -16,6 +16,7 @@ $bgcolor['Finished'] = 3858176;
 $bgcolor['On Hold'] = 16776960;
 $bgcolor['R28 - Delivered to SysProd'] = 16098560;
 $bgcolor['P27 - Picked up'] = 66015;
+$bgcolor['Scheduled'] = 16711935;
 
 function innerHTML($el) {
     $doc = new DOMDocument();
@@ -167,7 +168,7 @@ foreach ($share_value_arr as $key => $subtemp) {
     $tmpRack = (array_key_exists('HWPlacement', $subtemp) ? $subtemp['HWPlacement'] : '');
 
     //echo "$packstatus";
-    if (strpos($status, 'Packed') !== false || strpos($status, 'Progress') !== false || strpos($status, 'Hold') !== false || strpos($status, 'Finished') !== false) {
+    if (strpos($status, 'Packed') !== false || strpos($status, 'Progress') !== false || strpos($status, 'Hold') !== false || strpos($status, 'Finished') !== false || strpos($status, 'Scheduled') !== false) {
 
         // Get the values stocked in SPOT db and the values stocked in syslog DB
         $SO = $key;
@@ -181,14 +182,14 @@ foreach ($share_value_arr as $key => $subtemp) {
         $parsing = json_decode($json);
 
         $end[$key]['bgcolor'] = $bgcolor[$status];
-        if ((strpos($status, 'Progress') !== false && strpos($packstatus, 'Delivered') !== false ) || strpos($packstatus, 'Picked') !== false )
+        if ((strpos($status, 'Progress') !== false && strpos($packstatus, 'Delivered') !== false ) || strpos($packstatus, 'Picked') !== false)
             $end[$key]['bgcolor'] = $bgcolor[$packstatus];
         if ($parsing->totalResults != 0) {
             $data = $parsing->rows[0]->data;
             $data_decoded = json_decode($data);
             // $CustomerACR = " | $data_decoded->CustomerACR</br />";
             // $orderdescription = $data_decoded->orderdescription;
-            
+
             $network = (isset($data_decoded->network) ? $data_decoded->network : '');
 
             $clients = (isset($data_decoded->clients) ? $data_decoded->clients : '');
@@ -268,11 +269,22 @@ foreach ($share_value_arr as $key => $subtemp) {
 
 
         isset($subtemp["SysProdActor"]) ? $end[$key]["User"] = $subtemp["SysProdActor"] : $end[$key]["User"] = "Logistics";
-        if ( ! array_key_exists("PackingStatus", $subtemp)) $subtemp["PackingStatus"] = '';
+        if (!array_key_exists("PackingStatus", $subtemp))
+            $subtemp["PackingStatus"] = '';
         $end[$key]["Status"] = $subtemp["Status"] . "<br />" . $subtemp["PackingStatus"];
         isset($subtemp["RealStart"]) ? $START = $subtemp["RealStart"] : $START = $subtemp["PlannedStart"];
         isset($subtemp["RealEnd"]) ? $END = $subtemp["RealEnd"] : $END = $subtemp["PlannedEnd"];
-        isset($subtemp["ExpShipment"]) ? $SHIP = "Exp. ship: " . $subtemp["ExpShipment"] : $SHIP = "";
+        $class = '';
+        if (isset($subtemp["ExpShipment"])) {
+            date_default_timezone_set('Europe/London');
+            $date2 =  strtotime(date('d-m-Y'));
+            $date1 =  strtotime(str_replace('/', '-', $subtemp["ExpShipment"]));
+            
+
+            if ($date1 < $date2)
+                $class = "class='blinking' title='This shipment is expired'";
+        }
+        isset($subtemp["ExpShipment"]) ? $SHIP = "Exp. ship: <span $class>" . $subtemp["ExpShipment"] . "</span>" : $SHIP = "";
         $end[$key]["Schedule"] = "Start: $START<br />End: $END<br />$SHIP";
 
         //$tmpRack = $subtemp['HWPlacement'];

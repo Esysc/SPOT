@@ -6,6 +6,8 @@ $this->display('_Header.tpl.php');
 ?>
 
 <style>
+
+    #explanation { float: none; margin-left: auto; margin-right: auto; }
     .Maincontainer {
         position: relative;
         top : -50px;
@@ -130,7 +132,7 @@ $this->display('_Header.tpl.php');
         background: yellow;
     }
 
-   
+
 </style>
 
 <script src="scripts/jquery.rotation.min.js"></script>
@@ -328,20 +330,13 @@ $this->display('_Header.tpl.php');
         <span  class="alive text-info text-right pull-left" ></span>
         <span id="count" class="badge badge-inverse"></span>
         <div class="pull-right">
-            <div class="row">
-
-                <span class=" span2" style="background-color:#0101DF;color:white">Packed - Picked up</span>
-                <span class=" span2" style="background-color:#FF0040;color:white">In Progress</span>
-
-                <span class=" span2" style="background-color:#3ADF00;color:black">Finished</span>
-                <span class=" span2" style="background-color:#FFFF00;color:black">On Hold</span>
-                <span class=" span2" style="background-color:#F5A500;color:black">Delivered</span>
-
-            </div>
 
         </div>
 
+
+
     </center>
+
 
 
 
@@ -356,12 +351,29 @@ $this->display('_Header.tpl.php');
 
 </div>
 
+
 <div id="carousel" class="nav">
 
 </div>
 <div id="countdown" class="nav"></div>
 
+
+
 <div class="Maincontainer">
+
+    <div class="row-fluid">
+        <div id="explanation">
+            <strong>
+                <span class=" span2" style="background-color:#0101DF;color:white">Packed - Picked up</span>
+                <span class=" span2" style="background-color:#FF0040;color:white">In Progress</span>
+                <span class=" span2" style="background-color:#ff00ff;color:white">Scheduled<br /></span>
+                <span class=" span2" style="background-color:#3ADF00;color:black">Finished</span>
+                <span class=" span2" style="background-color:#FFFF00;color:black">On Hold</span>
+                <span class=" span2" style="background-color:#F5A500;color:black">Delivered</span>
+            </strong>
+        </div>
+
+    </div>
 
 
     <table class="table table-bordered table-responsive" id="sysproddb">

@@ -1,6 +1,10 @@
 $(document).ready(function () {
 
-
+function blinker() {
+	$('.blinking').fadeOut(1000);
+	$('.blinking').fadeIn(1000);
+}
+setInterval(blinker, 2000);
 
     $('.imagename').on('change', function () {
 

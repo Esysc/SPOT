@@ -38,24 +38,25 @@ if (!isset($_SESSION['salesorder'])) {
                 for (var s = 0; s < splitted.length; s++) {
                     var val = splitted[s];
                     if (number === val) {
-                        console.log('values are: ' + number + ' and '+ val);
+                        console.log('values are: ' + number + ' and ' + val);
                         remove = false;
                         break;
 
                     }
                     else
                     {
-                       if(number !== '') remove = true;
-                       
+                        if (number !== '')
+                            remove = true;
+
                     }
 
                 }
-                 var label = $('label[for="'+$(this).attr('id')+'"]');
+                var label = $('label[for="' + $(this).attr('id') + '"]');
                 if (remove == true) {
-                   
+
                     $(this).hide();
                     label.hide();
-                   
+
                 } else
                 {
                     $(this).show();
@@ -304,7 +305,24 @@ if (!isset($_SESSION['salesorder'])) {
     <h1>
         <i class="icon-th-list"></i> Customer Configurations Builder
     </h1>
-    <div class="breadcrumb"><span class="icon-tint"></span> Welcome to Network provisioning.<br />Select the equipment and when all the steps are done, you can add a new line or save more times the same equipment changing only few values. Any time you save, a new configuration with new ID number will be generated</div>
+    <div class="breadcrumb"><span class="icon-tint"></span> Welcome to Network provisioning. 
+        <p>Select the equipment and when all the steps are done, 
+            you can add a new line or save more times the same equipment changing only few values. Any time you save, a new configuration with new ID number will be generated.
+        </p>   
+        
+         <p class="badge-important">
+             <strong style="color:white;">
+            <span class="icon-exclamation-sign"></span>
+            Attention: when configuring cisco 2901, you should read carefully the documentation. 
+            Here you have two file to generate: the router config itself and the tcl script to load to the router.
+            These files are only when a simple configuration is needed (most of the cases). If you need vlans, you should generate them manually
+            following the official documentation, even if here you can generate a good starting point. Note that the document and tcl script should be
+            attached to the NSE module of the customer release.
+             </strong>
+        </p>
+       
+    </div>
+   
     <div class="netcontainer"></div>
 
     <button  class="btn btn-mini newitem btn-success"><span class="icon-building"></span> Add an equipment</button>
