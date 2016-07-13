@@ -260,7 +260,7 @@ var page = {
 
         // if this is new then on success we need to add it to the collection
         var isNew = page.tblPassword.isNew();
-
+        
         app.showProgress('modelLoader');
 
         page.tblPassword.save({
@@ -340,7 +340,7 @@ var page = {
     downloadModel: function () {
         // reset any previous errors
         $('#modelAlert').html('');
-
+        
         var title = 'PMP Data Submission';
         var salesorder = $('#salesorder').val();
         var filename = '';
@@ -359,16 +359,22 @@ var page = {
 
         });
 
-
-        filename = 'PO_' + salesorder + '-' + customerACR + '-System_ID';
+        var table = $('textarea#results').val();
+        var t = document.getElementById('listing_smaller');
+        var ID = $(t.rows[1].cells[0]).text();
+        ID = $.trim(ID);
+        if (ID === "") ID = 'ID';
+        filename = 'PO_' + salesorder + '-' + customerACR + '-System_' + ID;
         
         /*
          * Put all data in session
          */
+        
+        
         var Jdata = {
             SALESORDER: salesorder,
             filename: filename,
-            tablevar: $('textarea#results').val(),
+            tablevar: table,
             title: title,
             var : 'tablevar',
             debug: true,
