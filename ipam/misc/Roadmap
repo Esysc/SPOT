@@ -1,0 +1,43 @@
+features for 1.3 releases:
+
+    + todo:
+        - change pagination (datatables);
+        - PowerDNS API;
+        - KEA management;
+        - php7 support;
+
+    + Modules
+        + DHCP integration;
+        + Customers module;
+
+
+features for next releases:
+---------------------------
+
+    + Modules:
+        + BGP support;
+        + Inventory management;
+
+    + User
+    	+ LDAP auth without local user;
+        + IP address owner (from internal users - suggestions);
+        + L2 domain permissions for groups ?
+        + 2FA;
+        + Autocomplete mail addresses and owners from users table;
+
+    + Configurable cron from UI;
+
+    + Tools enhancements
+        + Devices permissions;
+        + custom fields for IP requests;
+        + Changelog for VLANs, l2-domains, devices or vrf's, nameservers and firewallzones;
+
+    + DNS enhancements
+        + Export domain in bind format + script;
+        + DNS scripts (nsupdate,...)
+
+    + Subnet, addresses
+        + Multiple levels of sections;
+    	+ assign a state to a subnet, vlan;
+
+	+ Map/Link MPLS VRF to VLAN;

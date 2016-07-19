@@ -10,6 +10,15 @@ $this->display('_Header.tpl.php');
             $('#basicModal').show();
         });
 
+
+        $('#crmid').on('change keydown keyup', function () {
+            var max_chars = 5;
+            if ($(this).val().length >= max_chars) {
+                $(this).val($(this).val().substr(0, max_chars));
+            }
+        });
+
+
         $(document).on('change', '.salesorder', function () {
             var salesorder = $(this).val();
 
@@ -21,19 +30,19 @@ $this->display('_Header.tpl.php');
              * we ask sharepoint for that. The variable name remains the same to simplify this little hack.
              */
             /* $.ajax({
-                url: '/SPOT/provisioning/includes/getOrderSysproddb.php?sales_order_ref=' + SO,
-                type: 'GET',
-                success: function (data) {
-                    var obj = JSON.parse(data);
-                    crm_system_id = obj.crm_system_id;
-                    if (typeof crm_system_id !== 'undefined')
-                        $('#crmid').val(crm_system_id);
-                }
-            });
-        });
-        */
-       
-        $.ajax({
+             url: '/SPOT/provisioning/includes/getOrderSysproddb.php?sales_order_ref=' + SO,
+             type: 'GET',
+             success: function (data) {
+             var obj = JSON.parse(data);
+             crm_system_id = obj.crm_system_id;
+             if (typeof crm_system_id !== 'undefined')
+             $('#crmid').val(crm_system_id);
+             }
+             });
+             });
+             */
+
+            $.ajax({
                 url: '/SPOT/provisioning/includes/CRMSystemUID.php?salesorder=' + SO,
                 type: 'GET',
                 success: function (data) {
@@ -41,12 +50,14 @@ $this->display('_Header.tpl.php');
                     console.log(data);
                     crm_system_id = obj.crm_system_id;
                     if (typeof crm_system_id !== 'undefined')
-                        $('#crmid').val(crm_system_id);
+                        if (Math.floor(crm_system_id) != crm_system_id && !$.isNumeric(crm_system_id))
+                            $('#sharepoint').html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>Sharepoint data is not valid: <strong>' + crm_system_id + '</strong></div>');
+                    $('#crmid').val(crm_system_id);
                 }
             });
         });
-        
-       
+
+
         function generatePassword(len) {
             var pwd = [], cc = String.fromCharCode, R = Math.random, rnd, i;
             pwd.push(cc(48 + (0 | R() * 10))); // push a number
@@ -130,7 +141,7 @@ $this->display('_Header.tpl.php');
 
             if ($(this).val() === '' || typeof $(this).val() === 'undefined') {
                 $('.password').hide();
-               // console.log('value is undefined');
+                // console.log('value is undefined');
             }
             if ($(this).val() == "1") {
                 $('.password').show();
@@ -138,14 +149,14 @@ $this->display('_Header.tpl.php');
                     $network.prependTo('.password');
                 }
                 $('.salesel').remove();
-               // console.log('value is 1');
+                // console.log('value is 1');
                 var scriptID = 9; // script to parse a subnet
             }
             if ($(this).val() == "0") {
                 console.log('value is 0');
                 $('.password').hide();
                 if ($salesel) {
-                   // console.log($salesel);
+                    // console.log($salesel);
                     $salesel.appendTo('.stselection');
                     $salesel.show();
                     $('#salesel').chosen();
@@ -180,7 +191,7 @@ $this->display('_Header.tpl.php');
                 setTimeout(function () {
                     $('#msg').fadeOut(2000);
                 }, 3000);
-              //  console.log($('*[required]'));
+                //  console.log($('*[required]'));
                 return false;
             } else {
                 $('#msg').hide();
@@ -255,7 +266,7 @@ $this->display('_Header.tpl.php');
                     var Jdata = jsonResult.rows[0].data;
                     // console.log(Jdata);
                     var Jsonspecs = JSON.parse(Jdata);
-                   // console.log(Jsonspecs);
+                    // console.log(Jsonspecs);
                     if (Jsonspecs.completed == true) {
                         var counter = 0;
                         var index = 13; // the same as argstringend
@@ -276,7 +287,7 @@ $this->display('_Header.tpl.php');
                             index++;
                             argument[index] = os;
                             SOservers += '<p>' + ip + '   ' + os + '</p>';
-                          //  console.log('IN THE LOOP: ' + argument);
+                            //  console.log('IN THE LOOP: ' + argument);
                         });
                         $('#servermsg').html(SOservers);
                         $('.results').after('<p id="details" class="pull-right btn btn-mini">Click for details...</p>');
@@ -285,8 +296,8 @@ $this->display('_Header.tpl.php');
                         var exesequence = 0;
                         var executionFlag = 0;
                         var datastring = JSON.stringify(argument);
-                       // console.log('ARGUMENTS: ' + argument);
-                      //  console.log('DATASTRING: ' + datastring);
+                        // console.log('ARGUMENTS: ' + argument);
+                        //  console.log('DATASTRING: ' + datastring);
                         var passcommand = {
                             salesorder: SO,
                             rack: rack,
@@ -299,7 +310,7 @@ $this->display('_Header.tpl.php');
                             scriptid: scriptID
                         };
                         var Jpass = JSON.stringify(passcommand);
-                      //  console.log('Jpass: ' + Jpass);
+                        //  console.log('Jpass: ' + Jpass);
                         $.ajax({
                             url: "/SPOT/provisioning/api/remotecommands",
                             type: "POST",
@@ -316,7 +327,7 @@ $this->display('_Header.tpl.php');
                             },
                             error: function (data) {
                                 $('#msg').html("An error occured:  " + data.statusText + " " + data.responseText);
-                              //  console.log(data);
+                                //  console.log(data);
                                 $('#msg').show();
                                 setTimeout(function () {
                                     $('#rmsg').fadeOut(3000);
@@ -356,8 +367,8 @@ $this->display('_Header.tpl.php');
                 var exesequence = 0;
                 var executionFlag = 0;
                 var datastring = JSON.stringify(argument);
-              //  console.log('ARGUMENTS: ' + argument);
-               // console.log('DATASTRING: ' + datastring);
+                //  console.log('ARGUMENTS: ' + argument);
+                // console.log('DATASTRING: ' + datastring);
                 var passcommand = {
                     salesorder: SO,
                     rack: rack,
@@ -370,7 +381,7 @@ $this->display('_Header.tpl.php');
                     scriptid: scriptID
                 };
                 var Jpass = JSON.stringify(passcommand);
-               // console.log('Jpass: ' + Jpass);
+                // console.log('Jpass: ' + Jpass);
                 $.ajax({
                     url: "/SPOT/provisioning/api/remotecommands",
                     type: "POST",
@@ -387,7 +398,7 @@ $this->display('_Header.tpl.php');
                     },
                     error: function (data) {
                         $('#msg').html("An error occured:  " + data.statusText + " " + data.responseText);
-                      //  console.log(data);
+                        //  console.log(data);
                         $('#msg').show();
                         setTimeout(function () {
                             $('#rmsg').fadeOut(3000);
@@ -435,11 +446,11 @@ $this->display('_Header.tpl.php');
                 data: Jcommand,
                 wait: true,
                 success: function (data) {
-                //    console.log('IPALIAS:' + data);
+                    //    console.log('IPALIAS:' + data);
                 },
                 error: function (data) {
                     $('#msg').html("An error occured:  " + data.statusText + " " + data.responseText);
-                  //  console.log(data);
+                    //  console.log(data);
                     $('#msg').show();
                     setTimeout(function () {
                         $('#msg').fadeOut(3000);
@@ -589,8 +600,17 @@ $this->display('_Header.tpl.php');
                 </td>
                 <td colspan="2">
                     <input name="salesorder" id="salesorder" required class="salesorder form-control" placeholder="xxxxxxxx|ZZZ" type="text"  />
-                    <label for="crmid" class="sr-only"><b>System ID (Taken from sharepoint, please check it)</b></label>
-                    <input type="text" id="crmid" />
+                    <label for="crmid" class="sr-only">
+                        <b>System ID, taken from Sharepoint, please check it. Only numbers, max value 99999</b>
+                        <p class="breadcrumb">
+                            <a href="https://crm.my.compnay.com/htim_enu/start.swe?SWECmd=Start&SWEHo=crm.my.compnay.com" target="_blank">Find it on CRM</a>
+                        </p>
+                    </label>
+                    <input type="number"   id="crmid" />
+
+
+                    <span id="sharepoint"></span>
+
                 </td>
 
             </tr>

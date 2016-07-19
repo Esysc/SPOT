@@ -295,6 +295,37 @@ if (!isset($_SESSION['salesorder'])) {
             $('#servermsg').html(html);
             $('#basicModal').modal();
         });
+
+        // Update order status if not yet done
+        var salesorder = "<?php echo $_SESSION['salesorder']; ?>";
+        $.get("/SPOT/provisioning/api/tblprogresses?filter=" + salesorder, function (data, status) {
+            var Jdata = JSON.parse(data.rows[0].data);
+            var id = data.rows[0].id;
+            if (!Jdata.completed)
+                Jdata.completed = true;
+            /* if (!Jdata.hasOwnProperty('clients')) {
+             Jdata.clients = {};
+             }
+             $.each(temp, function (i, val) {
+             Jdata.clients[i] = temp[i];
+             //     console.log('Adding Client ID: ' + i);
+             //    console.log(temp);
+             });
+             
+             */
+            var JSONdata = JSON.stringify(Jdata);
+            var toSend = {data: JSONdata};
+            var stringSend = JSON.stringify(toSend);
+            $.ajax({
+                type: "PUT",
+                url: "/SPOT/provisioning/api/tblprogress/" + id,
+                data: stringSend,
+                success: function (data) {
+                    console.log('Successfully updated from tblprogress');
+                }
+
+            });
+        });
     });
 
 </script>
@@ -309,20 +340,20 @@ if (!isset($_SESSION['salesorder'])) {
         <p>Select the equipment and when all the steps are done, 
             you can add a new line or save more times the same equipment changing only few values. Any time you save, a new configuration with new ID number will be generated.
         </p>   
-        
-         <p class="badge-important">
-             <strong style="color:white;">
-            <span class="icon-exclamation-sign"></span>
-            Attention: when configuring cisco 2901, you should read carefully the documentation. 
-            Here you have two file to generate: the router config itself and the tcl script to load to the router.
-            These files are only when a simple configuration is needed (most of the cases). If you need vlans, you should generate them manually
-            following the official documentation, even if here you can generate a good starting point. Note that the document and tcl script should be
-            attached to the NSE module of the customer release.
-             </strong>
+
+        <p class="badge-important">
+            <strong style="color:white;">
+                <span class="icon-exclamation-sign"></span>
+                Attention: when configuring cisco 2901, you should read carefully the documentation. 
+                Here you have two file to generate: the router config itself and the tcl script to load to the router.
+                These files are only when a simple configuration is needed (most of the cases). If you need vlans, you should generate them manually
+                following the official documentation, even if here you can generate a good starting point. Note that the document and tcl script should be
+                attached to the NSE module of the customer release.
+            </strong>
         </p>
-       
+
     </div>
-   
+
     <div class="netcontainer"></div>
 
     <button  class="btn btn-mini newitem btn-success"><span class="icon-building"></span> Add an equipment</button>
