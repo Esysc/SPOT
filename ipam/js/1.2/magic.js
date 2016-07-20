@@ -501,18 +501,55 @@ $(document).ready(function () {
         return false;
     });
 //resolve DNS name
+//Added snmp functionality in resolver script
     $(document).on("click", "#refreshHostname", function () {
         showSpinner();
         var ipaddress = $('input.ip_addr').val();
         var subnetId = $(this).attr('data-subnetId');
         ;
         $.post('app/subnets/addresses/address-resolve.php', {ipaddress: ipaddress, subnetId: subnetId}, function (data) {
-            if (data.length !== 0) {
-                $('input[name=dns_name]').val(data);
+
+
+            if (/^[\],:{}\s]*$/.test(data.replace(/\\["\\\/bfnrtu]/g, '@').
+                    replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+                    replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+
+                //the json is ok
+                data = JSON.parse(data);
+                if (data.length !== 0) {
+                    $('input[name=dns_name]').val(data.hostname);
+                    $('input[name=description]').val(data.description);
+                }
+
+            } else {
+
+
+                //the json is not ok
+                $.post('app/subnets/addresses/windows-resolve.php', {ipaddress: ipaddress}, function (data) {
+                    if (data.length !== 0) {
+                        data = JSON.parse(data);
+                        if (data.hostname !== "")
+                            $('input[name=dns_name]').val(data.hostname);
+                        if (data.description !== "")
+                            $('input[name=description]').val(data.description);
+                    }
+                }).fail(function (jqxhr, textStatus, errorThrown) {
+                    showError(jqxhr.statusText + "<br>Status: " + textStatus + "<br>Error: " + errorThrown);
+                    hideSpinner();
+                });
+
+                if (typeof data == 'string' || data instanceof String) {
+                    console.log(data);
+                    //   $('input[name=dns_name]').val(data);
+                }
+
             }
+
+
             hideSpinner();
         }).fail(function (jqxhr, textStatus, errorThrown) {
             showError(jqxhr.statusText + "<br>Status: " + textStatus + "<br>Error: " + errorThrown);
+            hideSpinner();
         });
     });
 //submit ip address change
@@ -881,7 +918,15 @@ $(document).ready(function () {
         $('div.exportDIV').append("<div style='display:none' class='dl'><iframe src='app/subnets/addresses/export-subnet.php?subnetId=" + subnetId + "&" + exportFields + "'></iframe></div>");
         return false;
     });
-
+// hosts file
+    $(document).on("click", "a.hostExport", function () {
+        showSpinner();
+        var subnetId = $('a.hostExport').attr('data-subnetId');
+        $("div.dl").remove();    //remove old innerDiv
+        $('div.exportDIV').append("<div style='display:none' class='dl'><iframe src='app/subnets/addresses/export-hosts.php?subnetId=" + subnetId + "'></iframe></div>");
+        hideSpinner();
+        return false;
+    });
 
     /*	add / remove favourite subnet
      *********************************/

@@ -121,6 +121,7 @@ $('.input-switch-agents-ping, .input-switch-agents-scan').on('switchChange.boots
 	// change
 	if 		(ping==true || scan==true)		{ $("tr#scanAgentDropdown").removeClass("hidden"); }
 	else if (ping==false && scan==false)	{ $("tr#scanAgentDropdown").addClass("hidden"); }
+        $('select').chosen();
 });
 <?php if ($User->settings->enableThreshold=="1") { ?>
 $('.slider').slider().on('slide', function(ev){

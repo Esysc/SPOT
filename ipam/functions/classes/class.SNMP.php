@@ -250,6 +250,28 @@ class phpipamSNMP extends Common_functions {
     	# set timeout
     	$this->set_snmp_timeout ($device->snmp_timeout);
 	}
+        /**
+	 * Sets snmp host details
+	 *
+	 * @access public
+	 * @param string $ipaddress (default: false)
+	 * @param 
+	 * @return void
+	 */
+	public function query_snmp_device ($ipaddress = false) {
+    	# clear connection if it exists
+    	$this->connection_close ();
+    	# if false exit
+    	if ($ipaddress === false)          { return false; }
+
+    	
+
+        # set host to query
+        $this->set_snmp_host ($ipaddress);
+        # hostname = za debugging
+        $this->get_system_info ();
+    	
+	}
 
 	/**
 	 * Sets snmp host to query
@@ -389,7 +411,8 @@ class phpipamSNMP extends Common_functions {
      */
     private function connection_error_check () {
         if ($this->snmp_session->getErrno ()!="0")    {  throw new Exception ("<strong>$this->snmp_hostname</strong>: ".$this->snmp_session->getError ()); }
-    }
+    //if ($this->snmp_session->getErrno ()!="0")  return false;
+        }
 
 
 

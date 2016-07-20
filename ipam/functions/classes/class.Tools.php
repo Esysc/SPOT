@@ -2467,7 +2467,19 @@ class Tools extends Common_functions {
         # return result
         return $addresses;
     }
-
+public function fetch_addresses_subnetid_for_export($subnetid = "") {
+        # fetch
+        if ($subnetid === "" ) return false;
+    
+        try {
+            $addresses = $this->Database->getObjectsQuery("SELECT `id`,`subnetId`,`ip_addr`,`dns_name` FROM `ipaddresses` WHERE subnetId = ".$subnetid." ORDER BY `ip_addr` ASC;");
+        } catch (Exception $e) {
+            $this->Result->show("danger", $e->getMessage(), false);
+            return false;
+        }
+        # return result
+        return $addresses;
+    }
     /**
      * Verify that translation exists
      *

@@ -171,5 +171,6 @@ $result['values'] = @$out;
 $out = json_encode(@$result);
 
 # print result
+
 print_r($out);
 ?>
