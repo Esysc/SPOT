@@ -4,7 +4,11 @@
  * ************************************** */
 # verify that user is logged in
 $User->check_user_session();
+if ($User->user->groups ===  "{\"3\":\"3\"}") {
+    print '<h4 class="danger alert-danger">You are not allow to see the request</h4>';
 
+    return;
+}
 # fetch all Active subnet requests
 $subnetRequests = $Tools->fetch_multiple_objects("subnetRequests", "processed", 0, "id", false);
 

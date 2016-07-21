@@ -9,7 +9,7 @@ require( dirname(__FILE__) . '/../../../functions/functions.php');
 # initialize user object
 $Database 	= new Database_PDO;
 $User 		= new User ($Database);
-$Admin	 	= new Admin ($Database);
+//$Admin	 	= new Admin ($Database); # commented out because if not admin you cannot scan subnets
 $Subnets	= new Subnets ($Database);
 $Addresses	= new Addresses ($Database);
 $Tools      = new Tools ($Database);
