@@ -1,4 +1,10 @@
 <?php
+# include config file and api client class file
+//include_once(GlobalConfig::$APP_ROOT . "/../api/php-client/apiConfig.php");
+//include_once(GlobalConfig::$APP_ROOT . "/../api/php-client/apiClient.php");
+# init object with settings from
+
+
 $this->assign('title', 'SPOT | Provisioning Wizard 1 of 2');
 $this->assign('nav', 'provisioninggeneral');
 
