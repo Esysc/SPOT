@@ -455,7 +455,11 @@
                                             }
                                             ?>><a href="./instmod">PRE CCT preparation</a></li>
 
-
+                                            <li <?php
+                                            if ($this->nav == 'hosts') {
+                                                echo 'class="active"';
+                                            }
+                                            ?>><a href="./hosts">Generate hosts files</a></li>
 
                                         </ul>
                                     </li>
@@ -567,13 +571,13 @@
                                         echo 'class="active"';
                                     }
                                     ?>><a href="./commander">Run commander</a></li>
-                                    
+
                                     <li><a target="_blank" href="http://x.x.x.206:82">Gitlab</a></li>
                                     <li><a target="_blank" href="http://x.x.x.206/backuppc">BackupPc</a></li>
                                     <li><a target="_blank" href="http://x.x.x.206:18081/#browse/welcome">NuGet Repos</a></li>
-                                    
-                                    
-                                    <?php } ?>
+
+
+                                <?php } ?>
 
 
                             </ul>
@@ -679,5 +683,18 @@
             echo '<p class="alert alert-error"><b>You need to be logged in as <a href="login.php">sysprod user</a> to access this page</b></p>';
             $this->display('_Footer.tpl.php');
             exit;
+        }
+        /*
+         * Get the tocken to request data to ipam api
+         */
+        $url = "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/user/";
+        if (!isset($_SESSION['token']) || $_SESSION['token'] === '') {
+            $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
+        } else {
+            // Check validity of token
+            $reponse = json_decode(tokenCheck($url, array("token: " . $_SESSION['token'])));
+            if ($reponse == false) {
+                $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
+            }
         }
         ?>

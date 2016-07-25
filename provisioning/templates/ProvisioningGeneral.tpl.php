@@ -1,17 +1,9 @@
 <?php
-# include config file and api client class file
-//include_once(GlobalConfig::$APP_ROOT . "/../api/php-client/apiConfig.php");
-//include_once(GlobalConfig::$APP_ROOT . "/../api/php-client/apiClient.php");
-# init object with settings from
-
-
 $this->assign('title', 'SPOT | Provisioning Wizard 1 of 2');
 $this->assign('nav', 'provisioninggeneral');
-
 $this->display('_Header.tpl.php');
 //var_dump($_SESSION);
 $letters = range('A', 'G');
-
 for ($i = 1; $i <= 24; $i++) {
     $rack = "rack$i";
     foreach ($letters as $str) {
@@ -36,12 +28,6 @@ $subnet[0] = $network;
 $img = (isset($_SESSION['imagename']) ? $_SESSION['imagename'] : '');
 $ostarg = (isset($_SESSION['ostarget']) ? $_SESSION['ostarget'] : '');
 $imgtarget = (isset($_SESSION['imagetarget']) ? $_SESSION['imagetarget'] : '');
-$JSONdata = apiWrapper('http://' . GlobalConfig::$SYSPROD_SERVER->MGT . '/SPOT/provisioning/api/adresses');
-$content = json_decode($JSONdata, true);
-
-foreach ($content['rows']as $value) {
-    $subnet[] = $value['subnet'];
-}
 $JSONdata = apiWrapper('http://' . GlobalConfig::$SYSPROD_SERVER->MGT . '/SPOT/provisioning/api/provisioningimageses');
 $content = json_decode($JSONdata, true);
 foreach ($content['rows']as $value) {
@@ -55,7 +41,6 @@ array_unshift($image, $img);
 array_unshift($ostarget, $ostarg);
 ?>
 <script>
-
     /*
      * 
      * @jquery logic
@@ -71,7 +56,6 @@ array_unshift($ostarget, $ostarg);
      */
     $(document).ready(function () {
         $('*[required="required"]').before("<span class='icon-star' style='color:red'></span>");
-
         var imageid = $('.image');
         imageid.chosen({allow_single_deselect: true, width: '300px'});
         var tz = $('.tz');
@@ -86,7 +70,6 @@ array_unshift($ostarget, $ostarg);
             if (e.which == 13 && chosen.dropdown.find('li.no-results').length > 0)
             {
                 var option = $("<option>").val(this.value).text(this.value);
-
                 // add the new option
                 network.prepend(option);
                 // automatically select it
@@ -94,6 +77,29 @@ array_unshift($ostarget, $ostarg);
                 // trigger the update
                 network.trigger("chosen:updated");
             }
+        });
+        // lOAD RESUTLS FROM IPAM 
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "<?php echo "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/sections/1/subnets/"; ?>",
+            "method": "GET",
+            "headers": {
+                "token": "<?php echo $_SESSION['token']; ?>",
+                "cache-control": "no-cache",
+                "postman-token": "64638560-aa42-f5d7-871d-b885334d4e37"
+            }
+        }
+        $('.loader').html(' <img src="/SPOT/provisioning/images/loader.gif" />').attr({title: "Loading subnets from NAGRA ipam"});
+        $.ajax(settings).done(function (response) {
+            $('.loader').html('');
+            $.each(response.data, function (obj) {
+                network
+                        .append($('<option>', {value: response.data[obj].subnet})
+                                .text(response.data[obj].subnet));
+            })
+            // trigger the update
+            network.trigger("chosen:updated");
         });
         $('#stopshelf').chosen({display_disabled_options: false});
         $('#stopshelf').chosen().change(function () {
@@ -106,21 +112,16 @@ array_unshift($ostarget, $ostarg);
             var posix = timeobj[1];
             var olson = timeobj[2];
             $('#olson').val(olson);
-
             $('#posix').val(posix);
-
             $('#posixmsg').html('<a class="btn btn-primary" href="http://www.timeanddate.com/worldclock/results.html?query=' + olson + '" target="_blank">Check on <span class="badge">timeanddate.com</span> to validate.</a>');
             $('#windowstz').val(windowstz);
-
             if ($('#posix').val() == '') {
                 $('#posix').prop('readonly', true);
             }
             else
             {
-
                 $('#posix').prop('readonly', false);
             }
-
         });
         var shelf = $('.shelf');
         shelf.chosen({allow_single_deselect: true});
@@ -134,42 +135,25 @@ array_unshift($ostarget, $ostarg);
             }
             else
             {
-
-
                 $('#stopshelf').prop('readonly', false);
             }
             var selected = [];
-
-
             // add all selected options to the array in the first loop
-
             shelf.find("option").each(function () {
                 if (this.selected) {
-
                     //   selected[this.value] = this;
                     return false;
                 }
                 selected[this.value] = this;
-
-
-
-
             })
-
                     // then either disabled or enable them in the second loop:
                     .each(function () {
-
-
-
-
                         // if the current option is already selected in another select disable it.
                         // otherwise, enable it.
                         this.disabled = selected[this.value] && selected[this.value] !== this;
                     });
             // trigger the change in the "chosen" selects
             shelf.trigger("chosen:updated");
-
-
         });
         $('#uploadModal').bind('click', function (e) {
             e.preventDefault();
@@ -180,7 +164,6 @@ array_unshift($ostarget, $ostarg);
                 $('#upload').show();
             }
         });
-
         $("#upload").bind("click", function (e) {
             e.preventDefault();
             $('#error').hide();
@@ -195,11 +178,8 @@ array_unshift($ostarget, $ostarg);
                         var arrData = {};
                         var newclients = {}
                         newclients.csvclients = [];
-
-
                         var rowData = [];
                         var table = $("<table class='table table-bordered table.striped table-responsive'/>");
-
                         var rows = e.target.result.split("\n");
                         var index = 0;
                         for (var i = 0; i < rows.length; i++) {
@@ -209,8 +189,6 @@ array_unshift($ostarget, $ostarg);
                             arrData[i] = i;
                             var cells = rows[i].split(",");
                             var rowData = [];
-
-
                             if (cells.length >= 4) {
                                 $('#error').html('Please, check the format of your CSV file, ' + cells.length + ' fields detected on row ' + index + '. Correct format: rackX_shelfX,hostname,ipaddress ');
                                 $('#error').show();
@@ -219,7 +197,6 @@ array_unshift($ostarget, $ostarg);
                             for (var j = 0; j < cells.length; j++) {
                                 //  arrData[i].push(cells[j]);
                                 rowData.push(cells[j]);
-
                                 var cell = $("<td />");
                                 cell.html(cells[j]);
                                 row.append(cell);
@@ -240,9 +217,7 @@ array_unshift($ostarget, $ostarg);
                             });
                             var clientaddress = '<?php echo GlobalConfig::$SYSPROD_SERVER->DRBL; ?>';
                             var scriptid = "0"; //The id for checkRacks script
-
                             var salesorder = <?php echo $_SESSION['salesorder']; ?>;
-
                             var args = '{"0": "-pos", "1" : "' + cells[0] + '", "2" : "&"}';
                             //arguments = JSON.stringify(args);
                             //alert(arguments);
@@ -269,20 +244,14 @@ array_unshift($ostarget, $ostarg);
                                 data: Jcommand,
                                 wait: true
                             });
-
-
                             var temp = {};
                             temp[index] = {clientid: index, rackname: cells[0], rack: rack, shelf: letter};
-
                             arrData[i] = rowData;
-
                             newclients.csvclients.push(temp);
                             table.append(row);
                         }
                         $("#uploadContainer").html('');
                         $('#uploadContainer').append(table);
-
-
                         // load CSV array in session
                         $.ajax({
                             url: "/SPOT/provisioning/includes/loadSession.php",
@@ -296,15 +265,12 @@ array_unshift($ostarget, $ostarg);
                             data: {CSV: JSON.stringify(arrData)},
                             wait: true
                         });
-
-
                         var filename = $('#fileUpload').val();
                         $('#fileUpload').hide();
                         $('#upload').hide();
                         $('#success').html('Successfully loaded the csv file ' + filename + '.<br />Here you are the results:').show();
                         $('#startshelf').val(startshelf).trigger("chosen:updated");
                         $('#stopshelf').val(stopshelf).trigger("chosen:updated");
-
                         console.log(stopshelf);
                         //  return arrData;
                     }
@@ -312,15 +278,12 @@ array_unshift($ostarget, $ostarg);
                 } else {
                     $('#error').html('This browser does not support HTML5. ');
                     $('#error').show();
-
                 }
             } else {
                 $('#error').html('Please upload a valid CSV file. ');
                 $('#error').show();
-
             }
         });
-
         $('#phase1').click(function (event) {
             var valid = true;
             $('#failed').hide();
@@ -328,11 +291,8 @@ array_unshift($ostarget, $ostarg);
             $('.help-inline').html('');
             $('*[required="required"]').each(function () {
                 if ($(this).val() === '') {
-
                     $('#failed').html('Please, fill all the required fields! ');
                     $('#failed').show();
-
-
                     valid = false;
                 }
             });
@@ -351,9 +311,7 @@ array_unshift($ostarget, $ostarg);
             var imagetarget = parts[0];
             var imagename = parts[1];
             var ostarget = parts[2]
-
             $.get("/SPOT/provisioning/api/tblprogresses?filter=<?php echo $_SESSION['salesorder']; ?>", function (data, status) {
-
                 var Jdata = JSON.parse(data.rows[0].data);
                 var id = data.rows[0].id;
                 //Add new elements
@@ -369,7 +327,6 @@ array_unshift($ostarget, $ostarg);
                 Jdata.imagename = imagename;
                 Jdata.ostarget = ostarget;
                 Jdata.newclients = [];
-
                 var JSONdata = JSON.stringify(Jdata);
                 var toSend = {data: JSONdata};
                 var stringSend = JSON.stringify(toSend);
@@ -379,8 +336,6 @@ array_unshift($ostarget, $ostarg);
                     data: stringSend,
                     wait: true,
                     success: function () {
-
-
                         var strRack = '';
                         var strShelf = '';
                         var strRackShelf = '';
@@ -389,12 +344,10 @@ array_unshift($ostarget, $ostarg);
                         var key = '';
                         var count = 0;
                         var alphabet = "ABCDEFG".split("");
-
                         var filename = $('#fileUpload').val();
                         if (typeof filename === "undefined" || filename === '') {
                             for (var i = 1, limit = 25; i < limit; i++) {
                                 strRack = 'rack' + i + '_';
-
                                 _.each(alphabet, function (letter) {
                                     strShelf = 'shelf' + letter;
                                     strRackShelf = strRack + strShelf;
@@ -402,7 +355,6 @@ array_unshift($ostarget, $ostarg);
                                         putDB = true;
                                     }
                                     if (putDB == true) {
-
                                         count += 1;
                                         var temp = {};
                                         temp[count] = {clientid: count, rackname: strRackShelf, rack: i, shelf: letter};
@@ -417,15 +369,12 @@ array_unshift($ostarget, $ostarg);
                                         });
                                         var clientaddress = '<?php echo GlobalConfig::$SYSPROD_SERVER->DRBL; ?>';
                                         var scriptid = "0"; //The id for checkRacks script
-
                                         var salesorder = <?php echo $_SESSION['salesorder']; ?>;
-
                                         var args = '{"0": "-pos", "1" : "' + strRackShelf + '", "2" : "&"}';
                                         //arguments = JSON.stringify(args);
                                         //alert(arguments);
                                         var exesequence = 1;
                                         var executionFlag = 0;
-
                                         var command = {
                                             salesorder: salesorder,
                                             rack: i,
@@ -444,11 +393,8 @@ array_unshift($ostarget, $ostarg);
                                             data: Jcommand,
                                             wait: true
                                         });
-
                                         // Jdata.clients[count] = {clientid: count, rackname: strRackShelf, rack: i, shelf: letter};
-
                                         Jdata.newclients.push(temp);
-
                                         /* strCreate = {rack: i,
                                          shelf: letter,
                                          salesorder: <?php echo $_SESSION['salesorder']; ?>
@@ -460,23 +406,16 @@ array_unshift($ostarget, $ostarg);
                                          type: "PUT",
                                          data: Jstr
                                          }); */
-
                                         if (strRackShelf === stopshelf) {
-
-
                                             putDB = false;
                                         }
                                     }
-
                                 });
                             }
                         }
-
-
                         var Jstr = JSON.stringify(Jdata);
                         var Jstrdata = {data: Jstr};
                         var Jstrsend = JSON.stringify(Jstrdata);
-
                         console.log(Jstrsend);
                         $.ajax({
                             url: "/SPOT/provisioning/api/tblprogress/" + id,
@@ -484,7 +423,6 @@ array_unshift($ostarget, $ostarg);
                             data: Jstrsend,
                             wait: true,
                             success: function () {
-
                                 var session = 'data=' + Jstr;
                                 // reload session within new values
                                 $.ajax({
@@ -495,51 +433,33 @@ array_unshift($ostarget, $ostarg);
                                     success: function () {
                                         // All OK , pass to phase 2
                                         window.location.href = "/SPOT/provisioning/provisioning2";
-
                                     }
                                 });
                             }
                         });
-
-
-
-
-
                     }
-
-
-
                 });
-
             });
             // don't post !
             event.preventDefault();
-
         });
-    $('#netprov').on('click', function () {
+        $('#netprov').on('click', function () {
             var toSend = {provisioning: 'network'};
             var JSONdata = JSON.stringify(toSend);
             $.ajax({
                 url: "includes/loadSession.php",
                 type: "POST",
                 data: {salesorder: '<?php echo $_SESSION['salesorder']; ?>',
-                            data: JSONdata}
-
+                    data: JSONdata}
             });
             window.location.href = "/SPOT/provisioning/customconfigsbuilder";
         });
     });
-
 </script>  
-
 <div class="container">
-
     <h1>
         <i class="icon-th-list"></i> Provisioning Wizard - 1 of 2
-
-
     </h1>
-
     <?php
     if (!isset($_SESSION['salesorder'])) {
         echo "<p class='alert alert-danger'>You need to load an order first</p>";
@@ -547,14 +467,9 @@ array_unshift($ostarget, $ostarg);
     } else {
         ?>
         <div class="alert alert-danger" id="failed" role="alert" style="display:none"></div>
-
         <div id="message"></div>
-
         <form id="general">
-
-
             <div class="form-group">
-
                 <div id="accordion">
                     <div>
                         <h3 class="ui-widget-header">System Provisioning - <small class="icon-star" style="color:red"> mark a field as required</small></h3>
@@ -562,23 +477,19 @@ array_unshift($ostarget, $ostarg);
                         <div id="posixmsg" class="pull-right"></div>
                         <fieldset>
                             <div id="tz-group" title="Timezone Selection">
-
                                 <table  class="collection table table-bordered table-hover">
                                     <tr>
                                         <th>
                                             <span class="icon-time"></span> TimeZone selection
                                         </th>
                                         <th>
-
                                             <label for="windowstz" >Windows</label>
                                         </th><th>
                                             <label for="posix" >Posix</label> 
-
                                         </th>
                                         <th>
                                             <label for="olson" >Olson</label>
                                         </th>
-
                                     </tr>
                                     <tr>
                                         <td>
@@ -683,26 +594,19 @@ array_unshift($ostarget, $ostarg);
                                                 <option value="Kamchatka Standard Time<>PETT-12<>Asia/Kamchatka">(UTC+12:00) Petropavlovsk-Kamchatsky</option>
                                                 <option value="Tonga Standard Time<>TOT-13<>Pacific/Tongatapu">(UTC+13:00) Nuku'alofa</option>
                                                 <option value="Samoa Standard Time<>WST13<>Pacific/Apia">(UTC+13:00) Samoa</option>
-
-
                                             </select>
                                         </td>
-
                                         <td>
                                             <input type="text" name="windowstz" required="required" id="windowstz" placeholder="Select to populate this field"  value="<?php echo $windowstz; ?>" readonly="readonly" /> 
                                         </td>
                                         <td>
                                             <input type="text" name="posix"  required="required" id="posix" placeholder="Select to populate this field" value="<?php echo $posix; ?>" readonly="readonly"  /> 
-
                                         </td>
                                         <td>
                                             <input type="text" name="olson" required="required" id="olson" placeholder="Select to populate this field"  value="<?php echo $olson; ?>" readonly="readonly" /> 
                                         </td>
                                     </tr>
-
                                 </table>
-
-
                             </div>
                             <div id="rackselection" title="Rack Selection">
                                 <table  class="collection table table-bordered table-hover">
@@ -736,6 +640,7 @@ array_unshift($ostarget, $ostarg);
                                 </table>
                             </div>
                             <div id="networkdiv" title="Network definition">
+                                
                                 <table  class="collection table table-bordered table-hover">
                                     <tr>
                                         <th>
@@ -751,8 +656,8 @@ array_unshift($ostarget, $ostarg);
                                                 }
                                                 ?>
                                             </select>
+                                            <span class="loader"></span>
                                             <p class="help-inline pull-right"><span class="icon-info-sign" > If the subnet is not suggested, type your entry and hit  "ENTER".</span></p>
-
                                         </td>
                                     </tr>
                                 </table>  
@@ -776,43 +681,29 @@ array_unshift($ostarget, $ostarg);
                                                     echo "<option value='$optionval'>$value</option>";
                                                 }
                                                 ?>
-
                                             </select>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                             <a href="javascript:void(0)" id="netprov" class="pull-left btn btn-info">Skip to Network provisioning</a>
+                            <a href="javascript:void(0)" id="netprov" class="pull-left btn btn-info">Skip to Network provisioning</a>
                             <button id="uploadModal" class="btn btn-primary center" >Add a CSV (optional)</button>
-
-
                             <button id="phase1"  class="btn btn-primary pull-right" >Go to step 2  </button>
-
                         </fieldset>
-
-
-
-
-
                     </div>
                 </div>
             </div>
-
-
-
         </form>
         <div class="modal hide fade" id="uploadDialog">
             <div class="modal-header">
                 <a class="close" data-dismiss="modal">&times;</a>
                 <h3>
                     <i class="icon-edit"></i> Add a  CSV file
-
                 </h3>
                 <p class="alert alert-success infos">
                     Add a csv file for bulk import of settings. Every lines should be formed in this way: <br />
                     <b>rackXshelfX,hostname,ipaddress</b>
                 </p>
-
             </div>
             <div class="modal-body">
                 <div id="modelAlert">
@@ -827,9 +718,7 @@ array_unshift($ostarget, $ostarg);
                 <input type="file" class="add-on" id="fileUpload" />
             </div>
         </div>
-
     </div> <!-- /container -->
-
     <?php
 } // End of if exist a selected order for thi session
 $this->display('_Footer.tpl.php');

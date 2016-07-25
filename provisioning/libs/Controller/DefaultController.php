@@ -82,6 +82,9 @@ class DefaultController extends AppBaseController {
     public function InstallModules() {
         $this->Render('InstallModulesView.tpl');
     }
+     public function GenerateHostsFile() {
+        $this->Render('HostsFileView.tpl');
+    }
 
     public function runCommander() {
         $this->Render('CommanderView.tpl');

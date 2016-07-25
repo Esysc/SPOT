@@ -21,6 +21,12 @@ if (isset($_POST['datatoPdf'])) {
     $htmltable = $_POST['datatoPdf'];
     $_SESSION['datatoPdf'] = $htmltable;
 }
+if (isset($_POST['label'])) {
+    $_SESSION['hostname'] = $_POST['hostname'];
+    $_SESSION['ipaddress'] = $_POST['ipaddress'];
+    $_SESSION['vlan'] = $_POST['vlan'];
+    
+}
 if (isset($_POST['image64enc'])) {
     $base64img = $_POST['image64enc'];
     //clean dir before

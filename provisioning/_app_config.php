@@ -372,8 +372,11 @@ GlobalConfig::$ROUTE_MAP = array(
     'GET:cvsweb' => array('route' => 'Default.Cvsweb'),
     // InstallModules, forst version
     'GET:instmod' => array('route' => 'Default.InstallModules'),
+    // Generate hosts file view
+    'GET:hosts' => array('route' => 'Default.GenerateHostsFile'),
     //wrapper to connect to pld productionDB
     // Tblorders
+    
     'GET:tblorderses' => array('route' => 'Tblorders.ListView'),
     'GET:tblorders/(:any)' => array('route' => 'Tblorders.SingleView', 'params' => array('salesorder' => 1)),
     'GET:api/tblorderses' => array('route' => 'Tblorders.Query'),

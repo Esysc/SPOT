@@ -15,8 +15,8 @@ function print_r_V2($array) {
     return $table;
 }
 
-function prettyprint($code,$id) {
-        echo '<pre class="prettyprint linenums" id="'.$id.'">', str_replace("\t", str_repeat("&nbsp", 4), htmlspecialchars($code)), '</pre>';
+function prettyprint($code, $id) {
+    echo '<pre class="prettyprint linenums" id="' . $id . '">', str_replace("\t", str_repeat("&nbsp", 4), htmlspecialchars($code)), '</pre>';
 }
 
 function space($string) {
@@ -80,7 +80,7 @@ function curlPost($url, $postfields) {
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_VERBOSE, 1);
     curl_setopt($ch, CURLOPT_HEADER, false);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);    
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -97,6 +97,61 @@ function curlPost($url, $postfields) {
 
     return $results;
 }
+
+/* POST to ipam api to get token */
+
+function tokenGet($url, $header = "", $user = "admin", $pass = "***REMOVED***") {
+    $cookie = "share_cookie.txt";
+    $tmp = sys_get_temp_dir();
+    $cookie_file_path = $tmp . "/" . $cookie;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_VERBOSE, 1);
+    curl_setopt($ch, CURLOPT_HEADER, $header);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_USERPWD, "$user:$pass");
+
+    curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file_path);
+    curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file_path);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 30); //timeout in seconds
+    $chresult = curl_exec($ch);
+    $chapierr = curl_errno($ch);
+    $cherrmsg = curl_error($ch);
+    curl_close($ch);
+
+    $results = $chresult;
+
+    return $results;
+}
+
+function tokenCheck($url, $header = "", $user = "admin", $pass = "***REMOVED***") {
+    $cookie = "share_cookie.txt";
+    $tmp = sys_get_temp_dir();
+    $cookie_file_path = $tmp . "/" . $cookie;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_VERBOSE, 1);
+    curl_setopt($ch, CURLOPT_HEADER, $header);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file_path);
+    curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file_path);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 30); //timeout in seconds
+    $chresult = curl_exec($ch);
+    $chapierr = curl_errno($ch);
+    $cherrmsg = curl_error($ch);
+    curl_close($ch);
+
+    $results = $chresult;
+
+    return $results;
+}
+
+
+
 /*
  * Scope: get all memos ID for the given url and return a xml string
  * Arguments: Release name
@@ -351,7 +406,7 @@ function apiWrapper($url, $user = 'hotline', $pass = 'hotline') {
     return $result;
 }
 
-function apiPOST($url, $content, $method = "POST" ) {
+function apiPOST($url, $content, $method = "POST") {
 
 
     $ch = curl_init();

@@ -1,4 +1,5 @@
 RewriteEngine On
+
 # exceptions
 RewriteRule ^(.*)/(.*)/cidr/(.*)/(.*)/$ ?app_id=$1&controller=$2&id=cidr&id2=$3&id3=$4 [L,QSA]
 RewriteRule ^(.*)/(.*)/cidr/(.*)/(.*) ?app_id=$1&controller=$2&id=cidr&id2=$3&id3=$4 [L,QSA]
@@ -8,3 +9,4 @@ RewriteRule ^(.*)/(.*)/(.*)/(.*)/$ ?app_id=$1&controller=$2&id=$3&id2=$4 [L,QSA]
 RewriteRule ^(.*)/(.*)/(.*)/$ ?app_id=$1&controller=$2&id=$3 [L,QSA]
 RewriteRule ^(.*)/(.*)/$ ?app_id=$1&controller=$2 [L,QSA]
 RewriteRule ^(.*)/$ ?app_id=$1 [L,QSA]
+
