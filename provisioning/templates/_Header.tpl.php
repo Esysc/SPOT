@@ -479,9 +479,10 @@
                                 if ($this->nav == 'adresses') {
                                     echo 'class="active"';
                                 }
-                                ?>><a href="./adresses">Customer IP Inventory</a></li>
+                                ?>><!--<a href="./adresses">Customer IP Inventory</a></li>-->
+                                    <a href="http://spmgt.my.compnay.com/SPOT/ipam" target="_blank">Customer IP Inventory</a>
                                     <?php
-                                    if ($_SESSION['right'] == 10) {
+                                    if ($_SESSION['right'] == 1000) {
                                         ?>
                                     <li <?php
                                     if ($this->nav == 'ranges') {

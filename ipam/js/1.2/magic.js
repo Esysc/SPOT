@@ -145,6 +145,27 @@ $(document).ready(function () {
             $('#popupOverlay2 > div').empty();
         }
         $(oclass + ' .' + pClass).fadeIn('fast');
+        // Chosen list reordered
+        // sort list
+        $('select').each(function() {
+            var my_options = $("option", this);
+            var optionSelected = $(this).find(":selected").val();
+        my_options.sort(function (a, b) {
+            if (a.text > b.text)
+                return 1;
+            else if (a.text < b.text)
+                return -1;
+            else
+                return 0
+        });
+        $(this).empty().append(my_options).chosen();
+        $(this).val(optionSelected);
+        $(this).trigger("chosen:updated");
+        });
+        
+        
+
+        
         //disable page scrolling on bottom
         $('body').addClass('stop-scrolling');
     }
@@ -3585,7 +3606,10 @@ $(document).ready(function () {
         return false;
     });
 
-
+// trigger update on all select
+    $('select').on('change', function () {
+        $(this).trigger('chosen:updated');
+    });
 
     return false;
 });

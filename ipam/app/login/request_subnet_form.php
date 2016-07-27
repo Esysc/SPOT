@@ -10,6 +10,7 @@ $vlans = $Tools->fetch_all_objects('vlans', 'vlanId');
 
 $vlans = (array) $vlans;
 $locations = $Tools->fetch_all_objects("locations");
+
 ?>
 <div id="login" class="request">
     <form name="requestSUBNET" id="requestSUBNET">
@@ -76,9 +77,9 @@ $locations = $Tools->fetch_all_objects("locations");
                         if ($locations !== false) {
                             foreach ($locations as $l) {
                                 if ($subnet_old_details['location'] == $l->id) {
-                                    print "<option value='$l->id' selected='selected'>$l->name</option>";
+                                    print "<option value='$l->name' selected='selected'>$l->name</option>";
                                 } else {
-                                    print "<option value='$l->id'>$l->name</option>";
+                                    print "<option value='$l->name'>$l->name</option>";
                                 }
                             }
                         } else {

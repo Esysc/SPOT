@@ -6,7 +6,7 @@
 
 /* functions */
 require( dirname(__FILE__) . '/../../../functions/functions.php');
-require( dirname(__FILE__) . "/../../../functions/adLDAP/src/adLDAP.php");
+require_once( dirname(__FILE__) . "/../../../functions/adLDAP/src/adLDAP.php");
 
 # initialize user object
 $Database 	= new Database_PDO;

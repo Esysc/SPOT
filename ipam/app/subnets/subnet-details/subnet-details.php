@@ -12,7 +12,9 @@ if ($User->settings->enableMulticast == 1) {
     $multicast_badge = "";
 }
 ?>
-
+<script>
+$('select').chosen();
+</script>
 <table class="ipaddress_subnet table-condensed table-full">
     <tr>
         <th style='padding-top:2px !important;'><?php print _('Subnet details'); ?></th>

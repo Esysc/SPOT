@@ -6,6 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  */
+.chosen-container { width: 220px !important; }
 .slider {
   display: inline-block;
   vertical-align: middle;

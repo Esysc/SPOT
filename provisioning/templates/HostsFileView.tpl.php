@@ -9,25 +9,46 @@ $this->display('_Header.tpl.php');
 <script>
 
     $(document).ready(function () {
-
-        //Plugin function to dowload a file on ajax post
-        $.download = function (url, data, method) {
-            //url and data options required
-            if (url && data) {
-                //data can be string of parameters or array/object
-                data = typeof data == 'string' ? data : $.param(data);
-                //split params into form inputs
-                var inputs = '';
-                $.each(data.split('&'), function () {
-                    var pair = this.split('=');
-                    inputs += '<input type="hidden" name="' + pair[0] + '" value="' + pair[1] + '" />';
-                });
-                //send request
-                $('<form action="' + url + '" method="' + (method || 'post') + '">' + inputs + '</form>')
-                        .appendTo('body').submit().remove();
+        var subnet = $('.subnet');
+        subnet.chosen({allow_single_deselect: true, });
+        subnet.on('change', function () {
+            subnet.trigger('chosen:updated');
+            console.log('change')
+            $("#exportIpam").hide();
+            if (subnet.val() !== "") {
+                $('#subnet').val(subnet.val());
+                $("#exportIpam").show();
             }
-            ;
-        };
+        });
+
+        // lOAD RESUTLS FROM IPAM 
+        // console.log("<?php echo $_SESSION['token']; ?>")
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "<?php echo "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/sections/1/subnets/"; ?>",
+            "method": "GET",
+            "headers": {
+                "token": "<?php echo $_SESSION['token']; ?>",
+                "cache-control": "no-cache",
+                "postman-token": "64638560-aa42-f5d7-871d-b885334d4e37"
+            }
+        }
+        $('.loader').html(' <img src="/SPOT/provisioning/images/loader.gif" />').attr({title: "Loading subnets from NAGRA ipam"});
+        $.ajax(settings).done(function (response) {
+            $('.loader').html('');
+            subnet
+                    .append($('<option>', {value: ""})
+                            .text(""));
+
+            $.each(response.data, function (obj) {
+                subnet
+                        .append($('<option>', {value: response.data[obj].id})
+                                .text(response.data[obj].subnet));
+            })
+            // trigger the update
+            subnet.trigger("chosen:updated");
+        });
         // Get all the sales order in the tblprogress table
         $.get("/SPOT/provisioning/api/tblprogresses", function (jsonResult) {
             var Jdata = jsonResult.rows;
@@ -46,6 +67,7 @@ $this->display('_Header.tpl.php');
             });
             $('#salesel').chosen();
         });
+
         var SO;
         $('#salesel').on('change', function () {
             $('.extraHosts').remove();
@@ -171,6 +193,52 @@ $this->display('_Header.tpl.php');
             });
         });
 
+        $('#exportIpam').on('click', function (event) {
+            event.preventDefault();
+            var c = 0;
+            $('#message').html('').hide();
+            $('#errormsg').html('').hide();
+            $('.loader').html(' <img src="/SPOT/provisioning/images/loader.gif" />').attr({title: "Creating hosts in IPAM inventory....."});
+            var subnetId = $('#subnet').val();
+            var logs;
+            $('.ipaddress').each(function () {
+
+                var ipaddress = $(this).val();
+                if (ipaddress !== "") {
+                    var hostname = $(this).nextAll('input').first().focus().val();
+                    console
+                    var settings = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "<?php echo "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/addresses/create/?subnetId="; ?>" + subnetId + "&hostname=" + hostname + "&description=Added from SPOT&ip_addr=" + ipaddress,
+                        dataType: 'json',
+                        "type": "POST",
+                        "headers": {
+                            "token": "<?php echo $_SESSION['token']; ?>",
+                            "cache-control": "no-cache",
+                            "postman-token": "64638560-aa42-f5d7-871d-b885334d4e37"
+                        },
+                        "success": function ( obj) {
+                            
+                            $('#message').append("<p>"+ipaddress+" "+obj.data+"</p>").show();
+                        },
+                        "error": function (xhr, status, error) {
+                            
+                             $('#errormsg').append("<p>"+ipaddress+" "+xhr.responseText+"</p>").show();
+                        }
+                       
+                    }
+
+                    $.ajax(settings).done();
+                    c++;
+                }
+
+            });
+            $('.loader').html('');
+
+            $('#message').append("<p>"+c+" IP addresses sent to IPAM</p>").show();
+        });
+
 
     });</script>
 
@@ -182,14 +250,14 @@ $this->display('_Header.tpl.php');
 
     </h1>
 
-    <span class="alert alert-danger" id="errormsg" role="alert" style="display:none"></span>
-    <span id="message" class="alert alert-success" role="alert" style="display:none"></span>
+    <div class="alert alert-danger" id="errormsg" role="alert" style="display:none"></div>
+    <div id="message" class="alert alert-success" role="alert" style="display:none"></div>
     <!-- underscore template for the collection -->
 
     <table class="stselection table-bordered table-responsive table table-striped">
 
         <tr class="salesel">
-            <th>
+            <th colspan="2">
                 <label for="salesel"><strong>
                         Select a stored SO
                     </strong>
@@ -206,6 +274,14 @@ $this->display('_Header.tpl.php');
                 </select>
 
             </td>
+            <td>
+                <select name="subnet"  class="chosen subnet" data-placeholder="Choose the subnet" >
+
+                </select>
+                <span class="loader"></span>
+                <input type="hidden" id="subnet" />
+                <p class="help-inline pull-right"><span class="icon-info-sign" > Used only to add hosts on IPAM</span></p>
+            </td>
 
         </tr>
 
@@ -219,10 +295,13 @@ $this->display('_Header.tpl.php');
 
         <table class="main table-bordered table-responsive table table-striped">
             <tr class="network"><th colspan="2">
-            <center>Hosts in database</center>
+
             <div id="export">
+                <center>Hosts in database</center>
                 <button class='pull-right btn btn-primary' id='exportHosts'>Export hosts file</button>
+
                 <button class='pull-left btn btn-success' id='exportLabels'>Create Excel for Labels</button>
+                <center><button class='btn btn-warning' id='exportIpam'>Add hosts to IPAM</button></center>
             </div>
             </th></tr>
 
