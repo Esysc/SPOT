@@ -147,25 +147,25 @@ $(document).ready(function () {
         $(oclass + ' .' + pClass).fadeIn('fast');
         // Chosen list reordered
         // sort list
-        $('select').each(function() {
+        $('select').each(function () {
             var my_options = $("option", this);
             var optionSelected = $(this).find(":selected").val();
-        my_options.sort(function (a, b) {
-            if (a.text > b.text)
-                return 1;
-            else if (a.text < b.text)
-                return -1;
-            else
-                return 0
+            my_options.sort(function (a, b) {
+                if (a.text > b.text)
+                    return 1;
+                else if (a.text < b.text)
+                    return -1;
+                else
+                    return 0
+            });
+            $(this).empty().append(my_options).chosen();
+            $(this).val(optionSelected);
+            $(this).trigger("chosen:updated");
         });
-        $(this).empty().append(my_options).chosen();
-        $(this).val(optionSelected);
-        $(this).trigger("chosen:updated");
-        });
-        
-        
 
-        
+
+
+
         //disable page scrolling on bottom
         $('body').addClass('stop-scrolling');
     }
@@ -3610,6 +3610,48 @@ $(document).ready(function () {
     $('select').on('change', function () {
         $(this).trigger('chosen:updated');
     });
+
+
+// Paginate subnets left menu
+    function check_navigation_display(el) {
+        //accepts a jQuery object of the containing div as a parameter
+        if ($(el).find('ul').children('li').first().is(':visible')) {
+            $(el).children('.prev').hide();
+        } else {
+            $(el).children('.prev').show();
+        }
+
+        if ($(el).find('ul').children('li').last().is(':visible')) {
+            $(el).children('.next').hide();
+        } else {
+            $(el).children('.next').show();
+        }
+    }
+
+    $('.subnets').each(function () {
+         var id = $(this).find("ul").attr('id');
+         console.log(id)
+        if (id === "subnets") {
+
+            $(this).append('<a class="btn btn-mini btn-success prev"><< prev</a>  <a class="btn btn-mini btn-info next">next >></a>');
+            $(this).find('ul li:gt(19)').hide();
+            check_navigation_display($(this));
+            $(this).find('.next').click(function () {
+                var last = $(this).siblings('ul').children('li:visible:last');
+                last.nextAll(':lt(20)').show();
+                last.next().prevAll().hide();
+                check_navigation_display($(this).closest('div'));
+            });
+            $(this).find('.prev').click(function () {
+                var first = $(this).siblings('ul').children('li:visible:first');
+                first.prevAll(':lt(20)').show();
+                first.prev().nextAll().hide()
+                check_navigation_display($(this).closest('div'));
+            });
+           return false;
+        }
+    });
+
 
     return false;
 });

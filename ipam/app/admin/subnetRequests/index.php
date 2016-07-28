@@ -10,7 +10,7 @@ $active_requests = $Admin->fetch_multiple_objects("subnetRequests", "processed",
 $inactive_requests = $Admin->fetch_multiple_objects("subnetRequests", "processed", 1, "id", false);
 ?>
 
-<h4><?php print _('List of all active subnet requests'); ?></h4>
+<h4><?php print _('List of  subnet requests'); ?></h4>
 <hr><br>
 
 <?php
@@ -67,6 +67,7 @@ if ($active_requests === false) {
     <?php
 }
 # print resolved if present
+
 if ($inactive_requests !== false) {
     ?>
 
@@ -110,6 +111,7 @@ if ($inactive_requests !== false) {
                 print '	<td>' . $request['owner'] . '</td>' . "\n";
                 print '	<td>' . $request['requester'] . '</td>' . "\n";
                 print '	<td>' . $request['comment'] . '</td>' . "\n";
+                print ' <td>';
                 print $request['accepted'] == 1 ? "Yes" : "No";
                 print '</td>' . "\n";
                 print '</tr>' . "\n";

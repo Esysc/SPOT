@@ -28,7 +28,7 @@ $this->display('_Header.tpl.php');
     $(document).ready(function () {
         $('#debug').html('Loading data, please wait .....   <img src="/SPOT/provisioning/images/loader.gif" />').show();
         $('#save').hide();
-        $('#DataTable').tree({
+        $('#datatable').tree({
             autoOpen: true,
             dragAndDrop: true,
             saveState: true,
@@ -109,7 +109,7 @@ $this->display('_Header.tpl.php');
             $('#results').html('<center><img src="/SPOT/provisioning/images/loader.gif" /></center>');
             $('#results').show();
             $('.results').show();
-            $("#DataTable").html('');
+            $("#datatable").html('');
             e.preventDefault();
 
             var SOarr = salesorder.split('|');
@@ -197,7 +197,7 @@ $this->display('_Header.tpl.php');
                     });
                     //   console.log(treeData);
                     $(function () {
-                        var $tree = $('#DataTable');
+                        var $tree = $('#datatable');
 
                         var control = false;
                         $tree.tree('loadData', treeData);
@@ -447,7 +447,7 @@ $this->display('_Header.tpl.php');
         $('#error').hide();
         $('#success').hide();
         $('#save').on('click', function () {
-            var nodes = $('#DataTable').tree('toJson');
+            var nodes = $('#datatable').tree('toJson');
             var jsonNodes = $.parseJSON(nodes);
             //  $('#debug').html(nodes);
             //  console.log(jsonNodes);
@@ -572,7 +572,7 @@ Please report any issue to @acs.</b>');
         </tr>
     </table>
 
-    <div  id="DataTable" class="block-style" >
+    <div  id="datatable" class="block-style" >
 
 
 

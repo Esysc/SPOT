@@ -27,8 +27,8 @@ if (isset($_POST['salesorder'])) {
         //Header
         $res[] = "##### Generated hosts file for $salesorder . #####";
         $res[] = "\n\n# Common networking part";
-        $res[] = "127.0.0.1   localhost";
-        $res[] = $bc ."   broadcast";
+        $res[] = "127.0.0.1   localhost loopback";
+        $res[] = $bc ."   broadcast broadcashost";
         $res[] = $fw ."   fw01";
         $res[] = $vpn ."   vpn01";
         $res[] = $esw1 ."   esw01";

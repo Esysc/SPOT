@@ -56,10 +56,7 @@ $imagespxe[0] = $_SESSION['imagename'];
             if (!page.isInitialized)
                 page.init();
         }, 1000);
-
-    });
-
-</script>
+    });</script>
 
 <script type="text/javascript">
 
@@ -70,7 +67,6 @@ foreach ($imagename as $kvalue => $image) {
     echo "<option value='$optvalue'>$image</option>";
 };
 ?>");
-
     $(document).ready(function () {
         var loading;
         var curruser;
@@ -126,7 +122,6 @@ foreach ($imagename as $kvalue => $image) {
             });
         });
         $('[data-toggle="tooltip"]').tooltip();
-
         $('.detect').on('click', function () {
             var id = $(this).attr('id');
             var idrackname = id.replace("detect", "rackname");
@@ -137,7 +132,6 @@ foreach ($imagename as $kvalue => $image) {
             var shelf = $('#' + idshelf).val();
             var content = {reponse: "99"};
             var Jcontent = JSON.stringify(content);
-
             $.ajax({
                 url: "/SPOT/provisioning/api/sysprodracks/" + rackname,
                 type: "PUT",
@@ -224,7 +218,6 @@ foreach ($imagename as $kvalue => $image) {
             display_disabled_options: false,
             width: '250px'
         });
-
         /* var apccode = $('.apccode');
          apccode.chosen({allow_single_deselect: true}); */
         // don't let the width to be "0"
@@ -701,7 +694,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                 var scriptID = 5;
                                 var clientaddress = $.trim($("#clientaddress" + level).val());
                                 // Next line is commented out because the script is run from client directly
-                                // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                            ?>';
+                                // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                            ?>';
                                 break;
                             case 'LINUX':
 
@@ -746,13 +739,13 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                 }
 
 
-                                //  var clientaddress = '<?php // echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                             ?>';
+                                //  var clientaddress = '<?php // echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                                             ?>';
 
                                 var clientaddress = $.trim($("#clientaddress" + level).val());
                                 //      console.log("clientaddress: " + clientaddress);
                                 break;
                         }
-                        // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                             ?>';
+                        // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                                             ?>';
                         break;
                 }
 
@@ -893,6 +886,86 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
             $('#servermsg').html('The data has been successfully saved, futhermore ip alias on MGT will be set to the gateway address. If you need to add more ip alias, go to <a href="./setipalias">Set Ip Alias</a>.</b> Click the button to get the provisioning dashboard:  <a href=\"./provisioningnotificationses\" class=\"btn btn-large btn-primary\">Dashboard');
             $('#basicModal').modal();
         });
+        $('#runcommander').on('click', function (e) {
+            var button = $(this);
+            button.hide();
+            var command = 'ssh -i .ssh/id_rsa  cristall@my.compnay.com@chx-sysprod-01 "cmd /c C:\\SPOT\\nodejs\\nssm-2.24\\win64\\nssm restart SPOT_check_racks"';
+            var url = "/SPOT/provisioning/api/remotecommands/";
+            e.preventDefault();
+            var scriptID = 100; // the scriptID runCommander
+            var rack = '25';
+            var shelf = 'Z';
+            var clientaddress = "<?php echo GlobalConfig::$SYSPROD_SERVER->MGT; ?>";
+            var user = "root";
+            var exesequence = 0;
+            var executionFlag = 0;
+            var SO = "99999999";
+            var argument = {
+                "0": "-u " + user,
+                "1": '-c \'' + command + '\''
+            };
+            var datastring = JSON.stringify(argument);
+            var command = {
+                salesorder: SO,
+                rack: rack,
+                shelf: shelf,
+                clientaddress: clientaddress,
+                arguments: datastring,
+                exesequence: exesequence,
+                returnstdout: "",
+                executionflag: executionFlag,
+                scriptid: scriptID
+            };
+            var Jcommand = JSON.stringify(command);
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: Jcommand,
+                success: createTR,
+                error: function (data) {
+                    $('#servermsg').html("An error occured:  " + data.statusText + " " + data.responseText);
+
+                    $('#basicModal').modal();
+
+                }
+            }).done(monitoring);
+            function createTR(data) {
+                var commandId = data.remotecommandid;
+                var e = $('<p>Automatically waiting for results</p><table id="stdout' + commandId + '" class="table-bordered table-responsive table table-striped"></table>');
+                $('#servermsg').append(e);
+                $('#basicModal').modal();
+            }
+            ;
+            function monitoring(data) {
+                
+                var setIntervalID = setInterval(function () {
+
+                    var commandId = data.remotecommandid;
+                    var host = data.clientaddress;
+                    var url = "/SPOT/provisioning/api/remotecommands/" + commandId
+
+                    $.ajax({
+                        url: url,
+                        type: "GET",
+                        success: function (data) {
+
+                            var arguments = data.arguments;
+                            var error = data.returncode;
+                            if (data.returnstdout === '' ) data.returnstdout = "The command has not been yet executed... please wait....";
+                            //stdout ID if you want the modal to display
+                            $('#stdout' + commandId).html('<tr><th>Running command ' + arguments + ' on host ' + host + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
+                        }
+                    });
+                    $('#close').on('click', function() {
+                    $('#runcommander').show();
+                    clearInterval(setIntervalID);
+                    
+                    });
+                }, 2000);
+            }
+
+        });
+        
     });</script>
 
 <style>
@@ -972,13 +1045,14 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
         </table>
 
         <!-- End Header Section -->
+        <a class="btn btn-mini btn-success" id="runcommander" title="Restart the check racks service on chx-sysprod-01">Restart detecting service</a>
         <div class="col-md-12 text-center" >
 
 
             <p class="pagenum"></p>
         </div>
         <!-- Begin machines form -->
-        
+
         <form class="form-horizontal" id="provisioningForm" onsubmit="return false;">
             <fieldset>
                 <table class="collection table table-bordered">
@@ -1093,9 +1167,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                                     $('#pagination').after('<ul class="pagination  pager" id="myPager"></ul>');
                                                     page.pageMe();
                                                 }
-                                            });
-
-                                        </script>
+                                            });</script>
 
                                         <div id="imglblcontainerimagename<?php echo $key; ?>"></div>
                                     </td>
@@ -1164,7 +1236,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                             <label for="productkey<?php echo $key; ?>">Product Key</label>
                                             <input type="text" name="productkey<?php echo $key; ?>"  class="productkey checkdup" id="productkey<?php echo $key; ?>" placeholder="xxxxx-xxxxx-xxxxx-xxxxx-xxxxx" />
                                             <span><i class="icon-check-sign grabpk"  id="progress<?php echo $key; ?>" title="Click here to read the firmware PK" name="clientaddress<?php echo $key; ?>_productkey<?php echo $key; ?>"></i>
-                                             <img src="/SPOT/provisioning/images/loader.gif" data-toggle="tooltip" id="imgprogress<?php echo $key; ?>" title="Please, patience while I\'m checking the PK...." style="display:none"/>  
+                                                <img src="/SPOT/provisioning/images/loader.gif" data-toggle="tooltip" id="imgprogress<?php echo $key; ?>" title="Please, patience while I\'m checking the PK...." style="display:none"/>  
                                             </span>
 
                                             <div class='checkboxes span6'>
@@ -1227,12 +1299,13 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
     </div> <!-- /container -->
     <script>
         $(document).ready(function () {
-            
-            $('.productkey').on('change', function(){
-                if ($(this).val() === '') $(this).next('i').find('.grabpk').show();
+
+            $('.productkey').on('change', function () {
+                if ($(this).val() === '')
+                    $(this).next('i').find('.grabpk').show();
             });
             $('.grabpk').on('click', function () {
-                
+
                 var name = $(this).attr('name');
                 var parsed = name.split('_');
                 var id = "img" + $(this).attr('id');
@@ -1245,9 +1318,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                  * scriptID the script to execute
                  */
                 var ipaddress = $('#' + parsed[0]).val();
-                runScript(ipaddress, parsed[1], id, scriptID );
-                
-                
+                runScript(ipaddress, parsed[1], id, scriptID);
             })
             $(".sectionSettings").on("change", function () {
 
@@ -1257,7 +1328,6 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                     return;
                 var decoded = JSON.parse(settings);
                 var id = $(this).attr('id');
-
                 if (decoded.reponse == 99) {
                     $("#" + decoded.idracks).html('<img src="/SPOT/provisioning/images/loader.gif" data-toggle="tooltip" title="Please, patience while I\'m checking the connections...." />');
                     return;
@@ -1304,10 +1374,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                 $('#' + decoded.idracks).html(client + '');
                 selects.chosen('destroy');
                 selects.empty().append(localStorage.getItem("options")).trigger('chosen:updated');
-
                 selects.find("option[value^='" + removal + "']").remove().trigger('chosen:updated');
-
-
                 var optGrps = $("#optgroup" + id);
                 optGrps.html(label);
                 //   optGrps.label = label
@@ -1320,13 +1387,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                     display_disabled_options: false,
                     width: '250px'
                 });
-
-
-
-
-
             });
-
             $('input:checkbox').on('click', function () {
                 console.log($(this).val())
             });
