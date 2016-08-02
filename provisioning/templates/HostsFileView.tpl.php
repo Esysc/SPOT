@@ -45,7 +45,12 @@ $this->display('_Header.tpl.php');
                 subnet
                         .append($('<option>', {value: response.data[obj].id})
                                 .text(response.data[obj].subnet));
+
             })
+            $(".subnet option").each(function () {
+                if ($(this).text() === $('#subnet').val())
+                    $(this).attr("selected", "selected");
+            });
             // trigger the update
             subnet.trigger("chosen:updated");
         });
@@ -69,6 +74,7 @@ $this->display('_Header.tpl.php');
         });
 
         var SO;
+
         $('#salesel').on('change', function () {
             $('.extraHosts').remove();
             var salesorder = $('#salesel').val();
@@ -79,7 +85,8 @@ $this->display('_Header.tpl.php');
             $.get("/SPOT/provisioning/api/tblprogresses?salesorder=" + SO, function (jsonResult) {
                 var Jdata = jsonResult.rows[0].data;
                 var Jsonspecs = JSON.parse(Jdata);
-                var tr = '';
+                $('#subnet').val(Jsonspecs.network);
+
                 $.each(Jsonspecs.clients, function (i, o) {
 
                     $('<div/>', {
@@ -89,6 +96,15 @@ $this->display('_Header.tpl.php');
                     $("input[name^=hostname]:eq(" + i + ")").val(o.hostname);
 
                 });
+
+                // trigger the update
+                $(".subnet option").filter(function () {
+                    //may want to use $.trim in here
+                    return $(this).text() == $('#subnet').val();
+                }).attr('selected', true).trigger('chosen:updated');
+                
+
+
                 var n = $(".extraHosts").length;
                 if (n > 0) {
                     $('#export').show();
@@ -97,6 +113,8 @@ $this->display('_Header.tpl.php');
                 }
 
             });
+
+
 
         });
         $('<div/>', {
@@ -199,8 +217,8 @@ $this->display('_Header.tpl.php');
             $('#message').html('').hide();
             $('#errormsg').html('').hide();
             $('.loader').html(' <img src="/SPOT/provisioning/images/loader.gif" />').attr({title: "Creating hosts in IPAM inventory....."});
-            var subnetId = $('#subnet').val();
-            var logs;
+            var subnetId = $('.subnet option:selected').val();
+            
             $('.ipaddress').each(function () {
 
                 var ipaddress = $(this).val();
@@ -218,15 +236,15 @@ $this->display('_Header.tpl.php');
                             "cache-control": "no-cache",
                             "postman-token": "64638560-aa42-f5d7-871d-b885334d4e37"
                         },
-                        "success": function ( obj) {
-                            
-                            $('#message').append("<p>"+ipaddress+" "+obj.data+"</p>").show();
+                        "success": function (obj) {
+
+                            $('#message').append("<p>" + ipaddress + " " + obj.data + "</p>").show();
                         },
                         "error": function (xhr, status, error) {
-                            
-                             $('#errormsg').append("<p>"+ipaddress+" "+xhr.responseText+"</p>").show();
+
+                            $('#errormsg').append("<p>" + ipaddress + " " + xhr.responseText + "</p>").show();
                         }
-                       
+
                     }
 
                     $.ajax(settings).done();
@@ -236,7 +254,7 @@ $this->display('_Header.tpl.php');
             });
             $('.loader').html('');
 
-            $('#message').append("<p>"+c+" IP addresses sent to IPAM</p>").show();
+            $('#message').append("<p>" + c + " IP addresses sent to IPAM</p>").show();
         });
 
 
@@ -275,11 +293,12 @@ $this->display('_Header.tpl.php');
 
             </td>
             <td>
-                <select name="subnet"  class="chosen subnet" data-placeholder="Choose the subnet" >
+                <select  class="subnet" data-placeholder="Choose the subnet" >
 
                 </select>
                 <span class="loader"></span>
                 <input type="hidden" id="subnet" />
+
                 <p class="help-inline pull-right"><span class="icon-info-sign" > Used only to add hosts on IPAM</span></p>
             </td>
 
@@ -292,7 +311,7 @@ $this->display('_Header.tpl.php');
 
     <form id="formHosts"  onsubmit="return false;">
         <input type="hidden" id="salesorder" />
-
+        <input type="hidden" id="tmp" />
         <table class="main table-bordered table-responsive table table-striped">
             <tr class="network"><th colspan="2">
 

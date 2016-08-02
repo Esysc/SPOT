@@ -10,8 +10,25 @@ $vlans = $Tools->fetch_all_objects('vlans', 'vlanId');
 
 $vlans = (array) $vlans;
 $locations = $Tools->fetch_all_objects("locations");
-
 ?>
+<script>
+//suggest new  subnet button
+    $(document).ready(function () {
+        $(document).on("click", "#get-subnet", function () {
+           
+            var action = "add";
+            var sectionId = $(this).attr('data-sectionId');
+            $.post("app/admin/subnets/suggest_new.php", {action: action, sectionId: sectionId}, function (data) {
+                $('form#requestSUBNET input[name=subnet]').val(data);
+                console.log(data)
+                
+            }).fail(function (jqxhr, textStatus, errorThrown) {
+                showError(jqxhr.statusText + "<br>Status: " + textStatus + "<br>Error: " + errorThrown);
+            });
+            return false;
+        });
+    });
+</script>
 <div id="login" class="request">
     <form name="requestSUBNET" id="requestSUBNET">
         <div class="REQUESTsubnet">
@@ -34,10 +51,10 @@ $locations = $Tools->fetch_all_objects("locations");
         <!-- select subnet dropdown -->
         <table class="REQUESTsubnet table table-responsive">
             <tr>
-                <th> * <?php print _('Enter a subnet'); ?></th>
+                <th> <button type="button" class="btn btn-xs btn-default"  id='get-subnet' rel='tooltip' data-placement="bottom" data-sectionId="1" title='<?php print _('Suggest new subnet'); ?>'><i class="fa fa-refresh"></i></button> * <?php print _('Enter a subnet'); ?></th>
                 <td>
-                    <input  name="subnet" id="subnet" class="form-control" type="text" lenght="15"/><strong>/24</strong>
-
+                    <input  name="subnet" id="subnet" class="form-control" type="text" lenght="15"/>
+                   
                 </td>
             </tr>
             <!-- Vlan name -->
@@ -85,8 +102,8 @@ $locations = $Tools->fetch_all_objects("locations");
                         } else {
                             ?>
                             <input type="text" name="location" class="form-control" size="30" placeholder="<?php print _('Subnet location'); ?>">
-                        <?php
-                            }
+                            <?php
+                        }
                         ?>
                     </select>
                 </td>

@@ -144,7 +144,7 @@ class Subnets extends Common_functions {
         $values = $this->strip_input_tags($values);
 
         # execute based on action
-        if ($action == "add") {
+        if ($action == "add" || $action="copy") {
             return $this->subnet_add($values);
         } elseif ($action == "edit") {
             return $this->subnet_edit($values);
@@ -1449,6 +1449,41 @@ class Subnets extends Common_functions {
         }
         # default false - does not overlap
         return false;
+    }
+    
+    /**
+     * return a suggested subnet
+     *
+     * @access public
+     * @param int $sectionId
+     * @param mixed $new_subnet (cidr)
+     * @param int $vrfId (default: 0)
+     * @return void
+     */
+    public function suggest_new_subnet($sectionId, $new_subnet, $vrfId = 0) {
+        $result = false;
+        # fetch section subnets
+        $sections_subnets = $this->fetch_section_subnets($sectionId);
+        # fix null vrfid
+        $vrfId = is_numeric($vrfId) ? $vrfId : 0;
+        # verify new against each existing
+        if (sizeof($sections_subnets) > 0) {
+            foreach ($sections_subnets as $existing_subnet) {
+                //only check if vrfId's match
+                if ($existing_subnet->vrfId == $vrfId || $existing_subnet->vrfId == null) {
+                    # ignore folders!
+                    if ($existing_subnet->isFolder != 1) {
+                        # check overlapping
+                        if ($this->verify_overlapping($new_subnet, $this->transform_to_dotted($existing_subnet->subnet) . '/' . $existing_subnet->mask) !== false) {
+                           $result = true;
+                           break;
+                        }
+                    }
+                }
+            }
+        }
+        # default false - does not overlap
+        return $result;
     }
 
     /**
@@ -3090,9 +3125,10 @@ class Subnets extends Common_functions {
                         $html[] = "		<button class='btn btn-xs btn-default showSubnetPerm' data-action='show'   data-subnetid='" . $option['value']['id'] . "'  data-sectionid='" . $option['value']['sectionId'] . "'><i class='fa fa-gray fa-tasks'></i></button>";
                         $html[] = "		<button class='btn btn-xs btn-default add_folder'     data-action='delete' data-subnetid='" . $option['value']['id'] . "'  data-sectionid='" . $option['value']['sectionId'] . "'><i class='fa fa-gray fa-times'></i></button>";
                     } else {
-                        $html[] = "		<button class='btn btn-xs btn-default editSubnet'     data-action='edit'   data-subnetid='" . $option['value']['id'] . "'  data-sectionid='" . $option['value']['sectionId'] . "'><i class='fa fa-gray fa-pencil'></i></button>";
-                        $html[] = "		<button class='btn btn-xs btn-default showSubnetPerm' data-action='show'   data-subnetid='" . $option['value']['id'] . "'  data-sectionid='" . $option['value']['sectionId'] . "'><i class='fa fa-gray fa-tasks'></i></button>";
-                        $html[] = "		<button class='btn btn-xs btn-default editSubnet'     data-action='delete' data-subnetid='" . $option['value']['id'] . "'  data-sectionid='" . $option['value']['sectionId'] . "'><i class='fa fa-gray fa-times'></i></button>";
+                        $html[] = "		<button class='btn btn-xs btn-default editSubnet'     data-action='edit'   data-subnetid='" . $option['value']['id'] . "'  data-sectionid='" . $option['value']['sectionId'] . "' title='Edit subnet'><i class='fa fa-gray fa-pencil'></i></button>";
+                        $html[] = "		<button class='btn btn-xs btn-default showSubnetPerm' data-action='show'   data-subnetid='" . $option['value']['id'] . "'  data-sectionid='" . $option['value']['sectionId'] . "' title='Change permissions'><i class='fa fa-gray fa-tasks'></i></button>";
+                        $html[] = "		<button class='btn btn-xs btn-default editSubnet'     data-action='delete' data-subnetid='" . $option['value']['id'] . "'  data-sectionid='" . $option['value']['sectionId'] . "' title='Delete subnet'><i class='fa fa-gray fa-times'></i></button>";
+                        $html[] = "		<button class='btn btn-xs btn-default editSubnet'     data-action='copy' data-subnetid='" . $option['value']['id'] . "'  data-sectionid='" . $option['value']['sectionId'] . "' title='Duplicate subnet'><i class='fa fa-gray fa-plus'></i></button>";
                     }
                 } else {
                     $html[] = "		<button class='btn btn-xs btn-default disabled'><i class='fa fa-gray fa-pencil'></i></button>";

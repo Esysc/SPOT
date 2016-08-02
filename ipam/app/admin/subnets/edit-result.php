@@ -68,7 +68,7 @@ if(@$_POST['action2']=="delete")        { $_POST['action'] = $_POST['action2']; 
 
 
 # new subnet checks
-if ($_POST['action']=="add") {
+if ($_POST['action']=="add" || $_POST['action'] =="copy" ) {
     // ID must be numberic value
 	if(!is_numeric($_POST['sectionId']))						{ $Result->show("danger", _("Invalid ID"), true); }
 
@@ -78,7 +78,7 @@ if ($_POST['action']=="add") {
     //verify cidr
     $cidr_check = $Subnets->verify_cidr_address($_POST['cidr']);
     if(strlen($cidr_check)>5) {
-	    $errors[] = $cidr_check;
+	    $errors[] = $cidr_check;    
 	}
     //disable checks for folders and if strict check enabled
     if($section['strictMode']==1 && !$parent_is_folder ) {
@@ -273,7 +273,7 @@ else {
         $values['threshold'] = $_POST['threshold'];
     }
 	# for new subnets we add permissions
-	if($_POST['action']=="add") {
+	if($_POST['action']=="add" || $_POST['action'] == "copy") {
 		$values['permissions']=$_POST['permissions'];
 		$values['sectionId']=$_POST['sectionId'];
 		// add vrf
@@ -316,7 +316,7 @@ else {
 	if (!$Subnets->modify_subnet ($_POST['action'], $values))	{ $Result->show("danger", _('Error editing subnet'), true); }
 	else {
 		# if add save id !
-		if ($_POST['action']=="add") { $new_subnet_id = $Subnets->lastInsertId; }
+		if ($_POST['action']=="add" || $_POST['action'] == "copy") { $new_subnet_id = $Subnets->lastInsertId; }
 		# update also all slave subnets if section changes!
 		if( (isset($values['sectionId']) && $_POST['action']=="edit") || ($_POST['action']=="delete")) {
 			$Subnets->reset_subnet_slaves_recursive();
@@ -333,7 +333,7 @@ else {
 		# edit success
 		if($_POST['action']=="delete")	{ $Result->show("success", _('Subnet, IP addresses and all belonging subnets deleted successfully').'!', false); }
 		# create - for redirect
-		elseif ($_POST['action']=="add"){ $Result->show("success", _("Subnet $_POST[action] successfull").'!<div class="hidden subnet_id_new">'.$new_subnet_id.'</div><div class="hidden section_id_new">'.$values['sectionId'].'</div>', false); }
+		elseif ($_POST['action']=="add" || $_POST['action'] == "copy" ){ $Result->show("success", _("Subnet $_POST[action] successfull").'!<div class="hidden subnet_id_new">'.$new_subnet_id.'</div><div class="hidden section_id_new">'.$values['sectionId'].'</div>', false); }
 		#
 		else							{ $Result->show("success", _("Subnet $_POST[action] successfull").'!', false); }
 	}
@@ -376,7 +376,8 @@ else {
 
 		// set zone
 		$zone = $_POST['action']=="add" ? $PowerDNS->get_ptr_zone_name ($_POST['subnet'], $_POST['mask']) : $PowerDNS->get_ptr_zone_name ($old_subnet_details['ip'], $old_subnet_details['mask']);
-		// try to fetch domain
+               
+                // try to fetch domain
 		$domain = $PowerDNS->fetch_domain_by_name ($zone);
 
 		// POST DNSrecursive not set, fake it if old is also 0

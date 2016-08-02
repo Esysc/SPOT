@@ -190,6 +190,7 @@ $('.slider').slider().on('slide', function(ev){
             	<button type="button" class="btn btn-xs btn-default"  id='snmp-routing' rel='tooltip' data-placement="bottom" title='<?php print _('Search for subnets through SNMP'); ?>'><i class="fa fa-cogs"></i></button>
             	<?php } ?>
             	<button type="button" class="btn btn-xs btn-default"  id='get-ripe' rel='tooltip' data-placement="bottom" title='<?php print _('Get information from RIPE / ARIN database'); ?>'><i class="fa fa-refresh"></i></button>
+                <button type="button" class="btn btn-xs btn-default"  id='get-subnet' rel='tooltip' data-placement="bottom" data-sectionId="<?php print $_POST['sectionId']; ?>" title='<?php print _('Suggest new subnet'); ?>'><i class="fa fa-refresh"></i></button>
             </div>
         	<?php print _('Enter subnet in CIDR format'); ?>
         </td>
