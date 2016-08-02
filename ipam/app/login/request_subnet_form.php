@@ -51,7 +51,7 @@ $locations = $Tools->fetch_all_objects("locations");
         <!-- select subnet dropdown -->
         <table class="REQUESTsubnet table table-responsive">
             <tr>
-                <th> <button type="button" class="btn btn-xs btn-default"  id='get-subnet' rel='tooltip' data-placement="bottom" data-sectionId="1" title='<?php print _('Suggest new subnet'); ?>'><i class="fa fa-refresh"></i></button> * <?php print _('Enter a subnet'); ?></th>
+                <th> <button type="button" class="btn btn-xs btn-default"  id='get-subnet' rel='tooltip' data-placement="bottom" data-sectionId="1" title='<?php print _('Suggest new subnet'); ?>'><i class="fa fa-search"></i></button> * <?php print _('Enter a subnet'); ?></th>
                 <td>
                     <input  name="subnet" id="subnet" class="form-control" type="text" lenght="15"/>
                    

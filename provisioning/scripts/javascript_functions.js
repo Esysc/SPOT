@@ -21,7 +21,7 @@ setInterval(blinker, 2000);
 
 
     $.ajaxSettings.data = null; // hack for google chrome
-
+$(document).on('click', '.modal-footer button', function(){  $('#servermsg').html(''); });
 
 
     function disableF5(e) {
