@@ -53,7 +53,7 @@ if (!empty($_SERVER['PHP_AUTH_USER'])) {
                 if ($("[rel=tooltip]").length) {
                     $("[rel=tooltip]").tooltip();
                 }
-                $('select').chosen();
+               // $('select').chosen();
                    
             });
         </script>

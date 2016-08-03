@@ -17,8 +17,6 @@ $Subnets = new Subnets($Database);
 $Tools = new Tools($Database);
 $Result = new Result ();
 
-
-
 function loopSubnet($start_arr) {
     $start_arr[2] ++;
     if ($start_arr[2] == 256) {
@@ -35,9 +33,16 @@ function loopSubnet($start_arr) {
     }
     return $start_arr;
 }
-$sectionId = $_POST['sectionId'];
-$start = "10.0.0.0";
 
+$sectionId = $_POST['sectionId'];
+if ($_POST['subnet'] !== '') {
+    $subnet = $_POST['subnet'];
+    $post_subnet = explode("/", $_POST['subnet']);
+    $start = $post_subnet[0];
+} else {
+    $start = "10.0.0.0";
+    
+}
 $mask = 24;
 
 $start_arr = explode(".", $start);
@@ -48,7 +53,7 @@ $check = false;
 
 while ($check == false) {
     $tmp_value = $start_arr[0] . '.' . $start_arr[1] . '.' . $start_arr[2] . '.0/' . $mask;
-    if ($Subnets->suggest_new_subnet($sectionId, $tmp_value) == false) {
+    if ($Subnets->suggest_new_subnet($sectionId, $tmp_value) == false && $tmp_value !== $subnet) {
         $check = true;
         echo $tmp_value;
     } else {

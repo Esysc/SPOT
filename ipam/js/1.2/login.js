@@ -92,10 +92,10 @@ $(document).ready(function () {
 
     });
 
-/*	submit SUNET request
+    /*	submit SUNET request
      *****************************************/
     $(document).on("submit", "#requestSUBNET", function () {
-        
+
         var SUBNETdata = $(this).serialize();
         var postData = SUBNETdata;
 
@@ -120,9 +120,9 @@ $(document).ready(function () {
         $('form#requestSUBNET textarea').val('');
 
     });
-    
+
     //Check overlap
-    $('#subnet').on('change onblur', function(){
+    $(document).on('change onblur', '#subnet', function () {
         var SUBNETdata = $(this).serialize();
         var postData = SUBNETdata;
 
@@ -134,10 +134,78 @@ $(document).ready(function () {
             if (data.search("alert alert-danger") != -1) {
                 $('form#requestSUBNET input[type="text"]').val('');
                 $('form#requestSUBNET textarea').val('');
+
             }
         });
+        $('#get-subnet').tooltip('destroy');
+            $('#get-subnet').attr('title', 'Suggest new subnet');
+            $('#get-subnet').tooltip();
         return false;
     });
+    $(document).on("click", "#get-subnet", function () {
+        showSpinner();
+        var action = "add";
+        var sectionId = $(this).attr('data-sectionId');
+        var subnet = $('form#requestSUBNET input[name=subnet]').val();
+        $.post("app/admin/subnets/suggest_new.php", {action: action, sectionId: sectionId, subnet: subnet}, function (data) {
+            $('form#requestSUBNET input[name=subnet]').val(data).trigger('change');
+            $('#get-subnet').tooltip('destroy');
+            $('#get-subnet').attr('title', 'Suggest another...');
+            $('#get-subnet').tooltip();
+            
+        }).fail(function (jqxhr, textStatus, errorThrown) {
+            showError(jqxhr.statusText + "<br>Status: " + textStatus + "<br>Error: " + errorThrown);
+        });
+        hideSpinner();
+        return false;
+    });
+    $(document).on("change", "#help_customer", function () {
+        showSpinner();
+
+        var customer = $(this).val();
+        if (customer !== '') {
+            $('#owner').val(customer);
+
+            hideSpinner();
+        }
+        return false;
+    });
+    $(document).on("change", "#help_location", function () {
+        showSpinner();
+
+        var location = $(this).val();
+        if (location !== '') {
+            $('#location').val(location);
+
+            hideSpinner();
+        }
+        return false;
+    });
+    $(document).on("change", "#help_vlan", function () {
+        showSpinner();
+
+        var vlan = $(this).val();
+        if (vlan !== '') {
+            $('#vlan').val(vlan);
+            $('#button_vlan').tooltip('destroy');
+            $('#button_vlan').attr('title', $('#help_vlan').val());
+            $('#button_vlan').tooltip();
+             
+            hideSpinner();
+        }
+        return false;
+    });
+    $('#modalLocation').on('shown.bs.modal', function () {
+        $('.chosen-select', this).chosen();
+    });
+    $('#modalCustomer').on('shown.bs.modal', function () {
+        $('.chosen-select', this).chosen();
+    });
+    $('#modalVlan').on('shown.bs.modal', function () {
+        $('.chosen-select', this).chosen();
+    });
+    $('#vlan').val($('#help_vlan').val());
+    $('#button_vlan').attr('title', $('#help_vlan').val());
 });
 
 

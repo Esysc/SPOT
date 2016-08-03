@@ -144,7 +144,7 @@ class Subnets extends Common_functions {
         $values = $this->strip_input_tags($values);
 
         # execute based on action
-        if ($action == "add" || $action="copy") {
+        if ($action == "add" || $action == "copy") {
             return $this->subnet_add($values);
         } elseif ($action == "edit") {
             return $this->subnet_edit($values);
