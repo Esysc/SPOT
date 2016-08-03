@@ -80,7 +80,7 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
             <!-- Location -->
 
             <tr>
-                <th> * <?php print _('Location'); ?></th>
+                <th> * <?php print _('Location'); ?> </th>
                 <td>
                     <div class="input-group">
                         <span class="input-group-btn" >
@@ -89,7 +89,7 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
                         <input type="text" name="location" class="form-control" id="location" size="40" placeholder="<?php print _('Subnet location'); ?>">
 
                     </div>
-
+                    <span class='text-muted'>The format should be: "City [ + address], state". Ex: <code>Cheseaux Route de Geneve 24, Switzerland - VD</code></span>
                 </td>
             </tr>
 
@@ -173,7 +173,7 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
 <div class="modal fade" id="modalLocation" tabindex="-1" role="dialog" aria-labelledby="Location">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header  modal-header-info">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">List of locations</h4>
             </div>
@@ -204,7 +204,7 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
 <div class="modal fade" id="modalCustomer" tabindex="-1" role="dialog" aria-labelledby="Owners">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header  modal-header-info">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">List of Customers</h4>
             </div>
@@ -235,7 +235,7 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
 <div class="modal fade" id="modalVlan" tabindex="-1" role="dialog" aria-labelledby="Valns">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header  modal-header-info">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Vlans available</h4>
             </div>

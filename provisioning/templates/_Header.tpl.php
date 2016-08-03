@@ -169,13 +169,7 @@
                                 <li><a href="login.php?log=off"><img src="images/logout.gif" alt="logut" title="logout" class="img-circle"/> Logout </a></li>
                                 <?php
                             }
-                            if ($_SESSION['right'] !== 99) {
-                                ?>
-                                <li class="divider"></li>
-                                <li><a href="./change?log=user"><i class="icon-lock"></i> Change Username</a></li>
-                                <li><a href="./change?log=pass"><i class="icon-lock"></i> Change Password </a></li>
-        <!--									<li><a href="./">Example Admin Page <i class="icon-lock"></i></a></li> -->
-                            <?php } ?>
+                            ?>
                         </ul>
                     </li>
 
