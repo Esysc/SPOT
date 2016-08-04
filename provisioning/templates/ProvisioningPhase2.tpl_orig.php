@@ -468,7 +468,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                 //    console.log('coubt is: ' + count)
                 return count;
             }
-            //console.log(obj);
+            console.log(obj);
             // var indexTbl = getindex(obj);
 
             //  console.log('index tbl is: ' + indexTbl);
@@ -742,7 +742,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                         break;
                 }
 
-                //console.log(argstring);
+                console.log(argstring);
                 /*
                  * Now datastring contains all arguments for wrappers, lets prepare to insert in DB later
                  */

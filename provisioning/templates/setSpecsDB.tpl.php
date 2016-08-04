@@ -73,7 +73,7 @@ $this->display('_Header.tpl.php');
                     success: function (jsonResult) {
 
                         $('#msg').html('');
-                        //console.log(jsonResult);
+                        console.log(jsonResult);
                         jsonResult = $.parseJSON(jsonResult);
                         $.each(jsonResult, function (a, b) {
                             var specif = b.name;

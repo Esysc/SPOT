@@ -91,7 +91,7 @@ $this->display('_Header.tpl.php');
                                         json[tdkey] = d;
                                     });
                                     //Call the function to load
-                                    //console.log(json.SharepointLink);
+                                    console.log(json.SharepointLink);
                                 chooseAndSetOrder(json);
                                 });
 

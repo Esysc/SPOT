@@ -89,7 +89,9 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
                         <input type="text" name="location" class="form-control" id="location" size="40" placeholder="<?php print _('Subnet location'); ?>">
 
                     </div>
-                    <span class='text-muted'>The format should be: "City [ + address], state". Ex: <code>Cheseaux Route de Geneve 24, Switzerland - VD</code></span>
+                    <span class='text-muted'>The format should be: "Address, [zip] City, Country". Ex: <code>Route de Genève 24, 1033 Cheseaux-sur-Lausanne, Switzerland</code></span>
+                    <br />
+                    <span id="verif"></span>
                 </td>
             </tr>
 

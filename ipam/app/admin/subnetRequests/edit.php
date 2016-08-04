@@ -170,7 +170,7 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                         if ($myField['nameNew'] === "Comments") {
 
                             $details[$myField['name']] = sanitize(@$request['comment']);
-                            
+
                             $disabled = "disabled";
                         } else {
                             $disabled = "";
@@ -178,10 +178,11 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                         if ($myField['nameNew'] === "Site") {
                             $details[$myField['name']] = sanitize(@$request['Location']);
                         }
-                        if ($myField['name'] === "System Name") { continue; }
-                        if ($myField['name'] === "Account") { 
+                        if ($myField['name'] === "System Name") {
+                            continue;
+                        }
+                        if ($myField['name'] === "Account") {
                             $details[$myField['name']] = sanitize(@$request['owner']);
-                            
                         }
                         # required
                         if ($myField['Null'] == "NO") {
@@ -191,7 +192,7 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                         }
 
                         print '<tr>' . "\n";
-                        print ' <td>' . $myField['name'] . ' ' . $required . '</td>' . "\n";
+                        print ' <th>' . $myField['name'] . ' ' . $required . '</th>' . "\n";
                         print ' <td>' . "\n";
 
                         //set type
@@ -276,10 +277,13 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                         }
                         //default - input field
                         else {
-
-                            print ' <input type="text" ' . $disabled . ' class="ip_addr form-control input-sm" name="' . $myField['nameNew'] . '" placeholder="' . $myField['name'] . '" value="' . @$details[$myField['name']] . '" size="30" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '">' . "\n";
+                            
+;                            if ($myField['name'] === "User") {
+                                print ' <input type="text" class="' . $class . ' form-control input-sm input-w-auto" data-format="' . $format . '" name="' . $myField['name'] . '" maxlength="' . $size . '" value="' . $_SESSION['ipamusername'] . '" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '" readonly>' . "\n";
+                            } else {
+                                print ' <input type="text" ' . $disabled . ' class="ip_addr form-control input-sm" name="' . $myField['nameNew'] . '" placeholder="' . $myField['name'] . '" value="' . @$details[$myField['name']] . '" size="30" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '">' . "\n";
+                            }
                         }
-
                         print ' </td>' . "\n";
                         print '</tr>' . "\n";
                     }
@@ -309,7 +313,7 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                 <tr>
                     <th><?php print _('Comment approval/reject'); ?>:</th>
                     <td>
-                        <textarea name="adminComment" rows="3" cols="30" class="form-control input-sm" placeholder="<?php print _('Enter reason for reject/approval to be sent to requester'); ?>"><?php print 'Edited by '. $_SESSION['ipamusername'] .'.';?></textarea>
+                        <textarea name="adminComment" rows="3" cols="30" class="form-control input-sm" placeholder="<?php print _('Enter reason for reject/approval to be sent to requester'); ?>"><?php print 'Edited by ' . $_SESSION['ipamusername'] . '.'; ?></textarea>
                     </td>
                 </tr>
 

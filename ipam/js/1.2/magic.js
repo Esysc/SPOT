@@ -204,6 +204,7 @@ $(document).ready(function () {
         hidePopupMasks();
     });
     $(document).on("click", ".hidePopupsReload", function () {
+        hidePopups();
         window.location.reload();
     });
 //prevent loading for disabled buttons
@@ -512,10 +513,6 @@ $(document).ready(function () {
                     showError(jqxhr.statusText + "<br>Status: " + textStatus + "<br>Error: " + errorThrown);
                     hideSpinner();
                 });
-                if (typeof data == 'string' || data instanceof String) {
-                    console.log(data);
-                    //   $('input[name=dns_name]').val(data);
-                }
 
             }
 
@@ -2153,22 +2150,22 @@ $(document).ready(function () {
         });
         return false;
     });
-    
+
     //suggest new  subnet button
     $(document).on("click", "#get-subnet", function () {
         showSpinner();
         var action = "add";
-       var sectionId = $(this).attr('data-sectionId');
+        var sectionId = $(this).attr('data-sectionId');
         $.post("app/admin/subnets/suggest_new.php", {action: action, sectionId: sectionId}, function (data) {
             $('form#editSubnetDetails input[name=subnet]').val(data);
-            console.log(data)
+
             hideSpinner();
         }).fail(function (jqxhr, textStatus, errorThrown) {
             showError(jqxhr.statusText + "<br>Status: " + textStatus + "<br>Error: " + errorThrown);
         });
         return false;
     });
-    
+
 // fill ripe fields
     $(document).on('click', "#ripeMatchSubmit", function () {
         var cfields_temp = $('form#ripe-fields').serialize();
@@ -2180,7 +2177,7 @@ $(document).ready(function () {
             if (cfields[index].indexOf("=0") > -1) {
             }
             else {
-                console.log(cfields[index]);
+
                 var cdata = cfields[index].split("=");
                 $('form#editSubnetDetails input[name=' + cdata[1] + ']').val(cdata[0].replace(/___/g, " "));
             }
@@ -3335,25 +3332,25 @@ $(document).ready(function () {
         $(this).trigger('chosen:updated');
     });
 // Paginate subnets left menu
-    
+
     function check_navigation_display(el) {
-        
+
         //accepts a jQuery object of the containing div as a parameter
         if ($(el).find('ul').children('li').first().is(':visible')) {
-            
-            $('a.prev').attr('disabled','disabled');
+
+            $('a.prev').attr('disabled', 'disabled');
             ;
         } else {
-           $('a.prev').removeAttr('disabled');
+            $('a.prev').removeAttr('disabled');
         }
 
         if ($(el).find('ul').children('li').last().is(':visible')) {
-            $('a.next').attr('disabled','disabled');
+            $('a.next').attr('disabled', 'disabled');
             ;
         } else {
             $('a.next').removeAttr('disabled');
         }
-       
+
     }
 
     $('.subnets').each(function () {
@@ -3366,7 +3363,7 @@ $(document).ready(function () {
             check_navigation_display($(this));
             $(this).find('.next').click(function () {
                 var last = $(this).parent().siblings('ul').children('li:visible:last');
-                
+
                 last.nextAll(':lt(20)').show();
                 last.next().prevAll().hide();
 
@@ -3382,6 +3379,23 @@ $(document).ready(function () {
         }
     });
 
+    $(document).on('click', '#geocode', function (e) {
+        e.preventDefault();
+
+
+        var address = $('input[name=address').val();
+        $.get('app/admin/locations/find_geocode_from_address.php?address=' + address, function (data) {
+            if (data) {
+                var obj = JSON.parse(data);
+                $('input[name="lat"]').val(obj.lat);
+                $('input[name="long"]').val(obj.long);
+                $('input[name=address').val(obj.long_name);
+
+
+            }
+        });
+
+    });
     // Show the spiner loading pages
     function showProgress() {
         showSpinner();
@@ -3390,8 +3404,10 @@ $(document).ready(function () {
         });
     }
     $('a').on('click', function () {
-        if ($(this).attr('href') !== "#" && $(this).attr('href') !== "" && typeof $(this).attr('href') !== "undefined")
+        if ($(this).attr('href') !== "#" && $(this).attr('href') !== "" && typeof $(this).attr('href') !== "undefined" && $(this).attr('id') !== 'admin') {
+          
             showProgress();
+        }
     });
     showProgress();
     return false;

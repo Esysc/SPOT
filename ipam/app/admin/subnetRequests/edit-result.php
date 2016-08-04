@@ -29,15 +29,7 @@ if ($Subnets->subnet_check_permission($User->user) != 3) {
     $Result->show("danger", _('You do not have permissions to process this request') . "!", true);
 }
 
-# fetch custom fields
-$custom = $Tools->fetch_custom_fields('subnets');
-if (sizeof($custom) > 0) {
-    foreach ($custom as $myField) {
-        if (isset($_POST[$myField['name']])) {
-            $_POST[$myField['name']] = $_POST[$myField['name']];
-        }
-    }
-}
+
 
 # fetch subnet
 $subnet['subnet'] = $_POST['subnet'];
@@ -61,7 +53,7 @@ if ($_POST['action'] == "reject") {
     $Tools->subnet_request_send_mail("reject", $_POST);
 }
 /* accept */ else {
-    
+
 
 
     //insert to Subnet table
@@ -79,6 +71,33 @@ if ($_POST['action'] == "reject") {
         "location" => sanitize(@$_POST['Location']),
         "System Name" => sanitize(@$_POST['System_Name'])
     );
+    # append custom fields
+    $custom = $Tools->fetch_custom_fields('subnets');
+    if (sizeof($custom) > 0) {
+        foreach ($custom as $myField) {
+
+            //replace possible ___ back to spaces
+            $myField['nameTest'] = str_replace(" ", "___", $myField['name']);
+            if (isset($_POST[$myField['nameTest']])) {
+                $_POST[$myField['name']] = $_POST[$myField['nameTest']];
+            }
+
+            //booleans can be only 0 and 1!
+            if ($myField['type'] == "tinyint(1)") {
+                if ($_POST[$myField['name']] > 1) {
+                    $_POST[$myField['name']] = 0;
+                }
+            }
+            //not null!
+            if ($myField['Null'] == "NO" && strlen($_POST[$myField['name']]) == 0) {
+                $Result->show("danger", $myField['name'] . '" can not be empty!', true);
+            }
+
+            # save to update array
+            $values[$myField['name']] = $_POST[$myField['name']];
+        }
+    }
+
     if (!$Subnets->modify_subnet("add", $values)) {
         $Result->show("danger", _("Failed to add subnet address"), true);
     }

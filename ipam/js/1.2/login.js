@@ -7,7 +7,7 @@
 
 
 $(document).ready(function () {
-
+   
     /* hide error div if jquery loads ok
      *********************************************/
     $('div.jqueryError').hide();
@@ -102,7 +102,7 @@ $(document).ready(function () {
         showSpinner();
 
         //post to check form
-        console.log(postData)
+       
         $.post('app/login/request_subnet_result.php', postData, function (data) {
             $('div#REQUESTsubnetresult').html(data).slideDown('fast');
             hideSpinner();
@@ -138,8 +138,8 @@ $(document).ready(function () {
             }
         });
         $('#get-subnet').tooltip('destroy');
-            $('#get-subnet').attr('title', 'Suggest new subnet');
-            $('#get-subnet').tooltip();
+        $('#get-subnet').attr('title', 'Suggest new subnet');
+        $('#get-subnet').tooltip();
         return false;
     });
     $(document).on("click", "#get-subnet", function () {
@@ -152,7 +152,7 @@ $(document).ready(function () {
             $('#get-subnet').tooltip('destroy');
             $('#get-subnet').attr('title', 'Suggest another...');
             $('#get-subnet').tooltip();
-            
+
         }).fail(function (jqxhr, textStatus, errorThrown) {
             showError(jqxhr.statusText + "<br>Status: " + textStatus + "<br>Error: " + errorThrown);
         });
@@ -175,7 +175,7 @@ $(document).ready(function () {
 
         var location = $(this).val();
         if (location !== '') {
-            $('#location').val(location);
+            $('#location').val(location).trigger('change');
 
             hideSpinner();
         }
@@ -190,7 +190,7 @@ $(document).ready(function () {
             $('#button_vlan').tooltip('destroy');
             $('#button_vlan').attr('title', $('#help_vlan').val());
             $('#button_vlan').tooltip();
-             
+
             hideSpinner();
         }
         return false;
@@ -206,6 +206,27 @@ $(document).ready(function () {
     });
     $('#vlan').val($('#help_vlan').val());
     $('#button_vlan').attr('title', $('#help_vlan').val());
+
+    $(document).on('change blur', '#location', function (e) {
+        e.preventDefault();
+        var address = $(this).val();
+        $.get('app/admin/locations/find_geocode_from_address.php?address=' + address, function (data) {
+            if (data) {
+                var obj = JSON.parse(data);
+                $('#verif').removeClass('text-danger');
+                $('#verif').addClass('text-success').html('Coordinates verified: lat ' + obj.lat + ' and long ' + obj.long + ' !');
+               
+                $('#location').val(obj.long_name);
+
+
+            } else {
+                $('#verif').removeClass('text-success');
+                $('#verif').addClass('text-danger').html('WARNING!! Coordinates not found! check the address.');
+                $('#location').val('');
+            }
+        });
+
+    });
 });
 
 

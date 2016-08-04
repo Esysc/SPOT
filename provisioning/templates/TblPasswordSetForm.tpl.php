@@ -108,7 +108,7 @@ $this->display('_Header.tpl.php');
 
             $.get("/SPOT/provisioning/api/tblprogresses?salesorder=" + SO, function (jsonResult) {
                 var Jdata = jsonResult.rows[0].data;
-                //console.log('salesel change function' + Jdata);
+                console.log('salesel change function' + Jdata);
                 var Jsonspecs = JSON.parse(Jdata);
                 $.each(Jsonspecs.clients, function (i, o) {
 

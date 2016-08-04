@@ -242,7 +242,7 @@ $this->display('_Header.tpl.php');
                             }, 10000);
                             counter($('#success'), 10);
 
-                            //console.log(e);
+                            console.log(e);
                             /* Every time you move a node, update the link_to_order_item_id value */
 
 

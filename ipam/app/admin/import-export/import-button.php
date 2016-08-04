@@ -108,7 +108,7 @@ $(function(){
 				    $("#fieldstable > tbody").append('<tr id="fieldsrow"></tr>');
 
 					resp.expfields.forEach(function(expfield) {
-						//console.log(resp.fields);
+						//// console.log(resp.fields);
 						var td= $('<td></td>').appendTo("#fieldstable > tbody #fieldsrow");
 						var s = $('<select name="importFields__' + expfield.replace(/\s/g,"_") + '" class="form-control input-sm input-w-auto" rel="tooltip" data-placement="bottom" title="<?php print _("Pick import colum for"); ?> ' + expfield + ' <?php print _("field"); ?>"/>');
 						$('<option />', {value: "-", text: "-"}).appendTo(s);
@@ -127,12 +127,12 @@ $(function(){
 						$('#bottommsg').append('<i class="fa fa-exclamation-triangle"></i> <?php print _("No fields were automatically matched. The import file needs to have a header row!"); ?><br>');
 					}
 					if ((matches > 0) && (matches != resp.expfields.length)) {
-						// console.log(matches + " mismatches vs " + resp.expfields.length);
+						// // console.log(matches + " mismatches vs " + resp.expfields.length);
 						$('#bottommsg').addClass('alert alert-warning');
 						$('#bottommsg').append('<i class="fa fa-exclamation-triangle"></i> <?php print _("Not all the fields were automatically matched. Please check manually."); ?><br>');
 					}
 					if (matches == resp.expfields.length) {
-						// console.log(matches + " matches vs " + resp.expfields.length);
+						// // console.log(matches + " matches vs " + resp.expfields.length);
 						$('#bottommsg').addClass('alert alert-success');
 						$('#bottommsg').append('<i class="fa fa-info-circle"></i> <?php print _("All the fields were automatically matched. Please check if correct."); ?><br>');
 					}

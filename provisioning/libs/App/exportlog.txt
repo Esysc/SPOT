@@ -1,3 +1,4325 @@
 
 Debugging On...
-Table Count: 0
+Table Count: 1
+Total Rows: 88
+autoFilter: A0:A1
+freezePane: A1
+A:1 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: CustomerACR
+B:1 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: PTC
+A:2 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: ProgramManager
+B:2 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Mendes AndrÃÂ©
+A:3 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Machines
+B:3 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 8 machines and 0 racks.
+A:4 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: pendDate
+B:4 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 18/08/2016
+A:5 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: pstartDate
+B:5 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 08/08/2016
+A:6 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: orderdescription
+B:6 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: PT Com Medialive 2.12 Lab
+A:7 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: releasename
+B:7 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 
+A:8 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: olson
+B:8 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Europe/London
+A:9 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: tz
+B:9 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: (UTC) Dublin, Edinburgh, Lisbon, London
+A:10 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: network
+B:10 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.0
+A:11 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: windowstz
+B:11 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: GMT Standard Time
+A:12 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: posix
+B:12 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: GMT0BST,M3.5.0/1:00:00,M10.5.0/2:00:00
+A:13 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: startshelf
+B:13 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack9_shelfA
+A:14 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: stopshelf
+B:14 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack10_shelfC
+A:15 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: imagetarget
+B:15 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 2
+A:16 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: imagename
+B:16 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Image_NAGRA_GEN_KS_6.6STD3.iso
+A:17 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: ostarget
+B:17 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: GENERIC : LINUX
+A:18 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: completed
+B:18 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: true
+A:19 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:clientid
+B:19 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 1
+A:20 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:rackname
+B:20 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack9_shelfA
+A:21 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:rack
+B:21 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 9
+A:22 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:shelf
+B:22 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: A
+A:23 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:hostname
+B:23 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: mlds01
+A:24 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:imagename
+B:24 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Image_NAGRA_GEN_KS_6.6STD3.iso
+A:25 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:ostarget
+B:25 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: LINUX
+A:26 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:ip
+B:26 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.1
+A:27 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:netmask
+B:27 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 255.255.255.0
+A:28 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:gateway
+B:28 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.252
+A:29 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_2:clientid
+B:29 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 2
+A:30 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_2:rackname
+B:30 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack9_shelfB
+A:31 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_2:rack
+B:31 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 9
+A:32 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_2:shelf
+B:32 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: B
+A:33 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_2:hostname
+B:33 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: mlm01
+A:34 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_2:imagename
+B:34 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Image_NAGRA_GEN_KS_6.6STD3.iso
+A:35 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_2:ostarget
+B:35 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: LINUX
+A:36 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_2:ip
+B:36 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.3
+A:37 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_2:netmask
+B:37 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 255.255.255.0
+A:38 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_2:gateway
+B:38 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.252
+A:39 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_3:clientid
+B:39 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 3
+A:40 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_3:rackname
+B:40 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack9_shelfC
+A:41 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_3:rack
+B:41 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 9
+A:42 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_3:shelf
+B:42 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: C
+A:43 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_3:hostname
+B:43 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: bkp01
+A:44 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_3:imagename
+B:44 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Image_NAGRA_GEN_KS_6.6STD3.iso
+A:45 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_3:ostarget
+B:45 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: LINUX
+A:46 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_3:ip
+B:46 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.21
+A:47 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_3:netmask
+B:47 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 255.255.255.0
+A:48 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_3:gateway
+B:48 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.252
+A:49 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_4:clientid
+B:49 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 4
+A:50 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_4:rackname
+B:50 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack9_shelfD
+A:51 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_4:rack
+B:51 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 9
+A:52 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_4:shelf
+B:52 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: D
+A:53 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_4:hostname
+B:53 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: mgtml01
+A:54 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_4:imagename
+B:54 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: W10X64DEPLOY
+A:55 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_4:ostarget
+B:55 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: WINDOWS
+A:56 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_4:ip
+B:56 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.31
+A:57 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_4:netmask
+B:57 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 255.255.255.0
+A:58 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_4:gateway
+B:58 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.252
+A:59 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_5:clientid
+B:59 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 5
+A:60 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_5:rackname
+B:60 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack10_shelfA
+A:61 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_5:rack
+B:61 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10
+A:62 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_5:shelf
+B:62 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: A
+A:63 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_5:hostname
+B:63 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: sdp01
+A:64 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_5:imagename
+B:64 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Image_NAGRA_GEN_KS_6.6STD3.iso
+A:65 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_5:ostarget
+B:65 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: LINUX
+A:66 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_5:ip
+B:66 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.41
+A:67 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_5:netmask
+B:67 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 255.255.255.0
+A:68 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_5:gateway
+B:68 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.252
+A:69 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_6:clientid
+B:69 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 6
+A:70 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_6:rackname
+B:70 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack10_shelfB
+A:71 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_6:rack
+B:71 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10
+A:72 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_6:shelf
+B:72 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: B
+A:73 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_6:hostname
+B:73 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: sdpdb01
+A:74 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_6:imagename
+B:74 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Image_NAGRA_GEN_KS_6.6STD3.iso
+A:75 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_6:ostarget
+B:75 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: LINUX
+A:76 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_6:ip
+B:76 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.11
+A:77 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_6:netmask
+B:77 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 255.255.255.0
+A:78 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_6:gateway
+B:78 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.252
+A:79 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_7:clientid
+B:79 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 7
+A:80 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_7:rackname
+B:80 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack10_shelfC
+A:81 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_7:rack
+B:81 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10
+A:82 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_7:shelf
+B:82 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: C
+A:83 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_7:hostname
+B:83 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: cmsdb01
+A:84 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_7:imagename
+B:84 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Image_NAGRA_GEN_KS_6.6STD3.iso
+A:85 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_7:ostarget
+B:85 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: LINUX
+A:86 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_7:ip
+B:86 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.61
+A:87 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_7:netmask
+B:87 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 255.255.255.0
+A:88 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_7:gateway
+B:88 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.47.252
+HEADROWS: Array
+(
+)
+
+BODYROWS: Array
+(
+    [0] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => CustomerACR
+                    [1] => PTC
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [1] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => ProgramManager
+                    [1] => Mendes AndrÃÂ©
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [2] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => Machines
+                    [1] => 8 machines and 0 racks.
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [3] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => pendDate
+                    [1] => 18/08/2016
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [4] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => pstartDate
+                    [1] => 08/08/2016
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [5] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => orderdescription
+                    [1] => PT Com Medialive 2.12 Lab
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [6] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => releasename
+                    [1] => 
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [7] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => olson
+                    [1] => Europe/London
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [8] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => tz
+                    [1] => (UTC) Dublin, Edinburgh, Lisbon, London
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [9] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => network
+                    [1] => 10.22.47.0
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [10] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => windowstz
+                    [1] => GMT Standard Time
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [11] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => posix
+                    [1] => GMT0BST,M3.5.0/1:00:00,M10.5.0/2:00:00
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [12] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => startshelf
+                    [1] => rack9_shelfA
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [13] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => stopshelf
+                    [1] => rack10_shelfC
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [14] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => imagetarget
+                    [1] => 2
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [15] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => imagename
+                    [1] => Image_NAGRA_GEN_KS_6.6STD3.iso
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [16] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => ostarget
+                    [1] => GENERIC : LINUX
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [17] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => completed
+                    [1] => true
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [18] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_1:clientid
+                    [1] => 1
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [19] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_1:rackname
+                    [1] => rack9_shelfA
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [20] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_1:rack
+                    [1] => 9
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [21] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_1:shelf
+                    [1] => A
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [22] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_1:hostname
+                    [1] => mlds01
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [23] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_1:imagename
+                    [1] => Image_NAGRA_GEN_KS_6.6STD3.iso
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [24] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_1:ostarget
+                    [1] => LINUX
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [25] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_1:ip
+                    [1] => 10.22.47.1
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [26] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_1:netmask
+                    [1] => 255.255.255.0
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [27] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_1:gateway
+                    [1] => 10.22.47.252
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [28] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_2:clientid
+                    [1] => 2
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [29] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_2:rackname
+                    [1] => rack9_shelfB
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [30] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_2:rack
+                    [1] => 9
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [31] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_2:shelf
+                    [1] => B
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [32] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_2:hostname
+                    [1] => mlm01
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [33] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_2:imagename
+                    [1] => Image_NAGRA_GEN_KS_6.6STD3.iso
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [34] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_2:ostarget
+                    [1] => LINUX
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [35] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_2:ip
+                    [1] => 10.22.47.3
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [36] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_2:netmask
+                    [1] => 255.255.255.0
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [37] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_2:gateway
+                    [1] => 10.22.47.252
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [38] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_3:clientid
+                    [1] => 3
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [39] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_3:rackname
+                    [1] => rack9_shelfC
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [40] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_3:rack
+                    [1] => 9
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [41] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_3:shelf
+                    [1] => C
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [42] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_3:hostname
+                    [1] => bkp01
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [43] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_3:imagename
+                    [1] => Image_NAGRA_GEN_KS_6.6STD3.iso
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [44] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_3:ostarget
+                    [1] => LINUX
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [45] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_3:ip
+                    [1] => 10.22.47.21
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [46] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_3:netmask
+                    [1] => 255.255.255.0
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [47] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_3:gateway
+                    [1] => 10.22.47.252
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [48] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_4:clientid
+                    [1] => 4
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [49] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_4:rackname
+                    [1] => rack9_shelfD
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [50] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_4:rack
+                    [1] => 9
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [51] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_4:shelf
+                    [1] => D
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [52] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_4:hostname
+                    [1] => mgtml01
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [53] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_4:imagename
+                    [1] => W10X64DEPLOY
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [54] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_4:ostarget
+                    [1] => WINDOWS
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [55] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_4:ip
+                    [1] => 10.22.47.31
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [56] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_4:netmask
+                    [1] => 255.255.255.0
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [57] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_4:gateway
+                    [1] => 10.22.47.252
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [58] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_5:clientid
+                    [1] => 5
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [59] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_5:rackname
+                    [1] => rack10_shelfA
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [60] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_5:rack
+                    [1] => 10
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [61] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_5:shelf
+                    [1] => A
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [62] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_5:hostname
+                    [1] => sdp01
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [63] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_5:imagename
+                    [1] => Image_NAGRA_GEN_KS_6.6STD3.iso
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [64] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_5:ostarget
+                    [1] => LINUX
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [65] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_5:ip
+                    [1] => 10.22.47.41
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [66] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_5:netmask
+                    [1] => 255.255.255.0
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [67] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_5:gateway
+                    [1] => 10.22.47.252
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [68] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_6:clientid
+                    [1] => 6
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [69] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_6:rackname
+                    [1] => rack10_shelfB
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [70] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_6:rack
+                    [1] => 10
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [71] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_6:shelf
+                    [1] => B
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [72] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_6:hostname
+                    [1] => sdpdb01
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [73] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_6:imagename
+                    [1] => Image_NAGRA_GEN_KS_6.6STD3.iso
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [74] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_6:ostarget
+                    [1] => LINUX
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [75] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_6:ip
+                    [1] => 10.22.47.11
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [76] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_6:netmask
+                    [1] => 255.255.255.0
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [77] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_6:gateway
+                    [1] => 10.22.47.252
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [78] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_7:clientid
+                    [1] => 7
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [79] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_7:rackname
+                    [1] => rack10_shelfC
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [80] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_7:rack
+                    [1] => 10
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [81] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_7:shelf
+                    [1] => C
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [82] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_7:hostname
+                    [1] => cmsdb01
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [83] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_7:imagename
+                    [1] => Image_NAGRA_GEN_KS_6.6STD3.iso
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [84] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_7:ostarget
+                    [1] => LINUX
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [85] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_7:ip
+                    [1] => 10.22.47.61
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [86] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_7:netmask
+                    [1] => 255.255.255.0
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+    [87] => Array
+        (
+            [colcnt] => 2
+            [td] => Array
+                (
+                    [0] => clients_7:gateway
+                    [1] => 10.22.47.252
+                )
+
+            [strong] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [color] => Array
+                (
+                    [0] => 000000
+                    [1] => 000000
+                )
+
+            [colspan] => Array
+                (
+                    [0] => 1
+                    [1] => 1
+                )
+
+            [align] => Array
+                (
+                    [0] => left
+                    [1] => left
+                )
+
+            [valign] => Array
+                (
+                    [0] => top
+                    [1] => top
+                )
+
+            [bgcolor] => Array
+                (
+                    [0] => FFFFFF
+                    [1] => FFFFFF
+                )
+
+        )
+
+)

@@ -24,7 +24,7 @@ $this->display('_Header.tpl.php');
             cache: false,
             wait: true,
             success: function (jsonResult) {
-                //console.log(jsonResult);
+                console.log(jsonResult);
                 jsonResult = $.parseJSON(jsonResult);
                 $.each(jsonResult, function (a, b) {
                     console.log(b);

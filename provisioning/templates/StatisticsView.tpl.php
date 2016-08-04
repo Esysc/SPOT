@@ -210,7 +210,7 @@ $options .= "</select>";
                 html += '<div class="items">' + $(this).html() + '</div>';
             });
             $(this.pagingContainerPath).fadeOut(1);
-            //console.log(this.pagingContainerPath);
+            console.log(this.pagingContainerPath);
             $(this.pagingContainerPath).html(html).fadeIn('slow');
             renderControls(this.pagingControlsContainer, this.currentPage, this.numPages());
         }

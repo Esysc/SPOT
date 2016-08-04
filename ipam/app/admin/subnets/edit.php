@@ -208,7 +208,7 @@ $readonly = $_POST['action'] == "edit" || $_POST['action'] == "delete" ? true : 
                             <button type="button" class="btn btn-xs btn-default"  id='snmp-routing' rel='tooltip' data-placement="bottom" title='<?php print _('Search for subnets through SNMP'); ?>'><i class="fa fa-cogs"></i></button>
                         <?php } ?>
                         <button type="button" class="btn btn-xs btn-default"  id='get-ripe' rel='tooltip' data-placement="bottom" title='<?php print _('Get information from RIPE / ARIN database'); ?>'><i class="fa fa-refresh"></i></button>
-                        <?php if ( $_POST['subnetId'] === '') { ?> <button type="button" class="btn btn-xs btn-default"  id='get-subnet' rel='tooltip' data-placement="bottom" data-sectionId="<?php print $_POST['sectionId']; ?>" title='<?php print _('Suggest new subnet'); ?>'><i class="fa fa-search-plus"></i></button> <?php } ?>
+                        <?php if ($_POST['subnetId'] === '') { ?> <button type="button" class="btn btn-xs btn-default"  id='get-subnet' rel='tooltip' data-placement="bottom" data-sectionId="<?php print $_POST['sectionId']; ?>" title='<?php print _('Suggest new subnet'); ?>'><i class="fa fa-search-plus"></i></button> <?php } ?>
                     </div>
                     <?php print _('Enter subnet in CIDR format'); ?>
                 </td>
@@ -660,9 +660,12 @@ $readonly = $_POST['action'] == "edit" || $_POST['action'] == "delete" ? true : 
                     }
                     //default - input field
                     else {
-                        print ' <input type="text" class="ip_addr form-control input-sm" name="' . $field['nameNew'] . '" placeholder="' . $field['name'] . '" value="' . $subnet_old_details[$field['name']] . '" size="30" rel="tooltip" data-placement="right" title="' . $field['Comment'] . '">' . "\n";
+                        if ($field['nameNew'] === "User") {
+                            print ' <input type="text" class="' . $class . ' form-control input-sm input-w-auto" data-format="' . $format . '" name="' . $field['nameNew'] . '" maxlength="' . $size . '" value="' . $_SESSION['ipamusername'] . '" rel="tooltip" data-placement="right" title="' . $field['Comment'] . '" readonly>' . "\n";
+                        } else {
+                            print ' <input type="text" class="ip_addr form-control input-sm" name="' . $field['nameNew'] . '" placeholder="' . $field['name'] . '" value="' . $subnet_old_details[$field['name']] . '" size="30" rel="tooltip" data-placement="right" title="' . $field['Comment'] . '">' . "\n";
+                        }
                     }
-
                     print '	</td>' . "\n";
                     print '</tr>' . "\n";
                 }
@@ -712,7 +715,8 @@ $readonly = $_POST['action'] == "edit" || $_POST['action'] == "delete" ? true : 
             print "<button class='btn btn-sm btn-default btn-danger editSubnetSubmitDelete editSubnetSubmit'><i class='icon-white icon-trash'></i> " . _('Delete subnet') . "</button>";
         }
         ?>
-        <button type="submit" class="btn btn-sm btn-default editSubnetSubmit <?php if ($_POST['action'] == "delete")
+        <button type="submit" class="btn btn-sm btn-default editSubnetSubmit <?php
+        if ($_POST['action'] == "delete")
             print "btn-danger";
         else
             print "btn-success";

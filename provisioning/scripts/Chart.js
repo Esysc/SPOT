@@ -702,7 +702,7 @@
 			var ctx = chart.ctx,
 				width = chart.canvas.width,
 				height = chart.canvas.height;
-			//console.log(width + " x " + height);
+			console.log(width + " x " + height);
 			if (window.devicePixelRatio) {
 				ctx.canvas.style.width = width + "px";
 				ctx.canvas.style.height = height + "px";
