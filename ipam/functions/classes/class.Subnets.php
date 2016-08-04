@@ -403,7 +403,7 @@ class Subnets extends Common_functions {
             $order[0] = "subnet_int";
         # fetch
         try {
-            $subnets = $this->Database->getObjectsQuery("SELECT *,LPAD(subnet, 32, 0) as `subnet_int` FROM `subnets` where `sectionId` = ? order by `isFolder` desc, case `isFolder` when 1 then description else $order[0] end $order[1] $limit", array($sectionId));
+            $subnets = $this->Database->getObjectsQuery("SELECT *,LPAD(subnet, 32, 0) as `subnet_int` FROM `subnets` where `sectionId` = ? order by `isFolder`, `editDate` desc, case `isFolder` when 1 then description else $order[0] end $order[1] $limit", array($sectionId));
         } catch (Exception $e) {
             $this->Result->show("danger", _("Error: ") . $e->getMessage());
             return false;
