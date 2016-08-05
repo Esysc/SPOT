@@ -51,78 +51,71 @@ if ($User->settings->enableLocations != "1") {
             <script type="text/javascript" src="https://maps.google.com/maps/api/js<?php print $key; ?>"></script>
             <script type="text/javascript" src="js/1.2/gmaps.js"></script>
             <script type="text/javascript">
+
                 $(document).ready(function () {
                     // init gmaps
                     var map = new GMaps({
-                        div: '#gmap'
+                        el: '#gmap',
+                        zoom: 3,
+                        lat: 0,
+                        lng: 0,
+                        zoomControl: true,
                     });
-
                     var bounds = [];
 
                     // add markers
             <?php
             foreach ($all_locations as $i => $g) {
-               
+                //Get the link and store in var to use later in javascript
+                $link = create_link('tools', 'locations', $g->id);
                 // latlng
                 if (strlen($g->lat) > 0 && strlen($g->long) > 0) {
-                   
-                    $html[] = "GMaps.geocode({";
-                    $html[] = " lat: '$g->lat',";
-                    $html[] = " lng: '$g->long',";
-                    $html[] = " callback: function(results, status) { console.log(status);";
-                    $html[] = "     if (status == 'OK') {";
-                    $html[] = "       var latlng = results[0].geometry.location;";
-                    $html[] = "       bounds.push(latlng);";
-                    $html[] = "       map.fitLatLngBounds(bounds);";
-                    $html[] = "       map.addMarker({";
-                    $html[] = "         title: '$g->name',";
-                    $html[] = "         lat: latlng.lat(),";
-                    $html[] = "         lng: latlng.lng(),";
-                    $html[] = "         infoWindow: {";
-                    $html[] = "             content: '<h5><a href=\'" . create_link("tools", "locations", $g->id) . "\'>$g->name</a></h5>, <span class=\'text-muted\'>$g->description</span>'";
-                    $html[] = "         }";
-                    $html[] = "       });";
-                    $html[] = "     }";
-                    $html[] = "  }";
-                    $html[] = "});";
-                   
+                    ?>
+                            map.addMarker({
+                                lat: <?php echo $g->lat; ?>,
+                                lng: <?php echo $g->long; ?>,
+                                title: '<?php echo $g->name; ?>',
+                                infoWindow: {
+                                    content: "<h5><a href='<?php echo $link; ?>'><?php echo $g->name; ?></a></h5> <p class='text-muted'><?php echo $g->description; ?></p><p class='text-muted'><?php echo $g->address; ?></p>"
+                                }
+                            });
+                    <?php
                 }
                 // address
                 elseif (strlen($g->address) > 1) {
-                    $html[] = "GMaps.geocode({";
-                    $html[] = " address: '$g->address',";
-                    $html[] = " callback: function(results, status) {";
-                    $html[] = "     if (status == 'OK') {";
-                    $html[] = "       var latlng = results[0].geometry.location;";
-                    $html[] = "       bounds.push(latlng);";
-                    $html[] = "       map.fitLatLngBounds(bounds);";
-                    $html[] = "       map.addMarker({";
-                    $html[] = "         title: '$g->name',";
-                    $html[] = "         lat: latlng.lat(),";
-                    $html[] = "         lng: latlng.lng(),";
-                    $html[] = "         infoWindow: {";
-                    $html[] = "             content: '<h5><a href=\'" . create_link("tools", "locations", $g->id) . "\'>$g->name</a></h5>, <span class=\'text-muted\'>$g->description</span>'";
-                    $html[] = "         }";
-                    $html[] = "       });";
-                    $html[] = "     }";
-                    $html[] = "  }";
-                    $html[] = "});";
+                    ?>
+                            GMaps.geocode({
+                                address: '<?php echo $g->address; ?>',
+                                callback: function (results, status) {
+                                    if (status == 'OK') {
+                                        var latlng = results[0].geometry.location;
+                                        bounds.push(latlng);
+                                        map.fitLatLngBounds(bounds);
+                                        map.addMarker({
+                                            lat: latlng.lat(),
+                                            lng: latlng.lng(),
+                                            title: '<?php echo $g->name; ?>',
+                                            infoWindow: {
+                                                content: "<h5><a href='<?php echo $link; ?>'><?php echo $g->name; ?></a></h5> <p class='text-muted'><?php echo $g->description; ?></p><p class='text-muted'><?php echo $g->address; ?></p>"
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                    <?php
                 }
-                
             }
-            print implode("\n", $html);
             ?>
 
                     function resize_map() {
                         var heights = window.innerHeight - 320;
                         $('#map_overlay').css("height", heights + "px");
-
                     }
                     resize_map();
                     window.onresize = function () {
                         resize_map();
                     };
-
+                    console.log(map)
 
 
                 });
