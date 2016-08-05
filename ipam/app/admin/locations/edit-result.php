@@ -6,7 +6,7 @@ require( dirname(__FILE__) . '/../../../functions/functions.php');
 # initialize user object
 $Database 	= new Database_PDO;
 $User 		= new User ($Database);
-$Admin	 	= new Admin ($Database);
+$Admin	 	= new Admin ($Database, false);
 $Tools	 	= new Tools ($Database);
 $Result 	= new Result ();
 

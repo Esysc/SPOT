@@ -3396,6 +3396,15 @@ $(document).ready(function () {
         });
 
     });
+    
+    // Manage locations as normal user
+    
+    $(document).on('click', '#manageLocations', function() {
+        $('#popupOverlay .popup_w500').load('app/admin/locations/edit.php?action=add');
+        
+      showPopup('popup_w500', false, false);
+        hideSpinner();
+    });
     // Show the spiner loading pages
     function showProgress() {
         showSpinner();

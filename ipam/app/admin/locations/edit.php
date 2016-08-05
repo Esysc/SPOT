@@ -8,7 +8,7 @@ require( dirname(__FILE__) . '/../../../functions/functions.php');
 # initialize user object
 $Database = new Database_PDO;
 $User = new User($Database);
-$Admin = new Admin($Database);
+$Admin = new Admin($Database, false);
 $Tools = new Tools($Database);
 $Result = new Result ();
 
@@ -17,7 +17,9 @@ $User->check_user_session();
 
 # create csrf token
 $csrf = $User->csrf_cookie("create", "location");
-
+if (isset($_GET['action']) ) {
+    $_POST['action'] = $_GET['action'];
+}
 # get Location object
 if ($_POST['action'] != "add") {
     $location = $Admin->fetch_object("locations", "id", $_POST['id']);

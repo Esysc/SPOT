@@ -204,7 +204,6 @@ if ($_GET['page'] == "install") {
                 <div class="content_overlay">
                     <div class="container-fluid" id="mainContainer">
                         <?php
-                         
                         /* error */
                         if ($_GET['page'] == "error") {
                             print "<div id='error' class='container'>";
@@ -243,10 +242,10 @@ if ($_GET['page'] == "install") {
 
                             # hide left menu
                             if (($_GET['page'] == "tools" || $_GET['page'] == "administration") && !isset($_GET['section'])) {
-                                
+
                                 //we dont display left menu on empty tools and administration
                             } else {
-                                                              
+
                                 # left menu
                                 print "<td id='subnetsLeft'>";
                                 print "<div id='leftMenu' class='menu-$_GET[page]'>";
@@ -301,12 +300,10 @@ if ($_GET['page'] == "install") {
                                         include("app/tools/$_GET[section]/index.php");
                                     }
                                 }
-                               
                             }
                             # admin
-                            
                             elseif ($_GET['page'] == "administration") {
-                              
+
                                 # Admin object
                                 $Admin = new Admin($Database);
                                 if (!isset($_GET['section'])) {
@@ -326,10 +323,9 @@ if ($_GET['page'] == "install") {
                                 }
                             }
                             # default - error
-                            else { 
-                                    header("Location: " . create_link("error", "400"));
-                                    die();
-                                
+                            else {
+                                header("Location: " . create_link("error", "400"));
+                                die();
                             }
                             print "</div>";
                             print "</td>";
