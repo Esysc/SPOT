@@ -9,8 +9,9 @@ $Result = new Result ();
 $vlans = $Tools->fetch_all_objects('vlans', 'vlanId');
 
 $vlans = (array) $vlans;
-$locations = $Tools->fetch_all_objects("locations");
+$locations = $Tools->fetch_all_objects("locations", "name");
 $customers = $Tools->fetch_all_objects("subnets", "Account");
+
 ?>
 
 
