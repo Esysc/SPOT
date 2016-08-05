@@ -57,9 +57,14 @@ if ($User->settings->enableLocations != "1") {
                     var map = new GMaps({
                         el: '#gmap',
                         zoom: 3,
-                        lat: 0,
-                        lng: 0,
+                        lat: 10,
+                        lng: 10,
                         zoomControl: true,
+                        zoomControlOpt: {
+                            style: 'SMALL',
+                            position: 'TOP_LEFT'
+                        },
+                        panControl: false,
                     });
                     var bounds = [];
 
@@ -68,6 +73,37 @@ if ($User->settings->enableLocations != "1") {
             foreach ($all_locations as $i => $g) {
                 //Get the link and store in var to use later in javascript
                 $link = create_link('tools', 'locations', $g->id);
+                // Fectch the location object
+                $objects = $Tools->fetch_location_objects($g->id);
+                // none
+                $subnets = "";
+                if ($objects != false) {
+                    $subnets = "<ul>";
+                    // reindex
+                    $object_groups = array("racks" => array(), "devices" => array(), "subnets" => array());
+                    foreach ($objects as $o) {
+                        $object_groups[$o->type][] = $o;
+                    }
+
+                    // loop
+                    foreach ($object_groups as $t => $ob) {
+
+                        // print objects
+                        if (sizeof($ob) > 0) {
+                            foreach ($ob as $o) {
+                                // link
+
+                                if ($o->type == "subnets") {
+                                    $href = create_link("subnets", $o->sectionId, $o->id);
+                                    $o->name = $Tools->transform_address($o->name, "dotted") . "." . $o->mask;
+                                    $o->description = strlen($o->description) > 0 ?  trim(preg_replace('/\s+/', ' ',  htmlspecialchars($o->description, ENT_QUOTES, 'UTF-8' ))) : "";
+                                    $subnets .= "<li><a href='$href' rel='tooltip' title='$o->description'>$o->name</a></li>";
+                                }
+                            }
+                        }
+                    }
+                    $subnets .= "</ul>";
+                }
                 // latlng
                 if (strlen($g->lat) > 0 && strlen($g->long) > 0) {
                     ?>
@@ -76,7 +112,7 @@ if ($User->settings->enableLocations != "1") {
                                 lng: <?php echo $g->long; ?>,
                                 title: '<?php echo $g->name; ?>',
                                 infoWindow: {
-                                    content: "<h5><a href='<?php echo $link; ?>'><?php echo $g->name; ?></a></h5> <p class='text-muted'><?php echo $g->description; ?></p><p class='text-muted'><?php echo $g->address; ?></p>"
+                                    content: "<h5><a href='<?php echo $link; ?>'><?php echo $g->name; ?></a></h5> <p class='text-muted'><?php echo $g->description; ?></p><p class='text-muted'><?php echo $g->address; ?></p><?php echo $subnets; ?>"
                                 }
                             });
                     <?php
