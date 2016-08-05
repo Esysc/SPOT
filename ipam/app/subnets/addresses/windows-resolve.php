@@ -18,18 +18,19 @@ $DNS = new DNS($Database);
 $User->check_user_session();
 
 
-$cmd = "timeout 1 nmblookup -A ".$_POST['ipaddress']." | head -2 | tail -1 | awk '{print $1}'";
+$cmd = "timeout 1 nmblookup -A " . $_POST['ipaddress'] . " | head -2 | tail -1 | awk '{print $1}'";
 # resolve
 $hostname['name']['hostname'] = exec($cmd);
 if (trim($hostname['name']['hostname']) === "") {
-    $result['name'] = "";
+    die();
 } else {
-$cmd = "timeout 1 nmblookup -A ".$_POST['ipaddress']." | head -3 | tail -1 | awk '{print $1}'";
-$hostname['name']['description'] = exec($cmd);
-$result = $hostname;
+    $cmd = "timeout 1 nmblookup -A " . $_POST['ipaddress'] . " | head -3 | tail -1 | awk '{print $1}'";
+    $hostname['name']['description'] = exec($cmd);
+    $result = $hostname;
 }
 
 # print result
+
 print json_encode($result['name']);
 str
 ?>

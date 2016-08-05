@@ -5,8 +5,8 @@
  */
 # include required scripts
 require( dirname(__FILE__) . '/../../../functions/functions.php' );
-
-
+$Snmp = new phpipamSNMP ();
+sleep(1);
 # initialize required objects
 $Database = new Database_PDO;
 $User = new User($Database);
@@ -24,9 +24,10 @@ $nsid = $subnet === false ? false : $subnet->nameserverId;
 # resolve
 $hostname = $DNS->resolve_address($_POST['ipaddress'], false, true, $nsid);
 if (trim($hostname['name']) === "") {
-    $Snmp = new phpipamSNMP ();
+    
+    
     $Snmp->query_snmp_device($_POST['ipaddress']);
-
+    
 
     $hostname['name']['hostname'] = snmpget($_POST['ipaddress'], "public", "system.sysName.0", $timeout = 1000000, $retries = 1);
 
