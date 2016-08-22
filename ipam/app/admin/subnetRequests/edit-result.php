@@ -93,8 +93,9 @@ if ($_POST['action'] == "reject") {
                 $Result->show("danger", $myField['name'] . '" can not be empty!', true);
             }
 
-            # save to update array
-            $values[$myField['name']] = $_POST[$myField['name']];
+            # save to update array, but check if value is not NULL
+            if (isset($_POST[$myField['name']]))
+                $values[$myField['name']] = $_POST[$myField['name']];
         }
     }
 

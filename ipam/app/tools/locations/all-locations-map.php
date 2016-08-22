@@ -96,7 +96,7 @@ if ($User->settings->enableLocations != "1") {
                                 if ($o->type == "subnets") {
                                     $href = create_link("subnets", $o->sectionId, $o->id);
                                     $o->name = $Tools->transform_address($o->name, "dotted") . "." . $o->mask;
-                                    $o->description = strlen($o->description) > 0 ?  trim(preg_replace('/\s+/', ' ',  htmlspecialchars($o->description, ENT_QUOTES, 'UTF-8' ))) : "";
+                                    $o->description = strlen($o->description) > 0 ? trim(preg_replace('/\s+/', ' ', htmlspecialchars($o->description, ENT_QUOTES, 'UTF-8'))) : "";
                                     $subnets .= "<li><a href='$href' rel='tooltip' title='$o->description'>$o->name</a></li>";
                                 }
                             }
@@ -151,10 +151,12 @@ if ($User->settings->enableLocations != "1") {
                     window.onresize = function () {
                         resize_map();
                     };
-                    console.log(map)
 
+                   
+                    
+                   
 
-                });
+                })
             </script>
 
             <div style="width:100%; height:1000px;" id="map_overlay">
