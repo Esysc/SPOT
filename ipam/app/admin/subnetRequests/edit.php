@@ -144,7 +144,13 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                 <tr>
                     <th><?php print _('Location'); ?></th>
                     <td>
-                        <input type="text" name="Location" class="form-control input-sm" value="<?php print sanitize(@$request['Location']); ?>" size="30" placeholder="<?php print _('Location'); ?>">
+                        <input type="text" disabled class="form-control input-sm" value="<?php print sanitize(@$request['Location']); ?>" size="30" placeholder="<?php print _('Location'); ?>">
+                        <?php
+                        // get the location ID or create the new location if not exist (normally should be already created)
+                        $location = @$request['Location'];
+                        $locationId = $Tools->check_location_id_by_address(@$request['Location']);
+                        ?>
+                        <input type="hidden" name="Location" class="form-control input-sm" value="<?php print $locationId; ?>">
                     </td>
                 </tr>
 
@@ -172,17 +178,18 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                             $details[$myField['name']] = sanitize(@$request['comment']);
 
                             $disabled = "disabled";
-                        } else {
-                            $disabled = "";
-                        }
+                        } 
                         if ($myField['nameNew'] === "Site") {
                             $details[$myField['name']] = sanitize(@$request['Location']);
+                            //$disabled = "disabled";
                         }
                         if ($myField['name'] === "System Name") {
-                            continue;
+                             $disabled = "";
+                           
                         }
                         if ($myField['name'] === "Account") {
                             $details[$myField['name']] = sanitize(@$request['owner']);
+                             $disabled = "";
                         }
                         # required
                         if ($myField['Null'] == "NO") {
@@ -277,8 +284,9 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                         }
                         //default - input field
                         else {
-                            
-;                            if ($myField['name'] === "User") {
+
+                            ;
+                            if ($myField['name'] === "User") {
                                 print ' <input type="text" class="' . $class . ' form-control input-sm input-w-auto" data-format="' . $format . '" name="' . $myField['name'] . '" maxlength="' . $size . '" value="' . $_SESSION['ipamusername'] . '" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '" readonly>' . "\n";
                             } else {
                                 print ' <input type="text" ' . $disabled . ' class="ip_addr form-control input-sm" name="' . $myField['nameNew'] . '" placeholder="' . $myField['name'] . '" value="' . @$details[$myField['name']] . '" size="30" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '">' . "\n";
@@ -307,7 +315,7 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                     <th><?php print _('Requester comment'); ?></th>
                     <td>
                         <input type="text" disabled="disabled" class="form-control" value="<?php print sanitize(@$request['comment']); ?>">
-    <?php print "<input type='hidden' name='comment' value='" . @$request['comment'] . "'>"; ?></i></td>
+                        <?php print "<input type='hidden' name='comment' value='" . @$request['comment'] . "'>"; ?></i></td>
                 </tr>
                 <!-- Admin comment -->
                 <tr>
@@ -319,17 +327,17 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
 
             </table>
         </form>
-<?php } ?>
+    <?php } ?>
 </div>
 
 <!-- footer -->
 <div class="pFooter">
     <div class="btn-group">
         <button class="btn btn-sm btn-default hidePopups"><?php print _('Cancel'); ?></button>
-<?php if (@$errmsg_class != "danger") { ?>
+        <?php if (@$errmsg_class != "danger") { ?>
             <button class="btn btn-sm btn-default btn-danger manageRequest" data-action='reject'><i class="fa fa-times"></i> <?php print _('Reject'); ?></button>
             <button class="btn btn-sm btn-default btn-success manageRequest" data-action='accept'><i class="fa fa-check"></i> <?php print _('Accept'); ?></button>
-<?php } ?>
+        <?php } ?>
     </div>
 
     <!-- result -->

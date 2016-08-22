@@ -28,7 +28,9 @@ if (!$Result->validate_email($_POST['requester'])) {
     $Result->show("danger", _('Please provide valid email address') . '! (' . _('requester') . ': ' . $_POST['requester'] . ')', true);
 }
 
-
+// Get the posted location and create it if not already in db
+$location = @$_POST['location'];
+$Tools->check_location_id_by_address($location, @$_POST['description']);
 
 # formulate insert values
 $values = array("subnet" => $_POST['subnet'],
