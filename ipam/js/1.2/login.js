@@ -7,7 +7,7 @@
 
 
 $(document).ready(function () {
-   
+
     /* hide error div if jquery loads ok
      *********************************************/
     $('div.jqueryError').hide();
@@ -102,7 +102,7 @@ $(document).ready(function () {
         showSpinner();
 
         //post to check form
-       
+
         $.post('app/login/request_subnet_result.php', postData, function (data) {
             $('div#REQUESTsubnetresult').html(data).slideDown('fast');
             hideSpinner();
@@ -120,6 +120,7 @@ $(document).ready(function () {
         $('form#requestSUBNET textarea').val('');
 
     });
+
 
     //Check overlap
     $(document).on('change onblur', '#subnet', function () {
@@ -215,7 +216,7 @@ $(document).ready(function () {
                 var obj = JSON.parse(data);
                 $('#verif').removeClass('text-danger');
                 $('#verif').addClass('text-success').html('Coordinates verified: lat ' + obj.lat + ' and long ' + obj.long + ' !');
-               
+
                 $('#location').val(obj.long_name);
 
 

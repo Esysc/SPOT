@@ -8,6 +8,7 @@ require( dirname(__FILE__) . '/../../functions/functions.php' );
 $Database = new Database_PDO;
 $Addresses = new Addresses($Database);
 $Subnets = new Subnets($Database);
+$Tools = new Tools($Database);
 $new_subnet = $_POST['subnet'] . '/24';
 
 // Omly IPV4 address in request form for now IPv4 -> id 1
@@ -31,7 +32,11 @@ if (sizeof(@$errors) > 0) {
     foreach ($errors as $error) {
         print "<br>" . $error;
     }
+
     print '</div>';
+    $subnet = $Tools->transform_to_decimal($_POST['subnet']);
+    if ($subnet != 0)
+        print "<button class='btn btn-primary' type='button'  data-toggle='modal' rel='tooltip' title='Subnet details' data-target='#$subnet'><i class='fa fa-database'></i> $new_subnet details</button>";
     die();
 }
 

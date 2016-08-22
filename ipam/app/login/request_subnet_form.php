@@ -11,7 +11,7 @@ $vlans = $Tools->fetch_all_objects('vlans', 'vlanId');
 $vlans = (array) $vlans;
 $locations = $Tools->fetch_all_objects("locations", "name");
 $customers = $Tools->fetch_all_objects("subnets", "Account");
-
+$all_subnets = $Tools->fetch_all_objects("subnets");
 ?>
 
 
@@ -51,10 +51,10 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
                             <button class="btn btn-primary" type="button"  data-toggle="modal" rel='tooltip' title='Choose vlan' id="button_vlan" data-target="#modalVlan"><i class="fa fa-share"></i></button>
                             <input type="hidden" name="vlan" id="vlan" />
                         </span>
-                        
 
-                            
-                       
+
+
+
                     </div>
 
 
@@ -105,9 +105,9 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
                 <td>
                     <div class="input-group">
                         <span class="input-group-btn" >
-                        <button class="btn btn-primary" type="button"  data-toggle="modal" rel='tooltip' title='Help' data-target="#modalCustomer"><i class="fa fa-database"></i></button>
+                            <button class="btn btn-primary" type="button"  data-toggle="modal" rel='tooltip' title='Help' data-target="#modalCustomer"><i class="fa fa-database"></i></button>
                         </span>
-                       
+
                         <input type="text" name="owner" class="form-control" id="owner" size="40" placeholder="<?php print _('Customer'); ?>">
 
 
@@ -235,7 +235,7 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalVlan" tabindex="-1" role="dialog" aria-labelledby="Valns">
+<div class="modal fade" id="modalVlan" tabindex="-1" role="dialog" aria-labelledby="Vlans">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header  modal-header-info">
@@ -243,14 +243,14 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
                 <h4 class="modal-title" id="myModalLabel">Vlans available</h4>
             </div>
             <div class="modal-body">
-               <select  id="help_vlan" class="chosen-select">
-                                <?php
-                                foreach ($vlans as $vlan => $val) {
-                                    $option = $val->name;
-                                    print "<option value='" . $option . "'>" . $option . "</option>";
-                                }
-                                ?>
-                            </select>
+                <select  id="help_vlan" class="chosen-select">
+                    <?php
+                    foreach ($vlans as $vlan => $val) {
+                        $option = $val->name;
+                        print "<option value='" . $option . "'>" . $option . "</option>";
+                    }
+                    ?>
+                </select>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -259,6 +259,52 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
         </div>
     </div>
 </div>
+<?php
+foreach ($all_subnets as $show) {
+    ?>
+
+    <div class="modal fade" id="<?php echo $show->subnet; ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $show->subnet; ?>">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header  modal-header-info">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Subnet details</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive table-auto-wide">
+                        <tr>
+                            <th>Subnet</th>
+                            <td><?php echo $Tools->transform_to_dotted($show->subnet).'/'.$show->mask; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td><?php echo $show->description; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Customer</th>
+                            <td><?php echo $show->Account; ?></td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Site</th>
+                            <td><?php echo $show->Site; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Comments</th>
+                            <td><?php echo $show->Comments; ?></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+?>
 
 <?php
 # check for requests guide
