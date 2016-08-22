@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Suggest new subnet
+ * Suggest new IPV4 subnet
  * ******************* */
 
 
@@ -36,9 +36,9 @@ function loopSubnet($start_arr) {
 
 $sectionId = $_POST['sectionId'];
 if ($_POST['subnet'] !== '') {
-    $subnet = $_POST['subnet'];
-    $post_subnet = explode("/", $_POST['subnet']);
-    $start = $post_subnet[0];
+    $start = $_POST['subnet'];
+    $subnet = $start."/24";
+    
 } else {
     $start = "10.0.0.0";
     
@@ -55,7 +55,8 @@ while ($check == false) {
     $tmp_value = $start_arr[0] . '.' . $start_arr[1] . '.' . $start_arr[2] . '.0/' . $mask;
     if ($Subnets->suggest_new_subnet($sectionId, $tmp_value) == false && $tmp_value !== $subnet) {
         $check = true;
-        echo $tmp_value;
+        $tmp_value_array = explode('/', $tmp_value);
+        echo $tmp_value_array[0];
     } else {
 
 

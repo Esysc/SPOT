@@ -37,7 +37,7 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
         <!-- select subnet dropdown -->
         <table class="REQUESTsubnet table table-responsive">
             <tr>
-                <th>  * <?php print _('Subnet'); ?></th>
+                <th>  * <?php print _('Subnet'); ?><code> (only block of /24)</code></th>
                 <td>
 
                     <div class="input-group">
@@ -46,7 +46,7 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
                                 <i class="fa fa-gear" ></i>
                             </button>
                         </span>
-                        <input  name="subnet" id="subnet" class="form-control" type="text" placeholder="xxx.xxx.xxx.0/24" />
+                        <input  name="subnet" id="subnet" class="form-control" type="text" placeholder="xxx.xxx.xxx.0" />
                         <span class="input-group-btn" >
                             <button class="btn btn-primary" type="button"  data-toggle="modal" rel='tooltip' title='Choose vlan' id="button_vlan" data-target="#modalVlan"><i class="fa fa-share"></i></button>
                             <input type="hidden" name="vlan" id="vlan" />
