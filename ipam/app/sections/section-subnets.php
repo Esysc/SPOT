@@ -68,9 +68,9 @@ if($permission != 0) {
 		if($User->settings->enableVRF == 1) {
 		print "	<th class='hidden-xs hidden-sm'>"._('VRF')."</th>";
 		}
-		print "	<th>"._('Master Subnet')."</th>";
+		/* print "	<th>"._('Master Subnet')."</th>";
 		print "	<th>"._('Device')."</th>";
-		print "	<th class='hidden-xs hidden-sm'>"._('Requests')."</th>";
+		print "	<th class='hidden-xs hidden-sm'>"._('Requests')."</th>"; */
 		if(sizeof($custom) > 0) {
 			foreach($custom as $field) {
 				if(!in_array($field['name'], $hidden_fields)) {

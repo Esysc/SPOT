@@ -394,7 +394,9 @@ class Subnets extends Common_functions {
      * @return void
      */
     public function fetch_section_subnets($sectionId, $limit = '') {
-        if ($limit !== '') { $limit = "limit $limit";}
+        if ($limit !== '') {
+            $limit = "limit $limit";
+        }
         # check order
         $this->get_settings();
         $order = $this->get_subnet_order();
@@ -1450,7 +1452,7 @@ class Subnets extends Common_functions {
         # default false - does not overlap
         return false;
     }
-    
+
     /**
      * return a suggested subnet
      *
@@ -1475,8 +1477,8 @@ class Subnets extends Common_functions {
                     if ($existing_subnet->isFolder != 1) {
                         # check overlapping
                         if ($this->verify_overlapping($new_subnet, $this->transform_to_dotted($existing_subnet->subnet) . '/' . $existing_subnet->mask) !== false) {
-                           $result = true;
-                           break;
+                            $result = true;
+                            break;
                         }
                     }
                 }
@@ -2471,7 +2473,7 @@ class Subnets extends Common_functions {
 
         # if user is admin or operator then return 3
         if ($user->role == "Administrator" || $user->role == "User") {
-          
+
             return 3;
         } else {
             return 0;
@@ -3049,38 +3051,38 @@ class Subnets extends Common_functions {
                     $html[] = !$vrf ? "<td></td>" : "<td>$vrf->name</td>";
                 }
 
-                //masterSubnet
-                $masterSubnet = ( $option['value']['masterSubnetId'] == 0 || empty($option['value']['masterSubnetId']) ) ? true : false;
+                //masterSubnet disable in table
+                /* $masterSubnet = ( $option['value']['masterSubnetId'] == 0 || empty($option['value']['masterSubnetId']) ) ? true : false;
 
-                if ($masterSubnet) {
-                    $html[] = '	<td>/</td>' . "\n";
-                } else {
-                    $master = (array) $this->fetch_subnet(null, $option['value']['masterSubnetId']);
-                    if ($master['isFolder'] == 1)
-                        $html[] = "	<td><i class='fa fa-sfolde fa-gray fa-folder-open'></i> <a href='" . create_link("folder", $option['value']['sectionId'], $master['id']) . "'>$master[description]</a></td>" . "\n";
-                    else {
-                        $html[] = "	<td><a href='" . create_link("subnets", $option['value']['sectionId'], $master['id']) . "'>" . $this->transform_to_dotted($master['subnet']) . '/' . $master['mask'] . '</a></td>' . "\n";
-                    }
-                }
+                  if ($masterSubnet) {
+                  $html[] = '	<td>/</td>' . "\n";
+                  } else {
+                  $master = (array) $this->fetch_subnet(null, $option['value']['masterSubnetId']);
+                  if ($master['isFolder'] == 1)
+                  $html[] = "	<td><i class='fa fa-sfolde fa-gray fa-folder-open'></i> <a href='" . create_link("folder", $option['value']['sectionId'], $master['id']) . "'>$master[description]</a></td>" . "\n";
+                  else {
+                  $html[] = "	<td><a href='" . create_link("subnets", $option['value']['sectionId'], $master['id']) . "'>" . $this->transform_to_dotted($master['subnet']) . '/' . $master['mask'] . '</a></td>' . "\n";
+                  }
+                  }
+                 */
+                //device disable in table
+                /*  $device = ( $option['value']['device'] == 0 || empty($option['value']['device']) ) ? false : true;
 
-                //device
-                $device = ( $option['value']['device'] == 0 || empty($option['value']['device']) ) ? false : true;
+                  if ($device === false) {
+                  $html[] = '	<td>/</td>' . "\n";
+                  } else {
+                  $device = $this->fetch_object("devices", "id", $option['value']['device']);
+                  if ($device !== false) {
+                  $html[] = "	<td><a href='" . create_link("tools", "devices", $option['value']['device']) . "'>" . $device->hostname . '</a></td>' . "\n";
+                  } else {
+                  $html[] = '	<td>/</td>' . "\n";
+                  }
+                  } */
 
-                if ($device === false) {
-                    $html[] = '	<td>/</td>' . "\n";
-                } else {
-                    $device = $this->fetch_object("devices", "id", $option['value']['device']);
-                    if ($device !== false) {
-                        $html[] = "	<td><a href='" . create_link("tools", "devices", $option['value']['device']) . "'>" . $device->hostname . '</a></td>' . "\n";
-                    } else {
-                        $html[] = '	<td>/</td>' . "\n";
-                    }
-                }
-
-                //requests
-                $requests = $option['value']['allowRequests'] == 1 ? "<i class='fa fa-gray fa-check'></i>" : "/";
-                $html[] = "	<td class='hidden-xs hidden-sm'>$requests</td>";
-
+                //requests disable in table
+                /*  $requests = $option['value']['allowRequests'] == 1 ? "<i class='fa fa-gray fa-check'></i>" : "/";
+                  $html[] = "	<td class='hidden-xs hidden-sm'>$requests</td>";
+                 */
                 //custom
                 if (sizeof($custom_fields) > 0) {
                     foreach ($custom_fields as $field) {
