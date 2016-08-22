@@ -5,4 +5,7 @@ define("VERSION", "1.23");									//version changes if database structure chang
 define("REVISION", "10");									//revision always changes, verision only if database structure changes
 /* set last possible upgrade */
 define("LAST_POSSIBLE", "1.1");								//minimum required version to be able to upgrade
+/* set latest revision */
+define("INTERNAL_REVISION", "1.5");									//Sysprod revision
+/* set sysprod revision */
 ?>

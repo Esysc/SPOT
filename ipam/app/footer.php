@@ -5,9 +5,9 @@
 	<td>
 		<?php
 		// set href
-		$href = REVISION=="000" ? "http://phpipam.net" : "http://phpipam.net";
+		$href = REVISION=="000" ? "http://phpipam.net" : "";
 		?>
-		<a href="<?php print $href; ?>">IPAM Mycompany Customers <?php print '[v'. VERSION. ']'; ?><?php if(REVISION > 0) { print " rev".REVISION; } ?></a>
+		<a href="<?php print $href; ?>">IPAM Mycompany Customers <?php print '[v'. VERSION. ']'; ?><?php if(REVISION > 0) { print " rev".REVISION; } ?><?php if(INTERNAL_REVISION> 0) { print "_STD".INTERNAL_REVISION; } ?></a>
 	</td>
 
 	<?php
