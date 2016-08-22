@@ -58,7 +58,9 @@ if ($subnetRequests != false) {
             foreach ($subnetRequests as $k => $request) {
                 //cast
                 $request = (array) $request;
-
+// Get address from id
+                if (is_numeric($request['Location']))
+                    $request['Location'] = $Tools->fetch_location_by_id($request['Location']);
 
 
                 print '<tr>' . "\n";
@@ -117,8 +119,10 @@ if ($subnetRequests != false) {
                     $accepted = "No";
                 }
 
-
-
+// Get address from id
+                if (is_numeric($request['Location']))
+                    $request['Location'] = $Tools->fetch_location_by_id($request['Location']);
+               
                 print '<tr>' . "\n";
 
                 print '	<td>' . $request['subnet'] . '</td>' . "\n";
@@ -139,6 +143,6 @@ if ($subnetRequests != false) {
     </table>
     <?php
 } else {
-   
+
     print "<div class='alert alert-success'>" . _('No processed subnet requests available') . "!</div>";
 }

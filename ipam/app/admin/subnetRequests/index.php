@@ -14,8 +14,6 @@ $inactive_requests = $Admin->fetch_multiple_objects("subnetRequests", "processed
 <hr><br>
 
 <?php
-# none
-var_dump($active_requests);
 if ($active_requests === false) {
     print "<div class='alert alert-info'>" . _('No subnet requests available') . "!</div>";
 } else {
@@ -41,26 +39,25 @@ if ($active_requests === false) {
         <tbody>
             <?php
             # print requests
-           
-                foreach ($active_requests as $k => $request) {
-                    //cast
-                    $request = (array) $request;
 
-
-
-                    print '<tr>' . "\n";
-                    print "	<td><button class='btn btn-sm btn-default' data-requestid='" . $request['id'] . "'><i class='fa fa-pencil'></i> " . _('Process') . "</button></td>";
-                    print '	<td>' . $request['subnet'] . '</td>' . "\n";
-                    print '	<td>' . $request['mask'] . '</td>' . "\n";
-                    print '	<td>' . $request['Vlan'] . '</td>' . "\n";
-                    print '	<td>' . $request['System Name'] . '</td>' . "\n";
-                    print '	<td>' . $request['Location'] . '</td>' . "\n";
-                    print '	<td>' . $request['owner'] . '</td>' . "\n";
-                    print '	<td>' . $request['requester'] . '</td>' . "\n";
-                    print '	<td>' . $request['comment'] . '</td>' . "\n";
-                    print '</tr>' . "\n";
-                }
-            
+            foreach ($active_requests as $k => $request) {
+                //cast
+                $request = (array) $request;
+                // Get address from id
+                if (is_numeric($request['Location']))
+                    $request['Location'] = $Tools->fetch_location_by_id($request['Location']);
+                print '<tr>' . "\n";
+                print "	<td><button class='btn btn-sm btn-default' data-requestid='" . $request['id'] . "'><i class='fa fa-pencil'></i> " . _('Process') . "</button></td>";
+                print '	<td>' . $request['subnet'] . '</td>' . "\n";
+                print '	<td>' . $request['mask'] . '</td>' . "\n";
+                print '	<td>' . $request['Vlan'] . '</td>' . "\n";
+                print '	<td>' . $request['System Name'] . '</td>' . "\n";
+                print '	<td>' . $request['Location'] . '</td>' . "\n";
+                print '	<td>' . $request['owner'] . '</td>' . "\n";
+                print '	<td>' . $request['requester'] . '</td>' . "\n";
+                print '	<td>' . $request['comment'] . '</td>' . "\n";
+                print '</tr>' . "\n";
+            }
             ?>
         </tbody>
     </table>
@@ -99,8 +96,10 @@ if ($inactive_requests !== false) {
                 //cast
                 $request = (array) $request;
 
-
-
+// Get address from id
+                if (is_numeric($request['Location']))
+                    $request['Location'] = $Tools->fetch_location_by_id($request['Location']);
+              
                 print '<tr>' . "\n";
 
                 print '	<td>' . $request['subnet'] . '</td>' . "\n";

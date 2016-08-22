@@ -2117,6 +2117,39 @@ class Tools extends Common_functions {
             return false;
         }
     }
+    /**
+     * Fetches location address from id.
+     *
+     * @access public
+     * @param bool|int $id (default: false)
+     
+     * @return void
+     */
+    public function fetch_location_by_id($id = false) {
+        // check
+        if (is_numeric($id)) {
+           
+            // query
+            $query = "  SELECT address
+                        FROM locations
+                        WHERE id = $id
+                        
+                        ";
+
+            // fetch
+            try {
+                $objects = $this->Database->getObjectsQuery($query);
+            } catch (Exception $e) {
+                $this->Result->show("danger", $e->getMessage(), true);
+            }
+
+            // return
+            return sizeof($objects) > 0 ? $objects[0]->address : false;
+        } else {
+            return "";
+        }
+    }
+    
 
     /**
      * 	@misc methods
