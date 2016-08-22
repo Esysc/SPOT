@@ -142,7 +142,7 @@ if (isset($_GET['log'])) {
             <div class="jumbotron">
                 <h2>User Access </h2>
                 <p class="alert alert-info">System Production Overall Tool</p>
-                <p>
+               <!-- <p>
                     <a href="./adresses" class="btn btn-mini btn-info">Visit Public Page</a>
 
 
@@ -154,7 +154,7 @@ if (isset($_GET['log'])) {
                     ?>
 
 
-                </p>
+                </p>-->
                 <p class="text-info">This app is compatible with Chrome (all versions), Firefox (all versions) and IE => 11 </p>
             </div>
             <?php
