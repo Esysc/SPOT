@@ -187,9 +187,9 @@ $customers = $Tools->fetch_all_objects("subnets", "Account");
                     if ($locations !== false) {
                         foreach ($locations as $l) {
                             if ($subnet_old_details['location'] == $l->id) {
-                                print "<option value='$l->name' selected='selected'>$l->address</option>";
+                                print "<option value='$l->address' selected='selected'>$l->address</option>";
                             } else {
-                                print "<option value='$l->name'>$l->address</option>";
+                                print "<option value='$l->address'>$l->address</option>";
                             }
                         }
                     }

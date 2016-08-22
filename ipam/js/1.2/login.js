@@ -209,7 +209,7 @@ $(document).ready(function () {
 
     $(document).on('change blur', '#location', function (e) {
         e.preventDefault();
-        var address = $(this).val();
+        var address = $('#location').val();
         $.get('app/admin/locations/find_geocode_from_address.php?address=' + address, function (data) {
             if (data) {
                 var obj = JSON.parse(data);
