@@ -11,7 +11,6 @@ $vlans = $Tools->fetch_all_objects('vlans', 'vlanId');
 $vlans = (array) $vlans;
 $locations = $Tools->fetch_all_objects("locations", "name");
 $customers = $Tools->fetch_all_objects("subnets", "Account");
-$all_subnets = $Tools->fetch_all_objects("subnets");
 ?>
 
 
@@ -46,7 +45,9 @@ $all_subnets = $Tools->fetch_all_objects("subnets");
                                 <i class="fa fa-gear" ></i>
                             </button>
                         </span>
-                        <input  name="subnet" id="subnet" class="form-control" type="text" placeholder="xxx.xxx.xxx.0" />
+                        <div class="clearfix">
+                            <input  name="subnet" id="subnet" class="form-control" type="text" placeholder="xxx.xxx.xxx.0" />
+                        </div>
                         <span class="input-group-btn" >
                             <button class="btn btn-primary" type="button"  data-toggle="modal" rel='tooltip' title='Choose vlan' id="button_vlan" data-target="#modalVlan"><i class="fa fa-share"></i></button>
                             <input type="hidden" name="vlan" id="vlan" />
@@ -73,7 +74,9 @@ $all_subnets = $Tools->fetch_all_objects("subnets");
                 <td>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-comment"></i></span>
-                        <input type="text" name="description" class="form-control" size="30" placeholder="<?php print _('Subnet description'); ?>">
+                        <div class="clearfix">
+                            <input type="text" name="description" id="description" class="form-control" size="30" placeholder="<?php print _('Subnet description'); ?>">
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -87,8 +90,9 @@ $all_subnets = $Tools->fetch_all_objects("subnets");
                         <span class="input-group-btn" >
                             <button class="btn btn-primary" type="button"  data-toggle="modal" rel='tooltip' title='Help' data-target="#modalLocation"><i class="fa fa-map"></i></button>
                         </span>
-                        <input type="text" name="location" class="form-control" id="location" size="40" placeholder="<?php print _('Subnet location'); ?>">
-
+                        <div class="clearfix">
+                            <input type="text" name="location" class="form-control" id="location" size="40" placeholder="<?php print _('Subnet location'); ?>">
+                        </div>
                     </div>
                     <span class='text-muted'>The format should be: "Address, [zip] City, Country". Ex: <code>Route de Genève 24, 1033 Cheseaux-sur-Lausanne, Switzerland</code></span>
                     <br />
@@ -107,9 +111,9 @@ $all_subnets = $Tools->fetch_all_objects("subnets");
                         <span class="input-group-btn" >
                             <button class="btn btn-primary" type="button"  data-toggle="modal" rel='tooltip' title='Help' data-target="#modalCustomer"><i class="fa fa-database"></i></button>
                         </span>
-
-                        <input type="text" name="owner" class="form-control" id="owner" size="40" placeholder="<?php print _('Customer'); ?>">
-
+                        <div class="clearfix">
+                            <input type="text" name="owner" id="owner" class="form-control" id="owner" size="40" placeholder="<?php print _('Customer'); ?>">
+                        </div>
 
 
                     </div>
@@ -125,7 +129,9 @@ $all_subnets = $Tools->fetch_all_objects("subnets");
                 <td>
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
-                        <input type="text" name="requester" class="form-control" size="30" placeholder="<?php print _('Your email address'); ?>"></textarea>
+                        <div class="clearfix">
+                            <input type="text" name="requester" id="requester" class="form-control" size="30" placeholder="<?php print _('Your email address'); ?>"></textarea>
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -136,7 +142,9 @@ $all_subnets = $Tools->fetch_all_objects("subnets");
                 <td class="comment">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-comment"></i></span>
-                        <textarea name="comment" rows="3" class="form-control" style="width:100%" placeholder="<?php print _('If there is anything else you want to say about request write it in this box'); ?>!"></textarea>
+                        <div class="clearfix">
+                            <textarea name="comment" id="comment" rows="3" class="form-control" style="width:100%" placeholder="<?php print _('If there is anything else you want to say about request write it in this box'); ?>!"></textarea>
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -259,52 +267,7 @@ $all_subnets = $Tools->fetch_all_objects("subnets");
         </div>
     </div>
 </div>
-<?php
-foreach ($all_subnets as $show) {
-    ?>
 
-    <div class="modal fade" id="<?php echo $show->subnet; ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $show->subnet; ?>">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header  modal-header-info">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Subnet details</h4>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-responsive table-auto-wide">
-                        <tr>
-                            <th>Subnet</th>
-                            <td><?php echo $Tools->transform_to_dotted($show->subnet).'/'.$show->mask; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Description</th>
-                            <td><?php echo $show->description; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Customer</th>
-                            <td><?php echo $show->Account; ?></td>
-                        </tr>
-                        
-                        <tr>
-                            <th>Site</th>
-                            <td><?php echo $show->Site; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Comments</th>
-                            <td><?php echo $show->Comments; ?></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php
-}
-?>
 
 <?php
 # check for requests guide

@@ -131,11 +131,20 @@ $(document).ready(function () {
         $.post('app/login/request_subnet_overlap.php', postData, function (data) {
             $('div#REQUESTsubnetresult').html(data).slideDown('fast');
             hideSpinner();
+            var div = $("input#subnet").parent("div.clearfix");
+
             //reset sender to prevent duplicates on success
             if (data.search("alert alert-danger") != -1) {
-                $('form#requestSUBNET input[type="text"]').val('');
-                $('form#requestSUBNET textarea').val('');
+                $('#overlap_details').modal('show');
+                $('input#subnet').val('');
+                div.removeClass('has-success');
+                div.addClass('has-error');
+                //  $('form#requestSUBNET input[type="text"]').val('');
+                // $('form#requestSUBNET textarea').val('');
 
+            } else {
+                div.removeClass('has-error');
+                div.addClass('has-success');
             }
         });
         $('#get-subnet').tooltip('destroy');
@@ -211,6 +220,7 @@ $(document).ready(function () {
     $(document).on('change blur', '#location', function (e) {
         e.preventDefault();
         var address = $('#location').val();
+        var div = $(this).parent("div.clearfix");
         $.get('app/admin/locations/find_geocode_from_address.php?address=' + address, function (data) {
             if (data) {
                 var obj = JSON.parse(data);
@@ -218,16 +228,31 @@ $(document).ready(function () {
                 $('#verif').addClass('text-success').html('Coordinates verified: lat ' + obj.lat + ' and long ' + obj.long + ' !');
 
                 $('#location').val(obj.long_name);
+                div.removeClass('has-error');
+                div.addClass('has-success');
 
 
             } else {
                 $('#verif').removeClass('text-success');
                 $('#verif').addClass('text-danger').html('WARNING!! Coordinates not found! check the address.');
                 $('#location').val('');
+                div.removeClass('has-success');
+                div.addClass('has-error')
             }
         });
 
     });
+    $(document).on('change onblur', '#description,#owner,#requester,#comment', function () {
+        var div = $(this).parent("div.clearfix");
+        if ($(this).val() !== '') {
+            div.removeClass('has-error');
+            div.addClass('has-success');
+        } else {
+            div.removeClass('has-success');
+            div.addClass('has-error');
+        }
+    });
+
 });
 
 
