@@ -21,7 +21,7 @@ if (strlen($cidr_check) > 5) {
     $errors[] = $cidr_check;
 }
 // check Overlap
-if (! sizeof(@$errors) > 0) {
+if (!sizeof(@$errors) > 0) {
     $overlap = $Subnets->verify_subnet_overlapping($sectionId, $new_subnet, $vrfId = 0);
     if ($overlap !== false) {
         $errors[] = $overlap;
@@ -35,7 +35,7 @@ if (sizeof(@$errors) > 0) {
     print '<div class="modal fade" id="overlap_details" tabindex="-1" role="dialog" aria-labelledby="overlap_details">';
     print '<div class="modal-dialog" role="document">';
     print '<div class="modal-content">';
-    print '<div class="modal-header  modal-header-info">';
+    print '<div class="modal-header  modal-header-danger">';
     print '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
     print '<h4 class="modal-title" id="myModalLabel">Errors details</h4>';
     print '</div>';
@@ -46,6 +46,9 @@ if (sizeof(@$errors) > 0) {
     }
     print '</div>';
     if ($subnet != 0) {
+        print '<div class="modal-header  modal-header-info">';
+        print '<h4 class="modal-title" id="myModalLabel">Overlap details</h4>';
+        print '</div>';
         print '<table class="table table-responsive table-auto-wide">';
         print '<tr>';
         print '<th>Subnet</th>';
