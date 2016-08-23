@@ -1,7 +1,6 @@
 <?php
 $this->assign('title', 'SPOT | Customer Configurations Builder');
 $this->assign('nav', 'customconfigsbuilder');
-
 $this->display('_Header.tpl.php');
 
 if (!isset($_SESSION['salesorder'])) {
@@ -95,7 +94,7 @@ if (!isset($_SESSION['salesorder'])) {
                     '<div class="modal-header">' +
                     '<a class="close" data-dismiss="modal">&times;</a>' +
                     '<h3>' +
-                    '<i class="icon-edit"></i> Edit default configuration line n.' + c + ', <div class="equip' + c + '" style="display:inline"></div>' +
+                    '<i class="icon-edit"></i> Edit default configuration line n.' + c + ', <div class="equip' + c + '" style="display:inline"></div><span class="pull-right">Main Netwrok: <code><?php echo $_SESSION['network']; ?></code></span>' +
                     '</h3>' +
                     '</div>' +
                     '<div class="modal-body" id="modal-body-networking' + c + '">' +
