@@ -184,6 +184,10 @@ foreach ($share_value_arr as $key => $subtemp) {
         $end[$key]['bgcolor'] = $bgcolor[$status];
         if ((strpos($status, 'Progress') !== false && strpos($packstatus, 'Delivered') !== false ) || strpos($packstatus, 'Picked') !== false)
             $end[$key]['bgcolor'] = $bgcolor[$packstatus];
+        if (strpos($status, 'Progress') == true)
+            $end[$key]['bgcolor'] = $bgcolor[$status];
+        if (strpos($status, 'Hold') == true)
+            $end[$key]['bgcolor'] = $bgcolor[$status];
         if ($parsing->totalResults != 0) {
             $data = $parsing->rows[0]->data;
             $data_decoded = json_decode($data);
@@ -277,9 +281,9 @@ foreach ($share_value_arr as $key => $subtemp) {
         $class = '';
         if (isset($subtemp["ExpShipment"])) {
             date_default_timezone_set('Europe/London');
-            $date2 =  strtotime(date('d-m-Y'));
-            $date1 =  strtotime(str_replace('/', '-', $subtemp["ExpShipment"]));
-            
+            $date2 = strtotime(date('d-m-Y'));
+            $date1 = strtotime(str_replace('/', '-', $subtemp["ExpShipment"]));
+
 
             if ($date1 < $date2)
                 $class = "class='blinking' title='This shipment is expired'";
