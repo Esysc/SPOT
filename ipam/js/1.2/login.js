@@ -113,6 +113,8 @@ $(document).ready(function () {
                 //$('form#requestSUBNET input[type="text"]').val('');
                 //$('form#requestSUBNET textarea').val('');
             }
+            if ($(':submit').val() === 'Submit another')
+                blinking($(':submit'));
         });
         return false;
     });
@@ -254,6 +256,14 @@ $(document).ready(function () {
             div.addClass('has-error');
         }
     });
+    function blinking(elm) {
+        timer = setInterval(blink, 10);
+        function blink() {
+            elm.fadeOut(1000, function () {
+                elm.fadeIn(1000);
+            });
+        }
+    }
 
 });
 
