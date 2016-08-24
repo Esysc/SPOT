@@ -46,7 +46,9 @@ $sectionId = $_POST['sectionId'];
   } */
 
 // Produce a random subnet
-$start = "10." . mt_rand(0, 255) . "." . mt_rand(0, 255) . ".0";
+$first_octect = array(10,172,192);
+$random_key = array_rand($first_octect);
+$start = $first_octect[$random_key]."." . mt_rand(0, 255) . "." . mt_rand(0, 255) . ".0";
 $subnet = $start . "/24";
 $mask = 24;
 
