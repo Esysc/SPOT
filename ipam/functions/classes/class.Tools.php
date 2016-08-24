@@ -1226,6 +1226,9 @@ class Tools extends Common_functions {
             }
 // Location
             elseif ($k == "Location") {
+                 if ( is_numeric($v)) {
+                     $v = $this->fetch_location_by_id($v);
+                 }
                 $mail['Location'] = $v;
             }
 // owner
@@ -2314,7 +2317,7 @@ class Tools extends Common_functions {
             return false;
         }
 # save ID
-        $this->save_last_insert_id();
+        $this->Database->save_last_insert_id();
 # ok
         $this->Log->write("$table object creation", "New locations database object created<hr>");
         return true;
