@@ -108,8 +108,10 @@ $(document).ready(function () {
             hideSpinner();
             //reset sender to prevent duplicates on success
             if (data.search("alert alert-success") != -1) {
-                $('form#requestSUBNET input[type="text"]').val('');
-                $('form#requestSUBNET textarea').val('');
+                $('#subnet').val('');
+                $(':submit').val('Submit another');
+                //$('form#requestSUBNET input[type="text"]').val('');
+                //$('form#requestSUBNET textarea').val('');
             }
         });
         return false;

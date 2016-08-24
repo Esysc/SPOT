@@ -2313,13 +2313,13 @@ class Tools extends Common_functions {
             $this->Database->insertObject("locations", $values);
         } catch (Exception $e) {
             $this->Result->show("danger", _("Error: ") . $e->getMessage(), false);
-            $this->Log->write("$table object creation", "Failed to create new locations database object<hr>" . $e->getMessage() . "<hr>");
+            //$this->Log->write("$table object creation", "Failed to create new locations database object<hr>" . $e->getMessage() . "<hr>");
             return false;
         }
 # save ID
-        $this->Database->save_last_insert_id();
+        //$this->Database->save_last_insert_id();
 # ok
-        $this->Log->write("$table object creation", "New locations database object created<hr>");
+        //$this->Log->write("$table object creation", "New locations database object created<hr>");
         return true;
     }
 
