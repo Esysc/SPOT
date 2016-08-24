@@ -35,14 +35,19 @@ function loopSubnet($start_arr) {
 }
 
 $sectionId = $_POST['sectionId'];
-if ($_POST['subnet'] !== '') {
-    $start = $_POST['subnet'];
-    $subnet = $start."/24";
-    
-} else {
-    $start = "10.0.0.0";
-    
-}
+/* if ($_POST['subnet'] !== '') {
+  $start = $_POST['subnet'];
+  $subnet = $start."/24";
+
+  } else {
+  $start = "10.0.0.0";
+  $start = "10.".mt_rand(0,255).".".mt_rand(0,255).".0";
+  $subnet = $start."/24";
+  } */
+
+// Produce a random subnet
+$start = "10." . mt_rand(0, 255) . "." . mt_rand(0, 255) . ".0";
+$subnet = $start . "/24";
 $mask = 24;
 
 $start_arr = explode(".", $start);

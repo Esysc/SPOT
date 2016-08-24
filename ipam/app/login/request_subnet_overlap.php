@@ -9,6 +9,7 @@ $Database = new Database_PDO;
 $Addresses = new Addresses($Database);
 $Subnets = new Subnets($Database);
 $Tools = new Tools($Database);
+if (!isset($_POST['subnet']) || $_POST['subnet'] === "") die();
 $new_subnet = $_POST['subnet'] . '/24';
 
 // Omly IPV4 address in request form for now IPv4 -> id 1
