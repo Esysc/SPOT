@@ -19,6 +19,7 @@ if (!empty($_SERVER['PHP_AUTH_USER'])) {
 <html lang="en">
 
     <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <base href="<?php print $url . BASE; ?>">
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -27,7 +28,7 @@ if (!empty($_SERVER['PHP_AUTH_USER'])) {
         <meta name="Description" content="">
         <meta name="title" content="<?php print $User->settings->siteTitle; ?> :: login">
         <meta name="robots" content="noindex, nofollow">
-        <meta http-equiv="X-UA-Compatible" content="IE=9" >
+        <!--<meta http-equiv="X-UA-Compatible" content="IE=9" >-->
 
         <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=1, user-scalable=no">
 

@@ -40,3 +40,9 @@ RewriteRule ^(.*)/(.*)/$ index.php?page=$1&section=$2 [L]
 RewriteRule ^(.*)/$ index.php?page=$1 [L]
 
 </IfModule>
+
+<FilesMatch "\.(ttf|otf|woff)$">
+<IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+</IfModule>
+</FilesMatch>

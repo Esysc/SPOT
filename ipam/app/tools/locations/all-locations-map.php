@@ -56,7 +56,7 @@ if ($User->settings->enableLocations != "1") {
                     // init gmaps
                     var map = new GMaps({
                         el: '#gmap',
-                        zoom: 3,
+                        zoom: 2,
                         lat: 10,
                         lng: 10,
                         zoomControl: true,
@@ -95,7 +95,7 @@ if ($User->settings->enableLocations != "1") {
 
                                 if ($o->type == "subnets") {
                                     $href = create_link("subnets", $o->sectionId, $o->id);
-                                    $o->name = $Tools->transform_address($o->name, "dotted") . "." . $o->mask;
+                                    $o->name = $Tools->transform_address($o->name, "dotted") . "/" . $o->mask;
                                     $o->description = strlen($o->description) > 0 ? trim(preg_replace('/\s+/', ' ', htmlspecialchars($o->description, ENT_QUOTES, 'UTF-8'))) : "";
                                     $subnets .= "<li><a href='$href' rel='tooltip' title='$o->description'>$o->name</a></li>";
                                 }
