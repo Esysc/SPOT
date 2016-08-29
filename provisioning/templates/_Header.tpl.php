@@ -47,7 +47,7 @@
 
         <script src="bootstrap/js/codemirror.js" type="text/javascript"></script>
         <script type="text/javascript" src="scripts/libs/LAB.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
         <script type="text/javascript">
             $LAB.script("scripts/jquery-1.8.2.min.js").wait()
                     .script("bootstrap/js/bootstrap.min.js").wait()
@@ -81,14 +81,9 @@
 
         <script src="scripts/ajaxrequest.js"></script>
 
-        <?php if ($_SESSION['right'] != 99) { ?>
+        <?php if ( $_SESSION['right'] != 99) { ?>
             <script src="scripts/javascript_functions.js"></script>
         <?php } ?>
-        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-
-
-
-
         <script src="scripts/chosen/chosen.jquery.js" type="text/javascript" ></script>
         <script src="scripts/chosen/docsupport/prism.js" type="text/javascript" charset="utf-8" ></script>
         <script src="scripts/jquery.webui-popover.js"></script>
@@ -181,7 +176,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <?php if ($_SESSION['right'] == 10) { ?>
+                <?php if ( $_SESSION['right'] == 10) { ?>
                     <a class="brand" href="./">
                         <?php
                         if (isset($_SESSION['salesorder'])) {
@@ -300,12 +295,12 @@
 
                         </ul>
                         <?php
-                        if ($_SESSION['login'] === 'acs' || $_SESSION['login'] === 'admin') {
+                        if ($_SESSION['login'] === 'admin') {
                             ?>
 
                             <ul class="nav">
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle btn-danger" data-toggle="dropdown">Administration<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li class="menu-item dropdown dropdown-submenu">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">DevOps</a>
@@ -475,34 +470,7 @@
                                 }
                                 ?>><!--<a href="./adresses">Customer IP Inventory</a></li>-->
                                     <a href="http://spmgt.my.compnay.com/SPOT/ipam" target="_blank">Customer IP Inventory</a>
-                                    <?php
-                                    if ($_SESSION['right'] == 1000) {
-                                        ?>
-                                    <li <?php
-                                    if ($this->nav == 'ranges') {
-                                        echo 'class="active"';
-                                    }
-                                    ?>><a href="./ranges">Available IP ranges</a></li>
-
-                                    <li <?php
-                                    if ($this->nav == 'subnetcalculator') {
-                                        echo 'class="active"';
-                                    }
-                                    ?>><a href="./subnetcalculator">Subnet Calculator</a></li>
-
-                                    <?php
-                                }
-                                if ($_SESSION['right'] == 2) {
-                                    ?>
-
-                                    <li <?php
-                                    if ($this->nav == 'hotline') {
-                                        echo 'class="active"';
-                                    }
-                                    ?>><a href="./hotline">CS Synchronisation</a></li>
-                                        <?php
-                                    }
-                                    ?>
+                                   
                             </ul>
                         </li>
                     </ul>
@@ -673,7 +641,9 @@
         $requestSite = '';
         if (isset($_GET['_REWRITE_COMMAND']))
             $requestSite = $_GET['_REWRITE_COMMAND'];
+        if (! isset($_SESSION['right'])) $_SESSION['right'] = 99;
         if (!in_array($requestSite, $publicSites) && $_SESSION['right'] != 10) {
+            
             header('HTTP/1.1 401 Unauthorized');
             echo '<p class="alert alert-error"><b>You need to be logged in as <a href="login.php">sysprod user</a> to access this page</b></p>';
             $this->display('_Footer.tpl.php');

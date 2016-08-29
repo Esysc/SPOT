@@ -37,14 +37,7 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'perl') === FALSE && strpos($_SERVER['HT
         } else {
             header('Location: login.php');
         }
-    } else {
-        // Added the logic to enter public pages if rights are not defined already
-        if (!isset($_SESSION['right'])) {
-            $_SESSION['right'] = 99;
-            $_SESSION['login'] = 'guest';
-            
-        }
-    }
+    } 
     
 }
 

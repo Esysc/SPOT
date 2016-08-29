@@ -2,7 +2,7 @@
 $this->assign('title', 'SPOT | Production Scheduling');
 $this->assign('nav', 'pmon');
 
-$this->display('_Header.tpl.php');
+$this->display('_Header_pmon.tpl.php');
 ?>
 
 <style>

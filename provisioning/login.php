@@ -6,12 +6,16 @@ $right = '';
 /* GlobalConfig object contains all configuration information for the app */
 include_once("_global_config.php");
 include_once("_app_config.php");
+require_once( dirname(__FILE__) . '/../ipam/functions/functions.php');
 @include_once("_machine_config.php");
 
-$DBHOST = GlobalConfig::$CONNECTION_SETTING->ConnectionStringDRBL;
-$DBUSER = GlobalConfig::$CONNECTION_SETTING->UsernameDRBL;
-$DBPASS = GlobalConfig::$CONNECTION_SETTING->PasswordDRBL;
-$DBBASE = GlobalConfig::$CONNECTION_SETTING->DBNameDRBL;
+# initialize user object from IPAM DB
+# The authentication system is now manage by IPAM administration
+$Database = new Database_PDO;
+$User = new User($Database);
+$Result = new Result ();
+$Log = new Logging($Database);
+
 $SERVERROOT = GlobalConfig::$ROOT_URL;
 $status = '';
 
@@ -48,36 +52,43 @@ if (isset($_GET['log'])) {
 } else if (isset($_POST['submit'])) {
 
 
-
-    ($GLOBALS["___mysqli_ston"] = mysqli_connect($DBHOST, $DBUSER, $DBPASS));
-    ((bool) mysqli_query($GLOBALS["___mysqli_ston"], "USE $DBBASE"));
+    // try to authenticate on local and AD, users added through ipam administration
     $username = clear($_POST['login']);
     $password = clear($_POST['pass']);
-    $password = md5($_POST['pass']);
+    $_POST['ipamusername'] = $User->strip_input_tags($username);
+    $_POST['ipampassword'] = $password;
 
-    $result = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM users WHERE U_login = '$username' AND U_password = '$password'");
+    if (!empty($_POST['ipamusername']) && !empty($_POST['ipampassword'])) {
 
-    $output = mysqli_fetch_array($result);
+        # initialize array
+        $ipampassword = array();
 
+        # check failed table
+        $cnt = $User->block_check_ip();
 
-    if (isset($output)) {
-        session_regenerate_id(true);
-        ob_end_clean();
-        $_SESSION['login'] = $username;
-        $_SESSION['pass'] = $password;
-        $_SESSION['ad_user'] = $output["U_AD_User"];
-        $_SESSION['ad_pass'] = $output["U_AD_Password"];
-        $_SESSION['phone'] = $output["U_Phone"];
-        $_SESSION['full_name'] = $output["U_Full_Name"];
-        $_SESSION['right'] = $output["U_right"];
+        # check for failed logins and captcha
+        if ($User->blocklimit > $cnt) {
+            // all good
+        }
+        # count set, captcha required
+        elseif (!isset($_POST['captcha'])) {
+            $Log->write("Login IP blocked", "Login from IP address $_SERVER[REMOTE_ADDR] was blocked because of 5 minute block after 5 failed attempts", 1);
+            $Result->show("danger", _('You have been blocked for 5 minutes due to authentication failures'), true);
+        }
+        # captcha check
+        else {
+            # check captcha
+            if (strtolower($_POST['captcha']) != strtolower($_SESSION['securimage_code_value'])) {
+                $Result->show("danger", _("Invalid security code"), true);
+            }
+        }
 
-        $_SESSION['U_id'] = $output["U_id"];
-        $right = $_SESSION['right'];
-        $right == 10 ? $url = 'index.php' : $url = './adresses';
-        $status = '<div class="alert alert-success">Automatically redirecting ..... I this not the case, you can click on one of the  above buttons </div>';
+        # all good, try to authentucate user
+        $User->authenticate($_POST['ipamusername'], $_POST['ipampassword']);
+        $_SESSION['login'] = "$username";
+        $_SESSION['right'] = 10;
         ?>
         <script>
-
             setTimeout(function () {
 
                 $('#login').slideUp('slow').fadeOut(function () {
@@ -88,7 +99,9 @@ if (isset($_GET['log'])) {
             }, 2000);
         </script>
         <?php
-    } else {
+    }
+# Username / pass not provided
+    else {
         ?>
         <script>
             setTimeout(function () {
@@ -126,14 +139,14 @@ if (isset($_GET['log'])) {
                 padding: 9px 0;
 
             }
-            
+
         </style>
 
         <link href="bootstrap3/css/bootstrap.css" rel="stylesheet">
         <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.js"></script>
         <script src="bootstrap3/js/bootstrap.min.js"></script>
-         <script src="scripts/placeholder.js"></script>
-     
+        <script src="scripts/placeholder.js"></script>
+
 
     </head>
     <div class='container'>
@@ -142,38 +155,36 @@ if (isset($_GET['log'])) {
             <div class="jumbotron">
                 <h2>User Access </h2>
                 <p class="alert alert-info">System Production Overall Tool</p>
-               <!-- <p>
-                    <a href="./adresses" class="btn btn-mini btn-info">Visit Public Page</a>
+                <p>
+
 
 
                     <?php
                     if ($right == 10)
                         echo '<a href="index.php" class="btn btn-primary btn-large">Enter...</a>';
-                    if ($right == 2)
-                        echo '<a href="./adresses" class="btn btn-primary btn-large">Enter customer IP inventory</a>';
                     ?>
 
 
-                </p>-->
-                <p class="text-info">This app is compatible with Chrome (all versions), Firefox (all versions) and IE => 11 </p>
+                </p>
+                <p class="text-info">This app is compatible with Chrome (all versions), Firefox (all versions) </p>
             </div>
-            <?php
-            if (!isset($_GET['log'])) {
-                ?>
+<?php
+if (!isset($_GET['log'])) {
+    ?>
 
                 <form method="post" action="" id="login">
                     <fieldset>
-                        <legend class="well well-sm form-control">Enter your credentials</legend>
-                        <label for="login" >  User: <input id="login" name="login" type="text"  placeholder="User Name" size="15" /> </label>
-                        <label for="pass">  Password: <input id="pass" name="pass" type="password" placeholder="Password" size="15" /> </label>
+                        <legend class="well well-sm form-control"><strong>Enter your AD credentials</strong></legend>
+                        <label for="login" >AD  User: <input id="login" name="login" type="text"  placeholder="User Name" size="15" /> </label>
+                        <label for="pass">AD  Password: <input id="pass" name="pass" type="password" placeholder="Password" size="15" /> </label>
 
                         <input type="submit" id="submit" class="btn btn-mini btn-info" name="submit" value="Log In" />
                     </fieldset>
                 </form>
-                <?php
-            }
-            echo $status;
-            ?>
+    <?php
+}
+echo $status;
+?>
 
 
         </div>
@@ -181,8 +192,7 @@ if (isset($_GET['log'])) {
 
 
 
-    <?php
-    include("templates/_Footer.tpl.php");
+<?php
+include("templates/_Footer.tpl.php");
 
 
-    
