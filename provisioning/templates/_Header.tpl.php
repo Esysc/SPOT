@@ -81,7 +81,7 @@
 
         <script src="scripts/ajaxrequest.js"></script>
 
-        <?php if ( $_SESSION['right'] != 99) { ?>
+        <?php if ($_SESSION['right'] != 99) { ?>
             <script src="scripts/javascript_functions.js"></script>
         <?php } ?>
         <script src="scripts/chosen/chosen.jquery.js" type="text/javascript" ></script>
@@ -98,6 +98,13 @@
        <!--  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script> -->
         <link rel="stylesheet" href="styles/chartphp.css">
         <link rel="stylesheet" href="bootstrap/css/jquery-ui.css">
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.css" />
+        
+        <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.min.js"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>
 
         <style>
             body #basicModal {
@@ -127,6 +134,43 @@
                     return false;
                 }
             }
+        </script>
+
+        <script type="text/javascript">
+            $(document.body).ready(function () {
+
+
+                var mask = new ax5.ui.mask();
+                var modal = new ax5.ui.modal();
+                var modalCallBack = function () {
+                    modal.close();
+                };
+
+
+                $('.url').on('click', function (e) {
+                    e.preventDefault();
+                   var btn = $('<button class="btn btn-primary" type="button" style="margin-bottom: 5px;">Close</button>');
+                    btn.click(function () {
+                        modal.close();
+                    });
+                   
+                    var url = $(this).attr('href');
+                    modal.open({
+                        width: 600,
+                        height: 1000,
+                        iframe: {
+                            method: "get",
+                            url: url,
+                            param: "callBack=modalCallBack"
+                        },
+                        fullScreen: true
+                    }, function () {
+                         
+                        this.$.body.prepend(btn);
+                    });
+                });
+
+            });
         </script>
 
 
@@ -176,7 +220,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <?php if ( $_SESSION['right'] == 10) { ?>
+                <?php if ($_SESSION['right'] == 10) { ?>
                     <a class="brand" href="./">
                         <?php
                         if (isset($_SESSION['salesorder'])) {
@@ -469,8 +513,8 @@
                                     echo 'class="active"';
                                 }
                                 ?>><!--<a href="./adresses">Customer IP Inventory</a></li>-->
-                                    <a href="http://spmgt.my.compnay.com/SPOT/ipam" target="_blank">Customer IP Inventory</a>
-                                   
+                                    <a href="http://spmgt.my.compnay.com/SPOT/ipam" class="url" target="_blank">Customer IP Inventory</a>
+
                             </ul>
                         </li>
                     </ul>
@@ -480,13 +524,13 @@
                             <ul class="dropdown-menu">
 
                                 <li>
-                                    <a href="http://chx-sysprod-01.my.compnay.com" target="_blank">(OLD) Sysprod DB</a>
+                                    <a href="http://chx-sysprod-01.my.compnay.com" class="url" target="_blank">(OLD) Sysprod DB</a>
                                 </li>
                                 <li>
-                                    <a href="http://sharepoint.my.compnay.com/sites/salesandops/sysprod/SitePages/Home.aspx" target="_blank">Sharepoint</a>
+                                    <a href="http://sharepoint.my.compnay.com/sites/salesandops/sysprod/SitePages/Home.aspx" class="url" target="_blank">Sharepoint</a>
                                 </li>
                                 <li>
-                                    <a href="http://ist.my.compnay.com" target="_blank">IST</a>
+                                    <a href="http://ist.my.compnay.com" class="url" target="_blank">IST</a>
                                 </li>
 
 
@@ -503,7 +547,7 @@
                                 }
                                 ?>><a href="./tblorderses">Query Sysprod DB</a></li>
                                 <li>
-                                    <a href="http://sysproddb.my.compnay.com/sales_order.php" target="_blank">Query Syslog DB</a>
+                                    <a href="http://sysproddb.my.compnay.com/sales_order.php" class="url" target="_blank">Query Syslog DB</a>
                                 </li>
                                 <?php if ($_SESSION['right'] == 10) { ?>
                                     <li class="menu-item dropdown dropdown-submenu">
@@ -535,9 +579,9 @@
                                     }
                                     ?>><a href="./commander">Run commander</a></li>
 
-                                    <li><a target="_blank" href="http://x.x.x.206:82">Gitlab</a></li>
-                                    <li><a target="_blank" href="http://x.x.x.206/backuppc">BackupPc</a></li>
-                                    <li><a target="_blank" href="http://x.x.x.206:18081/#browse/welcome">NuGet Repos</a></li>
+                                    <li><a class="url" target="_blank" href="http://x.x.x.206:82">Gitlab</a></li>
+                                    <li><a class="url" target="_blank" href="http://x.x.x.206/backuppc">BackupPc</a></li>
+                                    <li><a class="url" target="_blank" href="http://x.x.x.206:18081/#browse/welcome">NuGet Repos</a></li>
 
 
                                 <?php } ?>
@@ -621,6 +665,7 @@
                 </div>
             </div>
         </div>
+
         <!-- socket notification errors -->
         <div class="alert  fade in hide" id="remotecommandsSocket">
 
@@ -641,9 +686,10 @@
         $requestSite = '';
         if (isset($_GET['_REWRITE_COMMAND']))
             $requestSite = $_GET['_REWRITE_COMMAND'];
-        if (! isset($_SESSION['right'])) $_SESSION['right'] = 99;
+        if (!isset($_SESSION['right']))
+            $_SESSION['right'] = 99;
         if (!in_array($requestSite, $publicSites) && $_SESSION['right'] != 10) {
-            
+
             header('HTTP/1.1 401 Unauthorized');
             echo '<p class="alert alert-error"><b>You need to be logged in as <a href="login.php">sysprod user</a> to access this page</b></p>';
             $this->display('_Footer.tpl.php');
@@ -663,3 +709,4 @@
             }
         }
         ?>
+
