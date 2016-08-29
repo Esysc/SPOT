@@ -85,8 +85,25 @@ if ($subnetRequests != false) {
 $subnetRequests = $Tools->fetch_multiple_objects("subnetRequests", "processed", 1, "id", false);
 if ($subnetRequests != false) {
 
-    print "<div class='alert alert-info'>" . _('List of processed subnet requests') . "</div>";
+    print "<div class='alert alert-info'>" . _('List of processed subnet requests') . '<form class="pull-right">
+            <label for="perpage">
+                Entries per Page:
+            </label>   
+            <select id="perpage" style="width:50px;">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+
+            </select>
+        </form></div>';
     ?>
+
+    <div class="col-md-12 text-center">
+        <ul class="pagination pagination-sm pager" id="myPager"></ul>
+
+    </div>
+    
     <table class="table sorted table-striped table-condensed table-hover table-top">
 
         <!-- headers -->
@@ -108,7 +125,7 @@ if ($subnetRequests != false) {
             </tr>
         </thead>
 
-        <tbody>
+        <tbody id="requestedSubnet">
             <?php
             # print requests
             foreach ($subnetRequests as $k => $request) {
@@ -122,7 +139,7 @@ if ($subnetRequests != false) {
 // Get address from id
                 if (is_numeric($request['Location']))
                     $request['Location'] = $Tools->fetch_location_by_id($request['Location']);
-               
+
                 print '<tr>' . "\n";
 
                 print '	<td>' . $request['subnet'] . '</td>' . "\n";
@@ -141,6 +158,7 @@ if ($subnetRequests != false) {
             ?>
         </tbody>
     </table>
+
     <?php
 } else {
 
