@@ -100,7 +100,7 @@ if ($subnetRequests != false) {
     ?>
 
     <div class="col-md-12 text-center">
-        <ul class="pagination pagination-sm pager" id="myPager"></ul>
+        <ul class="pagination pagination-sm" id="myPager"></ul>
 
     </div>
     
