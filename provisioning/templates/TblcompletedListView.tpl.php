@@ -220,6 +220,6 @@ $this->display('_Header.tpl.php');
 </div> <!-- /container -->
 
 <?php
-var_dump($_SESSION);
+//var_dump($_SESSION);
 $this->display('_Footer.tpl.php');
 ?>

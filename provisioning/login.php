@@ -86,7 +86,12 @@ if (isset($_GET['log'])) {
         # all good, try to authentucate user
         $User->authenticate($_POST['ipamusername'], $_POST['ipampassword']);
         $_SESSION['login'] = "$username";
-        $_SESSION['right'] = 10;
+        if ($_SESSION['login'] === "mycompanyuser") {
+
+            $_SESSION['right'] = 99;
+        } else {
+            $_SESSION['right'] = 10;
+        }
         ?>
         <script>
             setTimeout(function () {
@@ -168,9 +173,9 @@ if (isset($_GET['log'])) {
                 </p>
                 <p class="text-info">This app is compatible with Chrome (all versions), Firefox (all versions) </p>
             </div>
-<?php
-if (!isset($_GET['log'])) {
-    ?>
+            <?php
+            if (!isset($_GET['log'])) {
+                ?>
 
                 <form method="post" action="" id="login">
                     <fieldset>
@@ -181,10 +186,10 @@ if (!isset($_GET['log'])) {
                         <input type="submit" id="submit" class="btn btn-mini btn-info" name="submit" value="Log In" />
                     </fieldset>
                 </form>
-    <?php
-}
-echo $status;
-?>
+                <?php
+            }
+            echo $status;
+            ?>
 
 
         </div>
@@ -192,7 +197,8 @@ echo $status;
 
 
 
-<?php
-include("templates/_Footer.tpl.php");
+    <?php
+    include("templates/_Footer.tpl.php");
 
 
+    
