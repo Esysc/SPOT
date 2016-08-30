@@ -64,6 +64,7 @@ if ($_GET['page'] == "install") {
         unset($_SESSION['realipamusername']);
         print '<script>window.location.href = "' . create_link(null) . '";</script>';
     }
+    
     ?>
     <!DOCTYPE HTML>
     <html lang="en">

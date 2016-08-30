@@ -6,15 +6,11 @@ $right = '';
 /* GlobalConfig object contains all configuration information for the app */
 include_once("_global_config.php");
 include_once("_app_config.php");
-require_once( dirname(__FILE__) . '/../ipam/functions/functions.php');
-@include_once("_machine_config.php");
+include_once("_machine_config.php");
 
-# initialize user object from IPAM DB
-# The authentication system is now manage by IPAM administration
-$Database = new Database_PDO;
-$User = new User($Database);
-$Result = new Result ();
-$Log = new Logging($Database);
+
+
+
 
 $SERVERROOT = GlobalConfig::$ROOT_URL;
 $status = '';
@@ -50,11 +46,17 @@ if (isset($_GET['log'])) {
         <?php
     }
 } else if (isset($_POST['submit'])) {
-
+# initialize user object from IPAM DB
+# The authentication system is now manage by IPAM administration
+    require_once( dirname(__FILE__) . '/../ipam/functions/functions.php');
+    $Database = new Database_PDO;
+    $User = new User($Database);
+    $Result = new Result ();
+    $Log = new Logging($Database);
 
     // try to authenticate on local and AD, users added through ipam administration
-    $username = clear($_POST['login']);
-    $password = clear($_POST['pass']);
+    $username = $_POST['login'];
+    $password = $_POST['pass'];
     $_POST['ipamusername'] = $User->strip_input_tags($username);
     $_POST['ipampassword'] = $password;
 
@@ -85,6 +87,7 @@ if (isset($_GET['log'])) {
 
         # all good, try to authentucate user
         $User->authenticate($_POST['ipamusername'], $_POST['ipampassword']);
+
         $_SESSION['login'] = "$username";
         if ($_SESSION['login'] === "mycompanyuser") {
 

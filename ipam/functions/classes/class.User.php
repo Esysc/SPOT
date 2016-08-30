@@ -847,6 +847,7 @@ class User extends Common_functions {
             $authmethodtype = $this->authmethodtype;
             # authenticate
             $this->$authmethodtype ($username, $password);
+            $_SESSION['email'] = $this->user->email;
         }
     }
 

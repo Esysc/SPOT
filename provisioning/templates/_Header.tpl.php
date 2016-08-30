@@ -765,5 +765,5 @@
                 $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
             }
         }
-        ?>
+        
 

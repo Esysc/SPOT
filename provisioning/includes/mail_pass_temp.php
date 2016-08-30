@@ -2,7 +2,7 @@
 session_start();
 require_once 'mail_function.php';
 $domain = '@mycompany.com';
-$email_addressess = array('ACS' => 'andrea.cristalli', 'DCL' => 'david.cignez', 'DDC' => 'diego.delcoco');
+$email_address = $_SESSION['email'];
 $options = Array('base_dn'            => 'DC=hq,DC=k,DC=grp',
 		'account_suffix'     => '@my.compnay.com',
 		'domain_controllers' => Array('auriga.my.compnay.com'),
@@ -18,12 +18,12 @@ $my_file = $_SESSION['filename'].'.xls';
 		$my_mail = 'SPOT'.$domain;
 		$my_replyto = 'SPOT'.$domain;
 		$my_subject = "[".$_SESSION['SALESORDER']."] Access File";
-		if(isset($_SESSION['ad_email'])){
-		$my_to = $_SESSION['ad_email'];
+		if(isset($_SESSION['email'])){
+		$my_to = $_SESSION['email'];
 		}
 		else
 		{
-			$my_to = $email_addressess[strtoupper($_SESSION['login'])].$domain;
+			$my_to = 'system.production@mycompany.com';
 		}
 		$my_mail = $my_to;
 		$my_replyto = $my_to;
