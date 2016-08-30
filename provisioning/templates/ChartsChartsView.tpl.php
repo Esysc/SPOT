@@ -1,6 +1,6 @@
 <?php
 $this->assign('title', 'SPOT | App overview');
-$this->assign('nav', 'pendings');
+$this->assign('nav', '');
 
 $this->display('_Header.tpl.php');
 
@@ -314,7 +314,7 @@ $totLinDas = $LINUX->totalResults;
 
 <span class="icon icon-smile">
         
-    </span> More <a href="/SPOT/provisioning/stats/">charts</a>   
+    </span> More <a href="/SPOT/provisioning/stats/" >charts</a>   
 
 
 

@@ -89,7 +89,7 @@ if ($subnetRequests != false) {
             <label for="perpage">
                 Entries per Page:
             </label>   
-            <select id="perpage" style="width:50px;">
+            <select class="perpage" data-pager="#myPager" data-table="#requestedSubnet" style="width:50px;">
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="15">15</option>
@@ -158,9 +158,14 @@ if ($subnetRequests != false) {
             ?>
         </tbody>
     </table>
-
+<script>
+    $(document).ready(function(){
+        $('.perpage').trigger('change');
+    });
+</script>
     <?php
 } else {
 
     print "<div class='alert alert-success'>" . _('No processed subnet requests available') . "!</div>";
 }
+

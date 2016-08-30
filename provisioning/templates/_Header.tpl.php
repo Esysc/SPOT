@@ -101,7 +101,7 @@
 
         <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.css" />
         <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.css" />
-        
+
         <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
         <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.min.js"></script>
         <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>
@@ -140,33 +140,90 @@
             $(document.body).ready(function () {
 
 
-                var mask = new ax5.ui.mask();
-                var modal = new ax5.ui.modal();
-                var modalCallBack = function () {
-                    modal.close();
-                };
 
 
-                $('.url').on('click', function (e) {
-                    e.preventDefault();
-                   var btn = $('<button class="btn btn-primary" type="button" style="margin-bottom: 5px;">Close</button>');
-                    btn.click(function () {
+                $('.url').on('click', function (e, fullScreen, url) {
+
+                    var mask = new ax5.ui.mask();
+                    var modal = new ax5.ui.modal();
+                    var btn;
+                    var modalCallBack = function () {
                         modal.close();
-                    });
-                   
-                    var url = $(this).attr('href');
-                    modal.open({
+                    };
+
+                    if (typeof fullScreen === 'undefined') {
+                        fullScreen = false;
+                    } else {
+                        btn = $('<button class="btn btn-primary" type="button">Close</button>').click(function () {
+                            modal.close();
+                        });
+                    }
+                    console.log(fullScreen);
+                    e.preventDefault();
+                    var a = $(this);
+                    if (typeof url === 'undefined')
+                        url = a.attr('href');
+                    console.log(url);
+                    modal.setConfig({
                         width: 600,
                         height: 1000,
+                        iframeLoadingMsg: ' <img src="/SPOT/provisioning/images/loader.gif" />',
                         iframe: {
                             method: "get",
                             url: url,
                             param: "callBack=modalCallBack"
                         },
-                        fullScreen: true
-                    }, function () {
-                         
-                        this.$.body.prepend(btn);
+                        fullScreen: fullScreen,
+                        header: {
+                            theme: "danger",
+                            title: url,
+                            btns: {
+                                minimize: {
+                                    label: '<button type="button" class="close"  title="Minimize"  aria-hidden="true">&darr;</button>', onClick: function () {
+                                        modal.minimize();
+                                    }
+                                },
+                                maximize: {
+                                    label: '<button type="button" class="close"  title="Maximize"  aria-hidden="true">&uarr;</button>', onClick: function () {
+                                        modal.maximize();
+
+                                    }
+                                },
+                                fullscreen: {
+                                    label: '<button type="button" class="close"  title="Fullscreen"  aria-hidden="true">&vArr;</button>', onClick: function () {
+
+                                        modal.close();
+                                        a.trigger('click', [true, url]);
+
+
+                                    }
+                                },
+                                newtab: {
+                                    label: '<button type="button" class="close"  title="Open in a new tab"  aria-hidden="true">&neArr;</button>', onClick: function () {
+
+                                        modal.close();
+                                        window.open(url);
+
+
+                                    }
+                                },
+                                close: {
+                                    label: '<button type="button" class="close"  title="Close"  aria-hidden="true">&times;</button>', onClick: function () {
+                                        modal.close();
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+
+
+                    modal.open({}, function () {
+                        if (fullScreen) {
+                            this.$.body
+                                    .css({padding: 20})
+                                    .prepend(btn);
+                        }
                     });
                 });
 
@@ -681,7 +738,7 @@
         </div>
 
         <?php
-        // Remember to put here the public view sites
+// Remember to put here the public view sites
         $publicSites = array('adresses', 'tblorderses', 'pmon');
         $requestSite = '';
         if (isset($_GET['_REWRITE_COMMAND']))

@@ -5,19 +5,21 @@ $this->assign('nav', 'scheduled');
 $this->display('_Header.tpl.php');
 ?>
 <script>
-    $('document').ready(function() {
-    function chooseAndSetOrder(json) {
-       // console.log(json);
-        
-        var link = json.SharepointLink;
-       window.open(link);
-     }
+    $('document').ready(function () {
+        function chooseAndSetOrder(json) {
+            // console.log(json);
+
+            var link = json.SharepointLink;
+            $('#url').attr('href', link)
+          //  $('#url').trigger('click', [false]);
+            window.open(link);
+        }
         //check if HQ servers  are all alive before to continue
         var sharepoint = 'sharepoint.my.compnay.com';
         var ist = 'ist.my.compnay.com';
         var servers = {
             0: sharepoint
-           
+
         };
 
         var serializedData = JSON.stringify(servers);
@@ -27,10 +29,10 @@ $this->display('_Header.tpl.php');
             data: 'hosts=' + serializedData,
             cache: false,
             async: true,
-            beforeSend: function(data) {
+            beforeSend: function (data) {
                 $('#alive').html('Checking Sysprod Servers recheability   <img src="/SPOT/provisioning/images/loader.gif" />');
             },
-            success: function(data) {
+            success: function (data) {
 
                 var alive = JSON.parse(data);
                 var html = '';
@@ -51,14 +53,14 @@ $this->display('_Header.tpl.php');
                     methos: 'GET',
                     cache: false,
                     async: true,
-                    success: function(data) {
+                    success: function (data) {
                         var json = JSON.stringify(data);
                         var jsonobj = JSON.parse(json);
                         $('#success').hide();
                         var tbl = $('#sharepoint');
                         var table = '';
                         var td = '';
-                        $.each(jsonobj, function(index, item) {
+                        $.each(jsonobj, function (index, item) {
                             var jcell = JSON.parse(item);
                             var th = '';
                             td += '<tr class="data" data-toggle="tooltip"  title="Click on row to select ' + index + '" id="' + index + '">';
@@ -81,18 +83,18 @@ $this->display('_Header.tpl.php');
                             tbl.append(table);
                             $('.data').tooltip();
                             // Logic to add click action
-                            $('.data').on('click', function() {
+                            $('.data').on('click', function () {
                                 var trid = $(this).attr('id');
-                                var data = $("#" + trid).map(function(index, elem) {
+                                var data = $("#" + trid).map(function (index, elem) {
                                     var json = {};
-                                    $('.inputValue', this).each(function() {
+                                    $('.inputValue', this).each(function () {
                                         var d = $(this).val() || $(this).text();
                                         var tdkey = $(this).attr('data-attr');
                                         json[tdkey] = d;
                                     });
                                     //Call the function to load
                                     console.log(json.SharepointLink);
-                                chooseAndSetOrder(json);
+                                    chooseAndSetOrder(json);
                                 });
 
 
@@ -105,7 +107,7 @@ $this->display('_Header.tpl.php');
                             $('#basicModal').modal();
                         }
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         var err = eval("(" + xhr.responseText + ")");
                         $('#failed').html('An error occured checking HQ servers. The errors reported:' + err + ' - ' + error);
                         $('#success').hide();
@@ -113,7 +115,7 @@ $this->display('_Header.tpl.php');
                     }
                 });
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 var err = eval("(" + xhr.responseText + ")");
                 $('#failed').html('An error occured checking HQ servers. The errors reported:' + err + ' - ' + error);
                 $('#success').hide();
@@ -178,7 +180,7 @@ $this->display('_Header.tpl.php');
     <div id="tblstoredordersCollectionContainer" class="collectionContainer">
     </div>
 
-
+    <a id="url" class="url" href=""></a>
 
 </div> <!-- /container -->
 

@@ -1,6 +1,6 @@
 <?php
 $this->assign('title', 'SPOT | Statistics');
-$this->assign('nav', 'pendings');
+$this->assign('nav', '');
 
 $this->display('_Header.tpl.php');
 $baseYear = 2015;

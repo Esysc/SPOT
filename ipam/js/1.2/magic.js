@@ -3381,7 +3381,10 @@ $(document).ready(function () {
         }
     });
 
-    // Paginate subnets request
+    /* Function to paginate html table
+     * required thead and tbody
+     * the identifier is the tbody ID
+     */
     $.fn.pageMe = function (opts) {
         var $this = this,
                 defaults = {
@@ -3483,14 +3486,37 @@ $(document).ready(function () {
 
         }
     };
-    var perPage = 5;
+    var perPage = 5; // Default value, may change
+    /* Paginate the table (trigger the change), put this at the end of the page:
+    *  $('.perpage').trigger('change');
+    *  class .perpage is the class of the select form
+    */
+    
+    /*
+     * This function recalculate the pagination on a given table
+     * it works based on this template
+     * <form class="pull-right">
+            <label for="perpage">
+                Entries per Page:
+            </label>   
+            <select class="perpage" data-pager="#myPager" data-table="#requestedSubnet" style="width:50px;">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
 
-    $('#requestedSubnet').pageMe({pagerSelector: '#myPager', showPrevNext: true, hidePageNumbers: false, perPage: perPage});
-    $(document).on('change', '#perpage', function () {
-        perPage = $('select').val();
+            </select>
+        </form>
+    * data-table is the id of tbody and data-pager is the id of the pagination controls
+                    *
+     */
+    $(document).on('change', '.perpage', function () {
+        perPage = $(this).val();
+        var tbodyID = $(this).data('table');
+        var myPager = $(this).data('pager');
         //reset the pager
-        $('#myPager').html('');
-        $('#requestedSubnet').pageMe({pagerSelector: '#myPager', showPrevNext: true, hidePageNumbers: false, perPage: perPage});
+        $(myPager).html('');
+        $(tbodyID).pageMe({pagerSelector: myPager, showPrevNext: true, hidePageNumbers: false, perPage: perPage});
         return false;
     });
 
