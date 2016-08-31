@@ -370,6 +370,31 @@ var page = {
                     }
                 });
             });
+            $(document).on('click', '#generate_report', function (e) {
+                $(this).addClass('disabled');
+                e.preventDefault();
+                var url = $(this).attr('href');
+                var so = $('input#salesorder').val();
+                url = url + so;
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    wait: true,
+                    success: function (data) {
+                        if (data.search("alert-danger") != -1) {
+                            $('#msg').html(data);
+
+                        } else {
+                            $('#msg').html('');
+                            // trigger again
+
+                            window.location.assign(url);
+                            $(this).removeClass('disabled');
+
+                        }
+                    }
+                });
+            });
             $('#reloadOrder').click(function (e) {
                 e.preventDefault();
 

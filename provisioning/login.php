@@ -86,8 +86,17 @@ if (isset($_GET['log'])) {
         }
 
         # all good, try to authentucate user
-        $User->authenticate($_POST['ipamusername'], $_POST['ipampassword']);
-
+        # fetch
+        try {
+            $status = $User->authenticate($_POST['ipamusername'], $_POST['ipampassword']);
+        } catch (Exception $e) {
+            $this->Result->show("danger", _("Error: ") . $e->getMessage());
+            return false;
+        }
+        
+        
+       
+        
         $_SESSION['login'] = "$username";
         if ($_SESSION['login'] === "mycompanyuser") {
 

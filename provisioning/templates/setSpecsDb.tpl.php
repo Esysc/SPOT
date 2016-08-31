@@ -43,7 +43,7 @@ $this->display('_Header.tpl.php');
         var error = '<p class="alert alert-error">An error occured (see console.log in developer tool to debug)</p>';
         $('#msg').html(loader + "<span class='help-inline'>Loading salesorders from SysLog....</span>");
         $('#salesel').chosen({
-            width: "100%"
+            width: "50%"
         });
         $('#items').chosen({
             width: "100%"
@@ -96,6 +96,7 @@ $this->display('_Header.tpl.php');
             }
         });
         $('#salesel').on('change', function (e) {
+
             var salesorder = $("#salesel option:selected").val();
             if (salesorder === '') {
 
@@ -105,6 +106,11 @@ $this->display('_Header.tpl.php');
             e.preventDefault();
             var SOarr = salesorder.split('|');
             var SO = SOarr[0].trim();
+            var tdEle = $('#report');
+            //SO = '';
+            var btn = $('<a href="includes/getInstallationReport.php?sales_order_ref=' + SO + '" id="generate_report" class="btn btn-info pull-right">' + SO + ' Installation Report</a>');
+            tdEle.append(btn);
+            $(this).remove();
             // Get all data from DB x salesorder
             $.ajax({
                 url: 'includes/treeBuilder.php?salesorder=' + SO,
@@ -231,7 +237,7 @@ $this->display('_Header.tpl.php');
         });
         $('#assemble').on('click', function (e) {
             var url = $(this).attr("value");
-           // $("#DataTable").html('');
+            // $("#DataTable").html('');
             e.preventDefault();
             var stringToParse = $("#salesel option:selected").text();
             var arr = stringToParse.split('|');
@@ -269,11 +275,34 @@ $this->display('_Header.tpl.php');
                 }
             });
         });
+        $(document).on('click', '#generate_report', function (e) {
+        $(this).addClass('disabled');
+            e.preventDefault();
+            var url = $(this).attr('href');
+            $.ajax({
+                url: url,
+                type: "GET",
+                wait: true,
+                success: function (data) {
+                    if (data.search("alert-danger") != -1) {
+                        $('#msg').html(data);
+                       
+                    } else {
+                        $('#msg').html('');
+                        // trigger again
+                        
+                        window.location.assign(url);
+                        $(this).removeClass('disabled');
+                        
+                    }
+                }
+            });
+        });
     });
 </script>
 
 <div class="container">
-
+   
     <h1>
         <i class="icon-th-list"></i> Set specifications, ack and then assemble
 
@@ -292,7 +321,7 @@ $this->display('_Header.tpl.php');
             </th>
         </tr>
         <tr class="salesel">
-            <td>
+            <td  id="report">
                 <select class="chosen" id="salesel" name="salesel" autofocus="autofocus">
                     <option value="">
                         Select a sales order

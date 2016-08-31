@@ -30,6 +30,7 @@ define('URL_PACKAGER', 'http://spdrbl01.my.compnay.com/packager');
 define("USER_NOT_ALLOWED", 0);
 define("PUBLIC_USER_ID", 1);
 define("HOTLINE_USERS_ID", 2);
+define("SYSLOG_ROOT", 'http://sysproddb.my.compnay.com');
 
 
 

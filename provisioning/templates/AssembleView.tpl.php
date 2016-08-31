@@ -14,7 +14,7 @@ $this->display('_Header.tpl.php');
         }
 
         $('.sales_order_ref').chosen({
-            width: "100%"
+            width: "80%"
         });
         //Get all specification names from Sysprod DB
         $.ajax({

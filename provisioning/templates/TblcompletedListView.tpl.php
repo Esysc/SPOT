@@ -6,27 +6,27 @@ $this->display('_Header.tpl.php');
 ?>
 
 <script type="text/javascript">
-    $LAB.script("scripts/app/tblcompleted.js").wait(function() {
-        $(document).ready(function() {
+    $LAB.script("scripts/app/tblcompleted.js").wait(function () {
+        $(document).ready(function () {
             page.init();
         });
 
         // hack for IE9 which may respond inconsistently with document.ready
-        setTimeout(function() {
+        setTimeout(function () {
             if (!page.isInitialized)
                 page.init();
         }, 1000);
-        
-         $('#top').click( function(e) {
-             e.preventDefault();
-             console.log('clic');
-               $(".modal-body").animate({ scrollTop: 0 }, 'slow'); 
-              
-             
-            });
-            
-            
-         
+
+        $('#top').click(function (e) {
+            e.preventDefault();
+            console.log('clic');
+            $(".modal-body").animate({scrollTop: 0}, 'slow');
+
+
+        });
+
+
+
     });
 </script>
 <style>
@@ -98,7 +98,7 @@ $this->display('_Header.tpl.php');
 
     <!-- underscore template for the model -->
     <script type="text/template" id="tblprogressModelTemplate">
-        
+
         <!-- delete button is is a separate form to prevent enter key from triggering a delete -->
         <form id="deleteTblprogressButtonContainer" class="form-horizontal" onsubmit="return false;">
         <fieldset>
@@ -176,15 +176,15 @@ $this->display('_Header.tpl.php');
         <input type="text" class="input-xlarge uneditable-input"  disabled id="creationdate" placeholder="Creationdate" value="<%= _.escape(item.get('creationdate') || '') %>">
         <span class="help-inline"></span>
 
-         
+
         </div>
         </div>
 
         </fieldset>
         </form>
 
-        
-        
+
+
     </script>
 
     <!-- modal edit dialog -->
@@ -202,9 +202,11 @@ $this->display('_Header.tpl.php');
             <div id="tblprogressModelContainer"></div>
         </div>
         <div class="modal-footer">
-       <button class="btn btn-success btn-mini" id="excel" >Excel Export</button>
-       <button class="btn btn-warning btn-mini" id="pdf" >PDF Export</button>
-       <button  id="top" class="btn btn-mini btn-info"><i class="icon-laptop icon-white"></i> Scroll To Top </button>
+            <button href="includes/getInstallationReport.php?sales_order_ref=" id="generate_report" class="btn btn-danger btn-mini">Installation Report</button>
+            <button class="btn btn-success btn-mini" id="excel" >Excel Export</button>
+            <button class="btn btn-warning btn-mini" id="pdf" >PDF Export</button>
+
+            <button  id="top" class="btn btn-mini btn-info"><i class="icon-laptop icon-white"></i> Scroll To Top </button>
             <button class="btn" data-dismiss="modal" >Close</button>
             <!--   <button id="saveTblprogressButton" class="btn btn-primary">Save Changes</button> -->
         </div>
@@ -220,6 +222,7 @@ $this->display('_Header.tpl.php');
 </div> <!-- /container -->
 
 <?php
+
 //var_dump($_SESSION);
 $this->display('_Footer.tpl.php');
 ?>
