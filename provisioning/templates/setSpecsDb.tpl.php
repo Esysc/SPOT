@@ -276,33 +276,36 @@ $this->display('_Header.tpl.php');
             });
         });
         $(document).on('click', '#generate_report', function (e) {
-        $(this).addClass('disabled');
+            $(this).prop('disabled', true);
             e.preventDefault();
             var url = $(this).attr('href');
             $.ajax({
                 url: url,
                 type: "GET",
                 wait: true,
-                success: function (data) {
-                    if (data.search("alert-danger") != -1) {
-                        $('#msg').html(data);
-                       
-                    } else {
+                success: function () {
+                    window.location.assign(url);
+                },
+                error: function (data) {
+                    // console.log(data);
+                    var Jdata = JSON.parse(data.responseText);
+                    var message = Jdata.message;
+                    var code = Jdata.code;  
+                    $('#msg').html(message);
+                    $(this).removeClass('disabled');
+                    setTimeout(function () {
                         $('#msg').html('');
-                        // trigger again
-                        
-                        window.location.assign(url);
-                        $(this).removeClass('disabled');
-                        
-                    }
-                }
-            });
+                    }, 4000)
+
+                },
+                
+            }).done($(this).prop('disabled', false));
         });
     });
 </script>
 
 <div class="container">
-   
+
     <h1>
         <i class="icon-th-list"></i> Set specifications, ack and then assemble
 

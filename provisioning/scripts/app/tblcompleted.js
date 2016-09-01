@@ -347,7 +347,7 @@ var page = {
                     success: function (data) {
                         var title = $('input#salesorder').val();
                         var url = 'libs/App/pdfexport.php?var=datatoPdf&debug=false&title=' + title + ".pdf";
-                        $('#tblprogressDetailDialog').modal('hide');
+                        // $('#tblprogressDetailDialog').modal('hide');
                         window.location.href = url;
 
                     }
@@ -364,14 +364,15 @@ var page = {
                     success: function (data) {
                         var title = $('input#salesorder').val();
                         var url = 'libs/App/excelexport.php?var=datatoPdf&debug=false&title=' + title + ".xlsx";
-                        $('#tblprogressDetailDialog').modal('hide');
-                        window.location.href = url;
+                        // $('#tblprogressDetailDialog').modal('hide');
+                        window.location.assign(url);
 
                     }
                 });
             });
             $(document).on('click', '#generate_report', function (e) {
-                $(this).addClass('disabled');
+                $(this).prop('disabled', true);
+                $('#msg').html('')
                 e.preventDefault();
                 var url = $(this).attr('href');
                 var so = $('input#salesorder').val();
@@ -380,20 +381,24 @@ var page = {
                     url: url,
                     type: "GET",
                     wait: true,
-                    success: function (data) {
-                        if (data.search("alert-danger") != -1) {
-                            $('#msg').html(data);
-
-                        } else {
+                    success: function () {
+                        window.location.assign(url);
+                    },
+                    error: function (data) {
+                        // console.log(data);
+                        var Jdata = JSON.parse(data.responseText);
+                        var message = Jdata.message;
+                        var code = Jdata.code;
+                        $('#msg').html(message);
+                        $(this).removeClass('disabled');
+                        setTimeout(function () {
                             $('#msg').html('');
-                            // trigger again
+                        }, 4000)
 
-                            window.location.assign(url);
-                            $(this).removeClass('disabled');
+                    },
+                    
+                }).done($(this).prop('disabled', false));
 
-                        }
-                    }
-                });
             });
             $('#reloadOrder').click(function (e) {
                 e.preventDefault();

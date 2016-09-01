@@ -190,6 +190,7 @@ $this->display('_Header.tpl.php');
     <!-- modal edit dialog -->
     <div class="modal hide fade" id="tblprogressDetailDialog">
         <div class="modal-header">
+            <div id="msg"></div>
             <a class="close" data-dismiss="modal">&times;</a>
             <h3>
                 <i class="icon-edit"></i> System details
