@@ -92,7 +92,15 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
 
         $vlans = $Tools->fetch_object("vlans", "name", @$request['Vlan']);
         $vlanNum = $vlans->number;
-        $vlanId = $vlans->vlanId
+        $vlanId = $vlans->vlanId;
+        // Strip out the netmask, if there is one.
+        $subnet = $request['subnet'];
+        $mask = $request['mask'];
+        $cx = strpos($subnet, '/');
+        if ($cx) {
+           $mask = (int) (substr($subnet, $cx + 1));
+            $subnet = substr($subnet, 0, $cx);
+        }
         ?>
 
         <!-- subnet request form -->
@@ -110,7 +118,7 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                 <tr>
                     <th><?php print _('Subnet'); ?></th>
                     <td>
-                        <input type="text" name="subnet" class="form-control input-sm" value="<?php print $request['subnet']; ?>" size="30">
+                        <input type="text" name="subnet" class="form-control input-sm" value="<?php print $subnet; ?>" size="30" disabled>
                         <input type="hidden" name="requestId" value="<?php print $request['id']; ?>">
                         <input type="hidden" name="requester" value="<?php print sanitize($request['requester']); ?>">
                         <input type="hidden" name="csrf_cookie" value="<?php print $csrf; ?>">
@@ -121,7 +129,7 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                 <tr>
                     <th><?php print _('Mask'); ?></th>
                     <td>
-                        <input type="text" name="mask" class="form-control input-sm" value="<?php print $request['mask']; ?>" size="2">
+                        <input type="text" name="mask" class="form-control input-sm" value="<?php print $mask; ?>" size="2" disabled>
 
                     </td>
                 </tr>
@@ -145,11 +153,11 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                     <th><?php print _('Location'); ?></th>
                     <td>
                         <input type="text" disabled class="form-control input-sm" value="<?php print sanitize(@$request['Location']); ?>" size="30" placeholder="<?php print _('Location'); ?>">
-                        <?php
-                        // get the location ID or create the new location if not exist (normally should be already created)
-                        $location = @$request['Location'];
-                        $locationId = $Tools->check_location_id_by_address(@$request['Location']);
-                        ?>
+    <?php
+    // get the location ID or create the new location if not exist (normally should be already created)
+    $location = @$request['Location'];
+    $locationId = $Tools->check_location_id_by_address(@$request['Location']);
+    ?>
                         <input type="hidden" name="Location" class="form-control input-sm" value="<?php print $locationId; ?>">
                     </td>
                 </tr>
@@ -164,139 +172,138 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                 </tr>
 
                 <!-- Custom fields -->
-                <?php
-                if (sizeof(@$custom_fields) > 0) {
-                    # count datepickers
-                    $timeP = 0;
+    <?php
+    if (sizeof(@$custom_fields) > 0) {
+        # count datepickers
+        $timeP = 0;
 
-                    # all my fields
-                    foreach ($custom_fields as $myField) {
-                        # replace spaces with |
-                        $myField['nameNew'] = str_replace(" ", "___", $myField['name']);
-                        if ($myField['nameNew'] === "Comments") {
+        # all my fields
+        foreach ($custom_fields as $myField) {
+            # replace spaces with |
+            $myField['nameNew'] = str_replace(" ", "___", $myField['name']);
+            if ($myField['nameNew'] === "Comments") {
 
-                            $details[$myField['name']] = sanitize(@$request['comment']);
+                $details[$myField['name']] = sanitize(@$request['comment']);
 
-                            $disabled = "disabled";
-                        } 
-                        if ($myField['nameNew'] === "Site") {
-                            $details[$myField['name']] = sanitize(@$request['Location']);
-                            //$disabled = "disabled";
-                        }
-                        if ($myField['name'] === "System Name") {
-                             $disabled = "";
-                           
-                        }
-                        if ($myField['name'] === "Account") {
-                            $details[$myField['name']] = sanitize(@$request['owner']);
-                             $disabled = "";
-                        }
-                        # required
-                        if ($myField['Null'] == "NO") {
-                            $required = "*";
-                        } else {
-                            $required = "";
-                        }
+                $disabled = "disabled";
+            }
+            if ($myField['nameNew'] === "Site") {
+                $details[$myField['name']] = sanitize(@$request['Location']);
+                //$disabled = "disabled";
+            }
+            if ($myField['name'] === "System Name") {
+                continue;
+            }
+            if ($myField['name'] === "Account") {
+                $details[$myField['name']] = sanitize(@$request['owner']);
+                $disabled = "";
+            }
+            # required
+            if ($myField['Null'] == "NO") {
+                $required = "*";
+            } else {
+                $required = "";
+            }
 
-                        print '<tr>' . "\n";
-                        print ' <th>' . $myField['name'] . ' ' . $required . '</th>' . "\n";
-                        print ' <td>' . "\n";
+            print '<tr>' . "\n";
+            print ' <th>' . $myField['name'] . ' ' . $required . '</th>' . "\n";
+            print ' <td>' . "\n";
 
-                        //set type
-                        if (substr($myField['type'], 0, 3) == "set" || substr($myField['type'], 0, 4) == "enum") {
-                            //parse values
-                            $tmp = substr($myField['type'], 0, 3) == "set" ? explode(",", str_replace(array("set(", ")", "'"), "", $myField['type'])) : explode(",", str_replace(array("enum(", ")", "'"), "", $myField['type']));
-                            //null
-                            if ($myField['Null'] != "NO") {
-                                array_unshift($tmp, "");
-                            }
+            //set type
+            if (substr($myField['type'], 0, 3) == "set" || substr($myField['type'], 0, 4) == "enum") {
+                //parse values
+                $tmp = substr($myField['type'], 0, 3) == "set" ? explode(",", str_replace(array("set(", ")", "'"), "", $myField['type'])) : explode(",", str_replace(array("enum(", ")", "'"), "", $myField['type']));
+                //null
+                if ($myField['Null'] != "NO") {
+                    array_unshift($tmp, "");
+                }
 
-                            print "<select name='$myField[nameNew]' class='form-control input-sm input-w-auto' rel='tooltip' data-placement='right' title='$myField[Comment]'>";
-                            foreach ($tmp as $v) {
-                                if ($v == @$details[$myField['name']]) {
-                                    print "<option value='$v' selected='selected'>$v</option>";
-                                } else {
-                                    print "<option value='$v'>$v</option>";
-                                }
-                            }
-                            print "</select>";
-                        }
-                        //date and time picker
-                        elseif ($myField['type'] == "date" || $myField['type'] == "datetime") {
-                            // just for first
-                            if ($timeP == 0) {
-                                print '<link rel="stylesheet" type="text/css" href="css/1.2/bootstrap/bootstrap-datetimepicker.min.css">';
-                                print '<script type="text/javascript" src="js/1.2/bootstrap-datetimepicker.min.js"></script>';
-                                print '<script type="text/javascript">';
-                                print '$(document).ready(function() {';
-                                //date only
-                                print ' $(".datepicker").datetimepicker( {pickDate: true, pickTime: false, pickSeconds: false });';
-                                //date + time
-                                print ' $(".datetimepicker").datetimepicker( { pickDate: true, pickTime: true } );';
-
-                                print '})';
-                                print '</script>';
-                            }
-                            $timeP++;
-
-                            //set size
-                            if ($myField['type'] == "date") {
-                                $size = 10;
-                                $class = 'datepicker';
-                                $format = "yyyy-MM-dd";
-                            } else {
-                                $size = 19;
-                                $class = 'datetimepicker';
-                                $format = "yyyy-MM-dd";
-                            }
-
-                            //field
-                            if (!isset($details[$myField['name']])) {
-                                print ' <input type="text" class="' . $class . ' form-control input-sm input-w-auto" data-format="' . $format . '" name="' . $myField['nameNew'] . '" maxlength="' . $size . '" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '">' . "\n";
-                            } else {
-                                print ' <input type="text" class="' . $class . ' form-control input-sm input-w-auto" data-format="' . $format . '" name="' . $myField['nameNew'] . '" maxlength="' . $size . '" value="' . @$details[$myField['name']] . '" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '">' . "\n";
-                            }
-                        }
-                        //boolean
-                        elseif ($myField['type'] == "tinyint(1)") {
-                            print "<select name='$myField[nameNew]' class='form-control input-sm input-w-auto' rel='tooltip' data-placement='right' title='$myField[Comment]'>";
-                            $tmp = array(0 => "No", 1 => "Yes");
-                            //null
-                            if ($myField['Null'] != "NO") {
-                                $tmp[2] = "";
-                            }
-
-                            foreach ($tmp as $k => $v) {
-                                if (strlen(@$details[$myField['name']]) == 0 && $k == 2) {
-                                    print "<option value='$k' selected='selected'>" . _($v) . "</option>";
-                                } elseif ($k == @$details[$myField['name']]) {
-                                    print "<option value='$k' selected='selected'>" . _($v) . "</option>";
-                                } else {
-                                    print "<option value='$k'>" . _($v) . "</option>";
-                                }
-                            }
-                            print "</select>";
-                        }
-                        //text
-                        elseif ($myField['type'] == "text") {
-
-                            print ' <textarea ' . $disabled . ' class="form-control input-sm" name="' . $myField['nameNew'] . '" placeholder="' . $myField['name'] . '" rowspan=3 rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '">' . $details[$myField['name']] . '</textarea>' . "\n";
-                        }
-                        //default - input field
-                        else {
-
-                            ;
-                            if ($myField['name'] === "User") {
-                                print ' <input type="text" class="' . $class . ' form-control input-sm input-w-auto" data-format="' . $format . '" name="' . $myField['name'] . '" maxlength="' . $size . '" value="' . $_SESSION['ipamusername'] . '" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '" readonly>' . "\n";
-                            } else {
-                                print ' <input type="text" ' . $disabled . ' class="ip_addr form-control input-sm" name="' . $myField['nameNew'] . '" placeholder="' . $myField['name'] . '" value="' . @$details[$myField['name']] . '" size="30" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '">' . "\n";
-                            }
-                        }
-                        print ' </td>' . "\n";
-                        print '</tr>' . "\n";
+                print "<select name='$myField[nameNew]' class='form-control input-sm input-w-auto' rel='tooltip' data-placement='right' title='$myField[Comment]'>";
+                foreach ($tmp as $v) {
+                    if ($v == @$details[$myField['name']]) {
+                        print "<option value='$v' selected='selected'>$v</option>";
+                    } else {
+                        print "<option value='$v'>$v</option>";
                     }
                 }
-                ?>
+                print "</select>";
+            }
+            //date and time picker
+            elseif ($myField['type'] == "date" || $myField['type'] == "datetime") {
+                // just for first
+                if ($timeP == 0) {
+                    print '<link rel="stylesheet" type="text/css" href="css/1.2/bootstrap/bootstrap-datetimepicker.min.css">';
+                    print '<script type="text/javascript" src="js/1.2/bootstrap-datetimepicker.min.js"></script>';
+                    print '<script type="text/javascript">';
+                    print '$(document).ready(function() {';
+                    //date only
+                    print ' $(".datepicker").datetimepicker( {pickDate: true, pickTime: false, pickSeconds: false });';
+                    //date + time
+                    print ' $(".datetimepicker").datetimepicker( { pickDate: true, pickTime: true } );';
+
+                    print '})';
+                    print '</script>';
+                }
+                $timeP++;
+
+                //set size
+                if ($myField['type'] == "date") {
+                    $size = 10;
+                    $class = 'datepicker';
+                    $format = "yyyy-MM-dd";
+                } else {
+                    $size = 19;
+                    $class = 'datetimepicker';
+                    $format = "yyyy-MM-dd";
+                }
+
+                //field
+                if (!isset($details[$myField['name']])) {
+                    print ' <input type="text" class="' . $class . ' form-control input-sm input-w-auto" data-format="' . $format . '" name="' . $myField['nameNew'] . '" maxlength="' . $size . '" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '">' . "\n";
+                } else {
+                    print ' <input type="text" class="' . $class . ' form-control input-sm input-w-auto" data-format="' . $format . '" name="' . $myField['nameNew'] . '" maxlength="' . $size . '" value="' . @$details[$myField['name']] . '" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '">' . "\n";
+                }
+            }
+            //boolean
+            elseif ($myField['type'] == "tinyint(1)") {
+                print "<select name='$myField[nameNew]' class='form-control input-sm input-w-auto' rel='tooltip' data-placement='right' title='$myField[Comment]'>";
+                $tmp = array(0 => "No", 1 => "Yes");
+                //null
+                if ($myField['Null'] != "NO") {
+                    $tmp[2] = "";
+                }
+
+                foreach ($tmp as $k => $v) {
+                    if (strlen(@$details[$myField['name']]) == 0 && $k == 2) {
+                        print "<option value='$k' selected='selected'>" . _($v) . "</option>";
+                    } elseif ($k == @$details[$myField['name']]) {
+                        print "<option value='$k' selected='selected'>" . _($v) . "</option>";
+                    } else {
+                        print "<option value='$k'>" . _($v) . "</option>";
+                    }
+                }
+                print "</select>";
+            }
+            //text
+            elseif ($myField['type'] == "text") {
+
+                print ' <textarea ' . $disabled . ' class="form-control input-sm" name="' . $myField['nameNew'] . '" placeholder="' . $myField['name'] . '" rowspan=3 rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '">' . $details[$myField['name']] . '</textarea>' . "\n";
+            }
+            //default - input field
+            else {
+
+                ;
+                if ($myField['name'] === "User") {
+                    print ' <input type="text" class="' . $class . ' form-control input-sm input-w-auto" data-format="' . $format . '" name="' . $myField['name'] . '" maxlength="' . $size . '" value="' . $_SESSION['ipamusername'] . '" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '" readonly>' . "\n";
+                } else {
+                    print ' <input type="text" ' . $disabled . ' class="ip_addr form-control input-sm" name="' . $myField['nameNew'] . '" placeholder="' . $myField['name'] . '" value="' . @$details[$myField['name']] . '" size="30" rel="tooltip" data-placement="right" title="' . $myField['Comment'] . '">' . "\n";
+                }
+            }
+            print ' </td>' . "\n";
+            print '</tr>' . "\n";
+        }
+    }
+    ?>
 
                 <!-- divider -->
                 <tr>
@@ -315,7 +322,7 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                     <th><?php print _('Requester comment'); ?></th>
                     <td>
                         <input type="text" disabled="disabled" class="form-control" value="<?php print sanitize(@$request['comment']); ?>">
-                        <?php print "<input type='hidden' name='comment' value='" . @$request['comment'] . "'>"; ?></i></td>
+    <?php print "<input type='hidden' name='comment' value='" . @$request['comment'] . "'>"; ?></i></td>
                 </tr>
                 <!-- Admin comment -->
                 <tr>
@@ -327,17 +334,17 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
 
             </table>
         </form>
-    <?php } ?>
+<?php } ?>
 </div>
 
 <!-- footer -->
 <div class="pFooter">
     <div class="btn-group">
         <button class="btn btn-sm btn-default hidePopups"><?php print _('Cancel'); ?></button>
-        <?php if (@$errmsg_class != "danger") { ?>
+<?php if (@$errmsg_class != "danger") { ?>
             <button class="btn btn-sm btn-default btn-danger manageRequest" data-action='reject'><i class="fa fa-times"></i> <?php print _('Reject'); ?></button>
             <button class="btn btn-sm btn-default btn-success manageRequest" data-action='accept'><i class="fa fa-check"></i> <?php print _('Accept'); ?></button>
-        <?php } ?>
+<?php } ?>
     </div>
 
     <!-- result -->

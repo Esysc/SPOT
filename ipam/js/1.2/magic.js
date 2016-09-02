@@ -3517,7 +3517,7 @@ $(document).ready(function () {
         //reset the pager
         $(myPager).html('');
         $(tbodyID).pageMe({pagerSelector: myPager, showPrevNext: true, hidePageNumbers: false, perPage: perPage});
-        return false;
+        
     });
 
 
