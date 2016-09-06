@@ -82,7 +82,7 @@ array_unshift($ostarget, $ostarg);
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "<?php echo "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/sections/1/subnets/"; ?>",
+            "url": "/SPOT/ipam/api/SYS01/sections/1/subnets/",
             "method": "GET",
             "headers": {
                 "token": "<?php echo $_SESSION['token']; ?>",

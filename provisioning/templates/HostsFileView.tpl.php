@@ -13,7 +13,7 @@ $this->display('_Header.tpl.php');
         subnet.chosen({allow_single_deselect: true, });
         subnet.on('change', function () {
             subnet.trigger('chosen:updated');
-            console.log('change')
+           // console.log('change')
             $("#exportIpam").hide();
             if (subnet.val() !== "") {
                 $('#subnet').val(subnet.val());
@@ -26,7 +26,7 @@ $this->display('_Header.tpl.php');
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "<?php echo "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/sections/1/subnets/"; ?>",
+            "url": "/SPOT/ipam/api/SYS01/sections/1/subnets/"   ,
             "method": "GET",
             "headers": {
                 "token": "<?php echo $_SESSION['token']; ?>",
@@ -57,7 +57,7 @@ $this->display('_Header.tpl.php');
         // Get all the sales order in the tblprogress table
         $.get("/SPOT/provisioning/api/tblprogresses", function (jsonResult) {
             var Jdata = jsonResult.rows;
-            console.log(Jdata);
+            //console.log(Jdata);
             // $('#salesel').attr('enabled', 'true');
             $.each(Jdata, function (i, o) {
 
@@ -158,7 +158,7 @@ $this->display('_Header.tpl.php');
 
             var $html = $('.extraHostsTemplate').clone();
 
-            console.log(i)
+            //console.log(i)
 
             $html.find('[name^=ipaddress]')[0].name = "ipaddress[" + i + "]";
             $html.find('[name^=hostname]')[0].name = "hostname[" + i + "]";
@@ -217,18 +217,20 @@ $this->display('_Header.tpl.php');
             $('#message').html('').hide();
             $('#errormsg').html('').hide();
             $('.loader').html(' <img src="/SPOT/provisioning/images/loader.gif" />').attr({title: "Creating hosts in IPAM inventory....."});
-            var subnetId = $('.subnet option:selected').val();
+            //$('.subnet').trigger('change')
+            var subnetId = $('#subnet').val();
+            //console.log('subnetID: '+ subnetId);
             
             $('.ipaddress').each(function () {
 
                 var ipaddress = $(this).val();
                 if (ipaddress !== "") {
                     var hostname = $(this).nextAll('input').first().focus().val();
-                    console
+                
                     var settings = {
                         "async": true,
                         "crossDomain": true,
-                        "url": "<?php echo "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/addresses/create/?subnetId="; ?>" + subnetId + "&hostname=" + hostname + "&description=Added from SPOT&ip_addr=" + ipaddress,
+                        "url": "/SPOT/ipam/api/SYS01/addresses/create/?subnetId=" + subnetId + "&hostname=" + hostname + "&description=Added from SPOT&ip_addr=" + ipaddress,
                         dataType: 'json',
                         "type": "POST",
                         "headers": {

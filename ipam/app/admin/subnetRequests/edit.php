@@ -20,6 +20,7 @@ $User->check_user_session();
 # create csrf token
 $csrf = $User->csrf_cookie("create", "subnetRequests");
 
+
 # fetch request
 $request = $Admin->fetch_object("subnetRequests", "id", $_POST['requestId']);
 
@@ -328,7 +329,7 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                 <tr>
                     <th><?php print _('Comment approval/reject'); ?>:</th>
                     <td>
-                        <textarea name="adminComment" rows="3" cols="30" class="form-control input-sm" placeholder="<?php print _('Enter reason for reject/approval to be sent to requester'); ?>"><?php print 'Edited by ' . $_SESSION['ipamusername'] . '.'; ?></textarea>
+                        <textarea name="adminComment" rows="3" cols="30" class="form-control input-sm"><?php print 'Edited by ' . $User->user->real_name   . ' , '.$User->user->email.' .'; ?></textarea>
                     </td>
                 </tr>
 
