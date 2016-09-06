@@ -1,3 +1,45 @@
+<script>
+    /*
+     * Workaround to rebuild chosen 
+     */
+    $(document).ready(function () {
+        if ($(document).find('.chosen-container').length > 0) {
+            $(document).find('select').chosen('destroy').chosen({width: "50px"});
+            
+            $('label').show();
+        }
+    });
+
+</script>
+<style>
+    .divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+}
+
+.divTableCell, .divTableHead {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #FFF;
+	display: table-header-group;
+	font-weight: bold;
+        color: #A3F
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+</style>
 <?php
 /**
  * Script to get all active IP requests
@@ -32,27 +74,26 @@ if ($subnetRequests !== false) {
 
 <?php
 if ($subnetRequests != false) {
-    print "<div class='alert alert-info'>" . _('List of unprocessed subnet requests') . "</div>";
+    print "<div class='alert alert-info'>" . _('List of unprocessed subnet requests') . "</div>\n";
     ?>
-    <table id="requestedSubnet" class="table sorted table-striped table-condensed table-hover table-top">
-
+<div  id="requestedSubnet"  class="divTable">
+  
         <!-- headers -->
-        <thead>
-            <tr>
-                <th style="width:50px;"></th>
-                <th><?php print _('Subnet'); ?></th>
-                <th><?php print _('Mask'); ?></th>
-                <th><?php print _('Vlan'); ?></th>
+       <div class="divTableHeading">
+<div class="divTableRow">
+<div class="divTableHead">&nbsp;</div>
+<div class="divTableHead">Subnet</div>
+<div class="divTableHead">Mask</div>
+<div class="divTableHead">Vlan</div>
+<div class="divTableHead">System Name</div>
+<div class="divTableHead">Location</div>
+<div class="divTableHead">Customer</div>
+<div class="divTableHead">Requested by</div>
+<div class="divTableHead">Comment</div>
+</div>
+</div>
+<div class="divTableBody">
 
-                <th><?php print _('System Name'); ?></th>
-                <th><?php print _('Location'); ?></th>
-                <th><?php print _('Customer'); ?></th>
-                <th><?php print _('Requested by'); ?></th>
-                <th><?php print _('Comment'); ?></th>
-            </tr>
-        </thead>
-
-        <tbody>
             <?php
             # print requests
             foreach ($subnetRequests as $k => $request) {
@@ -63,47 +104,32 @@ if ($subnetRequests != false) {
                     $request['Location'] = $Tools->fetch_location_by_id($request['Location']);
 
 
-                print '<tr>' . "\n";
-                print "	<td><button class='btn btn-sm btn-default' data-requestid='" . $request['id'] . "'><i class='fa fa-pencil'></i> " . _('Process') . "</button></td>";
-                print '	<td>' . $request['subnet'] . '</td>' . "\n";
-                print '	<td>' . $request['mask'] . '</td>' . "\n";
-                print '	<td>' . $request['Vlan'] . '</td>' . "\n";
-                print '	<td>' . $request['System Name'] . '</td>' . "\n";
-                print '	<td>' . $request['Location'] . '</td>' . "\n";
-                print '	<td>' . $request['owner'] . '</td>' . "\n";
-                print '	<td>' . $request['requester'] . '</td>' . "\n";
-                print '	<td>' . $request['comment'] . '</td>' . "\n";
-                print '</tr>' . "\n";
+                print '<div class="divTableRow">';
+                print "	<div class='divTableCell'><button class='btn btn-sm btn-default' data-requestid='" . $request['id'] . "'><i class='fa fa-pencil'></i> " . _('Process') . "</button></div>";
+                print '<div class="divTableCell">' . $request['subnet'] . '</div>' . "\n";
+                print '	<div class="divTableCell">' . $request['mask'] . '</div>' . "\n";
+                print '<div class="divTableCell">' . $request['Vlan'] . '</div>' . "\n";
+                print '<div class="divTableCell">' . $request['System Name'] . '</div>' . "\n";
+                print '<div class="divTableCell">' . $request['Location'] . '</div>' . "\n";
+                print '	<div class="divTableCell">' . $request['owner'] . '</div>' . "\n";
+                print '	<div class="divTableCell">' . $request['requester'] . '</div>' . "\n";
+                print '	<div class="divTableCell">' . $request['comment'] . '</div>' . "\n";
+                print '</div>' . "\n";
             }
             ?>
-        </tbody>
-    </table>
+</div>
+    </div>
+<hr><br>
     <?php
 } else {
-    print "<div class='alert alert-success'>" . _('No active subnet requests available') . "!</div>";
+    print "<div class='alert alert-success'>" . _('No active subnet requests available') . '!</div>';
 }
 $subnetRequests = $Tools->fetch_multiple_objects("subnetRequests", "processed", 1, "id", false);
 if ($subnetRequests != false) {
 
-    print "<div class='alert alert-info'>" . _('List of processed subnet requests') . '<form class="pull-right">
-            <label for="perpage">
-                Entries per Page:
-            </label>   
-            <select class="perpage" data-pager="#myPager" data-table="#requestedSubnet" style="width:50px;">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-
-            </select>
-        </form></div>';
+    print "<div class='alert alert-info'>" . _('List of processed subnet requests') . '</div>';
     ?>
 
-    <div class="col-md-12 text-center">
-        <ul class="pagination pagination-sm" id="myPager"></ul>
-
-    </div>
-    
     <table class="table sorted table-striped table-condensed table-hover table-top">
 
         <!-- headers -->
@@ -125,7 +151,7 @@ if ($subnetRequests != false) {
             </tr>
         </thead>
 
-        <tbody id="requestedSubnet">
+        <tbody id="processedSubnets">
             <?php
             # print requests
             foreach ($subnetRequests as $k => $request) {
@@ -158,11 +184,11 @@ if ($subnetRequests != false) {
             ?>
         </tbody>
     </table>
-<script>
-    $(document).ready(function(){
-        $('.perpage').trigger('change');
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            $('.perpage').trigger('change');
+        });
+    </script>
     <?php
 } else {
 

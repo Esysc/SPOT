@@ -143,6 +143,7 @@ $(document).ready(function () {
         // Chosen list reordered
         // sort list
         $('select').each(function () {
+           
             var my_options = $("option", this);
             var optionSelected = $(this).find(":selected").val();
             my_options.sort(function (a, b) {
@@ -156,6 +157,7 @@ $(document).ready(function () {
             $(this).empty().append(my_options).chosen();
             $(this).val(optionSelected);
             $(this).trigger("chosen:updated");
+    
         });
         //disable page scrolling on bottom
         $('body').addClass('stop-scrolling');
@@ -951,7 +953,7 @@ $(document).ready(function () {
      *********************************************************/
 
 //edit request accept/reject
-    $('table#requestedSubnet button').on('click', function () {
+    $('div#requestedSubnet button').on('click', function () {
         ;
         open_popup("700", "app/admin/subnetRequests/edit.php", {requestId: $(this).attr('data-requestid')});
     });
@@ -3499,7 +3501,7 @@ $(document).ready(function () {
             <label for="perpage">
                 Entries per Page:
             </label>   
-            <select class="perpage" data-pager="#myPager" data-table="#requestedSubnet" style="width:50px;">
+            <select class="perpage" data-pager="#myPager" data-table="#processedSubnets" style="width:50px;">
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="15">15</option>
@@ -3561,5 +3563,6 @@ $(document).ready(function () {
         }
     });
     showProgress();
+ 
     return false;
 });

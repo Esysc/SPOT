@@ -10,6 +10,12 @@ $active_requests = $Admin->fetch_multiple_objects("subnetRequests", "processed",
 $inactive_requests = $Admin->fetch_multiple_objects("subnetRequests", "processed", 1, "id", false);
 ?>
 
+<style>
+    #page_rows_form_chosen {
+        width: 60px;
+    }
+</style>
+
 <h4><?php print _('List of  subnet requests'); ?></h4>
 <hr><br>
 
@@ -71,7 +77,7 @@ if ($inactive_requests !== false) {
     <h4 style="margin-top:50px;"><?php print _('List of all processes Subnet requests'); ?></h4>
     <hr><br>
 
-    <table id="requestedSubnet" class="table sorted table-striped table-condensed table-hover table-top table-auto1">
+    <table  id="processedSubnets" class="table sorted table-striped table-condensed table-hover table-top table-auto1">
 
         <!-- headers -->
         <thead>
@@ -99,7 +105,7 @@ if ($inactive_requests !== false) {
 // Get address from id
                 if (is_numeric($request['Location']))
                     $request['Location'] = $Tools->fetch_location_by_id($request['Location']);
-              
+
                 print '<tr>' . "\n";
 
                 print '	<td>' . $request['subnet'] . '</td>' . "\n";
