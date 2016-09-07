@@ -140,6 +140,10 @@ if ($_GET['page'] == "install") {
                 });
 
             </script>
+            <?php if ($User->settings->enableLocations == "1") { ?>
+                <script type="text/javascript" src="https://maps.google.com/maps/api/js<?php print $key; ?>"></script>
+                <script type="text/javascript" src="js/1.2/gmaps.js"></script>
+            <?php } ?>
         </head>
 
         <!-- body -->

@@ -1,6 +1,7 @@
-<h4><?php print _('Locations Map'); ?></h4>
-<hr>
-
+<?php if (@$title !== false) { ?>
+    <h4><?php print _('Locations Map'); ?></h4>
+    <hr>
+<?php } ?>
 <?php if ($admin && $User->settings->enableLocations == "1") { ?>
     <div class="btn-group">
         <?php if ($_GET['page'] == "administration") { ?>
@@ -48,23 +49,16 @@ if ($User->settings->enableLocations != "1") {
         if (sizeof($all_locations) > 0) {
             ?>
 
-            <script type="text/javascript" src="https://maps.google.com/maps/api/js<?php print $key; ?>"></script>
-            <script type="text/javascript" src="js/1.2/gmaps.js"></script>
+
             <script type="text/javascript">
 
                 $(document).ready(function () {
                     // init gmaps
                     var map = new GMaps({
                         el: '#gmap',
-                        zoom: 2,
-                        lat: 10,
-                        lng: 10,
-                        zoomControl: true,
-                        zoomControlOpt: {
-                            style: 'SMALL',
-                            position: 'TOP_LEFT'
-                        },
-                        panControl: false,
+                        zoom: 7,
+                        lat: '<?php print $all_locations[0]->lat; ?>',
+                        lng: '<?php print $all_locations[0]->long; ?>',
                     });
                     var bounds = [];
 
@@ -111,8 +105,20 @@ if ($User->settings->enableLocations != "1") {
                                 lat: <?php echo $g->lat; ?>,
                                 lng: <?php echo $g->long; ?>,
                                 title: '<?php echo $g->name; ?>',
+                    <?php
+                    $content = "<h5><a href='" . $link . "'>" . $g->name . "</a></h5>";
+                    if (($g->name == $g->address ) && ($g->description == $g->address)) {
+                        $content .= $subnets;
+                    } elseif (($g->name == $g->address ) && ($g->description != $g->address)) {
+                        $content .= "<p class='text-muted'>" . $g->description . "</p>" . $subnets;
+                    } elseif(($g->name != $g->address ) && ($g->description == $g->address)) {
+                         $content .= "<p class='text-muted'>" . $g->address . "</p>" . $subnets;
+                    } elseif (($g->name != $g->address ) && ($g->description != $g->address)) {
+                         $content .= "<p class='text-muted'>" . $g->description . "</p><p class='text-muted'>" . $g->address . "</p>" . $subnets;
+                    }
+                    ?>
                                 infoWindow: {
-                                    content: "<h5><a href='<?php echo $link; ?>'><?php echo $g->name; ?></a></h5> <p class='text-muted'><?php echo $g->description; ?></p><p class='text-muted'><?php echo $g->address; ?></p><?php echo $subnets; ?>"
+                                    content: "<?php echo $content; ?>"
                                 }
                             });
                     <?php
@@ -152,9 +158,9 @@ if ($User->settings->enableLocations != "1") {
                         resize_map();
                     };
 
-                   
-                    
-                   
+
+
+
 
                 })
             </script>
