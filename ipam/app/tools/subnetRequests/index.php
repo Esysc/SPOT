@@ -158,15 +158,17 @@ if ($subnetRequests != false) {
                 //cast
                 $request = (array) $request;
                 $accepted = "Yes";
+                $class = "class='alert alert-success'";
                 if ($request['accepted'] == 0) {
                     $accepted = "No";
+                    $class = "class='alert alert-danger'";
                 }
 
 // Get address from id
                 if (is_numeric($request['Location']))
                     $request['Location'] = $Tools->fetch_location_by_id($request['Location']);
 
-                print '<tr>' . "\n";
+                print '<tr '.$class.'>' . "\n";
 
                 print '	<td>' . $request['subnet'] . '</td>' . "\n";
                 print '	<td>' . $request['mask'] . '</td>' . "\n";
@@ -184,11 +186,7 @@ if ($subnetRequests != false) {
             ?>
         </tbody>
     </table>
-    <script>
-        $(document).ready(function () {
-            $('.perpage').trigger('change');
-        });
-    </script>
+    
     <?php
 } else {
 
