@@ -1,16 +1,4 @@
-<script>
-    /*
-     * Workaround to rebuild chosen 
-     */
-    $(document).ready(function () {
-        if ($(document).find('.chosen-container').length > 0) {
-            $(document).find('select').chosen('destroy').chosen({width: "50px"});
-            
-            $('label').show();
-        }
-    });
 
-</script>
 <style>
     .divTable{
 	display: table;

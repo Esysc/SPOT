@@ -64,7 +64,6 @@ if ($_GET['page'] == "install") {
         unset($_SESSION['realipamusername']);
         print '<script>window.location.href = "' . create_link(null) . '";</script>';
     }
-    
     ?>
     <!DOCTYPE HTML>
     <html lang="en">
@@ -79,7 +78,7 @@ if ($_GET['page'] == "install") {
             <meta name="Description" content="">
             <meta name="title" content="<?php print $title = $User->get_site_title($_GET); ?>">
             <meta name="robots" content="noindex, nofollow">
-           <!-- <meta http-equiv="X-UA-Compatible" content="IE=9" > -->
+            <!-- <meta http-equiv="X-UA-Compatible" content="IE=9" > -->
 
             <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=1, user-scalable=yes">
 
@@ -128,6 +127,19 @@ if ($_GET['page'] == "install") {
             <!--[if lt IE 9]>
             <script type="text/javascript" src="js/1.2/dieIE.js"></script>
             <![endif]-->
+            <script>
+                /*
+                 * Workaround to rebuild chosen 
+                 */
+                $(document).ready(function () {
+                    if ($(document).find('.chosen-container').length > 0) {
+                        $(document).find('select').chosen('destroy').chosen({width: "60px"});
+
+                        $('label').show();
+                    }
+                });
+
+            </script>
         </head>
 
         <!-- body -->
