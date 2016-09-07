@@ -1982,8 +1982,8 @@ $(document).ready(function () {
         var postdata = "sectionId=" + sectionId + "&subnetId=" + subnetId + "&action=" + action;
         //load edit data
         $.post("app/admin/subnets/edit.php", postdata, function (data) {
-            $('#popupOverlay div.popup_w700').html(data);
-            showPopup('popup_w700');
+            $('#popupOverlay div.popup_w800').html(data);
+            showPopup('popup_w800');
             hideSpinner();
         }).fail(function (jqxhr, textStatus, errorThrown) {
             showError(jqxhr.statusText + "<br>Status: " + textStatus + "<br>Error: " + errorThrown);
@@ -2303,8 +2303,8 @@ $(document).ready(function () {
         var postdata = "sectionId=" + sectionId + "&subnetId=" + subnetId + "&action=" + action + "&location=IPaddresses";
         //load add Subnet form / popup
         $.post('app/admin/subnets/edit.php', postdata, function (data) {
-            $('#popupOverlay div.popup_w700').html(data);
-            showPopup('popup_w700');
+            $('#popupOverlay div.popup_w800').html(data);
+            showPopup('popup_w800');
             hideSpinner();
         }).fail(function (jqxhr, textStatus, errorThrown) {
             showError(jqxhr.statusText + "<br>Status: " + textStatus + "<br>Error: " + errorThrown);

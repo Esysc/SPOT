@@ -160,6 +160,7 @@ if ($_GET['page'] == "install") {
                     <div id="popup" class="popup popup_w400"></div>
                     <div id="popup" class="popup popup_w500"></div>
                     <div id="popup" class="popup popup_w700"></div>
+                    <div id="popup" class="popup popup_w800"></div>
                     <div id="popup" class="popup popup_wmasks"></div>
                     <div id="popup" class="popup popup_max"></div>
                 </div>
@@ -167,6 +168,7 @@ if ($_GET['page'] == "install") {
                     <div id="popup" class="popup popup_w400"></div>
                     <div id="popup" class="popup popup_w500"></div>
                     <div id="popup" class="popup popup_w700"></div>
+                    <div id="popup" class="popup popup_w800"></div>
                     <div id="popup" class="popup popup_wmasks"></div>
                     <div id="popup" class="popup popup_max"></div>
                 </div>

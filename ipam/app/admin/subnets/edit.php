@@ -148,7 +148,7 @@ $readonly = $_POST['action'] == "edit" || $_POST['action'] == "delete" ? true : 
 <div class="pContent">
 
     <form id="editSubnetDetails">
-        <table class="editSubnetDetails table table-noborder table-condensed">
+        <table class="editSubnetDetails table table-bordered table-condensed ">
 
             <!-- name -->
             <tr>
