@@ -10,11 +10,6 @@ $active_requests = $Admin->fetch_multiple_objects("subnetRequests", "processed",
 $inactive_requests = $Admin->fetch_multiple_objects("subnetRequests", "processed", 1, "id", false);
 ?>
 
-<style>
-    #page_rows_form_chosen {
-        width: 60px;
-    }
-</style>
 
 <h4><?php print _('List of  subnet requests'); ?></h4>
 <hr><br>

@@ -2758,6 +2758,12 @@ $(document).ready(function () {
     });
 //submit form
     $(document).on("click", "button.manageRequest", function () {
+        /*
+         * Enable disabled fields to serialize correctly
+         * 
+         */
+        var myForm = $('.manageRequestEdit');
+        var disabled = myForm.find(':input:disabled').removeAttr('disabled');
         var postValues = $('form.manageRequestEdit').serialize();
         var action = $(this).attr('data-action');
         var postData = postValues + "&action=" + action;
