@@ -1,65 +1,29 @@
 
 Debugging On...
 Table Count: 1
-Total Rows: 28
+Total Rows: 10
 autoFilter: A0:A1
 freezePane: A1
-A:1 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: CustomerACR
-B:1 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: SDC
-A:2 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: ProgramManager
-B:2 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Zhang William
-A:3 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Machines
-B:3 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 1 machines and 0 racks.
-A:4 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: pendDate
-B:4 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 31/08/2016
-A:5 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: pstartDate
-B:5 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 29/08/2016
-A:6 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: orderdescription
-B:6 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Shekou DLK CAS POC
-A:7 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: releasename
-B:7 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: DLKHE_1.1SDC2.0
-A:8 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: olson
-B:8 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Asia/Shanghai
-A:9 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: tz
-B:9 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: (UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi
-A:10 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: network
-B:10 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.0.142.0
-A:11 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: windowstz
-B:11 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: China Standard Time
-A:12 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: posix
-B:12 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: CST-8
-A:13 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: startshelf
-B:13 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack8_shelfC
-A:14 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: stopshelf
-B:14 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack8_shelfC
-A:15 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: imagetarget
-B:15 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 1
-A:16 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: imagename
-B:16 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Image_GEN_2_3STD1-A7_1
-A:17 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: ostarget
-B:17 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: NIM : AIX
-A:18 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: completed
-B:18 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: true
-A:19 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:clientid
-B:19 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 1
-A:20 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:rackname
-B:20 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: rack8_shelfC
-A:21 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:rack
-B:21 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 8
-A:22 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:shelf
-B:22 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: C
-A:23 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:hostname
-B:23 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: cas01
-A:24 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:imagename
-B:24 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Image_GEN_2_3STD1-A7_1
-A:25 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:ostarget
-B:25 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: AIX
-A:26 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:ip
-B:26 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.0.142.1
-A:27 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:netmask
-B:27 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 255.255.255.0
-A:28 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: clients_1:gateway
-B:28 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.0.142.252
+A:1 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Hostname
+B:1 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: sdpracdb01
+A:2 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: IP address
+B:2 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 10.22.44.11
+A:3 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Model
+B:3 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: ProLiant DL360 Gen9
+A:4 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Serial Number
+B:4 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: CZJ63204DN
+A:5 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Firmware
+B:5 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: HP
+A:6 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Operating System
+B:6 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: RedHat
+A:7 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Ram
+B:7 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 65848
+A:8 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Cpu
+B:8 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 24
+A:9 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Disk qty
+B:9 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 4               
+A:10 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: Network int qty
+B:10 ColSpan:1 Color:000000 Align:left VAlign:top bgcolor:FFFFFF Bold:false cellValue: 8
 HEADROWS: Array
 (
 )
@@ -71,8 +35,8 @@ BODYROWS: Array
             [colcnt] => 2
             [td] => Array
                 (
-                    [0] => CustomerACR
-                    [1] => SDC
+                    [0] => Hostname
+                    [1] => sdpracdb01
                 )
 
             [strong] => Array
@@ -118,8 +82,8 @@ BODYROWS: Array
             [colcnt] => 2
             [td] => Array
                 (
-                    [0] => ProgramManager
-                    [1] => Zhang William
+                    [0] => IP address
+                    [1] => 10.22.44.11
                 )
 
             [strong] => Array
@@ -165,8 +129,8 @@ BODYROWS: Array
             [colcnt] => 2
             [td] => Array
                 (
-                    [0] => Machines
-                    [1] => 1 machines and 0 racks.
+                    [0] => Model
+                    [1] => ProLiant DL360 Gen9
                 )
 
             [strong] => Array
@@ -212,8 +176,8 @@ BODYROWS: Array
             [colcnt] => 2
             [td] => Array
                 (
-                    [0] => pendDate
-                    [1] => 31/08/2016
+                    [0] => Serial Number
+                    [1] => CZJ63204DN
                 )
 
             [strong] => Array
@@ -259,8 +223,8 @@ BODYROWS: Array
             [colcnt] => 2
             [td] => Array
                 (
-                    [0] => pstartDate
-                    [1] => 29/08/2016
+                    [0] => Firmware
+                    [1] => HP
                 )
 
             [strong] => Array
@@ -306,8 +270,8 @@ BODYROWS: Array
             [colcnt] => 2
             [td] => Array
                 (
-                    [0] => orderdescription
-                    [1] => Shekou DLK CAS POC
+                    [0] => Operating System
+                    [1] => RedHat
                 )
 
             [strong] => Array
@@ -353,8 +317,8 @@ BODYROWS: Array
             [colcnt] => 2
             [td] => Array
                 (
-                    [0] => releasename
-                    [1] => DLKHE_1.1SDC2.0
+                    [0] => Ram
+                    [1] => 65848
                 )
 
             [strong] => Array
@@ -400,8 +364,8 @@ BODYROWS: Array
             [colcnt] => 2
             [td] => Array
                 (
-                    [0] => olson
-                    [1] => Asia/Shanghai
+                    [0] => Cpu
+                    [1] => 24
                 )
 
             [strong] => Array
@@ -447,8 +411,8 @@ BODYROWS: Array
             [colcnt] => 2
             [td] => Array
                 (
-                    [0] => tz
-                    [1] => (UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi
+                    [0] => Disk qty
+                    [1] => 4               
                 )
 
             [strong] => Array
@@ -494,854 +458,8 @@ BODYROWS: Array
             [colcnt] => 2
             [td] => Array
                 (
-                    [0] => network
-                    [1] => 10.0.142.0
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [10] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => windowstz
-                    [1] => China Standard Time
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [11] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => posix
-                    [1] => CST-8
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [12] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => startshelf
-                    [1] => rack8_shelfC
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [13] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => stopshelf
-                    [1] => rack8_shelfC
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [14] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => imagetarget
-                    [1] => 1
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [15] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => imagename
-                    [1] => Image_GEN_2_3STD1-A7_1
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [16] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => ostarget
-                    [1] => NIM : AIX
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [17] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => completed
-                    [1] => true
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [18] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => clients_1:clientid
-                    [1] => 1
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [19] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => clients_1:rackname
-                    [1] => rack8_shelfC
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [20] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => clients_1:rack
+                    [0] => Network int qty
                     [1] => 8
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [21] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => clients_1:shelf
-                    [1] => C
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [22] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => clients_1:hostname
-                    [1] => cas01
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [23] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => clients_1:imagename
-                    [1] => Image_GEN_2_3STD1-A7_1
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [24] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => clients_1:ostarget
-                    [1] => AIX
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [25] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => clients_1:ip
-                    [1] => 10.0.142.1
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [26] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => clients_1:netmask
-                    [1] => 255.255.255.0
-                )
-
-            [strong] => Array
-                (
-                    [0] => 
-                    [1] => 
-                )
-
-            [color] => Array
-                (
-                    [0] => 000000
-                    [1] => 000000
-                )
-
-            [colspan] => Array
-                (
-                    [0] => 1
-                    [1] => 1
-                )
-
-            [align] => Array
-                (
-                    [0] => left
-                    [1] => left
-                )
-
-            [valign] => Array
-                (
-                    [0] => top
-                    [1] => top
-                )
-
-            [bgcolor] => Array
-                (
-                    [0] => FFFFFF
-                    [1] => FFFFFF
-                )
-
-        )
-
-    [27] => Array
-        (
-            [colcnt] => 2
-            [td] => Array
-                (
-                    [0] => clients_1:gateway
-                    [1] => 10.0.142.252
                 )
 
             [strong] => Array

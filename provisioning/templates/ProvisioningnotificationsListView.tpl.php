@@ -409,7 +409,7 @@ $this->display('_Header.tpl.php');
         <div class="control-group">
         <label class="control-label"></label>
         <div class="controls">
-        <!-- <button id="deleteProvisioningnotificationsButton" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete <%= _.escape(item.get('notifid') || '') %></button> -->
+        <button id="deleteProvisioningnotificationsButton" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete <%= _.escape(item.get('notifid') || '') %></button> 
 
         <span id="confirmDeleteProvisioningnotificationsContainer" class="hide">
         <button id="cancelDeleteProvisioningnotificationsButton" class="btn btn-mini">Cancel</button>
