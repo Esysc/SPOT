@@ -82,6 +82,9 @@ class DefaultController extends AppBaseController {
     public function InstallModules() {
         $this->Render('InstallModulesView.tpl');
     }
+    public function InstallPuppet() {
+        $this->Render('puppetInstall.tpl');
+    }
      public function GenerateHostsFile() {
         $this->Render('HostsFileView.tpl');
     }

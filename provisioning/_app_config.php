@@ -372,6 +372,8 @@ GlobalConfig::$ROUTE_MAP = array(
     'GET:cvsweb' => array('route' => 'Default.Cvsweb'),
     // InstallModules, forst version
     'GET:instmod' => array('route' => 'Default.InstallModules'),
+    // InstallPuppet, first version
+    'GET:instpup' => array('route' => 'Default.InstallPuppet'),
     // Generate hosts file view
     'GET:hosts' => array('route' => 'Default.GenerateHostsFile'),
     //wrapper to connect to pld productionDB
