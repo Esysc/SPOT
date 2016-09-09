@@ -260,7 +260,7 @@ var page = {
 
         // if this is new then on success we need to add it to the collection
         var isNew = page.tblPassword.isNew();
-        
+
         app.showProgress('modelLoader');
 
         page.tblPassword.save({
@@ -340,7 +340,7 @@ var page = {
     downloadModel: function () {
         // reset any previous errors
         $('#modelAlert').html('');
-        
+
         var title = 'PMP Data Submission';
         var salesorder = $('#salesorder').val();
         var filename = '';
@@ -354,7 +354,7 @@ var page = {
                 var getJson = JSON.parse(data.rows[0].data);
                 customerACR = getJson.CustomerACR;
                 console.log(getJson);
-               
+
             }
 
         });
@@ -363,14 +363,15 @@ var page = {
         var t = document.getElementById('listing_smaller');
         var ID = $(t.rows[1].cells[0]).text();
         ID = $.trim(ID);
-        if (ID === "") ID = 'ID';
+        if (ID === "")
+            ID = 'ID';
         filename = 'PO_' + salesorder + '-' + customerACR + '-System_' + ID;
-        
+
         /*
          * Put all data in session
          */
-        
-        
+
+
         var Jdata = {
             SALESORDER: salesorder,
             filename: filename,
@@ -380,10 +381,10 @@ var page = {
             debug: true,
             confidential: 'Strictly Confidential'
         };
-       
+
         var JstrtoSend = JSON.stringify(Jdata)
         var session = 'data=' + JstrtoSend;
- 
+
         app.showProgress('modelLoader');
         // reload session within new values
         $.ajax({
@@ -410,6 +411,15 @@ var page = {
                         console.log(output);
                         $('#email').show();
                         app.hideProgress('modelLoader');
+                        /*
+                         * Workaround to save file on server as well
+                         */
+                        url = "includes/excelexport_mail_pass.php";
+                        $.ajax({
+                            url: url,
+                            type: "POST",
+                            wait: true,
+                        });
 
                     },
                     error: function (model, response, scope) {

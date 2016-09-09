@@ -13,7 +13,7 @@
 
 
 define("SITE_DIR", "/var/www/SPOT");
-define("SITE_URL", "http://x.x.x.204");
+define("SITE_URL", "http://spmgt.my.compnay.com");
 define("URL_REL", "http://ist.my.compnay.com/cgi-bin/WebObjects/ist.woa/wa/inspectRecord?entityName=Delivery&id=");
 define("URL_MEMOS", "http://ist.my.compnay.com/cgi-bin/WebObjects/ISTWebServices.woa/ra/HECustomerReleaseMemos.xml?releaseName=");
 define("URL_SHAREPOINT", "http://sharepoint.my.compnay.com/sites/salesandops/sysprod/_layouts/listfeed.aspx?List={F48F4228-AFE9-4DF1-8CEB-386D5712D0A0}");

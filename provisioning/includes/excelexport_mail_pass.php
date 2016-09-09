@@ -14,7 +14,7 @@ if (!isset($_SESSION['var'])) {
     $title = $_SESSION['title'];
     $filename = $_SESSION['filename'];
     $confidential = $_SESSION['confidential'];
-    
+
     if ($confidential == "Confidential") {
         $rgb = "00FFFF";
     } else {
@@ -31,7 +31,7 @@ if (!isset($_SESSION['debug'])) {
     $debug = false;
 } else {
     $debug = true;
-    $handle = fopen(SITE_DIR."/log/exportlog.txt", "w");
+    $handle = fopen(SITE_DIR . "/log/exportlog.txt", "w");
     fwrite($handle, "\nDebugging On...");
 }
 if (!isset($_SESSION[$tablevar]) OR $_SESSION[$tablevar] == '') {
@@ -543,22 +543,12 @@ if ($debug) {
     fclose($handle);
 }
 
- $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 
-//$objWriter->setPreCalculateFormulas(false);
-//$objWriter->setPreCalculateFormulas(FALSE);
-//header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8');
-//header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Type: application/vnd.ms-excel');
- header("Content-Disposition: attachment;filename=$fname.xls");
-header('Cache-Control: max-age=0');
-//header('Content-Transfer-Encoding: binary');
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+$filePath = '/var/www/SPOT/log/' . $fname . '.xls';
+$objWriter->save($filePath);
 
-$objWriter->save('php://output');
-
-  exit(); 
-
-
+exit();
 
 function innerHTML($node) {
     $doc = $node->ownerDocument;

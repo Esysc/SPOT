@@ -889,8 +889,9 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
         $('#runcommander').on('click', function (e) {
             var button = $(this);
             button.hide();
-            var command = 'ssh -i .ssh/id_rsa  cristall@my.compnay.com@chx-sysprod-01 "cmd /c C:\\SPOT\\nodejs\\nssm-2.24\\win64\\nssm restart SPOT_check_racks"';
-            var url = "/SPOT/provisioning/api/remotecommands/";
+           // var command = 'ssh -i .ssh/id_rsa  cristall@my.compnay.com@chx-sysprod-01 "cmd /c C:\\SPOT\\nodejs\\nssm-2.24\\win64\\nssm restart SPOT_check_racks"';
+        var command = ' winexe -U administrator%***REMOVED*** //chx-sysprod-01 "cmd /c C:\\SPOT\\nodejs\\nssm-2.24\\win64\\nssm restart SPOT_check_racks"';
+        var url = "/SPOT/provisioning/api/remotecommands/";
             e.preventDefault();
             var scriptID = 100; // the scriptID runCommander
             var rack = '25';

@@ -148,8 +148,7 @@ if ($_GET['page'] == "install") {
 
         <!-- body -->
         <body>
-
-            <!-- wrapper -->
+          <!-- wrapper -->
             <div class="wrapper">
 
                 <!-- jQuery error -->

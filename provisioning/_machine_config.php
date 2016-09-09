@@ -24,7 +24,7 @@ require_once("verysimple/HTTP/RequestUtil.php");
  * The only method to have more than one DB par APP is to create an array of possible routes and apply a new connection string when have it in the URL
  * The following configuration is on two DB but with switch/case use  it can be extended to n DB
  */
-$custip = array('adresses', 'ranges', 'customer_ip_inventory', 'hotline', 'hotlinesyncdate', 'ip_valid_ranges', 'exportIP','pmon');
+$custip = array('adresses', 'ranges', 'customer_ip_inventory', 'hotline', 'hotlinesyncdate', 'ip_valid_ranges', 'exportIP', 'pmon');
 $productiondb = array('tblorderses', 'tblorders', 'loadvisio');
 $URL = RequestUtil::GetUrlParts();
 GlobalConfig::$CONNECTION_SETTING = new ConnectionSetting();
@@ -62,7 +62,7 @@ define("CHARTPHP_DBPASS", GlobalConfig::$CONNECTION_SETTING->Password);
 define("CHARTPHP_DBNAME", GlobalConfig::$CONNECTION_SETTING->DBName);
 
 
-// GlobalConfig::$CONNECTION_SETTING->BootstrapSQL = "SET SQL_BIG_SELECTS=1";
+GlobalConfig::$CONNECTION_SETTING->BootstrapSQL = "SET SQL_BIG_SELECTS=1";
 
 /** the root url of the application with trailing slash, for example http://localhost/spot/ */
 GlobalConfig::$ROOT_URL = RequestUtil::GetServerRootUrl() . 'SPOT/provisioning/';
