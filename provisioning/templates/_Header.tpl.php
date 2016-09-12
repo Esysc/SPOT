@@ -565,43 +565,17 @@
                             </li>
                         </ul>
                     <?php } ?>
-                    <ul class="nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">IP address INV<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li <?php
-                                if ($this->nav == 'adresses') {
-                                    echo 'class="active"';
-                                }
-                                ?>><!--<a href="./adresses">Customer IP Inventory</a></li>-->
-                                    <a href="http://spmgt.my.compnay.com/SPOT/ipam" class="url" target="_blank">Customer IP Inventory</a>
-
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">External Link <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-
-                                <li>
-                                    <a href="http://chx-sysprod-01.my.compnay.com" class="url" target="_blank">(OLD) Sysprod DB</a>
-                                </li>
-                                <li>
-                                    <a href="http://sharepoint.my.compnay.com/sites/salesandops/sysprod/SitePages/Home.aspx" class="url" target="_blank">Sharepoint</a>
-                                </li>
-                                <li>
-                                    <a href="http://ist.my.compnay.com" class="url" target="_blank">IST</a>
-                                </li>
 
 
-                            </ul>
-                        </li>
-                    </ul>
+
+
                     <ul class="nav">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
                             <ul class="dropdown-menu">
+                                <li>
+                                    <a href="http://spmgt.my.compnay.com/SPOT/ipam" class="url" target="_blank">Customer IP Inventory</a>
+                                </li>
                                 <li <?php
                                 if ($this->nav == 'tblorderses') {
                                     echo 'class="active"';
@@ -643,6 +617,12 @@
                                     <li><a class="url" target="_blank" href="http://x.x.x.206:82">Gitlab</a></li>
                                     <li><a class="url" target="_blank" href="http://x.x.x.206/backuppc">BackupPc</a></li>
                                     <li><a class="url" target="_blank" href="http://x.x.x.206:18081/#browse/welcome">NuGet Repos</a></li>
+                                    <li>
+                                        <a href="http://sharepoint.my.compnay.com/sites/salesandops/sysprod/SitePages/Home.aspx" class="url" target="_blank">Sharepoint</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://ist.my.compnay.com" class="url" target="_blank">IST</a>
+                                    </li>
 
 
                                 <?php } ?>
