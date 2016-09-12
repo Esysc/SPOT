@@ -150,7 +150,7 @@ $startshelf = '';
 <div class="container">
 
     <h1>
-        <i class="icon-th-list"></i> Boot Diag/Maintenance mode
+        <i class="icon-th-list"></i> Boot Diag/Maintenance mode . DEPRECATED!!!!!! Please use the most recent DVD instead!!!!
 
 
     </h1>
@@ -210,9 +210,7 @@ $startshelf = '';
                                     <td>
                                         <select name="spot" id="spot" class="chosen" data-placeholder="Choose a spot" required="required">
                                             <option value=""></option>
-                                            <option value="AIX53_SPOT">
-                                                AIX53_SPOT (Recommended)
-                                            </option>
+                                            
                                             <option value="AIX71_SPOT">
                                                 AIX71_SPOT
                                             </option>
