@@ -544,7 +544,11 @@
                                                 echo 'class="active"';
                                             }
                                             ?>><a href="./instmod">PRE CCT preparation</a></li>
-
+                                            <li <?php
+                                            if ($this->nav == 'instpup') {
+                                                echo 'class="active"';
+                                            }
+                                            ?>><a href="./instpup">Puppet installtion</a></li>
                                             <li <?php
                                             if ($this->nav == 'hosts') {
                                                 echo 'class="active"';

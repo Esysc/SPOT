@@ -40,7 +40,7 @@ $this->display('_Header.tpl.php');
         // Get all the sales order in the tblprogress table
         $.get("/SPOT/provisioning/api/tblprogresses", function (jsonResult) {
             var Jdata = jsonResult.rows;
-            console.log(Jdata);
+           
             // $('#salesel').attr('enabled', 'true');
             $.each(Jdata, function (i, o) {
 
@@ -71,7 +71,7 @@ $this->display('_Header.tpl.php');
             SO = SOarr[1].trim();
             var ACR = SOarr[2].trim();
 
-             $.get("/SPOT/provisioning/api/tblprogresses?salesorder=" + SO, function (jsonResult) {
+            $.get("/SPOT/provisioning/api/tblprogresses?salesorder=" + SO, function (jsonResult) {
                 $('.network').show();
                 var Jdata = jsonResult.rows[0].data;
                 var Jsonspecs = JSON.parse(Jdata);
@@ -81,7 +81,7 @@ $this->display('_Header.tpl.php');
                         var gateway = o.gateway;
                         $('#gateway').val(gateway);
                     }
-                   
+
                 });
             });
         });
@@ -150,7 +150,7 @@ $this->display('_Header.tpl.php');
                 success: createTR,
                 error: function (data) {
                     $('#errormsg').html("An error occured:  " + data.statusText + " " + data.responseText);
-                    console.log(data);
+                    
                     $('#errormsg').show();
 
                 }
@@ -167,6 +167,7 @@ $this->display('_Header.tpl.php');
             $('#monitorContainer').append(e);
         }
         ;
+        var div = '';
         function monitoring(data) {
             setInterval(function () {
 
@@ -179,8 +180,15 @@ $this->display('_Header.tpl.php');
                     success: function (data) {
                         var error = data.returncode;
                         var arguments = data.arguments;
+                        
+                        //Check in tempdata if program is running or not
+                        $.get("/SPOT/provisioning/api/tempdata/" + commandId, function (a) {
+                           if (typeof a === 'object' && typeof a.message !== 'undefined')
+                                div = a.message;
+                               
+                        });
                         //stdout ID if you want the modal to display
-                        $('#stdout' + commandId).html('<tr><th>Running commandt ' + arguments + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
+                        $('#stdout' + commandId).html('<tr><th>Running command ' + arguments + '<br />' + div + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
                     }
                 });
             }, 4000);
@@ -262,7 +270,7 @@ $this->display('_Header.tpl.php');
                 <td>
                     <input name="gateway" id="gateway" class="form-control gateway" type="text" required pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$"  />
                 </td>
-               
+
             </tr>
             <tr  class="network">
                 <td colspan="2">

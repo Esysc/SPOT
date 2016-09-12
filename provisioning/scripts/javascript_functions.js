@@ -160,16 +160,16 @@ $(document).on('click', '.modal-footer button', function(){  $('#servermsg').htm
 
 
 
-    var socketCommands = io.connect('ws://chx-sysprod-01:8002');
-    socketCommands.on('reconnecting', function () {
+    var socketCommands2 = io.connect('ws://chx-sysprod-01:8002');
+    socketCommands2.on('reconnecting', function () {
         showAlarm('provisioningSocket', 'notif2', 'System Attempting to re-connect to http://chx-sysprod-01:8002. This is not a big issue, it\' only about monitoring');
         
     });
-    socketCommands.on('error', function (e) {
+    socketCommands2.on('error', function (e) {
         showAlarm('provisioningSocket', 'notif2', 'System' + e + ' conecting  to http://chx-sysprod-01:8002. This is not a big issue, it\' only about monitoring');
        
     });
-    socketCommands.on('data', function (data) {
+    socketCommands2.on('data', function (data) {
         d = new Date();
         dismissAlarm('provisioningSocket', 'notif2', 'GOOD! http://chx-sysprod-01:8002 is available again!');
 
