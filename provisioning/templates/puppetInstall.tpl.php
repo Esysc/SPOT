@@ -167,7 +167,7 @@ $this->display('_Header.tpl.php');
             $('#monitorContainer').append(e);
         }
         ;
-        var div = '';
+        var div = '<div class="blinking alert alert-danger">Starting execution.....</div>';
         function monitoring(data) {
             setInterval(function () {
 
