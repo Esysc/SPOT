@@ -189,7 +189,7 @@ class TempdataController extends AppBaseController {
 
             $tempdata->Data = $this->SafeGetVal($json, 'data', $tempdata->Data);
             $tempdata->Status = $this->SafeGetVal($json, 'status', $tempdata->Status);
-            if (date('Y-m-d H:i:s', strtotime($this->SafeGetVal($json, 'timestamps'))) !== '')
+            if (date('Y-m-d H:i:s', strtotime($this->SafeGetVal($json, 'timestamps', $tempdata->Timestamps))) !== '')
                 $tempdata->Timestamps = date('Y-m-d H:i:s', strtotime($this->SafeGetVal($json, 'timestamps', $tempdata->Timestamps)));
             $tempdata->Message = $this->SafeGetVal($json, 'message', $tempdata->Message);
             $tempdata->Creator = $this->SafeGetVal($json, 'creator', $tempdata->Creator);

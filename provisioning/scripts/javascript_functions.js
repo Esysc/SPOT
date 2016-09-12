@@ -111,6 +111,8 @@ $(document).on('click', '.modal-footer button', function(){  $('#servermsg').htm
                     popcontent += '<tr><td><strong>Exe n. ' + count + '</strong></tr></td>';
                     popcontent += '<tr><td><strong>CommandID: </strong>' + val.remotecommandid + '</td></tr>';
                     popcontent += '<tr><td><strong>Server:  </strong> ' + val.clientaddress + '</td></tr>';
+                    popcontent += '<tr><td><strong>Stdout:  </strong><pre> ' + val.returnstdout + '</pre></td></tr>';
+                    popcontent += '<tr><td><strong>Stderr:  </strong><pre> ' + val.returnstderr + '</pre></td></tr>';
 
                     $.ajax({
                         url: '/SPOT/provisioning/api/provisioningscriptses?scriptid_Equals=' + val.scriptid,
