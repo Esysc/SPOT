@@ -24,6 +24,7 @@ $this->display('_Header.tpl.php');
 </style>
 <script>
     $(document).ready(function () {
+        var salesorder;
         function highlight(element) {
             var isValid = true;
             var id = element.attr('id');
@@ -97,7 +98,7 @@ $this->display('_Header.tpl.php');
         });
         $('#salesel').on('change', function (e) {
 
-            var salesorder = $("#salesel option:selected").val();
+            salesorder = $("#salesel option:selected").val();
             if (salesorder === '') {
 
                 return;
@@ -187,7 +188,7 @@ $this->display('_Header.tpl.php');
             var url = '/SPOT/provisioning/includes/setAttr.php';
             $("#DataTable").html('');
             e.preventDefault();
-            var salesorder = $("#salesel option:selected").text();
+            salesorder = $("#salesel option:selected").text();
             var SOarr = salesorder.split('|');
             var SO = SOarr[0].trim();
             $('.results').css('visibility', 'visible');
@@ -235,14 +236,14 @@ $this->display('_Header.tpl.php');
                 });
             });
         });
-        $('#assemble').on('click', function (e) {
+        $(document).on('click', '#assemble', function (e) {
             var url = $(this).attr("value");
             // $("#DataTable").html('');
             e.preventDefault();
-            var stringToParse = $("#salesel option:selected").text();
+            var stringToParse = salesorder;
             var arr = stringToParse.split('|');
             var sales_order_ref = arr[0];
-
+console.log(stringToParse)
             var r = confirm("Are you sure to assemble all items in Sales order " + sales_order_ref + "? \n This action cannot undone!");
             if (r == false)
                 return;
@@ -266,12 +267,12 @@ $this->display('_Header.tpl.php');
 
                     $("#DataTable").append('<p>Sales Order ' + sales_order_ref + ' Message from server:</p> ' + data);
 
-                    console.log('success');
+                   
 
                 },
                 error: function (data) {
 
-                    console.log('error');
+                 
                 }
             });
         });
