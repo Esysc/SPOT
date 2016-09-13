@@ -143,6 +143,7 @@ $this->display('_Header.tpl.php');
                                         if ($.trim(data.returnstdout) !== '' && typeof data.returnstdout !== 'undefined') {
                                             $('#check').html("Please be patient, loading modules and servers..  <img src='/SPOT/provisioning/images/loader.gif' alt='Waiting for script execution, please be patient.....' title='Waiting for script execution, please be patient.....'/>");
                                             $('#release').val(data.returnstdout);
+                                            var release = data.returnstdout;
                                             $('#release').hide();
                                             $('select').hide();
                                             $('#relpath').html('<strong>' + data.returnstdout + '</strong>');
@@ -192,43 +193,74 @@ $this->display('_Header.tpl.php');
                                                                         var Jsonspecs = JSON.parse(Jdata);
                                                                         var tr;
                                                                         $.each(Jsonspecs.clients, function (i, o) {
+                                                                            if (o.ostarget === 'AIX') {
+                                                                                tr = tr + "<tr><th colspan='2'><center>" + o.hostname + " - IP: " + o.ip + "</center><button class='btn btn-primary uncheck pull-right' id='uncheck_" + i + "'>Toggle all</button></th></tr>";
+                                                                                tr = tr + "<tr><td  colspan='2'>";
+                                                                                tr = tr + '<div class="row">';
+                                                                                tr = tr + '<div class="items">';
+                                                                                tr = tr + "<input type='hidden' value='" + o.ip + "' class='ipaddress' id='host_" + i + "' />";
+                                                                                tr = tr + "<input type='hidden' value='" + o.ostarget + "'  id='ostarget_" + i + "' />";
+                                                                                var refer = 0;
+                                                                                var counter = 0
+                                                                                $.each(MODarr, function (index, value) {
 
-                                                                            tr = tr + "<tr><th colspan='2'><center>" + o.hostname + " - IP: " + o.ip + "</center><button class='btn btn-primary uncheck pull-right' id='uncheck_" + i + "'>Toggle all</button></th></tr>";
-                                                                            tr = tr + "<tr><td  colspan='2'>";
-                                                                            tr = tr + '<div class="row">';
-                                                                            tr = tr + '<div class="items">';
-                                                                            tr = tr + "<input type='hidden' value='" + o.ip + "' class='ipaddress' id='host_" + i + "' />";
-                                                                            var refer = 0;
-                                                                            var counter = 0
-                                                                            $.each(MODarr, function (index, value) {
+                                                                                    var mod = baseName(value);
+                                                                                    if (value.toLowerCase().indexOf("mgt") < 0 && value.toLowerCase().indexOf("vio") < 0) {
 
-                                                                                var mod = baseName(value);
-                                                                                if (value.toLowerCase().indexOf("mgt") < 0 && value.toLowerCase().indexOf("vio") < 0) {
+                                                                                        var downloadId = "host_" + i + "_download_" + counter;
+                                                                                        var installId = "host_" + i + "_install_" + counter;
+                                                                                        tr = tr + "<div class='checkboxes span6'>";
+                                                                                        tr = tr + "<input  type='checkbox' value='" + value + "'  id='" + downloadId + "' checked class='" + downloadId + " uncheck_" + i + "'/>";
+                                                                                        tr = tr + "<label for='" + downloadId + "'></label>";
+                                                                                        tr = tr + "<span class='badge badge-info modules'>" + mod + " Download</span></div><div class='checkboxes span6'>"
+                                                                                        tr = tr + '<input  type="checkbox"  id="' + installId + '"  class="' + installId + ' uncheck_' + i + '" value="1" />';
+                                                                                        tr = tr + "<label for='" + installId + "'></label>";
+                                                                                        tr = tr + "<span class='badge badge-info install'>Install</span></div>";
+                                                                                        $(document).on('click', '.' + installId, function () {
+                                                                                            $('.' + installId).is(':checked') ? $('#' + downloadId).attr('checked', true) : $('#' + downloadId).attr('checked', true);
+                                                                                        });
+                                                                                        $(document).on('click', '.' + downloadId, function () {
+                                                                                            $('.' + downloadId).is(':checked') ? $('#' + downloadId).attr('checked', true) : $('#' + installId).attr('checked', false);
+                                                                                        })
+                                                                                        counter++
+                                                                                    }
 
-                                                                                    var downloadId = "host_" + i + "_download_" + counter;
-                                                                                    var installId = "host_" + i + "_install_" + counter;
-                                                                                    tr = tr + "<div class='checkboxes span6'>";
-                                                                                    tr = tr + "<input  type='checkbox' value='" + value + "'  id='" + downloadId + "' checked class='" + downloadId + " uncheck_" + i + "'/>";
-                                                                                    tr = tr + "<label for='" + downloadId + "'></label>";
-                                                                                    tr = tr + "<span class='badge badge-info modules'>" + mod + " Download</span></div><div class='checkboxes span6'>"
-                                                                                    tr = tr + '<input  type="checkbox"  id="' + installId + '"  class="' + installId + ' uncheck_' + i + '" value="1" />';
-                                                                                    tr = tr + "<label for='" + installId + "'></label>";
-                                                                                    tr = tr + "<span class='badge badge-info install'>Install</span></div>";
-                                                                                    $(document).on('click', '.' + installId, function () {
-                                                                                        $('.' + installId).is(':checked') ? $('#' + downloadId).attr('checked', true) : $('#' + downloadId).attr('checked', true);
-                                                                                    });
-                                                                                    $(document).on('click', '.' + downloadId, function () {
-                                                                                        $('.' + downloadId).is(':checked') ? $('#' + downloadId).attr('checked', true) : $('#' + installId).attr('checked', false);
-                                                                                    })
-                                                                                    counter++
-                                                                                }
+                                                                                    refer = counter; // update index value to loop later
 
-                                                                                refer = counter; // update index value to loop later
+                                                                                });
+                                                                                tr = tr + "<input type='hidden' id='host_" + i + "_index' value='" + refer + "' />";
+                                                                                //    tr = tr + "</div>";
+                                                                                tr = tr + "</div></div></td></tr>";
+                                                                            }
+                                                                            /*   if (o.ostarget === 'WINDOWS') {
+                                                                             tr = tr + "<tr><th colspan='2'><center>" + o.hostname + " - IP: " + o.ip + "</center><button class='btn btn-primary uncheck pull-right' id='uncheck_" + i + "'>Toggle all</button></th></tr>";
+                                                                             tr = tr + "<tr><td  colspan='2'>";
+                                                                             tr = tr + '<div class="row">';
+                                                                             tr = tr + '<div class="items">';
+                                                                             tr = tr + "<input type='hidden' value='" + o.ip + "' class='ipaddress' id='host_" + i + "' />";
+                                                                             
+                                                                             
+                                                                             tr = tr + "<input type='hidden' value='" + o.ostarget + "'  id='ostarget_" + i + "' />";
+                                                                             var refer = 0;
+                                                                             var counter = 0
+                                                                             var downloadId = "host_" + i + "_download_" + counter;
+                                                                             
+                                                                             tr = tr + "<div class='checkboxes span6'>";
+                                                                             tr = tr + "<input  type='checkbox' value='" + release + "'  id='" + downloadId + "' checked class='" + downloadId + " uncheck_" + i + "'/>";
+                                                                             tr = tr + "<label for='" + downloadId + "'></label>";
+                                                                             tr = tr + "<span class='badge badge-info modules'>" + release + " will be downloaded in C:\Mycompany\delivery</span></div>"
+                                                                             
+                                                                             counter++
+                                                                             
+                                                                             
+                                                                             refer = counter; // update index value to loop later
+                                                                             
+                                                                             
+                                                                             tr = tr + "<input type='hidden' id='host_" + i + "_index' value='" + refer + "' />";
+                                                                             //    tr = tr + "</div>";
+                                                                             tr = tr + "</div></td></tr>";
+                                                                             } */
 
-                                                                            });
-                                                                            tr = tr + "<input type='hidden' id='host_" + i + "_index' value='" + refer + "' />";
-                                                                            //    tr = tr + "</div>";
-                                                                            tr = tr + "</div></div></td></tr>";
                                                                         });
                                                                         $('.main tr:last').after(tr);
                                                                         $('#start').css('visibility', 'visible');
@@ -337,6 +369,7 @@ $this->display('_Header.tpl.php');
                 var modules;
                 var install;
                 var options;
+                var ostarget;
                 input = $(this).find(' input.ipaddress');
                 var host = "-H " + input.val();
                 var hostId = input.attr('id');
@@ -477,7 +510,7 @@ $this->display('_Header.tpl.php');
                             var error = data.returncode;
                             var arguments = data.arguments;
                             //stdout ID if you want the modal to display
-                            $('#stdout' + commandId).html('<tr><th>Running commandt ' + arguments + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: '+error+'</code></pre></td><tr>');
+                            $('#stdout' + commandId).html('<tr><th>Running commandt ' + arguments + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
                         }
                     });
                 }, 4000);
