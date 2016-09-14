@@ -40,7 +40,7 @@ $this->display('_Header.tpl.php');
         // Get all the sales order in the tblprogress table
         $.get("/SPOT/provisioning/api/tblprogresses", function (jsonResult) {
             var Jdata = jsonResult.rows;
-           
+
             // $('#salesel').attr('enabled', 'true');
             $.each(Jdata, function (i, o) {
 
@@ -150,7 +150,7 @@ $this->display('_Header.tpl.php');
                 success: createTR,
                 error: function (data) {
                     $('#errormsg').html("An error occured:  " + data.statusText + " " + data.responseText);
-                    
+
                     $('#errormsg').show();
 
                 }
@@ -177,15 +177,21 @@ $this->display('_Header.tpl.php');
                 $.ajax({
                     url: url,
                     type: "GET",
+                    async: false,
+                    cache: false,
+                    timeout: 30000,
+                    error: function () {
+                        return true;
+                    },
                     success: function (data) {
                         var error = data.returncode;
                         var arguments = data.arguments;
-                        
+
                         //Check in tempdata if program is running or not
                         $.get("/SPOT/provisioning/api/tempdata/" + commandId, function (a) {
-                           if (typeof a === 'object' && typeof a.message !== 'undefined')
+                            if (typeof a === 'object' && typeof a.message !== 'undefined')
                                 div = a.message;
-                               
+
                         });
                         //stdout ID if you want the modal to display
                         $('#stdout' + commandId).html('<tr><th>Running command ' + arguments + '<br />' + div + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');

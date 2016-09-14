@@ -199,7 +199,7 @@ $this->display('_Header.tpl.php');
                                                                                 tr = tr + '<div class="row">';
                                                                                 tr = tr + '<div class="items">';
                                                                                 tr = tr + "<input type='hidden' value='" + o.ip + "' class='ipaddress' id='host_" + i + "' />";
-                                                                                tr = tr + "<input type='hidden' value='" + o.ostarget + "'  id='ostarget_" + i + "' />";
+                                                                                tr = tr + "<input type='hidden' value='" + o.ostarget + "'  id='ostarget_" + i + "' class='ostarget' />";
                                                                                 var refer = 0;
                                                                                 var counter = 0
                                                                                 $.each(MODarr, function (index, value) {
@@ -232,34 +232,24 @@ $this->display('_Header.tpl.php');
                                                                                 //    tr = tr + "</div>";
                                                                                 tr = tr + "</div></div></td></tr>";
                                                                             }
-                                                                            /*   if (o.ostarget === 'WINDOWS') {
-                                                                             tr = tr + "<tr><th colspan='2'><center>" + o.hostname + " - IP: " + o.ip + "</center><button class='btn btn-primary uncheck pull-right' id='uncheck_" + i + "'>Toggle all</button></th></tr>";
-                                                                             tr = tr + "<tr><td  colspan='2'>";
-                                                                             tr = tr + '<div class="row">';
-                                                                             tr = tr + '<div class="items">';
-                                                                             tr = tr + "<input type='hidden' value='" + o.ip + "' class='ipaddress' id='host_" + i + "' />";
-                                                                             
-                                                                             
-                                                                             tr = tr + "<input type='hidden' value='" + o.ostarget + "'  id='ostarget_" + i + "' />";
-                                                                             var refer = 0;
-                                                                             var counter = 0
-                                                                             var downloadId = "host_" + i + "_download_" + counter;
-                                                                             
-                                                                             tr = tr + "<div class='checkboxes span6'>";
-                                                                             tr = tr + "<input  type='checkbox' value='" + release + "'  id='" + downloadId + "' checked class='" + downloadId + " uncheck_" + i + "'/>";
-                                                                             tr = tr + "<label for='" + downloadId + "'></label>";
-                                                                             tr = tr + "<span class='badge badge-info modules'>" + release + " will be downloaded in C:\Mycompany\delivery</span></div>"
-                                                                             
-                                                                             counter++
-                                                                             
-                                                                             
-                                                                             refer = counter; // update index value to loop later
-                                                                             
-                                                                             
-                                                                             tr = tr + "<input type='hidden' id='host_" + i + "_index' value='" + refer + "' />";
-                                                                             //    tr = tr + "</div>";
-                                                                             tr = tr + "</div></td></tr>";
-                                                                             } */
+                                                                            if (o.ostarget === 'WINDOWS') {
+                                                                                tr = tr + "<tr><th colspan='2'><center>" + o.hostname + " - IP: " + o.ip + "</center><button class='btn btn-primary uncheck pull-right' id='uncheck_" + i + "'>Toggle all</button></th></tr>";
+                                                                                tr = tr + "<tr><td  colspan='2'>";
+                                                                                tr = tr + '<div class="row">';
+                                                                                tr = tr + '<div class="items">';
+                                                                                tr = tr + "<input type='hidden' value='" + o.ip + "' class='ipaddress' id='host_" + i + "' />";
+
+
+                                                                                tr = tr + "<input type='hidden' value='" + o.ostarget + "'  id='ostarget_" + i + "'  class='ostarget' />";
+
+                                                                                var downloadId = "host_" + i + "_download";
+
+                                                                                tr = tr + "<div class='checkboxes span6'>";
+                                                                                tr = tr + "<input  type='checkbox' value='" + release + "'  id='" + downloadId + "' checked class='" + downloadId + " uncheck_" + i + "'/>";
+                                                                                tr = tr + "<label for='" + downloadId + "'></label>";
+                                                                                tr = tr + "<span class='badge badge-info modules'>" + release + " will be downloaded in C:\\Mycompany\\delivery</span></div>";
+                                                                                tr = tr + "</div></td></tr>";
+                                                                            }
 
                                                                         });
                                                                         $('.main tr:last').after(tr);
@@ -363,59 +353,75 @@ $this->display('_Header.tpl.php');
             var input;
             var hosts = [];
             var keys = [];
-
+            var oss = [];
+            var ostarget;
+            var host;
 
             $('.items').each(function () {
                 var modules;
                 var install;
                 var options;
-                var ostarget;
+                ostarget = $(this).find('input.ostarget').val();
                 input = $(this).find(' input.ipaddress');
-                var host = "-H " + input.val();
                 var hostId = input.attr('id');
-                var index = $('#' + hostId + '_index').val();
-                for (var i = 0; i < index; i++) {
-                    var str;
-                    if (i == 0) {
-                        str = '0';
-                    } else {
-                        str = i;
-                    }
+                if (ostarget === "AIX") {
+                    host = "-H " + input.val();
+                    var index = $('#' + hostId + '_index').val();
+                    for (var i = 0; i < index; i++) {
+                        var str;
+                        if (i == 0) {
+                            str = '0';
+                        } else {
+                            str = i;
+                        }
 
-                    var download = hostId + "_download_" + str;
-                    var checkId = hostId + "_install_" + str;
-                    if ($('#' + download).is(':checked')) {
+                        var download = hostId + "_download_" + str;
+                        var checkId = hostId + "_install_" + str;
+                        if ($('#' + download).is(':checked')) {
 
-                        var module = $('#' + download).val().replace(/(\r\n|\n|\r)/gm, "");
-                        var mod = baseName(module);
-                        if (mod.toLowerCase().indexOf("nse") >= 0)
-                            options = ' -s nsesoft -b nse1 -u root ';
-                        if (mod.toLowerCase().indexOf("nge") >= 0)
-                            options = ' -s ngesoft -b nge1 -u operator ';
-                        if (mod.toLowerCase().indexOf("nre") >= 0)
-                            options = ' -s nresoft -b nre1 -u root ';
-                        if (mod.toLowerCase().indexOf("nsm") >= 0)
-                            options = ' -s nsmsoft -b nsm1 -u operator ';
-                        if (mod.toLowerCase().indexOf("noe") >= 0)
-                            options = ' -s noesoft -b noe1 -u oracle ';
-                        modules = " -M " + module + " ";
-                        $('#' + checkId).is(':checked') ? install = " -I Yes " : install = " -I No ";
+                            var module = $('#' + download).val().replace(/(\r\n|\n|\r)/gm, "");
+                            var mod = baseName(module);
+                            if (mod.toLowerCase().indexOf("nse") >= 0)
+                                options = ' -s nsesoft -b nse1 -u root ';
+                            if (mod.toLowerCase().indexOf("nge") >= 0)
+                                options = ' -s ngesoft -b nge1 -u operator ';
+                            if (mod.toLowerCase().indexOf("nre") >= 0)
+                                options = ' -s nresoft -b nre1 -u root ';
+                            if (mod.toLowerCase().indexOf("nsm") >= 0)
+                                options = ' -s nsmsoft -b nsm1 -u operator ';
+                            if (mod.toLowerCase().indexOf("noe") >= 0)
+                                options = ' -s noesoft -b noe1 -u oracle ';
+                            modules = " -M " + module + " ";
+                            $('#' + checkId).is(':checked') ? install = " -I Yes " : install = " -I No ";
 
-                        hosts.push(host + modules + options + install);
-                        keys.push(input.val());
-
+                            hosts.push(host + modules + options + install);
+                            keys.push(input.val());
+                            oss.push(ostarget);
+                        }
                     }
                 }
+                if (ostarget === "WINDOWS") {
+                    var host = " -i " + input.val();
+                    var download = hostId + "_download";
+                    if ($('#' + download).is(':checked')) {
+                        var HErel = " -r " + $('#' + download).val();
+                        hosts.push(host + HErel);
+                        keys.push(input.val());
+                        oss.push(ostarget);
+                    }
+                }
+
             });
-            console.log(keys);
+
             var unsetAlias = 13;
-            var scriptID = 21;
+
             var clientaddress = '<?php echo GlobalConfig::$SYSPROD_SERVER->MGT; ?>';
             var rack = 100;
 
             var exesequence = 0; //putting zero no return of stdout and stderr
             var executionFlag = 1;
             var counter = 1;
+
             //Ok all values prsed, can we proceed to send to remote servers
             $.each(hosts, function (index, host) {
                 var argstring = {};
@@ -425,6 +431,14 @@ $this->display('_Header.tpl.php');
                     "0": host,
                     "1": " &"
                 };
+                var scriptID;
+                if (oss[index] === "AIX") {
+                    scriptID = 21; // Install modules
+                }
+                if (oss[index] === "WINDOWS") {
+                    scriptID = 32 // release Download
+                }
+                console.log('script id:' + scriptID + "oss[index] : " + oss[index])
                 datastring = JSON.stringify(argstring);
                 var number = index + counter;
                 var salesOrder = SO + number;
@@ -497,6 +511,7 @@ $this->display('_Header.tpl.php');
                 $('#monitorContainer').append(e);
             }
             ;
+            var div = '<div class="blinking alert alert-danger">Starting execution.....</div>';
             function monitoring(data) {
                 setInterval(function () {
 
@@ -509,8 +524,14 @@ $this->display('_Header.tpl.php');
                         success: function (data) {
                             var error = data.returncode;
                             var arguments = data.arguments;
+                            //Check in tempdata if program is running or not
+                            $.get("/SPOT/provisioning/api/tempdata/" + commandId, function (a) {
+                                if (typeof a === 'object' && typeof a.message !== 'undefined')
+                                    div = a.message;
+
+                            });
                             //stdout ID if you want the modal to display
-                            $('#stdout' + commandId).html('<tr><th>Running commandt ' + arguments + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
+                            $('#stdout' + commandId).html('<tr><th>Running commandt ' + arguments + '<br />' + div + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
                         }
                     });
                 }, 4000);

@@ -243,7 +243,6 @@ $this->display('_Header.tpl.php');
             var stringToParse = salesorder;
             var arr = stringToParse.split('|');
             var sales_order_ref = arr[0];
-console.log(stringToParse)
             var r = confirm("Are you sure to assemble all items in Sales order " + sales_order_ref + "? \n This action cannot undone!");
             if (r == false)
                 return;
