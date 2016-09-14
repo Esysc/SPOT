@@ -531,7 +531,8 @@ $this->display('_Header.tpl.php');
 
                             });
                             //stdout ID if you want the modal to display
-                            $('#stdout' + commandId).html('<tr><th>Running commandt ' + arguments + '<br />' + div + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
+                            $('#now').html(div);
+                            $('#stdout' + commandId).html('<tr><th>Running commandt ' + arguments + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
                         }
                     });
                 }, 4000);
@@ -621,7 +622,7 @@ $this->display('_Header.tpl.php');
         <div class="modal-header">
             <a class="close" data-dismiss="modal">&times;</a>
             <h3>
-                <i class="icon-road"></i> Running Processes
+                <i class="icon-road"></i> Running Processes <span id="now"></span>
 
             </h3>
         </div>
