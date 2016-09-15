@@ -138,7 +138,7 @@ $custom_fields = $Tools->fetch_custom_fields('subnets');
                 <tr>
                     <th><?php print _('Vlan') . ' - ' . @$request['Vlan']; ?></th>
                     <td>
-                        <input type="text" disabled name="VlanNum" class="form-control input-sm" value="<?php print $vlanNum; ?>" size="30" >
+                        <input type="text"  name="VlanNum" class="form-control input-sm" value="<?php print $vlanNum; ?>" size="30" >
                         <input type="hidden" name="vlanId" class="form-control input-sm" value="<?php print $vlanId; ?>" size="30" >
                     </td>
                 </tr>
