@@ -404,7 +404,7 @@ $this->display('_Header.tpl.php');
                     var host = " -i " + input.val();
                     var download = hostId + "_download";
                     if ($('#' + download).is(':checked')) {
-                        var HErel = " -r " + $('#' + download).val();
+                        var HErel = " -r " + $('#' + download).val().replace(/(\r\n|\n|\r)/gm, "");
                         hosts.push(host + HErel);
                         keys.push(input.val());
                         oss.push(ostarget);
