@@ -82,10 +82,12 @@ class DefaultController extends AppBaseController {
     public function InstallModules() {
         $this->Render('InstallModulesView.tpl');
     }
+
     public function InstallPuppet() {
         $this->Render('puppetInstall.tpl');
     }
-     public function GenerateHostsFile() {
+
+    public function GenerateHostsFile() {
         $this->Render('HostsFileView.tpl');
     }
 
@@ -98,31 +100,30 @@ class DefaultController extends AppBaseController {
 
 
         $json = json_decode(RequestUtil::GetBody());
-        
+
         if (!$json) {
             throw new Exception('The request body does not contain valid JSON');
         }
 
         $pk = $this->GetRouter()->GetUrlParam('remotecommandid');
-        
+
         $copy = $this->GetRouter()->GetUrlParam('copy');
-       
+
         $remotecommands = $this->Phreezer->Get('Remotecommands', $pk);
         $filecontentout = $remotecommands->Returnstdout;
         $line = $this->SafeGetVal($json, 'returnstdout', $remotecommands->Returnstdout);
-        if ( $copy === "COPY") {
-           $filecontentout = preg_replace('/^.+\n/', '', $filecontentout);
+        if ($copy === "COPY") {
+            $filecontentout = implode("\n", array_slice(explode("\n", $filecontentout), 1));
+            $line = str_replace("COPY", "DEBUG", $line);
         }
-        $remotecommands->Returnstdout = "$line"."\n$filecontentout";
-       
-      
+        $remotecommands->Returnstdout = "$line" . "\n$filecontentout";
+
+
 
 
         $remotecommands->Save();
 
         $this->RenderJSON($remotecommands, $this->JSONPCallback(), true, $this->SimpleObjectParams());
-
-
     }
 
     /**
