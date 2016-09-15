@@ -234,9 +234,9 @@ $this->display('_Header.tpl.php');
                         </option>
 
                     </select>
-                    <div class="pull-right release">
+                    <div class="pull-right release">                 
+                        <p class="alert alert-info"><strong>Release name</strong></p>
                         <input type="text"  id="release"  value="" required />
-
                     </div>
                 </td>
 
