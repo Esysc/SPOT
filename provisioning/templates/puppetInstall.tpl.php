@@ -112,7 +112,8 @@ $this->display('_Header.tpl.php');
             var args = {
                 "0": ipaddress,
                 "1": gateway,
-                "2": release
+                "2": release,
+                "3": ' &'
             };
             var scriptID = 31; //puppet install script id
             var clientaddress = '<?php echo GlobalConfig::$SYSPROD_SERVER->MGT; ?>';

@@ -130,7 +130,7 @@ GlobalConfig::$ROUTE_MAP = array(
     'GET:commander' => array('route' => 'Default.runCommander'),
     //Give the route for the log wrapper
     
-    'POST:api/logWrapper/(:num)' => array('route' => 'Default.logWrapper', 'params' => array('remotecommandid' => 2, 'copy' => 3)),
+    'POST:api/logWrapper/(:num)/(:any)' => array('route' => 'Default.logWrapper', 'params' => array('remotecommandid' => 2, 'copy' => 3)),
     
 // Networkequipment
     'GET:networkequipments' => array('route' => 'Networkequipment.ListView'),
