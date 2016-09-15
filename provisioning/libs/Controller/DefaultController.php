@@ -98,15 +98,21 @@ class DefaultController extends AppBaseController {
 
 
         $json = json_decode(RequestUtil::GetBody());
-
+        $copy = "";
         if (!$json) {
             throw new Exception('The request body does not contain valid JSON');
         }
 
         $pk = $this->GetRouter()->GetUrlParam('remotecommandid');
+        if (isset($this->GetRouter()->GetUrlParam('copy'))) {
+            $copy = $this->GetRouter()->GetUrlParam('copy');
+        }
         $remotecommands = $this->Phreezer->Get('Remotecommands', $pk);
         $filecontentout = $remotecommands->Returnstdout;
         $line = $this->SafeGetVal($json, 'returnstdout', $remotecommands->Returnstdout);
+        if ( $copy !== "") {
+           $filecontentout = preg_replace('/^.+\n/', '', $filecontentout);
+        }
         $remotecommands->Returnstdout = "$line"."\n$filecontentout";
        
       
