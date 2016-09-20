@@ -238,12 +238,8 @@ $this->display('_Header.tpl.php');
                                                                                 tr = tr + '<div class="row">';
                                                                                 tr = tr + '<div class="items">';
                                                                                 tr = tr + "<input type='hidden' value='" + o.ip + "' class='ipaddress' id='host_" + i + "' />";
-
-
                                                                                 tr = tr + "<input type='hidden' value='" + o.ostarget + "'  id='ostarget_" + i + "'  class='ostarget' />";
-
                                                                                 var downloadId = "host_" + i + "_download";
-
                                                                                 tr = tr + "<div class='checkboxes span6'>";
                                                                                 tr = tr + "<input  type='checkbox' value='" + release + "'  id='" + downloadId + "' checked class='" + downloadId + " uncheck_" + i + "'/>";
                                                                                 tr = tr + "<label for='" + downloadId + "'></label>";
@@ -307,7 +303,6 @@ $this->display('_Header.tpl.php');
                 });
             });
         });
-
         $(document).on('click', '.uncheck', function () {
             var myId = $(this).attr('id');
             var checkboxes = $('.' + myId);
@@ -356,7 +351,6 @@ $this->display('_Header.tpl.php');
             var oss = [];
             var ostarget;
             var host;
-
             $('.items').each(function () {
                 var modules;
                 var install;
@@ -393,7 +387,6 @@ $this->display('_Header.tpl.php');
                                 options = ' -s noesoft -b noe1 -u oracle ';
                             modules = " -M " + module + " ";
                             $('#' + checkId).is(':checked') ? install = " -I Yes " : install = " -I No ";
-
                             hosts.push(host + modules + options + install);
                             keys.push(input.val());
                             oss.push(ostarget);
@@ -412,21 +405,16 @@ $this->display('_Header.tpl.php');
                 }
 
             });
-
             var unsetAlias = 13;
-
             var clientaddress = '<?php echo GlobalConfig::$SYSPROD_SERVER->MGT; ?>';
             var rack = 100;
-
             var exesequence = 0; //putting zero no return of stdout and stderr
             var executionFlag = 1;
             var counter = 1;
-
             //Ok all values prsed, can we proceed to send to remote servers
             $.each(hosts, function (index, host) {
                 var argstring = {};
                 var shelf = keys[index];
-
                 argstring = {
                     "0": host,
                     "1": " &"
@@ -468,10 +456,8 @@ $this->display('_Header.tpl.php');
                         $('#errormsg').html("An error occured:  " + data.statusText + " " + data.responseText);
                         console.log(data);
                         $('#errormsg').show();
-
                     }
                 }).done(monitoring);
-
                 counter++;
             });
             // Send set alias IP command as last command because will be the first to be run
@@ -505,10 +491,9 @@ $this->display('_Header.tpl.php');
                     }, 4000);
                 }
             });
-
-
             function createTR(data) {
                 var commandId = data.remotecommandid;
+                
                 var e = $('<table id="stdout' + commandId + '" class="table-bordered table-responsive table table-striped"></table>');
                 $('#monitorContainer').append(e);
             }
@@ -518,7 +503,6 @@ $this->display('_Header.tpl.php');
                 var mymon = setInterval(function () {
 
                     var commandId = data.remotecommandid;
-
                     var url = "/SPOT/provisioning/api/remotecommands/" + commandId
                     var detail, error, returnstdout, returnstderr;
                     $.ajax({
@@ -536,21 +520,23 @@ $this->display('_Header.tpl.php');
                                 type: "GET",
                                 success: function (a) {
                                     if (typeof a === 'object' && typeof a.message !== 'undefined') {
-                                        if ($('#' + commandId).html() === '')
+                                         
+                                        if ($(a.message).hasClass('blinking')) {
                                             $('#' + commandId).html(a.message);
-                                        if (!$(a.message).hasClass('blinking'))
+                                            $('div ', '#' + commandId).append('<span class="loader progress progress-striped active pull-right"><span class="bar"></span></span>');
+                                        } else {
+                                            $('#' + commandId).html(a.message)
                                             clearInterval(mymon);
-                                    }
-                                    //stdout ID if you want the modal to display
+                                        }
+                                          } 
 
 
+                                    
                                 }
                             });
-                            $('#stdout' + commandId).html('<tr><th id="' + commandId + '"></th></tr><tr><td><pre class="prettyprint">' + returnstdout + "</pre><code> " + returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
-
+                            $('#stdout' + commandId).html('<tr><th id="' + commandId + '"><div class="alert alert-danger blinking">Executing command ID ' + commandId + '<span class="loader progress progress-striped active pull-right"><span class="bar"></span></span></div></th></tr><tr><td><pre class="prettyprint">' + returnstdout + "</pre><code> " + returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
                         }
                     });
-
                 }, 4000);
             }
             ;

@@ -775,6 +775,7 @@ class Subnets extends Common_functions {
      *
      * @access public
      * @param mixed $subnetId
+     * @param string|array $result_fields (default: "*")
      * @return void
      */
     public function has_slaves($subnetId) {
