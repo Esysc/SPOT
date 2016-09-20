@@ -505,36 +505,52 @@ $this->display('_Header.tpl.php');
                     }, 4000);
                 }
             });
+
+
             function createTR(data) {
                 var commandId = data.remotecommandid;
                 var e = $('<table id="stdout' + commandId + '" class="table-bordered table-responsive table table-striped"></table>');
                 $('#monitorContainer').append(e);
             }
             ;
-            var div = '<div class="blinking alert alert-danger">Starting execution.....</div>';
+
             function monitoring(data) {
-                setInterval(function () {
+                var mymon = setInterval(function () {
 
                     var commandId = data.remotecommandid;
-                    var url = "/SPOT/provisioning/api/remotecommands/" + commandId
 
+                    var url = "/SPOT/provisioning/api/remotecommands/" + commandId
+                    var detail, error, returnstdout, returnstderr;
                     $.ajax({
                         url: url,
                         type: "GET",
                         success: function (data) {
-                            var error = data.returncode;
-                            var arguments = data.arguments;
-                            //Check in tempdata if program is running or not
-                            $.get("/SPOT/provisioning/api/tempdata/" + commandId, function (a) {
-                                if (typeof a === 'object' && typeof a.message !== 'undefined')
-                                    div = a.message;
+                            error = data.returncode;
+                            detail = data.arguments;
+                            returnstdout = data.returnstdout;
+                            returnstderr = data.returnstderr;
+                            // Need to be a separate ajax call
+                            var temp = "/SPOT/provisioning/api/tempdata/" + commandId;
+                            $.ajax({
+                                url: temp,
+                                type: "GET",
+                                success: function (a) {
+                                    if (typeof a === 'object' && typeof a.message !== 'undefined') {
+                                        if ($('#' + commandId).html() === '')
+                                            $('#' + commandId).html(a.message);
+                                        if (!$(a.message).hasClass('blinking'))
+                                            clearInterval(mymon);
+                                    }
+                                    //stdout ID if you want the modal to display
 
+
+                                }
                             });
-                            //stdout ID if you want the modal to display
-                            $('#now').html(div);
-                            $('#stdout' + commandId).html('<tr><th>Running commandt ' + arguments + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
+                            $('#stdout' + commandId).html('<tr><th id="' + commandId + '"></th></tr><tr><td><pre class="prettyprint">' + returnstdout + "</pre><code> " + returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
+
                         }
                     });
+
                 }, 4000);
             }
             ;

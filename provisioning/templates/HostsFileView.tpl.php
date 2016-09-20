@@ -85,7 +85,7 @@ $this->display('_Header.tpl.php');
             $.get("/SPOT/provisioning/api/tblprogresses?salesorder=" + SO, function (jsonResult) {
                 var Jdata = jsonResult.rows[0].data;
                 var Jsonspecs = JSON.parse(Jdata);
-                $('#subnet').val(Jsonspecs.network);
+                $('#subnet').val(Jsonspecs.network).trigger('chosen:updated)');
 
                 $.each(Jsonspecs.clients, function (i, o) {
 
