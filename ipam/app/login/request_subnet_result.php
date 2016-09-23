@@ -30,7 +30,7 @@ if (!$Result->validate_email($_POST['requester'])) {
 
 // Get the posted location and create it if not already in db
 $location = @$_POST['location'];
-$Tools->check_location_id_by_address($location, @$_POST['description']);
+$Tools->check_location_id_by_address($location, @$_POST['location']);
 
 # formulate insert values
 $values = array("subnet" => $_POST['subnet'],
