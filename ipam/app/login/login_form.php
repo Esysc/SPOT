@@ -73,8 +73,11 @@
         ?>
 
         <div class="iprequest">
+            <a class="pull-left" href="<?php print create_link("request_dismiss"); ?>">
+                <i class="fa fa-minus-circle fa-pad-right"></i> <?php print _('Dismiss a SUBNET'); ?>
+            </a>
             <a href="<?php print create_link("request_subnet"); ?>">
-                <i class="fa fa-plus fa-pad-right"></i> <?php print _('Request new SUBNET'); ?>
+                <i class="fa fa-plus-circle fa-pad-right"></i> <?php print _('Request new SUBNET'); ?>
             </a>
         </div>
         <?php

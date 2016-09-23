@@ -298,9 +298,9 @@ $(document).ready(function () {
         var subnet = $("option:selected", this).text();
         
         if (id !== '') {
-            $('#subnet').val(subnet);
+            $('#dismiss').val(subnet);
             $('#subnetid').val(id);
-            var SUBNETdata = $('#subnet').serialize();
+            var SUBNETdata = $('#dismiss').serialize();
             //using the same function for overlap to obtain details
             $.post('app/login/request_dismiss_details.php', SUBNETdata, function (data) {
                 $('div#details').html(data);

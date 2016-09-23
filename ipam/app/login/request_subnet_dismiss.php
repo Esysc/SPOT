@@ -48,7 +48,7 @@ $subnets = (array) $subnets;
                             </button>
                         </span>
                         <div class="clearfix">
-                            <input  name="subnet" id="subnet" class="form-control" type="text" placeholder="xxx.xxx.xxx.0" />
+                            <input  name="subnet" id="dismiss" class="form-control" type="text" placeholder="xxx.xxx.xxx.0" />
                             <input  name="subnetid" id="subnetid" class="form-control" type="hidden"  />
                         </div>
                         
