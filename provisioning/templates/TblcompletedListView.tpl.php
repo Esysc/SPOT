@@ -119,7 +119,7 @@ $this->display('_Header.tpl.php');
         </form>
 
 
-        <form class="form-horizontal" onsubmit="return false;">
+        <form class="form-horizontal" onsubmit="return false;"> 
         <fieldset>
         <div id="idInputContainer" class="control-group">
         <label class="control-label" for="id">Id</label>
@@ -142,6 +142,7 @@ $this->display('_Header.tpl.php');
         <textarea style="display:none;" class="input-xlarge" id="data" rows="3"><%= _.escape(item.get('data') || '') %></textarea>
         <% var content = JSON.parse(item.get('data')) %>
         <%=  htmlDiv = '<table class="table table-striped table-bordered table-condensed table-responsive table-hover">' %>
+        <% var n; %>
         <% $.each(content, function(key,val) { %>
         <%  if (! $.isPlainObject(val)) {%> 
         <% htmlDiv = htmlDiv + '<tr><td><strong>' + key + '</strong></td><td>' + val + '</td></tr>' %>
@@ -149,13 +150,13 @@ $this->display('_Header.tpl.php');
         <% $.each(val, function(subkey,subval) { %>
         <% $.each(subval, function(iterkey,iterval) { %> 
         <% htmlDiv = htmlDiv + '<tr><td><strong>'+key+'_' + subkey + ':'+ iterkey + '</strong></td><td>' + iterval + '</td></tr>' %> 
-        <% }) %>
+        <% n = subkey; %>
+        <% }) %>                 
         <% }) %>
         <% } %>  
         <% }) %> 
         <% htmlDiv = htmlDiv + '</table>' %>
-
-
+        <% $('#count').text(n); %>
         <p><%= htmlDiv %></p>
 
 
@@ -203,6 +204,7 @@ $this->display('_Header.tpl.php');
             <div id="tblprogressModelContainer"></div>
         </div>
         <div class="modal-footer">
+            <span class="btn btn-info pull-left">Total installation: <span id="count"></span></span>
             <button href="includes/getInstallationReport.php?sales_order_ref=" id="generate_report" class="btn btn-danger btn-mini">Installation Report</button>
             <button class="btn btn-success btn-mini" id="excel" >Excel Export</button>
             <button class="btn btn-warning btn-mini" id="pdf" >PDF Export</button>

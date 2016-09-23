@@ -265,6 +265,62 @@ $(document).ready(function () {
         }
     }
 
+    /*	submit DISMISS request
+     *****************************************/
+    $(document).on("submit", "#requestSUBMIT", function () {
+
+        var SUBNETdata = $(this).serialize();
+        var postData = SUBNETdata;
+
+        showSpinner();
+
+        //post to check form
+
+        $.post('app/login/request_dismiss_result.php', postData, function (data) {
+            $('div#REQUESTdismissresult').html(data).slideDown('fast');
+            hideSpinner();
+            //reset sender to prevent duplicates on success
+            if (data.search("alert alert-success") != -1) {
+                $('#subnet').val('');
+                $(':submit').val('Submit another');
+                //$('form#requestSUBNET input[type="text"]').val('');
+                //$('form#requestSUBNET textarea').val('');
+            }
+            if ($(':submit').val() === 'Submit another')
+                blinking($(':submit'));
+        });
+        return false;
+    });
+    $(document).on("change", "#get-dismiss-active", function () {
+        showSpinner();
+
+        var id = $(this).val();
+        var subnet = $("option:selected", this).text();
+        
+        if (id !== '') {
+            $('#subnet').val(subnet);
+            $('#subnetid').val(id);
+            var SUBNETdata = $('#subnet').serialize();
+            //using the same function for overlap to obtain details
+            $.post('app/login/request_dismiss_details.php', SUBNETdata, function (data) {
+                $('div#details').html(data);
+            });
+            
+            hideSpinner();
+        }
+        return false;
+    });
+// clear request field
+    $(".clearDISMISSrequest").click(function () {
+        $('form#requestDISMISS input[type="text"]').val('');
+        $('form#requestDISMISS textarea').val('');
+
+    });
+    $('#modalSubnet').on('shown.bs.modal', function () {
+        $('.chosen-select', this).chosen();
+    });
+
 });
 
 
+ 

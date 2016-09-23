@@ -50,6 +50,8 @@ if ($_GET['page'] == "install") {
     require("app/login/index.php");
 } elseif ($_GET['page'] == "request_subnet") {
     require("app/login/index.php");
+} elseif ($_GET['page'] == "request_dismiss") {
+    require("app/login/index.php");
 } elseif ($_GET['page'] == "opensearch") {
     require("app/tools/search/opensearch.php");
 } else {

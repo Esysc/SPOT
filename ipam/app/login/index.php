@@ -131,6 +131,8 @@ if (!empty($_SERVER['PHP_AUTH_USER'])) {
                         include_once('request_ip_form.php');
                     } else if ($_GET['page'] == "request_subnet") {
                         include_once('request_subnet_form.php');
+                    } else if ($_GET['page'] == "request_dismiss") {
+                        include_once('request_subnet_dismiss.php');
                     } else {
                         $_GET['subnetId'] = "404";
                         print "<div id='error'>";
