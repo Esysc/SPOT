@@ -17,12 +17,12 @@ $Tools->get_settings();
 # 
 $valueCheck = "";
 foreach ($_POST as $name => $value) {
-    if ( $value === '')  {
+    if ($value === '') {
         $valueCheck .= "$name ";
-        
     }
 }
-if ($valueCheck !== "" ) $Result->show("danger", _('Please Fill the mandatory fields') . '! (<strong>' . $valueCheck. '</strong>)', true);
+if ($valueCheck !== "")
+    $Result->show("danger", _('Please Fill the mandatory fields') . '! (<strong>' . $valueCheck . '</strong>)', true);
 # verify email
 if (!$Result->validate_email($_POST['requester'])) {
     $Result->show("danger", _('Please provide valid email address') . '! (' . _('requester') . ': ' . $_POST['requester'] . ')', true);
@@ -31,7 +31,7 @@ if (!$Result->validate_email($_POST['requester'])) {
 
 # formulate insert values
 $values = array("subnet" => $_POST['subnet'],
-    
+    "subnetid" => $_POST['subnetid'],
     "requester" => $_POST['requester'],
     "comment" => @$_POST['comment'],
     "processed" => 0
@@ -42,6 +42,6 @@ if (!$Admin->object_modify("subnetDismiss", "add", "id", $values)) {
         $Result->show("success", _('Request submitted successfully'));
     }
     # send mail
-  //  $Tools->subnet_request_send_mail("new", $values);
+      $Tools->subnet_dismiss_send_mail("new", $values);
 }
 ?>

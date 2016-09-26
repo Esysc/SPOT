@@ -143,7 +143,7 @@ $(document).ready(function () {
         // Chosen list reordered
         // sort list
         $('select').each(function () {
-           
+
             var my_options = $("option", this);
             var optionSelected = $(this).find(":selected").val();
             my_options.sort(function (a, b) {
@@ -157,7 +157,7 @@ $(document).ready(function () {
             $(this).empty().append(my_options).chosen();
             $(this).val(optionSelected);
             $(this).trigger("chosen:updated");
-    
+
         });
         //disable page scrolling on bottom
         $('body').addClass('stop-scrolling');
@@ -3496,27 +3496,27 @@ $(document).ready(function () {
     };
     var perPage = 5; // Default value, may change
     /* Paginate the table (trigger the change), put this at the end of the page:
-    *  $('.perpage').trigger('change');
-    *  class .perpage is the class of the select form
-    */
-    
+     *  $('.perpage').trigger('change');
+     *  class .perpage is the class of the select form
+     */
+
     /*
      * This function recalculate the pagination on a given table
      * it works based on this template
      * <form class="pull-right">
-            <label for="perpage">
-                Entries per Page:
-            </label>   
-            <select class="perpage" data-pager="#myPager" data-table="#processedSubnets" style="width:50px;">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-
-            </select>
-        </form>
-    * data-table is the id of tbody and data-pager is the id of the pagination controls
-                    *
+     <label for="perpage">
+     Entries per Page:
+     </label>   
+     <select class="perpage" data-pager="#myPager" data-table="#processedSubnets" style="width:50px;">
+     <option value="5">5</option>
+     <option value="10">10</option>
+     <option value="15">15</option>
+     <option value="20">20</option>
+     
+     </select>
+     </form>
+     * data-table is the id of tbody and data-pager is the id of the pagination controls
+     *
      */
     $(document).on('change', '.perpage', function () {
         perPage = $(this).val();
@@ -3525,7 +3525,7 @@ $(document).ready(function () {
         //reset the pager
         $(myPager).html('');
         $(tbodyID).pageMe({pagerSelector: myPager, showPrevNext: true, hidePageNumbers: false, perPage: perPage});
-        
+
     });
 
 
@@ -3569,6 +3569,29 @@ $(document).ready(function () {
         }
     });
     showProgress();
- 
+
+    /*
+     * Edit subnet dismis request
+     * 
+     */
+    //edit request accept/reject
+    $('div#dismissSubnet button').on('click', function () {
+       
+        open_popup("700", "app/admin/dismissRequests/edit.php", {requestId: $(this).attr('data-requestid')});
+    });
+    //submit form
+    $(document).on("click", "button.manageDismiss", function () {
+        /*
+         * Enable disabled fields to serialize correctly
+         * 
+         */
+        var myForm = $('.manageDismissEdit');
+        var disabled = myForm.find(':input:disabled').removeAttr('disabled');
+        var postValues = $('form.manageDismissEdit').serialize();
+        var action = $(this).attr('data-action');
+        var postData = postValues + "&action=" + action;
+        // submit
+        submit_popup_data(".manageRequestResult", "app/admin/dismissRequests/edit-result.php", postData);
+    });
     return false;
 });

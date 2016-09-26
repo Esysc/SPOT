@@ -781,6 +781,31 @@ class Tools extends Common_functions {
     }
 
     /**
+     * 	@subnetDismiss methods (for subnet Dismission request)
+     * 	--------------------------------
+     */
+
+    /**
+     * fetches all subnet Dismission requests and saves them to $subnetRequests
+     *
+     * @access public
+     * @return void
+     */
+    public function subnetDismiss_fetch($num = true) {
+        return $num ? $this->subnetDismiss_fetch_num() : $this->subnetDismiss_fetch_objects();
+    }
+
+    /**
+     * Fetches number of active subnet Dismissionrequests
+     *
+     * @access private
+     * @return void
+     */
+    private function subnetDismiss_fetch_num() {
+        return $this->count_database_objects("subnetDismiss", "processed", 0);
+    }
+
+    /**
      * 	@subnetRequest methods (for subnet request)
      * 	--------------------------------
      */
@@ -960,11 +985,11 @@ class Tools extends Common_functions {
 
 # generate content
         if ($action == "new") {
-            $subject = "New Subnet address request";
+            $subject = "New " . $values['Subnet'] . " subnet request";
         } elseif ($action == "accept") {
-            $subject = "Subnet address request accepted";
+            $subject = "Subnet " . $values['Subnet'] . " request accepted";
         } elseif ($action == "reject") {
-            $subject = "Subnet address request rejected";
+            $subject = "Subnet " . $values['Subnet'] . " request rejected";
         } else {
             $this->Result->show("danger", _("Invalid request action"), true);
         }
@@ -1226,9 +1251,9 @@ class Tools extends Common_functions {
             }
 // Location
             elseif ($k == "Location") {
-                 if ( is_numeric($v)) {
-                     $v = $this->fetch_location_by_id($v);
-                 }
+                if (is_numeric($v)) {
+                    $v = $this->fetch_location_by_id($v);
+                }
                 $mail['Location'] = $v;
             }
 // owner
@@ -1260,6 +1285,101 @@ class Tools extends Common_functions {
         }
 // response
         return $mail;
+    }
+
+    /**
+     * Sends mail for SUBNET dismission request
+     *
+     * @access public
+     * @param string $action (default: "new")
+     * @param mixed $values
+     * @return void
+     */
+    public function subnet_dismiss_send_mail($action = "new", $values) {
+
+# fetch mailer settings
+        $mail_settings = $this->fetch_object("settingsMail", "id", 1);
+
+# initialize mailer
+        $this->get_settings();
+        $phpipam_mail = new phpipam_mail($this->settings, $mail_settings);
+        $phpipam_mail->initialize_mailer();
+
+
+# get all users and check who to end mail to
+        $recipients = $this->subnet_request_get_mail_recipients($values['subnet']);
+
+# add requester to cc
+        $recipients_requester = $values['requester'];
+
+# reformat key / vaues
+        $values = $this->subnet_request_reformat_mail_values($values);
+#reformat empty
+        $values = $this->reformat_empty_array_fields($values, "/");
+
+# generate content
+        if ($action == "new") {
+            $subject = $values['Subnet'] . "  dismiss request";
+        } elseif ($action == "accept") {
+            $subject = $values['Subnet'] . "  dismiss request accepted";
+        } elseif ($action == "reject") {
+            $subject = $values['Subnet'] . "  dismiss request rejected";
+        } else {
+            $this->Result->show("danger", _("Invalid request action"), true);
+        }
+
+// set html content
+        $content[] = "<table style='margin-left:10px;margin-top:20px;width:auto;padding:0px;border-collapse:collapse;'>";
+        $content[] = "<tr><td colspan='2' style='margin:0px;>$this->mail_font_style <strong>$subject</strong></font></td></tr>";
+        foreach ($values as $k => $v) {
+// title search
+            if (preg_match("/s_title_/", $k)) {
+                $content[] = "<tr><td colspan='2' style='margin:0px;border-bottom:1px solid #eeeeee;'>$this->mail_font_style<strong>$v</strong></font></td></tr>";
+            } else {
+//content
+                $content[] = "<tr>";
+                $content[] = "<td style='padding-left:15px;margin:0px;'>$this->mail_font_style $k</font></td>";
+                $content[] = "<td style='padding-left:15px;margin:0px;'>$this->mail_font_style $v</font></td>";
+                $content[] = "</tr>";
+            }
+        }
+        $content[] = "<tr><td style='padding-top:15px;padding-bottom:3px;text-align:right;color:#ccc;'>$this->mail_font_style Sent at " . date('Y/m/d H:i') . "</font></td></tr>";
+//set alt content
+        $content_plain[] = "$subject" . "\r\n------------------------------\r\n";
+        foreach ($values as $k => $v) {
+            $content_plain[] = $k . " => " . $v;
+        }
+        $content_plain[] = "\r\n\r\n" . _("Sent by user") . " " . $User->user->real_name . " at " . date('Y/m/d H:i');
+        $content[] = "</table>";
+
+// set content
+        $content = $phpipam_mail->generate_message(implode("\r\n", $content));
+        $content_plain = implode("\r\n", $content_plain);
+
+# try to send
+        try {
+            $phpipam_mail->Php_mailer->setFrom($mail_settings->mAdminMail, $mail_settings->mAdminName);
+            if ($recipients !== false) {
+                foreach ($recipients as $r) {
+                    $phpipam_mail->Php_mailer->addAddress(addslashes(trim($r->email)));
+                }
+                $phpipam_mail->Php_mailer->AddCC(addslashes(trim($recipients_requester)));
+            } else {
+                $phpipam_mail->Php_mailer->addAddress(addslashes(trim($recipients_requester)));
+            }
+            $phpipam_mail->Php_mailer->Subject = $subject;
+            $phpipam_mail->Php_mailer->msgHTML($content);
+            $phpipam_mail->Php_mailer->AltBody = $content_plain;
+//send
+            $phpipam_mail->Php_mailer->send();
+        } catch (phpmailerException $e) {
+            $Result->show("danger", "Mailer Error: " . $e->errorMessage(), true);
+        } catch (Exception $e) {
+            $Result->show("danger", "Mailer Error: " . $e->errorMessage(), true);
+        }
+
+# ok
+        return true;
     }
 
     /**

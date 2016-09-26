@@ -51,11 +51,13 @@ if ($User->settings->enableIPrequests==1) {
 		}
 	}
 } else {
-    # count subnet requests
+    # count new subnet / dismission requests
 	$subnetRequests = $Tools->subnetRequests_fetch(true);
-        
+        $subnetDismiss = $Tools->subnetDismiss_fetch(true);
 	# remove
 	if ($subnetRequests==0) { unset($subnetRequests); }
+        
+        if ($subnetDismiss==0) { unset($subnetDismiss); }
 	# parse
    
 	if ($User->is_admin(false)==false && isset($subnetRequests)) {
@@ -78,6 +80,29 @@ if ($User->settings->enableIPrequests==1) {
 			unset($subnetRequests);
 		} else {
 			$subnetRequests = sizeof($subnetRequests);
+                       
+		}
+	}
+        if ($User->is_admin(false)==false && isset($subnetDismiss)) {
+           
+		# fetch all Active subnet requests
+		$subnetDismiss   = $Tools->fetch_multiple_objects ("subnetDismiss", "processed", 0, "id", false);
+                 
+		foreach ($subnetDismiss as $k=>$r) {
+			// check permissions
+			if($Subnets->subnet_check_permission($User->user) != 3) {
+                            echo "www";
+				unset($subnetDismiss[$k]);
+			}
+                        
+		}
+              
+               
+		# null
+		if (sizeof($subnetDismiss)==0) {
+			unset($subnetDismiss);
+		} else {
+			$subnetDismiss = sizeof($subnetDismiss);
                        
 		}
 	}

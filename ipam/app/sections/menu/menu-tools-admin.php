@@ -184,6 +184,16 @@ if ($User->is_admin(false)) {
         </li>
         <?php
     }
+    # get all subnet Dismission request
+
+    if (isset($subnetDismiss)) {
+        ?>
+
+        <li>
+            <a href="<?php print create_link("tools", "subnetDismiss"); ?>" rel='tooltip' class="icon-li btn-danger" data-placement='bottom' title="<?php print $subnetDismiss . " " . _('Request') . " " . _(' for subnet dismission waiting for your approval'); ?>"><i class='fa fa-envelope-o' style="padding-right:2px;"></i><sup><?php print $subnetDismiss; ?></sup></a>
+        </li>
+        <?php
+    }
     # check for new version periodically, 1x/week
     if ($User->is_admin(false) && (strtotime(date("Y-m-d H:i:s")) - strtotime($User->settings->vcheckDate)) > 604800) {
         # check for new version

@@ -38,7 +38,7 @@ $subnets = (array) $subnets;
         <!-- select dismiss dropdown -->
         <table class="REQUESTdismiss table table-responsive">
             <tr>
-                <th>  * <?php print _('Subnet to dismiss'); ?><code> (only block of /24)</code></th>
+                <th>  * <?php print _('Subnet to dismiss'); ?></th>
                 <td>
 
                     <div class="input-group">
@@ -48,7 +48,7 @@ $subnets = (array) $subnets;
                             </button>
                         </span>
                         <div class="clearfix">
-                            <input  name="subnet" id="dismiss" class="form-control" type="text" placeholder="xxx.xxx.xxx.0" />
+                            <input  name="subnet" id="dismiss" class="form-control" type="text" disabled />
                             <input  name="subnetid" id="subnetid" class="form-control" type="hidden"  />
                         </div>
                         

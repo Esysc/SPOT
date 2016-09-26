@@ -267,8 +267,8 @@ $(document).ready(function () {
 
     /*	submit DISMISS request
      *****************************************/
-    $(document).on("submit", "#requestSUBMIT", function () {
-
+    $(document).on("submit", "#requestDISMISS", function () {
+        $('#dismiss').attr('disabled', false);
         var SUBNETdata = $(this).serialize();
         var postData = SUBNETdata;
 
@@ -286,6 +286,8 @@ $(document).ready(function () {
                 //$('form#requestSUBNET input[type="text"]').val('');
                 //$('form#requestSUBNET textarea').val('');
             }
+            $('#dismiss').val('');
+            $('#dismiss').attr('disabled', true);
             if ($(':submit').val() === 'Submit another')
                 blinking($(':submit'));
         });
@@ -300,12 +302,13 @@ $(document).ready(function () {
         if (id !== '') {
             $('#dismiss').val(subnet);
             $('#subnetid').val(id);
+            $('#dismiss').attr('disabled', false);
             var SUBNETdata = $('#dismiss').serialize();
             //using the same function for overlap to obtain details
             $.post('app/login/request_dismiss_details.php', SUBNETdata, function (data) {
                 $('div#details').html(data);
             });
-            
+            $('#dismiss').attr('disabled', true);
             hideSpinner();
         }
         return false;
@@ -317,7 +320,7 @@ $(document).ready(function () {
 
     });
     $('#modalSubnet').on('shown.bs.modal', function () {
-        $('.chosen-select', this).chosen();
+        $('.chosen-select', this).chosen({width: '100%'});
     });
 
 });

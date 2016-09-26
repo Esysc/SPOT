@@ -19,6 +19,7 @@ if ($User->settings->enableIPrequests == 1) {
     $tools_menu['Tools'][] = array("show" => true, "icon" => "fa-plus", "name" => "IP requests", "href" => "requests", "description" => "Manage IP requests");
 } else {
     $tools_menu['Tools'][] = array("show" => true, "icon" => "fa-plus", "name" => "Subnets requests", "href" => "subnetRequests", "description" => "Manage Subnets requests");
+    $tools_menu['Tools'][] = array("show" => true, "icon" => "fa-minus", "name" => "Subnets Dismiss", "href" => "subnetDismiss", "description" => "Manage Dismiss requests");
 }
 $tools_menu['Tools'][] = array("show" => true, "icon" => "fa-info", "name" => "Instructions", "href" => "instructions", "description" => "Instructions for managing IP addresses");
 if ($User->settings->enableNAT == 1)
@@ -74,6 +75,7 @@ $tools_menu_items = array(
     'request-ip',
     'requests',
     'subnetRequests',
+    'subnetDismiss',
     'racks',
     'scanned-networks',
     'search',
