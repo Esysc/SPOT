@@ -307,6 +307,7 @@ $(document).ready(function () {
             //using the same function for overlap to obtain details
             $.post('app/login/request_dismiss_details.php', SUBNETdata, function (data) {
                 $('div#details').html(data);
+                $('#comment').text($('#old_comment').text() + '\nPlease, add the reason for dismantling:\n');
             });
             $('#dismiss').attr('disabled', true);
             hideSpinner();

@@ -68,7 +68,7 @@ if (sizeof(@$errors) > 0) {
         print '</tr>';
         print '<tr>';
         print '<th>Comments</th>';
-        print '<td>' . $show->Comments . '</td>';
+        print '<td id="old_comment">' . $show->Comments . '</td>';
         print '</tr>';
         print '</table>';
     }
