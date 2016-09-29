@@ -146,7 +146,9 @@ $subnets = (array) $subnets;
                     foreach ($subnets as $subnet => $val) {
                         $option = $val->ip;
                         $id = $val->id;
-                        print "<option value='" . $id . "'>" . $option . "</option>";
+                        $name = $val->{"System Name"};
+                        $desc = $val->description;
+                        print "<option value='" . $id . "'>" . $option . " - ". $name ." | ".$desc."</option>";
                     }
                     ?>
                 </select>

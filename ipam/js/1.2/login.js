@@ -297,8 +297,8 @@ $(document).ready(function () {
         showSpinner();
 
         var id = $(this).val();
-        var subnet = $("option:selected", this).text();
-        
+        var options = $("option:selected", this).text();
+        var subnet = options.split(" - ")[0];
         if (id !== '') {
             $('#dismiss').val(subnet);
             $('#subnetid').val(id);

@@ -13,7 +13,7 @@ $this->display('_Header.tpl.php');
         subnet.chosen({allow_single_deselect: true, });
         subnet.on('change', function () {
             subnet.trigger('chosen:updated');
-           // console.log('change')
+            // console.log('change')
             $("#exportIpam").hide();
             if (subnet.val() !== "") {
                 $('#subnet').val(subnet.val());
@@ -26,7 +26,7 @@ $this->display('_Header.tpl.php');
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "/SPOT/ipam/api/SYS01/sections/1/subnets/"   ,
+            "url": "/SPOT/ipam/api/SYS01/sections/1/subnets/",
             "method": "GET",
             "headers": {
                 "token": "<?php echo $_SESSION['token']; ?>",
@@ -82,37 +82,44 @@ $this->display('_Header.tpl.php');
             SO = SOarr[0].trim();
             var ACR = SOarr[1].trim();
             $('#salesorder').val('Salesorder_' + SO + '_Customer_' + ACR);
-            $.get("/SPOT/provisioning/api/tblprogresses?salesorder=" + SO, function (jsonResult) {
-                var Jdata = jsonResult.rows[0].data;
-                var Jsonspecs = JSON.parse(Jdata);
-                $('#subnet').val(Jsonspecs.network).trigger('chosen:updated)');
+            $.ajax({
+                type: "GET",
+                url: "/SPOT/provisioning/api/tblprogresses?salesorder=" + SO,
+                success: function (jsonResult) {
+                    var Jdata = jsonResult.rows[0].data;
+                    var Jsonspecs = JSON.parse(Jdata);
+                    $('#subnet').val(Jsonspecs.network).trigger('chosen:updated)');
 
-                $.each(Jsonspecs.clients, function (i, o) {
+                    $.each(Jsonspecs.clients, function (i, o) {
 
-                    $('<div/>', {
-                        'class': 'extraHosts', html: GetHtml(i)
-                    }).appendTo('#container');
-                    $("input[name^=ipaddress]:eq(" + i + ")").val(o.ip);
-                    $("input[name^=hostname]:eq(" + i + ")").val(o.hostname);
+                        $('<div/>', {
+                            'class': 'extraHosts', html: GetHtml(i)
+                        }).appendTo('#container');
+                        $("input[name^=ipaddress]:eq(" + i + ")").val(o.ip);
+                        $("input[name^=hostname]:eq(" + i + ")").val(o.hostname);
 
-                });
+                    });
 
-                // trigger the update
-                $(".subnet option").filter(function () {
-                    //may want to use $.trim in here
-                    return $(this).text() == $('#subnet').val();
-                }).attr('selected', true).trigger('chosen:updated');
-                
+                    // trigger the update
+                    $(".subnet option").filter(function () {
+                        //may want to use $.trim in here
+                        return $(this).text() == $('#subnet').val();
+                    }).attr('selected', true).trigger('chosen:updated');
 
 
-                var n = $(".extraHosts").length;
-                if (n > 0) {
-                    $('#export').show();
-                } else {
-                    $('#export').hide();
+
+                    var n = $(".extraHosts").length;
+                    if (n > 0) {
+                        $('#export').show();
+                    } else {
+                        $('#export').hide();
+                    }
+
+                  
                 }
-
             });
+
+           
 
 
 
@@ -220,13 +227,13 @@ $this->display('_Header.tpl.php');
             //$('.subnet').trigger('change')
             var subnetId = $('#subnet').val();
             //console.log('subnetID: '+ subnetId);
-            
+
             $('.ipaddress').each(function () {
 
                 var ipaddress = $(this).val();
                 if (ipaddress !== "") {
                     var hostname = $(this).nextAll('input').first().focus().val();
-                
+
                     var settings = {
                         "async": true,
                         "crossDomain": true,
