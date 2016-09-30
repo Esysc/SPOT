@@ -147,8 +147,8 @@ $subnets = (array) $subnets;
                         $option = $val->ip;
                         $id = $val->id;
                         $name = $val->{"System Name"};
-                        $desc = $val->description;
-                        print "<option value='" . $id . "'>" . $option . " - ". $name ." | ".$desc."</option>";
+                        $cust = $val->Account;
+                        print "<option value='" . $id . "'>" . $option . " - ". $name ." | ".$cust."</option>";
                     }
                     ?>
                 </select>
