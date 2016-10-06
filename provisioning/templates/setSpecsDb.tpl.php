@@ -99,6 +99,7 @@ $this->display('_Header.tpl.php');
         $('#salesel').on('change', function (e) {
 
             salesorder = $("#salesel option:selected").val();
+            
             if (salesorder === '') {
 
                 return;
@@ -107,6 +108,7 @@ $this->display('_Header.tpl.php');
             e.preventDefault();
             var SOarr = salesorder.split('|');
             var SO = SOarr[0].trim();
+            $('#salesorder').val(SO);
             var tdEle = $('#report');
             //SO = '';
             var btn = $('<a href="includes/getInstallationReport.php?sales_order_ref=' + SO + '" id="generate_report" class="btn btn-info pull-right">' + SO + ' Installation Report</a>');
@@ -188,7 +190,7 @@ $this->display('_Header.tpl.php');
             var url = '/SPOT/provisioning/includes/setAttr.php';
             $("#DataTable").html('');
             e.preventDefault();
-            salesorder = $("#salesel option:selected").text();
+            salesorder = $("#salesorder").val();
             var SOarr = salesorder.split('|');
             var SO = SOarr[0].trim();
             $('.results').css('visibility', 'visible');
@@ -331,6 +333,7 @@ $this->display('_Header.tpl.php');
                     </option>
 
                 </select>
+                <input type="hidden" id="salesorder" />
             </td>
 
 
