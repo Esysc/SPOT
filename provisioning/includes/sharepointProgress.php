@@ -105,8 +105,6 @@ $url = URL_SHAREPOINT;
 $result = curlGet($url, true);
 
 
-
-
 $xml = simplexml_load_string($result);
 
 $share_value_arr = array();
@@ -136,7 +134,8 @@ $sharepoint = array();
 foreach ($share_value_arr as $key => $value) {
 //	echo "STATUS: ".$share_value_arr[$key]['Status'];
 //    if ($share_value_arr[$key]['Status'] === 'In Progress' || $share_value_arr[$key]['Status'] === 'In Progress*') {
-	if ( stristr($share_value_arr[$key]['Status'], "progress")) { 
+   
+	if (stristr($share_value_arr[$key]['Status'], "progress") !== false ) { 
       $temp['SharepointLink'] = $value['SharepointLink'];
         $temp['Status'] = $value['Status'];
         $temp['SalesOrder'] = $value['SalesOrder'];
