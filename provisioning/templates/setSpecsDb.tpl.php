@@ -99,7 +99,7 @@ $this->display('_Header.tpl.php');
         $('#salesel').on('change', function (e) {
 
             salesorder = $("#salesel option:selected").val();
-            
+
             if (salesorder === '') {
 
                 return;
@@ -196,11 +196,56 @@ $this->display('_Header.tpl.php');
             $('.results').css('visibility', 'visible');
             // Get all data from DB x salesorder
             var jsonArr = [];
+            var dataArr = [];
+            $.get("/SPOT/provisioning/api/tblprogresses?Salesorder_IsLike=" + SO, function (data) {
+                if (data['totalResults'] == 0) {
+                    $("#DataTable").html('<p class="alert alert-error">Sorry, but this sales order has not been provisioned by <strong>SPOT</strong></p>');
+                    return false;
+                }
+                var Jdata = data.rows;
+                $.each(Jdata, function (i, o) {
+
+                    var Jfield = JSON.parse(o.data);
+                    var release = $.trim(Jfield.releasename);
+                    var ip = $.trim(Jfield.network);
+                    var vlan = 10;
+                    var network_name = "CTRL";
+                    var network_mask = "255.255.255.0"
+                    var updateSalesOrder = {
+                        ip: ip,
+                        action3: "Add",
+                        sales_order_ref: SO,
+                        page: "salesOrderDetails",
+                        network_name: network_name,
+                        network_mask: network_mask,
+                        vlan: vlan,
+                        release_installed: release
+                        
+                    };
+                    
+                    //Ready to update the general sales order informations
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        data: updateSalesOrder,
+                        wait: true,
+                        success: function (data) {
+
+                            $('#msg').html('');
+                            $('#results').html('');
+                            $("#DataTable").append('<p>Network name: ' + network_name + ', Network: ' + ip + '/' + network_mask + ', Vlan: ' + vlan + ', Release: ' + release + ' Message from server:</p> ' + data);
+                        }
+                    });
+                   
+                });
+            });
+
             $.get("/SPOT/provisioning/api/provisioningnotificationses?Notifid_IsLike=" + SO, function (jsonResult) {
                 if (jsonResult['totalResults'] == 0) {
                     $("#DataTable").html('<p class="alert alert-error">Sorry, but this sales order has not been provisioned by <strong>SPOT</strong></p>');
                     return false;
                 }
+
                 jsonArr = jsonResult['rows'];
                 $.each(jsonArr, function (index, linesObj) {
                     var serial = $.trim(linesObj.serial);
@@ -268,12 +313,12 @@ $this->display('_Header.tpl.php');
 
                     $("#DataTable").append('<p>Sales Order ' + sales_order_ref + ' Message from server:</p> ' + data);
 
-                   
+
 
                 },
                 error: function (data) {
 
-                 
+
                 }
             });
         });
@@ -292,7 +337,7 @@ $this->display('_Header.tpl.php');
                     // console.log(data);
                     var Jdata = JSON.parse(data.responseText);
                     var message = Jdata.message;
-                    var code = Jdata.code;  
+                    var code = Jdata.code;
                     $('#msg').html(message);
                     $(this).removeClass('disabled');
                     setTimeout(function () {
@@ -300,7 +345,6 @@ $this->display('_Header.tpl.php');
                     }, 4000)
 
                 },
-                
             }).done($(this).prop('disabled', false));
         });
     });
