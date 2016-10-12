@@ -58,14 +58,14 @@ if (isset($_POST['serial'])) {
 
     $ip = $_POST['ip'];
     $sales_order_ref = $_POST['sales_order_ref'];
-    $page = $_POST['page'];
+    
     $action3 = "Add";
     $action = "Update";
     $network_name = $_POST['network_name'];
     $network_mask = $_POST['network_mask'];
     $vlan = $_POST['vlan'];
     $release_installed = $_POST['release_installed'];
-    $url = SYSLOG_ROOT . '/sales_order.php?page=' . $page . '&sales_order_ref=' . $sales_order_ref;
+    $url = URL_WEBSYSPRODDB . "/sales_order.php?page=salesOrderDetails&sales_order_ref=" .  $sales_order_ref;
     $postfields = 'page=' . $page . '&sales_order_ref=' . $sales_order_ref . '&action=' . $action . '&release_installed=' . $release_installed;
     $message = "<h5>Trying to add release name</h5>";
     $result = curlPost($url, $postfields);
@@ -74,7 +74,10 @@ if (isset($_POST['serial'])) {
             'network_name=' . $network_name . '&network_mask=' . $network_mask . '&ip=' . $ip . '&';
     $message = "<h5>Trying to add network</h5>";
     $result = curlPost($url, $postfields);
+    
     $results .= $message . jsonToHtml(json_decode($result, true));
+   
+    
 } else {
     $ERROR = 1;
     $results = "

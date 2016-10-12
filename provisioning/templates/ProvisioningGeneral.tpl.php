@@ -512,7 +512,7 @@ array_unshift($ostarget, $ostarg);
                                                 <option value="US Eastern Standard Time<>EST5EDT,M3.2.0/2:00:00,M11.1.0/2:00:00<>America/Indiana/Indianapolis">(UTC-05:00) Indiana (East)</option>
                                                 <option value="Venezuela Standard Time<>VET4:30<>America/Caracas">(UTC-04:30) Caracas</option>
                                                 <option value="Paraguay Standard Time<>PYT4PYST,M10.1.0/0:00:00,M3.4.0/0:00:00<>America/Asuncion">(UTC-04:00) Asuncion</option>
-                                                <option value="Atlantic Standard Time<>AST4ADT,M3.2.0,M/2:00:00,11.1.0/2:00:00<>America/Halifax">(UTC-04:00) Atlantic Time (Canada)</option>
+                                                <option value="Atlantic Standard Time<>AST4ADT,M3.2.0/2:00:00,M11.1.0/2:00:00<>America/Halifax">(UTC-04:00) Atlantic Time (Canada)</option>
                                                 <option value="Central Brazilian Standard Time<>AMT4AMST,M10.3.0/0:00:00,M2.3.0/0:00:00<>America/Cuiaba">(UTC-04:00) Cuiaba</option>
                                                 <option value="SA Western Standard Time<>BOT4<>America/La_Paz">(UTC-04:00) Georgetown, La Paz, Manaus, San Juan</option>
                                                 <option value="Pacific SA Standard Time<>CLT4CLST,M9.2.0/0:00:00,M4.4.0/0:00:00<>America/Santiago">(UTC-04:00) Santiago</option>
