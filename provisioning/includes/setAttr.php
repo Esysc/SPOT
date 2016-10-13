@@ -6,6 +6,25 @@
 require "share.php";
 require "config.php";
 
+function parseDom($html) {
+    $dom = new DomDocument();
+    $dom->loadHTML($html);
+
+    $classinfo = "msgbox-info";
+    $classerr = "msgbox-error";
+    $xpath = new DOMXPath($dom);
+    $return = $xpath->query("//*[@class='" . $classinfo . "']");
+
+    if ($return->length > 0) {
+        $results .= $return->item(0)->nodeValue;
+    }
+    $return = $xpath->query("//*[@class='" . $classerr . "']");
+    if ($return->length > 0) {
+        $results .= $return->item(0)->nodeValue;
+    }
+    return $results;
+}
+
 if (isset($_POST['serial'])) {
     $serial = $_POST['serial'];
 
@@ -58,26 +77,56 @@ if (isset($_POST['serial'])) {
 
     $ip = $_POST['ip'];
     $sales_order_ref = $_POST['sales_order_ref'];
-    
     $action3 = "Add";
-    $action = "Update";
     $network_name = $_POST['network_name'];
     $network_mask = $_POST['network_mask'];
     $vlan = $_POST['vlan'];
+    $url = URL_WEBSYSPRODDB . $sales_order_ref;
+
+    /*
+     * Preparing postfields to add networks... (third tab)
+     */
+    $postfields = '&action3=' . $action3 . '&vlan=' . $vlan .
+            '&network_name=' . $network_name . '&network_mask=' . $network_mask . '&ip=' . $ip . '&';
+    $message = "<h5>Trying to add network $ip......</h5>";
+    /*
+     * Send the network...
+     */
+    $result = curlPost($url, $postfields);
+
+    $results .= $message . parseDom($result);
+} elseif (isset($_POST['action'])) {
+    
+
+    $sales_order_ref = $_POST['sales_order_ref'];
+    $url = URL_SYSPRODDB . '/GetSalesOrder?sales_order_ref=' . $sales_order_ref;
+    $return = json_decode(curlGet($url, false), true);
+    
+    $action = "Update";
     $release_installed = $_POST['release_installed'];
-    $url = URL_WEBSYSPRODDB . "/sales_order.php?page=salesOrderDetails&sales_order_ref=" .  $sales_order_ref;
-    $postfields = 'page=' . $page . '&sales_order_ref=' . $sales_order_ref . '&action=' . $action . '&release_installed=' . $release_installed;
-    $message = "<h5>Trying to add release name</h5>";
+    $comment = $_POST['comment'];
+    $url = URL_WEBSYSPRODDB . $sales_order_ref;
+    /*
+     * Preparing string to update sales order information (first tab
+     */
+
+    foreach ($return as $key => $value) {
+        /*
+         * Rewriting the values
+         */
+
+        $return[$key] = str_replace('+', ' ', $value);
+    }
+
+
+    $postfields = "page=salesOrderDetails&action=Update&sales_order_ref=$sales_order_ref&headend_acronym=" . $return['head_end_acronym'] . "&program_manager=" . $return['program_manager_name'] . "&project_name=" . $return['project_name'] . "&planned_start_date=" . $return['planned_start_date'] . "&planned_end_date=" . $return['planned_end_date'] . "&crm_system_id=" . $return['crm_system_id'] . "&release_installed=$release_installed&has_snapshot=1&comment=$comment";
+    $message = "<h5>Trying to add release $release_installed....</h5>";
+
+    /*
+     * Send the update
+     */
     $result = curlPost($url, $postfields);
-    $results .= $message . jsonToHtml(json_decode($result, true));
-    $postfields = 'page=' . $page . '&sales_order_ref=' . $sales_order_ref . '&action3=' . $action3 . '&vlan=' . $valn .
-            'network_name=' . $network_name . '&network_mask=' . $network_mask . '&ip=' . $ip . '&';
-    $message = "<h5>Trying to add network</h5>";
-    $result = curlPost($url, $postfields);
-    
-    $results .= $message . jsonToHtml(json_decode($result, true));
-   
-    
+    $results .= $message . parseDom($result);
 } else {
     $ERROR = 1;
     $results = "

@@ -24,6 +24,8 @@ $this->display('_Header.tpl.php');
 </style>
 <script>
     $(document).ready(function () {
+        $('.chosen').chosen();
+
         var salesorder;
         function highlight(element) {
             var isValid = true;
@@ -74,7 +76,7 @@ $this->display('_Header.tpl.php');
                     success: function (jsonResult) {
 
                         $('#msg').html('');
-                        console.log(jsonResult);
+
                         jsonResult = $.parseJSON(jsonResult);
                         $.each(jsonResult, function (a, b) {
                             var specif = b.name;
@@ -85,14 +87,14 @@ $this->display('_Header.tpl.php');
                     },
                     error: function (e) {
                         $('#msg').html(error);
-                        console.log(e);
+
                         return;
                     }
                 });
             },
             error: function (e) {
                 $('#msg').html(error);
-                console.log(e);
+
                 return;
             }
         });
@@ -137,9 +139,24 @@ $this->display('_Header.tpl.php');
                 },
                 error: function (e) {
                     $('#msg').html(error);
-                    console.log(e);
+
                     return;
                 }
+            });
+            // Populate SPOT fields
+            $.get("/SPOT/provisioning/api/tblprogresses?Salesorder_IsLike=" + SO, function (data) {
+                if (data['totalResults'] == 0) {
+
+                    return false;
+                }
+                var Jdata = data.rows;
+                $.each(Jdata, function (i, o) {
+
+                    var Jfield = JSON.parse(o.data);
+                    $('#release').val($.trim(Jfield.releasename));
+                    $('.subnet').val($.trim(Jfield.network));
+
+                });
             });
         });
         var postdata = {};
@@ -203,26 +220,59 @@ $this->display('_Header.tpl.php');
                     return false;
                 }
                 var Jdata = data.rows;
+                var release, ip, vlan, network_name, network_mask, updateSalesOrder, Jfield, comment;
                 $.each(Jdata, function (i, o) {
+                    Jfield = JSON.parse(o.data);
+                    release = ($('#release').val() === '') ? $.trim(Jfield.releasename) : $('#release').val();
+                    comment = $('#comment').val().replace(/\\s/, "+");; 
 
-                    var Jfield = JSON.parse(o.data);
-                    var release = $.trim(Jfield.releasename);
-                    var ip = $.trim(Jfield.network);
-                    var vlan = 10;
-                    var network_name = "CTRL";
-                    var network_mask = "255.255.255.0"
-                    var updateSalesOrder = {
+                });
+                updateSalesOrder = {
+                    action: "Update",
+                    sales_order_ref: SO,
+                    page: "salesOrderDetails",
+                    release_installed: release,
+                    comment: comment
+
+                };
+                //Ready to update the general sales order informations
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: updateSalesOrder,
+                    wait: true,
+                    success: function (data) {
+
+                        $('#msg').html('');
+                        $('#results').html('');
+                        $("#DataTable").append('<br /><b>Release: ' + release + ' Message from server:</b> ' + data);
+                    }
+                });
+
+
+                var networks, netmasks, network_names
+
+                $('.subnet').each(function (i, o) {
+
+                    networks = $(this).val();
+                    netmasks = $("select[name='netmask'][data-attr='" + i + "'] option:selected").val();
+                    network_names = $("select[name='network_name'][data-attr='" + i + "'] option:selected").val();
+
+
+                    ip = (networks === '') ? $.trim(Jfield.network) : networks;
+
+                    vlan = (network_names === '') ? 10 : network_names.split('<>')[0];
+                    network_name = (network_names === '') ? 'CTRL' : network_names.split('<>')[1];
+                    network_mask = (netmasks === '') ? 24 : netmasks;
+                    updateSalesOrder = {
                         ip: ip,
                         action3: "Add",
                         sales_order_ref: SO,
                         page: "salesOrderDetails",
                         network_name: network_name,
                         network_mask: network_mask,
-                        vlan: vlan,
-                        release_installed: release
-                        
+                        vlan: vlan
                     };
-                    
                     //Ready to update the general sales order informations
                     $.ajax({
                         url: url,
@@ -230,16 +280,24 @@ $this->display('_Header.tpl.php');
                         data: updateSalesOrder,
                         wait: true,
                         success: function (data) {
-
+                            
                             $('#msg').html('');
                             $('#results').html('');
-                            $("#DataTable").append('<p>Network name: ' + network_name + ', Network: ' + ip + '/' + network_mask + ', Vlan: ' + vlan + ', Release: ' + release + ' Message from server:</p> ' + data);
+                            $("#DataTable").append('<br /><b>Network: '+ updateSalesOrder.ip + '/'+updateSalesOrder.network_mask+' Network name: '+updateSalesOrder.network_name+ ',vlan '+updateSalesOrder.vlan+' Message from server:</b> ' + data);
                         }
                     });
-                   
+
+
+
                 });
+
+
+
+
+
             });
 
+            
             $.get("/SPOT/provisioning/api/provisioningnotificationses?Notifid_IsLike=" + SO, function (jsonResult) {
                 if (jsonResult['totalResults'] == 0) {
                     $("#DataTable").html('<p class="alert alert-error">Sorry, but this sales order has not been provisioned by <strong>SPOT</strong></p>');
@@ -277,7 +335,7 @@ $this->display('_Header.tpl.php');
 
                             $('#msg').html('');
                             $('#results').html('');
-                            $("#DataTable").append('<p>S/N: ' + serial + ', IP: ' + ipaddress + ', Hostname: ' + hostname + ' Message from server:</p> ' + data);
+                            $("#DataTable").append('<br /><p>S/N: ' + serial + ', IP: ' + ipaddress + ', Hostname: ' + hostname + ' Message from server:</p> ' + data);
                         }
                     });
                 });
@@ -347,6 +405,30 @@ $this->display('_Header.tpl.php');
                 },
             }).done($(this).prop('disabled', false));
         });
+        var counter = 0;
+        $(document).on('click', '#addRow', function (e) {
+            counter++;
+            $('.delRow').remove();
+            e.preventDefault();
+            $(this).closest('tr').before('<tr><td><label>Subnet</label><input type="text" class="subnet" name="network" required placeholder="Subnet used" data-attr="' + counter + '"/></td><td><label>Netmask</label><select class="chosen" name="netmask" data-attr="' + counter + '"><option selected value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option></select></td><td><label>Network name</label><select class="chosen" name="network_name" id="row'+counter+'" data-attr="' + counter + '" required><option value="10<>CTRL">CTRL vlan 10</option><option value="70<>BUSINESS-ML">BUSINESS-ML vlan 70</option><option value="100<>MGMT">MGMT vlan 100</option></select><a href="#" class="btn btn-action delRow pull-right"><i class="icon-minus-sign icon-white"></i> Remove this entry</a></td></tr>');
+            $('.chosen').chosen();
+        });
+        $(document).on('click', '.delRow', function (event) {
+            event.preventDefault();
+            counter--;
+             
+            // reattach the button on the prevoius extra row
+            if (counter != 0 ) {
+                var td = $('#row'+counter);
+             
+                td.after('<a href="#" class="btn btn-action delRow pull-right"><i class="icon-minus-sign icon-white"></i> Remove this entry</a>');
+            }
+            var parent = $(this).parent()
+            
+            //Remove two levels of parent
+            parent.parent().remove();
+           
+        });
     });
 </script>
 
@@ -391,10 +473,10 @@ $this->display('_Header.tpl.php');
 
     <table class="table-bordered table-responsive table table-striped specs">
 
+        <tbody>
 
-
-        <tr>
-            <th colspan="3">
+            <tr>
+                <th colspan="3">
 
         <center>    Action center: </center>
         <div class="row-fluid" >
@@ -462,6 +544,59 @@ $this->display('_Header.tpl.php');
         </div>
         </th>
         </tr>
+        <tr id="first">
+            <td>
+                <label>
+                    Subnet
+                </label>
+                <input type="text" class="subnet" name="network" required placeholder="Subnet used" data-attr="0"/>
+            </td>
+            <td>
+                <label>
+                    Netmask
+                </label>
+                <select class="chosen" name="netmask" data-attr="0">
+                    <option selected value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                </select>
+            </td>
+            <td>
+                <label>
+                    Network name
+                </label>
+                <select class="chosen" name="network_name" required data-attr="0">
+                    <option value="10<>CTRL">CTRL vlan 10</option>
+                    <option value="70<>BUSINESS-ML">BUSINESS-ML vlan 70</option>
+                    <option value="100<>MGMT">MGMT vlan 100</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+        <center>
+            <a href="#" id="addRow" class="btn btn-actions"><i class="icon-plus-sign icon-white"></i> Add a Network</a>
+        </center>
+        <td>
+            </tr>
+        <tr>
+            <td>
+        <center>
+            <label for="release">
+                Release installed
+            </label>
+            <input type="text" class="release" id="release" placeholder="Release installed"  />
+        </center>
+        </td>
+        <td colspan="2">
+            <label>
+                Sysprod comment (optional)
+            </label>
+            <textarea id="comment" style="width: 500px; height: 150px;">[ <?php  echo $_SESSION['login']; ?> ]:</textarea>
+        </td>
+        </tr>
         <tr>
             <td colspan="3">
         <center>
@@ -489,6 +624,7 @@ $this->display('_Header.tpl.php');
         </center>
         </td>
         </tr>
+        </tbody>
     </table>
 
 
