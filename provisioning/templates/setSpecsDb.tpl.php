@@ -1,5 +1,4 @@
 <?php
-
 $this->assign('title', 'SPOT | Set generic specification salesorder components');
 $this->assign('nav', 'setspecs');
 
@@ -203,9 +202,19 @@ $this->display('_Header.tpl.php');
             });
             $('#msg').html('');
         });
-        $('#sendStored').on('click', function (e) {
+        $(document).on('click', '#sendStored', function (e) {
             var url = '/SPOT/provisioning/includes/setAttr.php';
             $("#DataTable").html('');
+            var isValid = true;
+            $('.required').each(function () {
+
+                isValid = highlight($(this));
+                if (!isValid)
+                    return isValid;
+            });
+            if (!isValid) {
+                return isValid;
+            }
             e.preventDefault();
             salesorder = $("#salesorder").val();
             var SOarr = salesorder.split('|');
@@ -224,7 +233,8 @@ $this->display('_Header.tpl.php');
                 $.each(Jdata, function (i, o) {
                     Jfield = JSON.parse(o.data);
                     release = ($('#release').val() === '') ? $.trim(Jfield.releasename) : $('#release').val();
-                    comment = $('#comment').val().replace(/\\s/, "+");; 
+                    comment = $('#comment').val().replace(/\\s/, "+");
+                    ;
 
                 });
                 updateSalesOrder = {
@@ -280,10 +290,10 @@ $this->display('_Header.tpl.php');
                         data: updateSalesOrder,
                         wait: true,
                         success: function (data) {
-                            
+
                             $('#msg').html('');
                             $('#results').html('');
-                            $("#DataTable").append('<br /><b>Network: '+ updateSalesOrder.ip + '/'+updateSalesOrder.network_mask+' Network name: '+updateSalesOrder.network_name+ ',vlan '+updateSalesOrder.vlan+' Message from server:</b> ' + data);
+                            $("#DataTable").append('<br /><b>Network: ' + updateSalesOrder.ip + '/' + updateSalesOrder.network_mask + ' Network name: ' + updateSalesOrder.network_name + ',vlan ' + updateSalesOrder.vlan + ' Message from server:</b> ' + data);
                         }
                     });
 
@@ -297,7 +307,7 @@ $this->display('_Header.tpl.php');
 
             });
 
-            
+
             $.get("/SPOT/provisioning/api/provisioningnotificationses?Notifid_IsLike=" + SO, function (jsonResult) {
                 if (jsonResult['totalResults'] == 0) {
                     $("#DataTable").html('<p class="alert alert-error">Sorry, but this sales order has not been provisioned by <strong>SPOT</strong></p>');
@@ -410,24 +420,24 @@ $this->display('_Header.tpl.php');
             counter++;
             $('.delRow').remove();
             e.preventDefault();
-            $(this).closest('tr').before('<tr><td><label>Subnet</label><input type="text" class="subnet" name="network" required placeholder="Subnet used" data-attr="' + counter + '"/></td><td><label>Netmask</label><select class="chosen" name="netmask" data-attr="' + counter + '"><option selected value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option></select></td><td><label>Network name</label><select class="chosen" name="network_name" id="row'+counter+'" data-attr="' + counter + '" required><option value="10<>CTRL">CTRL vlan 10</option><option value="70<>BUSINESS-ML">BUSINESS-ML vlan 70</option><option value="100<>MGMT">MGMT vlan 100</option></select><a href="#" class="btn btn-action delRow pull-right"><i class="icon-minus-sign icon-white"></i> Remove this entry</a></td></tr>');
+            $(this).closest('tr').before('<tr><td><label>Subnet</label><input type="text" ui="Subnet used" id="subnet_'+counter+'" class="subnet required" name="network" placeholder="Subnet used" data-attr="' + counter + '"/></td><td><label>Netmask</label><select class="chosen" name="netmask" data-attr="' + counter + '"><option selected value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option></select></td><td><label>Network name</label><select class="chosen" name="network_name" id="row' + counter + '" data-attr="' + counter + '" required><option value="10<>CTRL">CTRL vlan 10</option><option value="70<>BUSINESS-ML">BUSINESS-ML vlan 70</option><option value="100<>MGMT">MGMT vlan 100</option></select><a href="#" class="btn btn-action delRow pull-right"><i class="icon-minus-sign icon-white"></i> Remove this entry</a></td></tr>');
             $('.chosen').chosen();
         });
         $(document).on('click', '.delRow', function (event) {
             event.preventDefault();
             counter--;
-             
+
             // reattach the button on the prevoius extra row
-            if (counter != 0 ) {
-                var td = $('#row'+counter);
-             
+            if (counter != 0) {
+                var td = $('#row' + counter);
+
                 td.after('<a href="#" class="btn btn-action delRow pull-right"><i class="icon-minus-sign icon-white"></i> Remove this entry</a>');
             }
             var parent = $(this).parent()
-            
+
             //Remove two levels of parent
             parent.parent().remove();
-           
+
         });
     });
 </script>
@@ -532,7 +542,8 @@ $this->display('_Header.tpl.php');
 
 
         </tr>
-
+    </table>
+    <table class="table-bordered table-responsive table table-striped specs">
 
         <tr>
             <th colspan="3">
@@ -549,7 +560,7 @@ $this->display('_Header.tpl.php');
                 <label>
                     Subnet
                 </label>
-                <input type="text" class="subnet" name="network" required placeholder="Subnet used" data-attr="0"/>
+                <input type="text" class="subnet required" name="network" placeholder="Subnet used" data-attr="0"/>
             </td>
             <td>
                 <label>
@@ -566,7 +577,7 @@ $this->display('_Header.tpl.php');
                 <label>
                     Network name
                 </label>
-                <select class="chosen" name="network_name" required data-attr="0">
+                <select class="chosen" name="network_name"  data-attr="0">
                     <option value="10<>CTRL">CTRL vlan 10</option>
                     <option value="70<>BUSINESS-ML">BUSINESS-ML vlan 70</option>
                     <option value="100<>MGMT">MGMT vlan 100</option>
@@ -579,13 +590,13 @@ $this->display('_Header.tpl.php');
         <center>
             <a href="#" id="addRow" class="btn btn-actions"><i class="icon-plus-sign icon-white"></i> Add a Network</a>
         </center>
-        <td>
-            </tr>
+        </td>
+        </tr>
         <tr>
             <td>
         <center>
             <label for="release">
-                Release installed
+                Release installed (optional)
             </label>
             <input type="text" class="release" id="release" placeholder="Release installed"  />
         </center>
@@ -594,7 +605,7 @@ $this->display('_Header.tpl.php');
             <label>
                 Sysprod comment (optional)
             </label>
-            <textarea id="comment" style="width: 500px; height: 150px;">[ <?php  echo $_SESSION['login']; ?> ]:</textarea>
+            <textarea id="comment" style="width: 500px; height: 150px;">[ User <?php echo $_SESSION['login']; ?> ]:</textarea>
         </td>
         </tr>
         <tr>
@@ -606,7 +617,8 @@ $this->display('_Header.tpl.php');
         </center>
         </td>
         </tr>
-
+    </table>
+    <table class="table-bordered table-responsive table table-striped specs">
         <tr>
             <th colspan="3">
         <div class="row-fluid" >
@@ -618,7 +630,7 @@ $this->display('_Header.tpl.php');
         <tr>
             <td colspan="3">
         <center>
-            <button class="btn btn-success"  id="assemble" value="/SPOT/provisioning/includes/setAssembled.php">
+            <button class="btn btn-danger"  id="assemble" value="/SPOT/provisioning/includes/setAssembled.php">
                 Start to assemble....
             </button>
         </center>
@@ -629,25 +641,25 @@ $this->display('_Header.tpl.php');
 
 
 
-    <table class="table table-bordered table-striped table-responsive results">
-        <tr>
-            <td id="results">
 
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div  id="DataTable">
-
-                </div>
-
-            </td>
-        </tr>
-    </table>
 </div> <!-- /container -->
+<table class="table table-bordered table-striped table-responsive results">
+    <tr>
+        <td id="results">
+
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div  id="DataTable">
+
+            </div>
+
+        </td>
+    </tr>
+</table>
 
 <?php
-
 $this->display('_Footer.tpl.php');
 ?>
