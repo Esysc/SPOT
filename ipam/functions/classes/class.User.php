@@ -1,13 +1,11 @@
 <?php
 
 /**
-*
-*    User class to work with current user, authentication etc
-*
-*/
-
+ *
+ *    User class to work with current user, authentication etc
+ *
+ */
 class User extends Common_functions {
-
 
     /**
      * Current username
@@ -167,12 +165,6 @@ class User extends Common_functions {
      */
     public $Log;
 
-
-
-
-
-
-
     /**
      * __construct function.
      *
@@ -180,7 +172,7 @@ class User extends Common_functions {
      * @param Database_PDO $database
      * @param bool $api (default: false)
      */
-    public function __construct (Database_PDO $database, $api = false) {
+    public function __construct(Database_PDO $database, $api = false) {
 
         # Save database object
         $this->Database = $database;
@@ -190,29 +182,20 @@ class User extends Common_functions {
         $this->Result = new Result ();
 
         # get settings
-        $this->get_settings ();
+        $this->get_settings();
 
         # Log object
-        $this->Log = new Logging ($this->Database, $this->settings);
+        $this->Log = new Logging($this->Database, $this->settings);
 
         # register new session
-        $this->register_session ();
+        $this->register_session();
         # check timeut
-        $this->check_timeout ();
+        $this->check_timeout();
         # set authenticated flag
-        $this->is_authenticated ();
+        $this->is_authenticated();
         # get users IP address
-        $this->block_get_ip ();
+        $this->block_get_ip();
     }
-
-
-
-
-
-
-
-
-
 
     /**
      * @session management functions
@@ -225,7 +208,7 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function register_session () {
+    private function register_session() {
         // not for api
         if ($this->api !== true) {
             //set session name
@@ -234,7 +217,7 @@ class User extends Common_functions {
             $this->set_debugging();
             //register session
             session_name($this->sessname);
-            if(@$_SESSION===NULL) {
+            if (@$_SESSION === NULL) {
                 session_start();
             }
         }
@@ -246,7 +229,7 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function destroy_session () {
+    public function destroy_session() {
         session_destroy();
     }
 
@@ -256,9 +239,9 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function set_session_name () {
-        include( dirname(__FILE__).'/../../config.php' );
-        $this->sessname = strlen(@$phpsessname)>0 ? $phpsessname : "phpipam";
+    private function set_session_name() {
+        include( dirname(__FILE__) . '/../../config.php' );
+        $this->sessname = strlen(@$phpsessname) > 0 ? $phpsessname : "phpipam";
     }
 
     /**
@@ -267,12 +250,12 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function write_session_parameters () {
+    private function write_session_parameters() {
         // not for api
         if ($this->api !== true) {
             $_SESSION['ipamusername'] = $this->user->username;
-            $_SESSION['ipamlanguage'] = $this->fetch_lang_details ();
-            $_SESSION['lastactive']   = time();
+            $_SESSION['ipamlanguage'] = $this->fetch_lang_details();
+            $_SESSION['lastactive'] = time();
         }
     }
 
@@ -282,12 +265,12 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function update_session_language () {
+    public function update_session_language() {
         // not for api
         if ($this->api !== true) {
             # update user object
-            $this->fetch_user_details ($this->username);
-            $_SESSION['ipamlanguage'] = $this->fetch_lang_details ();
+            $this->fetch_user_details($this->username);
+            $_SESSION['ipamlanguage'] = $this->fetch_lang_details();
         }
     }
 
@@ -297,28 +280,26 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function is_authenticated () {
+    public function is_authenticated() {
         # if checked for subpages first check if $user is array
-        if(!is_array($this->user)) {
-            if( isset( $_SESSION['ipamusername'] ) && strlen( @$_SESSION['ipamusername'] )>0 ) {
+        if (!is_array($this->user)) {
+            if (isset($_SESSION['ipamusername']) && strlen(@$_SESSION['ipamusername']) > 0) {
                 # save username
                 $this->username = $_SESSION['ipamusername'];
                 # check for timeout
-                if($this->timeout == true) {
+                if ($this->timeout == true) {
                     $this->authenticated = false;
-                }
-                else {
+                } else {
                     # fetch user profile and save it
-                    $this->fetch_user_details ($this->username);
+                    $this->fetch_user_details($this->username);
 
                     $this->authenticated = true;
                     $this->reset_inactivity_time();
-                    $this->update_activity_time ();
+                    $this->update_activity_time();
                     # bind language
                     $this->set_ui_language();
                 }
-            }
-            else {
+            } else {
                 $this->authenticated = false;
             }
         }
@@ -334,11 +315,15 @@ class User extends Common_functions {
      * @param bool $die (default: true)
      * @return void
      */
-    public function is_admin ($die = true) {
-        if($this->isadmin)      { return true; }
-        else {
-            if($die)            { $this->Result->show("danger", _('Administrator level privileges required'), true); }
-            else                { return false; }
+    public function is_admin($die = true) {
+        if ($this->isadmin) {
+            return true;
+        } else {
+            if ($die) {
+                $this->Result->show("danger", _('Administrator level privileges required'), true);
+            } else {
+                return false;
+            }
         }
     }
 
@@ -349,37 +334,37 @@ class User extends Common_functions {
      * @param bool $redirect (default: true)
      * @return void
      */
-    public function check_user_session ($redirect = true) {
+    public function check_user_session($redirect = true) {
         # not authenticated
-        if($this->authenticated===false) {
+        if ($this->authenticated === false) {
             # set url
             $url = $this->createURL();
 
             # error print for AJAX
-            if(@$_SERVER['HTTP_X_REQUESTED_WITH'] == "XMLHttpRequest") {
+            if (@$_SERVER['HTTP_X_REQUESTED_WITH'] == "XMLHttpRequest") {
                 # for AJAX always check origin
-                $this->check_referrer ();
+                $this->check_referrer();
                 # kill session
-                $this->destroy_session ();
+                $this->destroy_session();
                 # error
-                $this->Result->show("danger", _('Please login first')."!<hr><a class='btn btn-sm btn-default' href='".$url.create_link ("login")."'>"._('Login')."</a>", true, true);
+                $this->Result->show("danger", _('Please login first') . "!<hr><a class='btn btn-sm btn-default' href='" . $url . create_link("login") . "'>" . _('Login') . "</a>", true, true);
                 die();
             }
             # timeout
             elseif ($this->timeout) {
                 # set redirect cookie
-                $this->set_redirect_cookie ();
+                $this->set_redirect_cookie();
                 # redirect
                 if ($redirect)
-                header("Location:".$url.create_link ("login","timeout"));
+                    header("Location:" . $url . create_link("login", "timeout"));
                 die();
             }
             else {
                 # set redirect cookie
-                $this->set_redirect_cookie ();
+                $this->set_redirect_cookie();
                 # redirect
                 if ($redirect)
-                header("Location:".$url.create_link ("login"));
+                    header("Location:" . $url . create_link("login"));
                 die();
             }
         }
@@ -395,10 +380,10 @@ class User extends Common_functions {
      * @access private
      * @return none
      */
-    private function check_timeout () {
+    private function check_timeout() {
         //session set
-        if(isset($_SESSION['lastactive'])) {
-            if( strlen($this->settings->inactivityTimeout)>0 && (time()-@$_SESSION['lastactive']) > $this->settings->inactivityTimeout) {
+        if (isset($_SESSION['lastactive'])) {
+            if (strlen($this->settings->inactivityTimeout) > 0 && (time() - @$_SESSION['lastactive']) > $this->settings->inactivityTimeout) {
                 $this->timeout = true;
                 unset($_SESSION['lastactive']);
             }
@@ -411,8 +396,8 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function reset_inactivity_time () {
-        if($this->timeout!==true) {
+    private function reset_inactivity_time() {
+        if ($this->timeout !== true) {
             $_SESSION['lastactive'] = time();
         }
     }
@@ -423,10 +408,11 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function set_redirect_cookie () {
+    private function set_redirect_cookie() {
         # save current redirect vaule
-        if($_SERVER['SCRIPT_URL']!="/login/" && $_SERVER['SCRIPT_URL']!="logout" && $_SERVER['SCRIPT_URL']!="?page=login" && $_SERVER['SCRIPT_URL']!="?page=logout" && $_SERVER['SCRIPT_URL']!="/" && $_SERVER['SCRIPT_URL']!="%2f");
-        setcookie("phpipamredirect", $_SERVER['REQUEST_URI'], time()+10, "/", null, null, true);
+        if ($_SERVER['SCRIPT_URL'] != "/login/" && $_SERVER['SCRIPT_URL'] != "logout" && $_SERVER['SCRIPT_URL'] != "?page=login" && $_SERVER['SCRIPT_URL'] != "?page=logout" && $_SERVER['SCRIPT_URL'] != "/" && $_SERVER['SCRIPT_URL'] != "%2f")
+            ;
+        setcookie("phpipamredirect", $_SERVER['REQUEST_URI'], time() + 10, "/", null, null, true);
     }
 
     /**
@@ -435,19 +421,14 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function set_ui_language () {
-        if(strlen($_SESSION['ipamlanguage'])>0)     {
+    private function set_ui_language() {
+        if (strlen($_SESSION['ipamlanguage']) > 0) {
             putenv("LC_ALL=$_SESSION[ipamlanguage]");
             setlocale(LC_ALL, $_SESSION['ipamlanguage']);        // set language
             bindtextdomain("phpipam", "./functions/locale");    // Specify location of translation tables
             textdomain("phpipam");                                // Choose domain
         }
     }
-
-
-
-
-
 
     /**
      * CSRF cookie creation / validation.
@@ -458,13 +439,12 @@ class User extends Common_functions {
      * @param mixed $value (default: null)
      * @return void
      */
-    public function csrf_cookie ($action = "create", $index = null, $value = null) {
+    public function csrf_cookie($action = "create", $index = null, $value = null) {
         // validate action
-        $this->csrf_validate_action ($action);
+        $this->csrf_validate_action($action);
         // execute
-        return $action == "create" ? $this->csrf_cookie_create ($index) : $this->csrf_cookie_validate ($index, $value);
+        return $action == "create" ? $this->csrf_cookie_create($index) : $this->csrf_cookie_validate($index, $value);
     }
-
 
     /**
      * Validates csrf cookie action..
@@ -473,9 +453,12 @@ class User extends Common_functions {
      * @param mixed $action
      * @return void
      */
-    private function csrf_validate_action ($action) {
-        if ($action=="create" || $action=="validate") { return true; }
-        else                                          { $this->Result->show("danger", "Invalid CSRF cookie action", true); }
+    private function csrf_validate_action($action) {
+        if ($action == "create" || $action == "validate") {
+            return true;
+        } else {
+            $this->Result->show("danger", "Invalid CSRF cookie action", true);
+        }
     }
 
     /**
@@ -485,9 +468,9 @@ class User extends Common_functions {
      * @param mixed $index
      * @return void
      */
-    private function csrf_cookie_create ($index) {
+    private function csrf_cookie_create($index) {
         // set cookie suffix
-        $name = is_null($index) ? "csrf_cookie" : "csrf_cookie_".$index;
+        $name = is_null($index) ? "csrf_cookie" : "csrf_cookie_" . $index;
         // save cookie
         $_SESSION[$name] = md5(uniqid(mt_rand(), true));
         // return
@@ -501,17 +484,12 @@ class User extends Common_functions {
      * @param mixed $index
      * @return void
      */
-    private function csrf_cookie_validate ($index, $value) {
+    private function csrf_cookie_validate($index, $value) {
         // set cookie suffix
-        $name = is_null($index) ? "csrf_cookie" : "csrf_cookie_".$index;
+        $name = is_null($index) ? "csrf_cookie" : "csrf_cookie_" . $index;
         // check and return
         return $_SESSION[$name] == $value ? true : false;
     }
-
-
-
-
-
 
     /**
      *    Check if migration of AD settings is required
@@ -526,36 +504,37 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function migrate_domain_settings () {
+    public function migrate_domain_settings() {
         # if not already migrated migrate settings!
-        if($this->settings->authmigrated==0) {
+        if ($this->settings->authmigrated == 0) {
             # only if AD used
-            if($this->settings->domainAuth!=0) {
+            if ($this->settings->domainAuth != 0) {
                 # fetch AD settings
                 $err = false;
-                try { $ad = $this->Database->getObject("settingsDomain",1); }
-                catch (Exception $e) { $err = true; }
+                try {
+                    $ad = $this->Database->getObject("settingsDomain", 1);
+                } catch (Exception $e) {
+                    $err = true;
+                }
 
-                if($err === false) {
+                if ($err === false) {
                     # remove editDate
                     unset($ad->editDate);
                     # save to json array
                     $ad = json_encode($ad);
                     # update usersAuthMethod
-                    $type = $this->settings->domainAuth==1 ? "AD" : "LDAP";
+                    $type = $this->settings->domainAuth == 1 ? "AD" : "LDAP";
                     # update
                     try {
-                        $this->Database->insertObject("usersAuthMethod", array("type"=>$type, "params"=>$ad, "description"=>$type." authentication", "protected"=>"No"));
-                    }
-                    catch (Exception $e) {
+                        $this->Database->insertObject("usersAuthMethod", array("type" => $type, "params" => $ad, "description" => $type . " authentication", "protected" => "No"));
+                    } catch (Exception $e) {
                         $err = true;
                     }
                     # set migrated flag
-                    if($err === false) {
+                    if ($err === false) {
                         try {
-                            $this->Database->updateObject("settings", array("id"=>1,"authmigrated"=>1), 'id');
-                        }
-                        catch (Exception $e) {
+                            $this->Database->updateObject("settings", array("id" => 1, "authmigrated" => 1), 'id');
+                        } catch (Exception $e) {
                             // no response on failure
                         }
                     }
@@ -570,7 +549,7 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function migrate_ldap_settings () {
+    public function migrate_ldap_settings() {
 
         # fetch LDAP settings
         $ldaps = $this->Database->getObjectsQuery("select * from usersAuthMethod where type = 'LDAP'");
@@ -589,7 +568,6 @@ class User extends Common_functions {
                     $ldap->ldap_security = 'ssl';
                 }
                 unset($ldap->use_ssl);
-
             }
 
             if (property_exists($ldap, 'use_tls')) {
@@ -607,16 +585,8 @@ class User extends Common_functions {
             $ldapobj->params = json_encode($ldap);
 
             $this->Database->updateObject("usersAuthMethod", $ldapobj);
-
         }
     }
-
-
-
-
-
-
-
 
     /**
      * @miscalaneous methods
@@ -629,11 +599,11 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function check_referrer () {
-        if ( ($_SERVER['HTTP_X_REQUESTED_WITH'] != "XMLHttpRequest") && ($_SERVER['HTTP_ORIGIN'] != $_SERVER['HTTP_HOST'] ) ) {
+    private function check_referrer() {
+        if (($_SERVER['HTTP_X_REQUESTED_WITH'] != "XMLHttpRequest") && ($_SERVER['HTTP_ORIGIN'] != $_SERVER['HTTP_HOST'] )) {
             # write log and die
-            $this->Log->write ("referrer_check", _('Page not referred properly'), 0 );
-            $this->Result->show ("danger", _('Page not referred properly'), true);
+            $this->Log->write("referrer_check", _('Page not referred properly'), 0);
+            $this->Result->show("danger", _('Page not referred properly'), true);
         }
     }
 
@@ -643,9 +613,12 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function get_default_lang () {
-        try { $lang = $this->Database->findObject("lang","l_id",$this->settings->defaultLang); }
-        catch (Exception $e) { $this->debugging ? : $this->Result->show("danger", _("Database error: ").$e->getMessage()); }
+    public function get_default_lang() {
+        try {
+            $lang = $this->Database->findObject("lang", "l_id", $this->settings->defaultLang);
+        } catch (Exception $e) {
+            $this->debugging ? : $this->Result->show("danger", _("Database error: ") . $e->getMessage());
+        }
 
         return $lang;
     }
@@ -658,18 +631,9 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function fetch_available_auth_method_types () {
+    public function fetch_available_auth_method_types() {
         return array("AD", "LDAP", "NetIQ", "Radius");
     }
-
-
-
-
-
-
-
-
-
 
     /**
      * @favourite methods
@@ -682,9 +646,9 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function fetch_favourite_subnets () {
+    public function fetch_favourite_subnets() {
         # none
-        if(strlen($this->user->favourite_subnets)==0) {
+        if (strlen($this->user->favourite_subnets) == 0) {
             return false;
         }
         # ok
@@ -693,17 +657,18 @@ class User extends Common_functions {
             $subnets = explode(";", $this->user->favourite_subnets);
             $subnets = array_filter($subnets);
 
-            if(sizeof($subnets)>0) {
+            if (sizeof($subnets) > 0) {
                 // init
                 $fsubnets = array();
                 # fetch details for each subnet
-                foreach($subnets as $id) {
+                foreach ($subnets as $id) {
                     $query = "select `su`.`id` as `subnetId`,`se`.`id` as `sectionId`, `subnet`, `mask`,`isFull`,`su`.`description`,`se`.`description` as `section`, `vlanId`, `isFolder`
                               from `subnets` as `su`, `sections` as `se` where `su`.`id` = ? and `su`.`sectionId` = `se`.`id` limit 1;";
 
-                    try { $fsubnet = $this->Database->getObjectQuery($query, array($id)); }
-                    catch (Exception $e) {
-                        $this->Result->show("danger", _("Error: ").$e->getMessage());
+                    try {
+                        $fsubnet = $this->Database->getObjectQuery($query, array($id));
+                    } catch (Exception $e) {
+                        $this->Result->show("danger", _("Error: ") . $e->getMessage());
                         return false;
                     }
 
@@ -727,9 +692,13 @@ class User extends Common_functions {
      */
     public function edit_favourite($action, $subnetId) {
         # execute
-        if($action=="remove")    { return $this->remove_favourite ($subnetId); }
-        elseif($action=="add")   { return $this->add_favourite ($subnetId); }
-        else                     { return false; }
+        if ($action == "remove") {
+            return $this->remove_favourite($subnetId);
+        } elseif ($action == "add") {
+            return $this->add_favourite($subnetId);
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -739,14 +708,15 @@ class User extends Common_functions {
      * @param mixed $subnetId
      * @return void
      */
-    private function remove_favourite ($subnetId) {
+    private function remove_favourite($subnetId) {
         # set old favourite subnets
         $old_favourites = explode(";", $this->user->favourite_subnets);
         # set new
         $new_favourites = implode(";", array_diff($old_favourites, array($subnetId)));
         # update
-        try { $this->Database->updateObject("users", array("favourite_subnets"=>$new_favourites, "id"=>$this->user->id), "id"); }
-        catch (Exception $e) {
+        try {
+            $this->Database->updateObject("users", array("favourite_subnets" => $new_favourites, "id" => $this->user->id), "id");
+        } catch (Exception $e) {
             return false;
         }
         return true;
@@ -759,15 +729,16 @@ class User extends Common_functions {
      * @param int $subnetId
      * @return boolena
      */
-    private function add_favourite ($subnetId) {
+    private function add_favourite($subnetId) {
         # set old favourite subnets
         $old_favourites = explode(";", $this->user->favourite_subnets);
         $old_favourites = is_array($old_favourites) ? $old_favourites : array();
         # set new
-        $new_favourites = implode(";",array_merge(array($subnetId), $old_favourites));
+        $new_favourites = implode(";", array_merge(array($subnetId), $old_favourites));
         # update
-        try { $this->Database->updateObject("users", array("favourite_subnets"=>$new_favourites, "id"=>$this->user->id), "id"); }
-        catch (Exception $e) {
+        try {
+            $this->Database->updateObject("users", array("favourite_subnets" => $new_favourites, "id" => $this->user->id), "id");
+        } catch (Exception $e) {
             return false;
         }
         return true;
@@ -780,8 +751,8 @@ class User extends Common_functions {
      * @param int $subnetId
      * @return boolean
      */
-    public function is_subnet_favourite ($subnetId) {
-        $this->fetch_favourite_subnets ();
+    public function is_subnet_favourite($subnetId) {
+        $this->fetch_favourite_subnets();
         # check if in array
         $subnets = explode(";", $this->user->favourite_subnets);
         $subnets = array_filter($subnets);
@@ -796,24 +767,14 @@ class User extends Common_functions {
      * @param mixed $subnetId
      * @return void
      */
-    public function is_folder_favourite ($subnetId) {
-        return $this->is_subnet_favourite ($subnetId);
+    public function is_folder_favourite($subnetId) {
+        return $this->is_subnet_favourite($subnetId);
     }
 
-
-
-
-
-
-
-
-
-
-
     /**
-    * @authentication functions
-    * -------------------------------
-    */
+     * @authentication functions
+     * -------------------------------
+     */
 
     /**
      * Main function for authenticating users
@@ -827,26 +788,25 @@ class User extends Common_functions {
      * @param mixed $password
      * @return void
      */
-    public function authenticate ($username, $password) {
+    public function authenticate($username, $password) {
 
         # first we need to check if username exists
-        $this->fetch_user_details ($username);
+        $this->fetch_user_details($username);
         # set method type if set, otherwise presume local auth
-        $this->authmethodid = strlen(@$this->user->authMethod)>0 ? $this->user->authMethod : 1;
+        $this->authmethodid = strlen(@$this->user->authMethod) > 0 ? $this->user->authMethod : 1;
 
         # get authentication method details
-        $this->get_auth_method_type ();
+        $this->get_auth_method_type();
 
         # authenticate based on name of auth method
-        if(!method_exists($this, $this->authmethodtype))    {
-            $this->Log->write ("User login", _('Error: Invalid authentication method'), 2 );
+        if (!method_exists($this, $this->authmethodtype)) {
+            $this->Log->write("User login", _('Error: Invalid authentication method'), 2);
             $this->Result->show("danger", _("Error: Invalid authentication method"), true);
-        }
-        else {
+        } else {
             # set method name variable
             $authmethodtype = $this->authmethodtype;
             # authenticate
-            $this->$authmethodtype ($username, $password);
+            $this->$authmethodtype($username, $password);
             $_SESSION['email'] = $this->user->email;
         }
     }
@@ -858,20 +818,32 @@ class User extends Common_functions {
      * @param mixed $username
      * @return void
      */
-    private function fetch_user_details ($username) {
+    private function fetch_user_details($username) {
         # only if not already active
-        if(!is_object($this->user)) {
-            try { $user = $this->Database->findObject("users", "username", $username); }
-            catch (Exception $e)     { $this->Result->show("danger", _("Error: ").$e->getMessage(), true);}
+        if (!is_object($this->user)) {
+            try {
+                $user = $this->Database->findObject("users", "username", $username);
+            } catch (Exception $e) {
+                $this->Result->show("danger", _("Error: ") . $e->getMessage(), true);
+            }
 
             # if not result return false
-            $usert = (array) $user;
+           
+                $usert = (array) $user;
 
-            # admin?
-            if($user->role == "Administrator")    { $this->isadmin = true; }
+                # admin?
+                if ($user->role == "Administrator") {
+                    $this->isadmin = true;
+                }
 
-            if(sizeof($usert)==0)    { $this->block_ip (); $this->Log->write ("User login", _('Invalid username'), 2, $username ); $this->Result->show("danger", _("Invalid username or password"), true);}
-            else                     { $this->user = $user; }
+                if (sizeof($usert) == 0) {
+                    $this->block_ip();
+                    $this->Log->write("User login", _('Invalid username'), 2, $username);
+                    $this->Result->show("danger", _("Invalid username or password"), true);
+                } else {
+                    $this->user = $user;
+                }
+           
         }
     }
 
@@ -881,10 +853,11 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function fetch_langs () {
-        try { $langs = $this->Database->getObjects("lang", "l_id"); }
-        catch (Exception $e) {
-            $this->Result->show("danger", _("Error: ").$e->getMessage());
+    public function fetch_langs() {
+        try {
+            $langs = $this->Database->getObjects("lang", "l_id");
+        } catch (Exception $e) {
+            $this->Result->show("danger", _("Error: ") . $e->getMessage());
             return false;
         }
         # return
@@ -897,11 +870,12 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function fetch_lang_details () {
+    private function fetch_lang_details() {
         // fetch from db
-        try { $lang = $this->Database->findObject("lang", "l_id", $this->user->lang); }
-        catch (Exception $e) {
-            $this->Result->show("danger", _("Error: ").$e->getMessage(), true);
+        try {
+            $lang = $this->Database->findObject("lang", "l_id", $this->user->lang);
+        } catch (Exception $e) {
+            $this->Result->show("danger", _("Error: ") . $e->getMessage(), true);
             return false;
         }
         // return code
@@ -914,19 +888,19 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function get_auth_method_type () {
+    private function get_auth_method_type() {
         # for older versions - only local is available!
-        if($this->settings->version=="1.1") {
+        if ($this->settings->version == "1.1") {
             $this->authmethodtype = "auth_local";
-        }
-        else {
-            try { $method = $this->Database->getObject("usersAuthMethod", $this->authmethodid); }
-            catch (Exception $e) {
-                $this->Result->show("danger", _("Error: ").$e->getMessage(), true);
+        } else {
+            try {
+                $method = $this->Database->getObject("usersAuthMethod", $this->authmethodid);
+            } catch (Exception $e) {
+                $this->Result->show("danger", _("Error: ") . $e->getMessage(), true);
             }
             # save method name if existing
-            if($method!==false) {
-                $this->authmethodtype   = "auth_".$method->type;
+            if ($method !== false) {
+                $this->authmethodtype = "auth_" . $method->type;
                 $this->authmethodparams = $method->params;
             }
         }
@@ -941,31 +915,34 @@ class User extends Common_functions {
      * @param mixed $password
      * @return void
      */
-    private function auth_local ($username, $password) {
+    private function auth_local($username, $password) {
         # auth ok
-        if($this->user->password == crypt($password, $this->user->password)) {
+        if ($this->user->password == crypt($password, $this->user->password)) {
             # save to session
-            $this->write_session_parameters ();
+            $this->write_session_parameters();
 
             $this->Result->show("success", _("Login successful"));
-            $this->Log->write( "User login", "User ".$this->user->real_name." logged in", 0, $username );
+            $this->Log->write("User login", "User " . $this->user->real_name . " logged in", 0, $username);
 
             # write last logintime
-            $this->update_login_time ();
+            $this->update_login_time();
 
             # remove possible blocked IP
-            $this->block_remove_entry ();
+            $this->block_remove_entry();
         }
         # auth failed
         else {
             # add blocked count
-            $this->block_ip ();
+            $this->block_ip();
 
-            $this->Log->write( "User login", "Invalid username or password", 2, $username );
+            $this->Log->write("User login", "Invalid username or password", 2, $username);
 
             # apache
-            if (!empty($_SERVER['PHP_AUTH_USER'])) { $this->show_http_login(); }
-            else                                 { $this->Result->show("danger", _("Invalid username or password"), true); }
+            if (!empty($_SERVER['PHP_AUTH_USER'])) {
+                $this->show_http_login();
+            } else {
+                $this->Result->show("danger", _("Invalid username or password"), true);
+            }
         }
     }
 
@@ -978,18 +955,18 @@ class User extends Common_functions {
      * @param mixed $password
      * @return void
      */
-    public function auth_http ($username, $password) {
+    public function auth_http($username, $password) {
         # save to session
-        $this->write_session_parameters ();
+        $this->write_session_parameters();
 
         $this->Result->show("success", _("Login successful"));
-        $this->Log->write( "User login", "User ".$this->user->real_name." logged in", 0, $username );
+        $this->Log->write("User login", "User " . $this->user->real_name . " logged in", 0, $username);
 
         # write last logintime
-        $this->update_login_time ();
+        $this->update_login_time();
 
         # remove possible blocked IP
-        $this->block_remove_entry ();
+        $this->block_remove_entry();
     }
 
     /**
@@ -998,7 +975,7 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function show_http_login () {
+    private function show_http_login() {
         header('WWW-Authenticate: Basic realm="phpIPAM authentication"');
         header('HTTP/1.0 401 Unauthorized');
         echo 'Authentication failed';
@@ -1008,13 +985,13 @@ class User extends Common_functions {
     /**
      * Connect to a directory given our auth method settings
      *
-     *Connect using adLDAP
+     * Connect using adLDAP
      *
      * @access private
      * @param mixed $authparams
      * @return adLDAP object
      */
-    private function directory_connect ($authparams) {
+    private function directory_connect($authparams) {
 
         # adLDAP script
         require(dirname(__FILE__) . "/../adLDAP/src/adLDAP.php");
@@ -1033,15 +1010,17 @@ class User extends Common_functions {
 
             // Support the pre-1.2 auth settings as well as the current version
             // TODO: remove legacy support at some point
-            if ($authparams['ldap_security'] == 'tls' || $authparams['use_tls'] == 1)         { $dirparams['use_tls'] = true; }
-            elseif ($authparams['ldap_security'] == 'ssl' || $authparams['use_ssl'] == 1)     { $dirparams['use_ssl'] = true; }
+            if ($authparams['ldap_security'] == 'tls' || $authparams['use_tls'] == 1) {
+                $dirparams['use_tls'] = true;
+            } elseif ($authparams['ldap_security'] == 'ssl' || $authparams['use_ssl'] == 1) {
+                $dirparams['use_ssl'] = true;
+            }
 
             if (isset($authparams['admin_username']) && isset($authparams['admin_password'])) {
                 $dirparams['admin_username'] = $authparams['adminUsername'];
                 $dirparams['admin_password'] = $authparams['adminPassword'];
             }
-        }
-        else {
+        } else {
             $dirparams['use_ssl'] = @$authparams['use_ssl'];
             $dirparams['use_tls'] = @$authparams['use_tls'];
         }
@@ -1050,7 +1029,6 @@ class User extends Common_functions {
         try {
             # Initialize adLDAP
             $dirconn = new adLDAP($dirparams);
-
         } catch (adLDAPException $e) {
             $this->Log->write("Directory connection error", "Failed to connect: " . $e->getMessage(), 2, null);
             $this->Result->show("danger", _("Error: ") . $e->getMessage(), true);
@@ -1072,7 +1050,7 @@ class User extends Common_functions {
      * @param mixed $password
      * @return void
      */
-    private function directory_authenticate ($authparams, $username, $password) {
+    private function directory_authenticate($authparams, $username, $password) {
         // set method
         $method = $this->ldap ? "LDAP" : "AD";
         // connect
@@ -1096,14 +1074,12 @@ class User extends Common_functions {
                 # add blocked count
                 $this->block_ip();
                 $this->Log->write($method . " login", "User $username failed to authenticate against " . $method, 1, $username);
-                $this->Result->show("danger", _("Invalid username or password for " . $username ), true);
-
+                $this->Result->show("danger", _("Invalid username or password for " . $username), true);
             }
         } catch (adLDAPException $e) {
             $this->Log->write("Error", "Something went wrong during auth: " . $e->getMessage(), 2, $username);
             $this->Result->show("danger", _("Error: ") . $e->getMessage(), true);
         }
-
     }
 
     /**
@@ -1115,7 +1091,7 @@ class User extends Common_functions {
      * @param mixed $password
      * @return void
      */
-    private function auth_AD ($username, $password) {
+    private function auth_AD($username, $password) {
         // parse settings for LDAP connection and store them to array
         $authparams = json_decode($this->authmethodparams, true);
         // authenticate
@@ -1131,17 +1107,22 @@ class User extends Common_functions {
      * @param mixed $password
      * @return void
      */
-    private function auth_LDAP ($username, $password) {
+    private function auth_LDAP($username, $password) {
         // parse settings for LDAP connection and store them to array
         $authparams = json_decode($this->authmethodparams, true);
         $this->ldap = true;                            //set ldap flag
-
         // set uid
-        if (!empty($authparams['uid_attr'])) { $udn = $authparams['uid_attr'] . '=' . $username; }
-        else                                 { $udn = 'uid=' . $username; }
+        if (!empty($authparams['uid_attr'])) {
+            $udn = $authparams['uid_attr'] . '=' . $username;
+        } else {
+            $udn = 'uid=' . $username;
+        }
         // set DN
-        if (!empty($authparams['users_base_dn'])) { $udn = $udn . "," . $authparams['users_base_dn']; }
-        else                                      { $udn = $udn . "," . $authparams['base_dn']; }
+        if (!empty($authparams['users_base_dn'])) {
+            $udn = $udn . "," . $authparams['users_base_dn'];
+        } else {
+            $udn = $udn . "," . $authparams['base_dn'];
+        }
         // authenticate
         $this->directory_authenticate($authparams, $udn, $password);
     }
@@ -1155,8 +1136,8 @@ class User extends Common_functions {
      * @param mixed $password
      * @return void
      */
-    private function auth_NetIQ ($username, $password) {
-        $this->auth_AD ("cn=".$username, $password);
+    private function auth_NetIQ($username, $password) {
+        $this->auth_AD("cn=" . $username, $password);
     }
 
     /**
@@ -1167,66 +1148,55 @@ class User extends Common_functions {
      * @param mixed $password
      * @return void
      */
-    private function auth_radius ($username, $password) {
+    private function auth_radius($username, $password) {
         # decode radius parameters
         $params = json_decode($this->authmethodparams);
 
         # check for socket support !
-        if(!in_array("sockets", get_loaded_extensions())) {
-            $this->Log->write( "Radius login", "php Socket extension missing", 2 );
+        if (!in_array("sockets", get_loaded_extensions())) {
+            $this->Log->write("Radius login", "php Socket extension missing", 2);
             $this->Result->show("danger", _("php Socket extension missing"), true);
         }
 
         # initialize radius class
         require( dirname(__FILE__) . '/class.Radius.php' );
-        $Radius = new Radius ($params->hostname, $params->secret, $params->suffix, $params->timeout, $params->port);
+        $Radius = new Radius($params->hostname, $params->secret, $params->suffix, $params->timeout, $params->port);
         //debugging
-        $this->debugging!==true ? : $Radius->SetDebugMode(TRUE);
+        $this->debugging !== true ? : $Radius->SetDebugMode(TRUE);
 
         # authenticate
         $auth = $Radius->AccessRequest($username, $password);
         # debug?
-        if($this->debugging) {
+        if ($this->debugging) {
             print "<pre style='width:700px;margin:auto;margin-top:10px;'>";
             print(implode("<br>", $Radius->debug_text));
             print "</pre>";
         }
 
         # authenticate user
-        if($auth) {
+        if ($auth) {
             # save to session
-            $this->write_session_parameters ();
+            $this->write_session_parameters();
 
-            $this->Log->write( "Radius login", "User ".$this->user->real_name." logged in via radius", 0, $username );
+            $this->Log->write("Radius login", "User " . $this->user->real_name . " logged in via radius", 0, $username);
             $this->Result->show("success", _("Radius login successful"));
 
             # write last logintime
-            $this->update_login_time ();
+            $this->update_login_time();
             # remove possible blocked IP
-            $this->block_remove_entry ();
-        }
-        else {
+            $this->block_remove_entry();
+        } else {
             # add blocked count
-            $this->block_ip ();
-            $this->Log->write( "Radius login", "Failed to authenticate user on radius server", 2, $username );
+            $this->block_ip();
+            $this->Log->write("Radius login", "Failed to authenticate user on radius server", 2, $username);
             $this->Result->show("danger", _("Invalid username or password"), true);
         }
     }
-
-
-
-
-
-
-
-
-
 
     /**
      *    @crypt functions
      *    ------------------------------
      */
-
 
     /**
      *    function to crypt user pass, randomly generates salt. Use sha256 if possible, otherwise Blowfish or md5 as fallback
@@ -1241,17 +1211,19 @@ class User extends Common_functions {
      * @param mixed $input
      * @return void
      */
-    public function crypt_user_pass ($input) {
+    public function crypt_user_pass($input) {
         # initialize salt
         $salt = "";
         # set possible salt characters in array
-        $salt_chars = array_merge(range('A','Z'), range('a','z'), range(0,9));
+        $salt_chars = array_merge(range('A', 'Z'), range('a', 'z'), range(0, 9));
         # loop to create salt
-        for($i=0; $i < 22; $i++) { $salt .= $salt_chars[array_rand($salt_chars)]; }
+        for ($i = 0; $i < 22; $i++) {
+            $salt .= $salt_chars[array_rand($salt_chars)];
+        }
         # get prefix
-        $prefix = $this->detect_crypt_type ();
+        $prefix = $this->detect_crypt_type();
         # return crypted variable
-        return crypt($input, $prefix.$salt);
+        return crypt($input, $prefix . $salt);
     }
 
     /**
@@ -1260,12 +1232,18 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    private function detect_crypt_type () {
-        if(CRYPT_SHA512 == 1)        { return '$6$rounds=3000$'; }
-        elseif(CRYPT_SHA256 == 1)    { return '$5$rounds=3000$'; }
-        elseif(CRYPT_BLOWFISH == 1)    { return '$2y$'.str_pad(rand(4,31),2,0, STR_PAD_LEFT).'$'; }
-        elseif(CRYPT_MD5 == 1)        { return '$5$rounds=3000$'; }
-        else                        { $this->Result->show("danger", _("No crypt types supported"), true); }
+    private function detect_crypt_type() {
+        if (CRYPT_SHA512 == 1) {
+            return '$6$rounds=3000$';
+        } elseif (CRYPT_SHA256 == 1) {
+            return '$5$rounds=3000$';
+        } elseif (CRYPT_BLOWFISH == 1) {
+            return '$2y$' . str_pad(rand(4, 31), 2, 0, STR_PAD_LEFT) . '$';
+        } elseif (CRYPT_MD5 == 1) {
+            return '$5$rounds=3000$';
+        } else {
+            $this->Result->show("danger", _("No crypt types supported"), true);
+        }
     }
 
     /**
@@ -1274,12 +1252,18 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function return_crypt_type () {
-        if(CRYPT_SHA512 == 1)        { return 'CRYPT_SHA512'; }
-        elseif(CRYPT_SHA256 == 1)    { return 'CRYPT_SHA256'; }
-        elseif(CRYPT_BLOWFISH == 1)    { return 'CRYPT_BLOWFISH'; }
-        elseif(CRYPT_MD5 == 1)        { return 'CRYPT_MD5'; }
-        else                        { return "No crypt types supported"; }
+    public function return_crypt_type() {
+        if (CRYPT_SHA512 == 1) {
+            return 'CRYPT_SHA512';
+        } elseif (CRYPT_SHA256 == 1) {
+            return 'CRYPT_SHA256';
+        } elseif (CRYPT_BLOWFISH == 1) {
+            return 'CRYPT_BLOWFISH';
+        } elseif (CRYPT_MD5 == 1) {
+            return 'CRYPT_MD5';
+        } else {
+            return "No crypt types supported";
+        }
     }
 
     /**
@@ -1289,21 +1273,15 @@ class User extends Common_functions {
      * @param mixed $password
      * @return void
      */
-    public function update_user_pass ($password) {
-        try { $this->Database->updateObject("users", array("password"=>$this->crypt_user_pass ($password), "passChange"=>"No", "id"=>$this->user->id), "id"); }
-        catch (Exception $e) { $this->Result->show("danger", $e->getMessage(), true); }
+    public function update_user_pass($password) {
+        try {
+            $this->Database->updateObject("users", array("password" => $this->crypt_user_pass($password), "passChange" => "No", "id" => $this->user->id), "id");
+        } catch (Exception $e) {
+            $this->Result->show("danger", $e->getMessage(), true);
+        }
 
-        $this->Result->show("success", "Hi, ".$this->user->real_name.", "._("your password was updated").". <a class='btn btn-sm btn-default' href='".create_link("dashboard")."'>Dashboard</a>", false);
+        $this->Result->show("success", "Hi, " . $this->user->real_name . ", " . _("your password was updated") . ". <a class='btn btn-sm btn-default' href='" . create_link("dashboard") . "'>Dashboard</a>", false);
     }
-
-
-
-
-
-
-
-
-
 
     /**
      *    @updating user methods
@@ -1319,37 +1297,38 @@ class User extends Common_functions {
      */
     public function self_update($post) {
         # set items to update
-        $items  = array("real_name"=>$post['real_name'],
-                        "mailNotify"=>$post['mailNotify'],
-                        "mailChangelog"=>$post['mailChangelog'],
-                        "email"=>$post['email'],
-                        "lang"=>$post['lang'],
-                        "id"=>$this->user->id,
-                        //display
-                        "compressOverride"=>$post['compressOverride'],
-                        "hideFreeRange"=>$this->verify_checkbox(@$post['hideFreeRange']),
-                        "printLimit"=>@$post['printLimit'],
-                        "menuType"=>$post['menuType'],
-                        );
-        if(strlen($post['password1'])>0) {
-        $items['password'] = $this->crypt_user_pass ($post['password1']);
+        $items = array("real_name" => $post['real_name'],
+            "mailNotify" => $post['mailNotify'],
+            "mailChangelog" => $post['mailChangelog'],
+            "email" => $post['email'],
+            "lang" => $post['lang'],
+            "id" => $this->user->id,
+            //display
+            "compressOverride" => $post['compressOverride'],
+            "hideFreeRange" => $this->verify_checkbox(@$post['hideFreeRange']),
+            "printLimit" => @$post['printLimit'],
+            "menuType" => $post['menuType'],
+        );
+        if (strlen($post['password1']) > 0) {
+            $items['password'] = $this->crypt_user_pass($post['password1']);
         }
 
         # prepare log file
-        $log = $this->array_to_log ($post);
+        $log = $this->array_to_log($post);
 
         # update
-        try { $this->Database->updateObject("users", $items); }
-        catch (Exception $e) {
-            $this->Result->show("danger", _("Error: ").$e->getMessage(), false);
-            $this->Log->write( "User self update", "User self update failed!<br>".$log, 2 );
+        try {
+            $this->Database->updateObject("users", $items);
+        } catch (Exception $e) {
+            $this->Result->show("danger", _("Error: ") . $e->getMessage(), false);
+            $this->Log->write("User self update", "User self update failed!<br>" . $log, 2);
             return false;
         }
         # update language
-        $this->update_session_language ();
+        $this->update_session_language();
 
         # ok, update log table
-        $this->Log->write( "User self update", "User self update suceeded!", 0 );
+        $this->Log->write("User self update", "User self update suceeded!", 0);
         return true;
     }
 
@@ -1360,11 +1339,12 @@ class User extends Common_functions {
      * @param mixed $widgets
      * @return void
      */
-    public function self_update_widgets ($widgets) {
+    public function self_update_widgets($widgets) {
         # update
-        try { $this->Database->updateObject("users", array("widgets"=>$widgets, "id"=>$this->user->id)); }
-        catch (Exception $e) {
-            $this->Result->show("danger", _("Error: ").$e->getMessage(), false);
+        try {
+            $this->Database->updateObject("users", array("widgets" => $widgets, "id" => $this->user->id));
+        } catch (Exception $e) {
+            $this->Result->show("danger", _("Error: ") . $e->getMessage(), false);
             return false;
         }
         # ok, update log table
@@ -1377,13 +1357,14 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function update_login_time () {
+    public function update_login_time() {
         # fix for older versions
-        if($this->settings->version!="1.1") {
+        if ($this->settings->version != "1.1") {
             # update
-            try { $this->Database->updateObject("users", array("lastLogin"=>date("Y-m-d H:i:s"), "id"=>$this->user->id)); }
-            catch (Exception $e) {
-                $this->Result->show("danger", _("Error: ").$e->getMessage(), false);
+            try {
+                $this->Database->updateObject("users", array("lastLogin" => date("Y-m-d H:i:s"), "id" => $this->user->id));
+            } catch (Exception $e) {
+                $this->Result->show("danger", _("Error: ") . $e->getMessage(), false);
                 return false;
             }
         }
@@ -1395,24 +1376,19 @@ class User extends Common_functions {
      * @access public
      * @return void
      */
-    public function update_activity_time () {
+    public function update_activity_time() {
         # update
-        try { $this->Database->updateObject("users", array("lastActivity"=>date("Y-m-d H:i:s"), "id"=>$this->user->id)); }
-        catch (Exception $e) { }
+        try {
+            $this->Database->updateObject("users", array("lastActivity" => date("Y-m-d H:i:s"), "id" => $this->user->id));
+        } catch (Exception $e) {
+            
+        }
     }
-
-
-
-
-
-
-
 
     /**
      *    @blocking IP functions
      *    ------------------------------
      */
-
 
     /**
      * sets limit for failed login attempts
@@ -1421,7 +1397,7 @@ class User extends Common_functions {
      * @param int $limit
      * @return none
      */
-    public function set_block_limit ($limit) {
+    public function set_block_limit($limit) {
         $this->blocklimit = $limit;
     }
 
@@ -1432,19 +1408,22 @@ class User extends Common_functions {
      * @param none
      * @return int on match, false on no result
      */
-    public function block_check_ip () {
+    public function block_check_ip() {
         # first purge
-        $this->purge_blocked_entries ();
-        $this->block_get_ip ();
+        $this->purge_blocked_entries();
+        $this->block_get_ip();
         # set date and query
-        $now = date("Y-m-d H:i:s", time() - 5*60);
+        $now = date("Y-m-d H:i:s", time() - 5 * 60);
         $query = "select count from `loginAttempts` where `ip` = ? and `datetime` > ?;";
         # fetch
-        try { $cnt = $this->Database->getObjectQuery($query, array($this->ip, $now)); }
-        catch (Exception $e) { !$this->debugging ? : $this->Result->show("danger", $e->getMessage(), false); }
+        try {
+            $cnt = $this->Database->getObjectQuery($query, array($this->ip, $now));
+        } catch (Exception $e) {
+            !$this->debugging ? : $this->Result->show("danger", $e->getMessage(), false);
+        }
 
         # verify
-        return @$cnt->count>0 ? $cnt->count : false;
+        return @$cnt->count > 0 ? $cnt->count : false;
     }
 
     /**
@@ -1453,14 +1432,20 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function block_ip () {
+    private function block_ip() {
         # validate IP
-        if(!filter_var($this->ip, FILTER_VALIDATE_IP))    { return false; }
+        if (!filter_var($this->ip, FILTER_VALIDATE_IP)) {
+            return false;
+        }
 
         # first check if already in
-        if($this->block_check_ip ())         { $this->block_update_count(); }
+        if ($this->block_check_ip()) {
+            $this->block_update_count();
+        }
         # if not in add first entry
-        else                                 { $this->block_add_entry(); }
+        else {
+            $this->block_add_entry();
+        }
     }
 
     /**
@@ -1470,10 +1455,13 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function block_get_ip () {
+    private function block_get_ip() {
         # set IP
-        if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])) { $this->ip = @$_SERVER['HTTP_X_FORWARDED_FOR']; }
-        else                                        { $this->ip = @$_SERVER['REMOTE_ADDR']; }
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $this->ip = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $this->ip = @$_SERVER['REMOTE_ADDR'];
+        }
     }
 
     /**
@@ -1482,13 +1470,16 @@ class User extends Common_functions {
      * @access private
      * @return void
      */
-    private function purge_blocked_entries () {
+    private function purge_blocked_entries() {
         # set date 5 min ago and query
-        $ago = date("Y-m-d H:i:s", time() - 5*60);
+        $ago = date("Y-m-d H:i:s", time() - 5 * 60);
         $query = "delete from `loginAttempts` where `datetime` < ?; ";
 
-        try { $this->Database->runQuery($query, array($ago)); }
-        catch (Exception $e) { !$this->debugging ? : $this->Result->show("danger", $e->getMessage(), false); }
+        try {
+            $this->Database->runQuery($query, array($ago));
+        } catch (Exception $e) {
+            !$this->debugging ? : $this->Result->show("danger", $e->getMessage(), false);
+        }
     }
 
     /**
@@ -1500,8 +1491,11 @@ class User extends Common_functions {
     private function block_update_count() {
         # query
         $query = "update `loginAttempts` set `count`=`count`+1 where `ip` = ?; ";
-        try { $this->Database->runQuery($query, array($this->ip)); }
-        catch (Exception $e) { !$this->debugging ? : $this->Result->show("danger", $e->getMessage(), false); }
+        try {
+            $this->Database->runQuery($query, array($this->ip));
+        } catch (Exception $e) {
+            !$this->debugging ? : $this->Result->show("danger", $e->getMessage(), false);
+        }
     }
 
     /**
@@ -1511,8 +1505,11 @@ class User extends Common_functions {
      * @return void
      */
     private function block_add_entry() {
-        try { $this->Database->insertObject("loginAttempts", array("ip"=>$this->ip, "count"=>1)); }
-        catch (Exception $e) { !$this->debugging ? : $this->Result->show("danger", $e->getMessage(), false); }
+        try {
+            $this->Database->insertObject("loginAttempts", array("ip" => $this->ip, "count" => 1));
+        } catch (Exception $e) {
+            !$this->debugging ? : $this->Result->show("danger", $e->getMessage(), false);
+        }
     }
 
     /**
@@ -1522,9 +1519,13 @@ class User extends Common_functions {
      * @return void
      */
     private function block_remove_entry() {
-        try { $this->Database->deleteRow("loginAttempts", "ip", $this->ip); }
-        catch (Exception $e) { !$this->debugging ? : $this->Result->show("danger", $e->getMessage(), false); }
+        try {
+            $this->Database->deleteRow("loginAttempts", "ip", $this->ip);
+        } catch (Exception $e) {
+            !$this->debugging ? : $this->Result->show("danger", $e->getMessage(), false);
+        }
     }
+
 }
 
 ?>
