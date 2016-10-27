@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-10-27 16:54:54
+/* Smarty version 3.1.28, created on 2016-10-27 17:52:46
   from "/var/www/SPOT/infra/views/index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_5812153ec85df2_88254927',
+  'unifunc' => 'content_581222ce5a2fa0_82272333',
   'file_dependency' => 
   array (
     '25590053bcb05fdc73787632b6340bf1692bcd43' => 
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:partial_commons".((string)$_smarty_tpl->tpl_vars[\'SYSTEM_PATH_SEPARATOR\']->value)."_footer.tpl' => 1,
   ),
 ),false)) {
-function content_5812153ec85df2_88254927 ($_smarty_tpl) {
+function content_581222ce5a2fa0_82272333 ($_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:partial_commons".((string)$_smarty_tpl->tpl_vars['SYSTEM_PATH_SEPARATOR']->value)."_header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
 

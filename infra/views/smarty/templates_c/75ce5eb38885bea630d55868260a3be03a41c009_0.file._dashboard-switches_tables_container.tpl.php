@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-10-27 16:55:01
+/* Smarty version 3.1.28, created on 2016-10-27 17:53:33
   from "/var/www/SPOT/infra/views/partial_commons/_dashboard-switches_tables_container.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_581215456fe011_08589591',
+  'unifunc' => 'content_581222fd8067f7_41683966',
   'file_dependency' => 
   array (
     '75ce5eb38885bea630d55868260a3be03a41c009' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_581215456fe011_08589591 ($_smarty_tpl) {
+function content_581222fd8067f7_41683966 ($_smarty_tpl) {
 ?>
 <div class="container">
     <center>

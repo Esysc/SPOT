@@ -1,40 +1,31 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-10-19 08:37:50
+/* Smarty version 3.1.28, created on 2016-10-27 17:53:25
   from "/var/www/SPOT/infra/views/list_vlans.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_580714beb3e455_78511449',
+  'unifunc' => 'content_581222f50543c3_90008051',
   'file_dependency' => 
   array (
     '679d120dfbdeb169a536c799fb862bdff6279a25' => 
     array (
       0 => '/var/www/SPOT/infra/views/list_vlans.tpl',
-      1 => 1461594244,
+      1 => 1477563823,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:partial_commons".((string)$_smarty_tpl->tpl_vars[\'SYSTEM_PATH_SEPARATOR\']->value)."_header.tpl' => 1,
-    'file:partial_commons".((string)$_smarty_tpl->tpl_vars[\'SYSTEM_PATH_SEPARATOR\']->value)."_menu.tpl' => 1,
     'file:partial_commons".((string)$_smarty_tpl->tpl_vars[\'SYSTEM_PATH_SEPARATOR\']->value)."_errors.tpl' => 1,
     'file:partial_commons".((string)$_smarty_tpl->tpl_vars[\'SYSTEM_PATH_SEPARATOR\']->value)."_list_vlans-switch_table_container.tpl' => 1,
-    'file:partial_commons".((string)$_smarty_tpl->tpl_vars[\'SYSTEM_PATH_SEPARATOR\']->value)."_footer.tpl' => 1,
   ),
 ),false)) {
-function content_580714beb3e455_78511449 ($_smarty_tpl) {
-$_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:partial_commons".((string)$_smarty_tpl->tpl_vars['SYSTEM_PATH_SEPARATOR']->value)."_header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+function content_581222f50543c3_90008051 ($_smarty_tpl) {
 ?>
-
-
-<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:partial_commons".((string)$_smarty_tpl->tpl_vars['SYSTEM_PATH_SEPARATOR']->value)."_menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('switch_id'=>$_smarty_tpl->tpl_vars['mySwitch']->value->getId()), 0, true);
-?>
-
 
 <?php if ($_smarty_tpl->tpl_vars['HIDE_DETAILS_BOX']->value && !$_smarty_tpl->tpl_vars['DISABLE_DETAILS_BOX']->value) {?>
-	<?php echo '<script'; ?>
+    <?php echo '<script'; ?>
  type="text/javascript" src="web/js/list_vlans.ready.js"><?php echo '</script'; ?>
 >
 <?php }?>
@@ -48,32 +39,54 @@ $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:partial_comm
 
 <form action="delete_selected_vlans_form.php" method="post" id="delete_selected_vlans">
 
-	<?php if ($_smarty_tpl->tpl_vars['ALLOW_VLAN_CREATION']->value) {?>
-		<a href="create_vlan_form.php?switch_id=<?php echo $_smarty_tpl->tpl_vars['mySwitch']->value->getId();?>
+    <?php if ($_smarty_tpl->tpl_vars['ALLOW_VLAN_CREATION']->value) {?>
+        <a href="create_vlan_form.php?switch_id=<?php echo $_smarty_tpl->tpl_vars['mySwitch']->value->getId();?>
 "><?php echo $_smarty_tpl->tpl_vars['LBL_14_add_vlan']->value;?>
 </a>
-	<?php }?>
-	
-	<p><?php echo $_smarty_tpl->tpl_vars['LBL_14_select_a_port']->value;?>
+    <?php }?>
+
+    <p><?php echo $_smarty_tpl->tpl_vars['LBL_14_select_a_port']->value;?>
 </p>
-	
-	<div class="switch_table_container">
-		<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:partial_commons".((string)$_smarty_tpl->tpl_vars['SYSTEM_PATH_SEPARATOR']->value)."_list_vlans-switch_table_container.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+
+    <div class="switch_table_container">
+        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:partial_commons".((string)$_smarty_tpl->tpl_vars['SYSTEM_PATH_SEPARATOR']->value)."_list_vlans-switch_table_container.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
 
-		<br />
-		<?php if ($_smarty_tpl->tpl_vars['ALLOW_VLAN_DELETION']->value) {?>
-			<div>
-				<input type="submit" class="btn btn-sm btn-warning" value="<?php echo $_smarty_tpl->tpl_vars['LBL_14_delete_selected_vlans']->value;?>
+        <br />
+        <?php if ($_smarty_tpl->tpl_vars['ALLOW_VLAN_DELETION']->value) {?>
+            <div>
+                <input type="submit" class="btn btn-sm btn-warning" value="<?php echo $_smarty_tpl->tpl_vars['LBL_14_delete_selected_vlans']->value;?>
 "/>
-			</div>
-		<?php }?>
-	</div>
+            </div>
+        <?php }?>
+    </div>
 
 </form>
 
-<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:partial_commons".((string)$_smarty_tpl->tpl_vars['SYSTEM_PATH_SEPARATOR']->value)."_footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
-?>
+<button class="btn btn-primary" id="default" data-switch="<?php echo $_smarty_tpl->tpl_vars['mySwitch']->value->getIp();?>
+">Reload Default</button>
+<div id="results" class="well" style="display:none"></div>
+
+<div class="modal fade" id="list_vlans_modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"><center>Port modification</center></h4>
+            </div>
+            <div class="modal-body" id="list_vlans">
+            </div>
+            <div class="modal-footer">
+                <div id="message" class="bg-info"></div>
+                <button id="getMacTable" class="btn btn-warning  pull-left">Get Mac addresses..</button> 	
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <?php }
 }

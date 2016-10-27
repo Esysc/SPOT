@@ -12,6 +12,9 @@ $(document).ready(function () {
     function hideSpinner() {
         $('div.loading').fadeOut('fast');
     }
+    function vlan_page() {
+
+    }
 //Edit a single port popup form
     $(document).on('click', 'div.vlan-list-ports a', function (e) {
 
@@ -84,7 +87,26 @@ $(document).ready(function () {
             $('#message').html(data);
 
             showSpinner();
-            location.reload();
+            var href = "list_vlans.php";
+            $('#list_vlans_modal').modal('hide');
+            $.get(href, postdata, function (data) {
+                hideSpinner();
+
+                $('div.col-md-9').html(data)
+                $('#default').on('click', function (e) {
+                    e.preventDefault();
+                    showSpinner();
+                    $('.switch_table_container').fadeTo(1000, 0.4);
+                    var host = $(this).attr('data-switch');
+                    var post = "host=" + host;
+                    $.post('loadDefault.php', post, function (data) {
+                        $.get(href, postdata, function (data) {
+                            hideSpinner();
+                            $('div.col-md-9').html(data)
+                        });
+                    });
+                });
+            });
         })
 
     });
@@ -121,17 +143,7 @@ $(document).ready(function () {
 
     $('#listitems').paginate({itemsPerPage: 10});
 
-    $('#default').on('click', function (e) {
-        e.preventDefault();
-        showSpinner();
-        $('.switch_table_container').fadeTo(1000, 0.4);
-        var host = $(this).attr('data-switch');
-        var postdata = "host=" + host;
-        $.post('loadDefault.php', postdata, function (data) {
-            $('#result').html(data).show();
-            location.reload();
-        });
-    });
+
 
     $('#listitems li').children("a").on('click', function (e) {
         $('#listitems li').find('span').removeClass('label-success').addClass('label-default')
@@ -142,6 +154,19 @@ $(document).ready(function () {
         var href = $(this).attr('href');
         $.get(href, function (data) {
             $('div.col-md-9').html(data)
+            $('#default').on('click', function (e) {
+                e.preventDefault();
+                showSpinner();
+                $('.switch_table_container').fadeTo(1000, 0.4);
+                var host = $(this).attr('data-switch');
+                var postdata = "host=" + host;
+                $.post('loadDefault.php', postdata, function (data) {
+                    $.get(href, function (data) {
+                        hideSpinner();
+                        $('div.col-md-9').html(data)
+                    });
+                });
+            });
             $('#displayconf').on('click', function (e) {
                 e.preventDefault();
 
@@ -154,6 +179,7 @@ $(document).ready(function () {
                     hideSpinner();
                 })
             })
+
             hideSpinner();
         })
     });
