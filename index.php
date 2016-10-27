@@ -49,7 +49,8 @@
             <center>
 
             <a href="provisioning/index.php" class="btn btn-info">Enter the production tool</a>
-             <a href="ipam/index.php" class="btn btn-info">Enter the ipam tool</a>
+             <a href="ipam/index.php" class="btn btn-primary">Enter the ipam tool</a>
+              <a href="infra/index.php" class="btn btn-primary">Procurve management tool</a>
                        
             </center>
         </div>
