@@ -39,7 +39,18 @@
                         <table class="table table-striped table-responsive">
                             <tr>
                                 <th class="btn btn-info"    >
-                                    <a href="index.php"><strong style="color:white;">{$TITLE}</strong></a>
+                                    
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            Welcome {$USER}
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="index.php"><strong>HOME - {$TITLE}</strong></a></li>
+                                            <li><a href="#" id="logout">Logout</a></li>
+
+                                        </ul>
+                                    </div>
                                 </th>
                                 <td class="btn btn-primary btn-sm">
                                     UP tagged port

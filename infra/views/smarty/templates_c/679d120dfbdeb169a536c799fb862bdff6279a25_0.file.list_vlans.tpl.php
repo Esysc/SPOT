@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-10-27 17:53:25
+/* Smarty version 3.1.28, created on 2016-10-27 18:08:46
   from "/var/www/SPOT/infra/views/list_vlans.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_581222f50543c3_90008051',
+  'unifunc' => 'content_5812268ed122d6_34252094',
   'file_dependency' => 
   array (
     '679d120dfbdeb169a536c799fb862bdff6279a25' => 
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:partial_commons".((string)$_smarty_tpl->tpl_vars[\'SYSTEM_PATH_SEPARATOR\']->value)."_list_vlans-switch_table_container.tpl' => 1,
   ),
 ),false)) {
-function content_581222f50543c3_90008051 ($_smarty_tpl) {
+function content_5812268ed122d6_34252094 ($_smarty_tpl) {
 ?>
 
 <?php if ($_smarty_tpl->tpl_vars['HIDE_DETAILS_BOX']->value && !$_smarty_tpl->tpl_vars['DISABLE_DETAILS_BOX']->value) {?>

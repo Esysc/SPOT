@@ -106,6 +106,18 @@ $(document).ready(function () {
                         });
                     });
                 });
+                $('#displayconf').on('click', function (e) {
+                e.preventDefault();
+
+                showSpinner();
+                var href = $(this).attr('href');
+                $('#delete_selected_vlans').remove();
+
+                $.get(href, function (data) {
+                    $('#toolTipsSwitchDetails').after(data)
+                    hideSpinner();
+                })
+            })
             });
         })
 
@@ -185,6 +197,7 @@ $(document).ready(function () {
     });
     $('#dashboard').on('click', function (e) {
         e.preventDefault();
+         $('#listitems li').find('span').removeClass('label-success').addClass('label-default')
         showSpinner();
         var href = $(this).attr('href');
         $.get(href, function (data) {

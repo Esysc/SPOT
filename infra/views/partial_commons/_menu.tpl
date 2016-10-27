@@ -2,18 +2,7 @@
     <div class="row row-left">
         <div class="col-md-3 sidebar" id="sidebar">
             <ul class="nav nav-sidebar">
-                <li class="menu-title">
                 
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Welcome {$USER}
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#" id="logout">Logout</a></li>
-
-                    </ul>
-                
-                </li>
                     <!--<li class="menu-home"><a href="index.php">{$LBL_1_home}</a></li>-->
                 {if $DISPLAY_DASHBOARD}
                     <li ><a  href="dashboard.php" class="btn btn-default" id="dashboard">{$LBL_1_dashboard} <span><img src="web/images/next.png" style="display:inline"/></span></a></li>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-10-27 17:52:46
+/* Smarty version 3.1.28, created on 2016-10-27 18:18:51
   from "/var/www/SPOT/infra/views/partial_commons/_menu.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_581222ce690478_85175361',
+  'unifunc' => 'content_581228eb6f5d59_09249624',
   'file_dependency' => 
   array (
     '7358e3476a4bcb644e489444da34bb23b74a1565' => 
     array (
       0 => '/var/www/SPOT/infra/views/partial_commons/_menu.tpl',
-      1 => 1477578950,
+      1 => 1477584965,
       2 => 'file',
     ),
   ),
@@ -19,25 +19,13 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_581222ce690478_85175361 ($_smarty_tpl) {
+function content_581228eb6f5d59_09249624 ($_smarty_tpl) {
 ?>
 <div class="container">
     <div class="row row-left">
         <div class="col-md-3 sidebar" id="sidebar">
             <ul class="nav nav-sidebar">
-                <li class="menu-title">
                 
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Welcome <?php echo $_smarty_tpl->tpl_vars['USER']->value;?>
-
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#" id="logout">Logout</a></li>
-
-                    </ul>
-                
-                </li>
                     <!--<li class="menu-home"><a href="index.php"><?php echo $_smarty_tpl->tpl_vars['LBL_1_home']->value;?>
 </a></li>-->
                 <?php if ($_smarty_tpl->tpl_vars['DISPLAY_DASHBOARD']->value) {?>

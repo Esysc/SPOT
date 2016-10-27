@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-10-27 17:52:46
+/* Smarty version 3.1.28, created on 2016-10-27 18:18:51
   from "/var/www/SPOT/infra/views/partial_commons/_header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_581222ce5d1d21_41356391',
+  'unifunc' => 'content_581228eb634815_41982246',
   'file_dependency' => 
   array (
     'ffe109ca0018544ea362d6128231985a4fccfa49' => 
     array (
       0 => '/var/www/SPOT/infra/views/partial_commons/_header.tpl',
-      1 => 1477578061,
+      1 => 1477585129,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_581222ce5d1d21_41356391 ($_smarty_tpl) {
+function content_581228eb634815_41982246 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -75,8 +75,20 @@ function content_581222ce5d1d21_41356391 ($_smarty_tpl) {
                         <table class="table table-striped table-responsive">
                             <tr>
                                 <th class="btn btn-info"    >
-                                    <a href="index.php"><strong style="color:white;"><?php echo $_smarty_tpl->tpl_vars['TITLE']->value;?>
-</strong></a>
+                                    
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            Welcome <?php echo $_smarty_tpl->tpl_vars['USER']->value;?>
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="index.php"><strong>HUME - <?php echo $_smarty_tpl->tpl_vars['TITLE']->value;?>
+</strong></a></li>
+                                            <li><a href="#" id="logout">Logout</a></li>
+
+                                        </ul>
+                                    </div>
                                 </th>
                                 <td class="btn btn-primary btn-sm">
                                     UP tagged port
