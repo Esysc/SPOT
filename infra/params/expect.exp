@@ -1,0 +1,23 @@
+#!/usr/bin/expect -f
+set timeout 20
+spawn  telnet 192.168.1.201 
+send "\r"
+expect " assword: "
+send "***REMOVED***"
+send "\r"
+send "\r"
+send "conf t"
+send "\r"
+send "ip ssh"
+send "\r"
+send "ip ssh filetransfer"
+send "\r"
+send "end"
+send "\r"
+send "exit"
+send "\r"
+send "exit"
+send "\r"
+expect "Do you want to log out [y/n]?"
+send "y"
+send "\r"

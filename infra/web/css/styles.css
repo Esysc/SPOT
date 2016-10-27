@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21 oct. 2016, 11:27:14
+    Author     : cristall
+*/
+
+.switch-carousel{
+    
+    width:5em;
+    height: 20%;
+    position:relative;
+    top:0px;
+    left:0px;
+}
+
+
+.textoverlay{
+    position:relative;
+    bottom : 1.5em;
+    left:12.5em;
+    font-weight: bold;
+    color:#00F;
+    font-size:1em;
+    display:block;
+}
+.modal .modal-dialog {
+  width: 90%;
+  height: 50em;
+}
+.modal .modal-body {
+  overflow-y: auto;
+}
+.loading {
+    position: fixed;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+
+    display: none;
+
+    left: 47%;
+    top:200px;
+
+    padding: 10px;
+    text-align: center;
+
+    background: #494949;
+    background: -moz-linear-gradient(top,  rgba(29,36,41,0.9) 0%, rgba(41,51,57,0.7) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(29,36,41,0.9)), color-stop(100%,rgba(41,51,57,0.7)));
+    background: -webkit-linear-gradient(top,  rgba(29,36,41,0.9) 0%,rgba(41,51,57,0.7) 100%);
+    background: -o-linear-gradient(top,  rgba(29,36,41,0.9) 0%,rgba(41,51,57,0.7) 100%);
+    background: -ms-linear-gradient(top,  rgba(29,36,41,0.9) 0%,rgba(41,51,57,0.7) 100%);
+    background: linear-gradient(top,  rgba(29,36,41,0.9) 0%,rgba(41,51,57,0.7) 100%);
+
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+
+    border: 1px solid rgba(0,0,0,0.6);
+
+    z-index: 999999999999 !important;
+}
+div.loading i {
+    font-size: 24px;
+    margin-top: 7px;
+}
+

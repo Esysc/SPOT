@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xml>
+		<view>
+			<id>0</id>
+			<path>all_views</path>
+			<labels>
+				<label><name>help</name><value>Aide</value></label>
+				<label><name>see</name><value>Voir</value></label>
+				<label><name>back</name><value>Retour</value></label>
+				<label><name>name</name><value>Nom</value></label>
+				<label><name>select_all</name><value>Tout sélectionner</value></label>
+				<label><name>modify</name><value>Modifier</value></label>
+				<label><name>speed</name><value>Vitesse</value></label>
+				<label><name>untag_in_vlan</name><value>Untagguer dans le vlan</value></label>
+				<label><name>untag_in_selected_vlan</name><value>Untagguer dans le vlan sélectionné</value></label>
+				<label><name>untag_ports_in_vlan</name><value>Passer à untagged le/les ports dans le vlan</value></label>
+				<label><name>untag_selected_ports_in_vlan</name><value>Untagguer le(s) port(s) sélectionné(s) dans le VLAN</value></label>
+				<label><name>tag_in_vlans</name><value>Tagguer dans le ou les vlan(s)</value></label>
+				<label><name>tag_in_vlan</name><value>Tagguer le/les port(s) dans le vlan</value></label>
+				<label><name>no_untag_in_vlans</name><value>Passer à no untag dans le ou les vlan(s)</value></label>
+				<label><name>no_untag_in_vlan</name><value>Passer à no untagged le/les ports dans le vlan</value></label>
+				<label><name>no_untag_success_port_id</name><value>Le port id</value></label>
+				<label><name>no_untag_success_switch</name><value>du switch</value></label>
+				<label><name>no_untag_success</name><value>a été passé à no untagged pour le vlan</value></label>
+				<label><name>no_untag_warning_message</name><value>Attention, parce qu'un port doit au moins être taggué ou untaggué dans un vlan (il ne peut pas être passé à "no untagged" dans tous les vlans) :</value></label>
+				<label><name>untag_success_port_id</name><value>Le port id</value></label>
+				<label><name>untag_success_switch</name><value>du switch</value></label>
+				<label><name>untag_success</name><value>a été untaggué dans le vlan</value></label>
+				<label><name>tag_success_port_id</name><value>Le port id</value></label>
+				<label><name>tag_success_switch</name><value>du switch</value></label>
+				<label><name>tag_success</name><value>a été taggué dans le vlan</value></label>
+			</labels>
+		</view>
+
+		<view>
+			<id>1</id>
+			<path>partial_commons/_menu.tpl</path>
+			<labels>
+				<label><name>home</name><value>Accueil</value></label>
+				<label><name>dashboard</name><value>Tableau de bord</value></label>
+				<label><name>backup</name><value>Sauvegarde</value></label>
+				<label><name>backup_warning</name><value>Attention : quelques pertes de ping à cause de la connexion tftp pendant l'opération de sauvegarde.</value></label>
+				<label><name>backup_exec</name><value>Lancer une sauvegarde</value></label>
+				<label><name>browse_backups</name><value>Parcourir les sauvegardes</value></label>
+				<label><name>show_log</name><value>Voir les logs</value></label>
+				<label><name>switches</name><value>Switchs</value></label>
+				<label><name>compare</name><value>Comparer</value></label>
+				<label><name>other_switches</name><value>Autres switches</value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>2</id>
+			<path>backup_all_configs.tpl</path>
+			<labels>
+				<label><name>saved_switches</name><value> switch(s) sauvegardés.</value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>3</id>
+			<path>comparative_view_form.tpl</path>
+			<labels>
+				<label><name>select_two_switches</name><value>Sélectionnez deux switchs </value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>4</id>
+			<path>create_vlan.tpl</path>
+			<labels>
+				<label><name>vlan_id</name><value>Le vlan Id </value></label>
+				<label><name>vlan_creation_message</name><value>a bien été créé sur les switchs suivants</value></label>
+				<label><name>vlan_creation_error_message</name><value>Le Vlan n'a pas pu être créé sur les switchs suivants (voir les erreurs ci-dessus)</value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>5</id>
+			<path>create_vlan_form.tpl</path>
+			<labels>
+				<label><name>vlan_id</name><value>Le vlan Id </value></label>
+				<label><name>deploy_vlan</name><value>Déployer ce vlan sur les switchs sélectionnés</value></label>
+			</labels>
+		</view>
+		
+		
+		<view>
+			<id>6</id>
+			<path>delete_selected_vlans.tpl</path>
+			<labels>
+				<label><name>vlan_deleted_success</name><value>a bien été supprimé</value></label>
+				<label><name>vlan_deleted_error</name><value>n'a pas pu être supprimé.</value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>7</id>
+			<path>delete_selected_vlans_form.tpl</path>
+			<labels>
+				<label><name>selected_vlans</name><value>Vlans sélectionnés</value></label>
+				<label><name>delete_vlan_on_other_switches</name><value>Supprimer ce/ces vlan(s) sur d'autres switchs</value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>8</id>
+			<path>delete_vlan.tpl</path>
+			<labels>
+				<label><name>vlan_id</name><value>Le vlan Id </value></label>
+				<label><name>vlan_deletion_message</name><value>a bien été supprimé sur les switchs suivants</value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>9</id>
+			<path>edit_config_form.tpl</path>
+			<labels>
+				<label><name>switch_configuration_file_modification</name><value>Modification du fichier de configuration du switch</value></label>
+				<label><name>switch_configuration_modification_warning</name><value>Le fichier de configuration va être envoyé sur le switch, qui va redémarrer.<br />Connectez vous en ssh et lancez la commande show run pour vérifier que la configuration est correcte.<br />Enregistrez éventuellement les modifications avec la commande write memory.</value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>10</id>
+			<path>edit_port_form.tpl</path>
+			<labels>
+				<label><name>port_details</name><value>Détails du port</value></label>
+				<label><name>actual_vlan</name><value>vlan actuel</value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>11</id>
+			<path>edit_vlan_form.tpl</path>
+			<labels>
+				<label><name>actual_name</name><value>nom actuel</value></label>
+				<label><name>rename_vlan</name><value>Renommer le vlan</value></label>
+				<label><name>delete_vlan</name><value>Supprimer le vlan</value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>12</id>
+			<path>edit_vlan_name.tpl</path>
+			<labels>
+				<label><name>vlan_renamed_success_vlan_id</name><value>Le vlan id</value></label>
+				<label><name>vlan_renamed_success_switch</name><value>du switch</value></label>
+				<label><name>vlan_renamed_success</name><value>a été renommé en</value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>13</id>
+			<path>index.tpl</path>
+			<labels>
+				<label><name>add_your_html_code_here</name><value>Ajoutez votre code html ici</value></label>
+			</labels>
+		</view>
+		
+		<view>
+			<id>14</id>
+			<path>list_vlans.tpl</path>
+			<labels>
+				<label><name>add_vlan</name><value>Ajouter un vlan</value></label>
+				<label><name>select_a_port</name><value>Cliquer sur un port pour le passer à tag/untag/no untag...</value></label>
+				<label><name>delete_selected_vlans</name><value>Supprimer les vlans sélectionnés</value></label>
+			</labels>
+		</view>
+		
+		<messages>
+			<message><name>MSG_WRONG_PARAMETERS</name><value>ERREUR : Parametre(s) incorrect(s)</value></message>
+			<message><name>MSG_BAD_OS_TYPE</name><value>ERREUR : Configuration incorrecte (config.conf) : OS_TYPE"</value></message>
+			<message><name>MSG_SNMP_NOT_INSTALLED_WINDOWS</name><value>ERREUR : Veuillez installer le support snmp pour php (extension=php_snmp.dll dans php.ini, version de php >= 5.3.3)</value></message>
+			<message><name>MSG_SNMP_NOT_INSTALLED_UNIX</name><value>ERREUR : Veuillez installer le support snmp pour php ('apt-get install php5-snmp' et '/etc/init.d/apache2 restart' sous debian et ubuntu.<br /> Si vous utilisez un serveur sous Windows, modifiez OS_TYPE avec la valeur WINDOWS.)</value></message>
+			<message><name>MSG_MCRYPT_NOT_INSTALLED_WINDOWS</name><value>ERREUR : Veuillez installer le support mcrypt pour php (extension=php_mcrypt.dll dans php.ini, version de php >= 5.3.3). <br />Mcrypt est utilisee pour chiffrer les sauvegardes des fichiers de configuration des switchs. <br />Vous pouvez desactiver cette fonctionnalite en passant ENCRYPT_SAVED_CONFIGURATION_FILES a 0 dans config.conf.</value></message>
+			<message><name>MSG_MCRYPT_NOT_INSTALLED_UNIX</name><value>ERREUR : Veuillez installer le support mcrypt pour php ('apt-get install php5-mcrypt' et '/etc/init.d/apache2 restart' sous debian et ubuntu). Si vous utilisez un serveur sous Windows, modifiez OS_TYPE avec la valeur WINDOWS.<br /> Mcrypt est utilisee pour chiffrer les sauvegardes des fichiers de configuration des switchs.<br /> Vous pouvez desactiver cette fonctionnalite en passant ENCRYPT_SAVED_CONFIGURATION_FILES a 0 dans config.conf.</value></message>
+			<message><name>MSG_ERRORS_OCCURED</name><value>Des erreurs se sont produites :</value></message>
+			<message><name>MSG_ERRORS_ADVICE</name><value>si Snmp V1 ou v2, vérifiez la communauté (unrestricted access), sinon, vérifiez le paramètres d'authentification v3.</value></message>
+			<message><name>MSG_VLAN_NAME_TOO_LONG</name><value>ERREUR : Nom trop long !</value></message>
+			<message><name>MSG_VLAN_BAD_NAME</name><value>ERREUR : Le nom ne doit pas être un nombre !</value></message>
+			<message><name>MSG_VLAN_ID_BAD_VALUE</name><value>ERREUR : L'id du Vlan doit être un entier.</value></message>
+			<message><name>MSG_VLAN_NAME_ALREADY_EXISTS</name><value>ERREUR : Un vlan du même nom existe déjà</value></message>
+			<message><name>MSG_VLAN_ID_ALREADY_EXISTS</name><value>ERREUR : Un vlan du même id existe déjà</value></message>
+			<message><name>MSG_NON_EXISTENT_VLAN</name><value>ERREUR : Ce vlan n'existe pas.</value></message>
+			<message><name>MSG_VLAN_HAS_PORTS_TAGGED_OR_UNTAGGED</name><value>ERREUR : Ce vlan a des ports taggé et/ou untaggés : suppression impossible !</value></message>
+			<message><name>MSG_DEFAULT_VLAN_CANNOT_BE_DELETED</name><value>ERREUR : Le VLAN d'id 1 ne peut être supprimé.</value></message>
+			<message><name>MSG_ONLY_ONE_AUTHENTICATION_TYPE_ALLOWED</name><value>ERREUR : Vous avez activé les deux types d'authentification dans le fichier config.conf. Une seule est autorisée</value></message>
+			<message><name>MSG_SUPPORT</name><value>Pour obtenir de l'aide,</value></message>
+			<message><name>MSG_SUPPORT_LINK</name><value>Cliquez ici.</value></message>
+			<message><name>MSG_AT_LEAST_ONE_VLAN_MUST_BE_SELECTED</name><value>ERREUR : Vous devez selectionner au moins un VLAN.</value></message>
+			<message><name>MSG_2_SWITCHES_WITH_THE_SAME_ID</name><value>ERREUR : deux switchs ont le même ID dans switches.xml</value></message>
+			<message><name>MSG_2_SWITCHES_WITH_THE_SAME_IP</name><value>ERREUR : deux switchs ont la même adresse IP dans switchs.xml</value></message>
+			<message><name>MSG_2_OIDS_WITH_THE_SAME_ID</name><value>ERREUR : deux OIDs ont le même ID dans OIDs.xml</value></message>
+			<message><name>AD_ERROR_MESSAGE</name><value>Vous n'êtes pas autorisé à accéder à cette page ! Contactez le service informatique si vous pensez qu'il s'agit d'une erreur.</value></message>
+			<message><name>JTA_CONFIGURATION_FILE_UNWRITABLE</name><value>Impossible d'ouvrir en écriture le fichier de configuration de jta. Vérifiez le répertoire jta/ est accessible en écriture</value></message>
+			<message><name>ACCESS_DENIED</name><value>Acces refusé</value></message>
+			<message><name>MINDTERM_AND_JTA_BOTH_SELECTED</name><value>Erreur dans config.conf. Vous devez choisir entre jta et mindterm et ne pouvez sélectionner les deux !</value></message>
+			<message><name>SSH_CONNECTION_ERROR</name><value>Impossible de se connecter en ssh au switch. SSH est il activé (commandes ip ssh et ip ssh filetransfer) ? avez-vous saisi le bon mot de passe ?</value></message>
+			<message><name>SSH_RECV_ERROR</name><value>Impossible de se connecter en ssh au switch pour récupérer la configuration. Assurez-vous d'avoir passé la commande ip ssh filetransfer sur le switch</value></message>
+			<message><name>SSH_FOPEN_W_ERROR</name><value>Impossible d'ouvrir le fichier de configuration pour écriture. Assurez-vous d'avoir passé la commande ip ssh filetransfer sur le switch</value></message>
+			<message><name>SSH_FWRITE_ERROR</name><value>Impossible d'envoyer le fichier de configuration sur le switch. Assurez-vous d'avoir passé la commande ip ssh filetransfer sur le switch</value></message>
+			<message><name>CONFIGURATION_SAVED_OK</name><value>La configuration a bien été enregistrée</value></message>
+		</messages>
+</xml>

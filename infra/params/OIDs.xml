@@ -1,0 +1,177 @@
+<OIDs>
+	<oid>
+		<id>1</id>
+		<name>dot1qVlanStaticName</name>
+		<value>1.3.6.1.2.1.17.7.1.4.3.1.1</value>
+		<description>To get vlan names</description>
+	</oid>
+	<oid>
+		<id>2</id>
+		<name>dot1qPvid</name>
+		<value>1.3.6.1.2.1.17.7.1.4.5.1.1</value>
+		<description>To get ports (and their respective vlans) / to untag port in a vlan</description>
+	</oid>
+	<oid>
+		<id>3</id>
+		<name>dot1qVlanStaticUntaggedPorts</name>
+		<value>1.3.6.1.2.1.17.7.1.4.3.1.4</value>
+		<description>To get untagged ports of a VLAN</description>
+	</oid>
+	<oid>
+		<id>4</id>
+		<name>dot1qVlanStaticEgressPorts</name>
+		<value>1.3.6.1.2.1.17.7.1.4.3.1.2</value>
+		<description>To get egress ports of a VLAN (tagged + untagged)</description>
+	</oid>
+	<oid>
+		<id>5</id>
+		<name>ifOperStatus</name>
+		<value>1.3.6.1.2.1.2.2.1.8</value>
+		<description>To get link status of a port (link up/link down)</description>
+	</oid>
+	<oid>
+		<id>6</id>
+		<name>sysDescr</name>
+		<value>1.3.6.1.2.1.1.1.0</value>
+		<description>To get description of the switch</description>
+	</oid>
+	<oid>
+		<id>7</id>
+		<name>sysName</name>
+		<value>1.3.6.1.2.1.1.5.0</value>
+		<description>To get complete name of the device</description>
+	</oid>
+	<oid>
+		<id>27</id>
+		<name>3COM_sysName</name>
+		<value>.1.3.6.1.2.1.47.1.1.1.1.7.2</value>
+		<description>To get complete name of the device</description>
+	</oid>
+	<oid>
+		<id>8</id>
+		<name>dot1qVlanForbiddenEgressPorts</name>
+		<value>1.3.6.1.2.1.17.7.1.4.3.1.3</value>
+		<description>To get forbidden ports</description>
+	</oid>
+	<oid>
+		<id>9</id>
+		<name>dot1qVlanStaticRowStatus</name>
+		<value>1.3.6.1.2.1.17.7.1.4.3.1.5</value>
+		<description>This object indicates the status of a vlan</description>
+	</oid>
+	<oid>
+		<id>10</id>
+		<name>hpSwitchCpuStat</name>
+		<value>1.3.6.1.4.1.11.2.14.11.5.1.9.6.1.0</value>
+		<description>CPU Utilisation</description>
+	</oid>
+	<oid>
+		<id>26</id>
+		<name>3COM_SwitchCpuStat</name>
+		<value>.1.3.6.1.4.1.25506.2.6.1.1.1.1.6</value>
+		<description>CPU Utilisation</description>
+	</oid>
+	<oid>
+		<id>11</id>
+		<name>hpLocalMemTotalBytes</name>
+		<value>1.3.6.1.4.1.11.2.14.11.5.1.1.2.1.1.1.5.1</value>
+		<description>Total Memory</description>
+	</oid>
+	<oid>
+		<id>25</id>
+		<name>3COM_LocalMemTotalBytes</name>
+		<value>1.3.6.1.4.1.25506.2.6.1.1.1.1.10</value>
+		<description>Total Memory</description>
+	</oid>
+	<oid>
+		<id>12</id>
+		<name>hpLocalMemFreeBytes</name>
+		<value>1.3.6.1.4.1.11.2.14.11.5.1.1.2.1.1.1.6.1</value>
+		<description>Free Memory</description>
+	</oid>
+	<oid>
+		<id>13</id>
+		<name>hpLocalMemAllocBytes</name>
+		<value>1.3.6.1.4.1.11.2.14.11.5.1.1.2.1.1.1.7.1</value>
+		<description>Used memory</description>
+	</oid>
+	<oid>
+		<id>24</id>
+		<name>3COM_LocalMemAllocBytes</name>
+		<value>1.3.6.1.4.1.25506.2.6.1.1.1.1.8</value>
+		<description>Used memory</description>
+	</oid>
+	<oid>
+		<id>14</id>
+		<name>hpSerialNumber</name>
+		<value>1.3.6.1.4.1.11.2.36.1.1.2.9.0</value>
+		<description>Serial Number</description>
+	</oid>
+	<oid>
+		<id>28</id>
+		<name>3COM_entPhysicalSerialNum</name>
+		<value>1.3.6.1.4.1.25506.2.6.1.2.1.1.2.2</value>
+		<description>Serial Number</description>
+	</oid>
+	
+	<oid>
+		<id>15</id>
+		<name>hpSerieType</name>
+		<value>1.3.6.1.4.1.11.2.36.1.1.5.1.1.9.1</value>
+		<description>Serie type (procurve for instance)</description>
+	</oid>
+	<oid>
+		<id>16</id>
+		<name>hpSysUpTimeInstance</name>
+		<value>1.3.6.1.2.1.1.3</value>
+		<description>Uptime</description>
+	</oid>
+	<oid>
+		<id>17</id>
+		<name>ifSpeed</name>
+		<value>1.3.6.1.2.1.2.2.1.5</value>
+		<description>Interface speed</description>
+	</oid>
+	<oid>
+		<id>18</id>
+		<name>ifInErrors</name>
+		<value>1.3.6.1.2.1.2.2.1.14</value>
+		<description>Interface in errors</description>
+	</oid>
+	<oid>
+		<id>19</id>
+		<name>ifOutErrors</name>
+		<value>1.3.6.1.2.1.2.2.1.20</value>
+		<description>Interface out errors</description>
+	</oid>
+	<oid>
+		<id>20</id>
+		<name>ifName</name>
+		<value>1.3.6.1.2.1.31.1.1.1.1</value>
+		<description>Interface name</description>
+	</oid>
+	<oid>
+		<id>21</id>
+		<name>ifDescr</name>
+		<value>1.3.6.1.2.1.2.2.1.2</value>
+		<description>Interface description</description>
+	</oid>
+	<oid>
+		<id>22</id>
+		<name>ifAlias</name>
+		<value>1.3.6.1.2.1.31.1.1.1.18</value>
+		<description>Interface alias</description>
+	</oid>
+	<oid>
+		<id>23</id>
+		<name>3COM_board_id</name>
+		<value>1.3.6.1.4.1.25506.2.38.1.1.2.0</value>
+	</oid>
+        <oid>
+		<id>29</id>
+		<name>getMacTable</name>
+		<value>1.3.6.1.2.1.17.4.3.1.2</value>
+	</oid>
+	
+	 <!-- .1.3.6.1.4.1.25506.2.3.1.2.1.1.2 -->
+</OIDs>

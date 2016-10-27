@@ -1,0 +1,24 @@
+set -x
+echo "<switchs>" > /etc/infra/switches.xml
+for i in {1..24}
+do
+ip=$((200 + $i))
+if [ $i -lt 10 ]; then
+des="0$i"
+else
+des="$i"
+
+fi
+echo "esw$des 192.168.1.$i configuration:"
+echo " <switch>
+		 <id>$i</id>
+                <name>esw$des</name>
+                <ip>192.168.1.$ip</ip>
+		 <dashboard>1</dashboard>
+                <snmpVersion>2</snmpVersion>
+                <community>public</community>
+		<sshUser>manager</sshUser>
+                <sshPassword>myPassword</sshPassword>
+	</switch>" >> /etc/infra/switches.xml
+done
+echo "</switchs>" >> /etc/infra/switches.xml

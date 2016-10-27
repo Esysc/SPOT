@@ -1,0 +1,148 @@
+.tag_port {
+	width:50%;
+	border: 1px solid #CCC;
+	background-color:#D5EBEF;
+	padding:0.5em;
+	margin:0.5em;
+}
+
+.untag_port {
+	width:50%;
+	border: 1px solid #CCC;
+	background-color:#EEE;
+	padding:0.5em;
+	margin:0.5em;
+}
+  
+.no_untag_port{
+	width:50%;
+	border: 1px solid #CCC;
+	background-color:#FFD6A8;
+	padding:0.5em;
+	margin:0.5em;
+}
+
+.back-link{
+	margin-top:1em;
+}  
+
+a {
+	color :#4a6695;
+	font-size:12px;
+	display:inline;
+	margin:3px;
+	text-decoration:none;
+}
+
+a:hover {
+	color: #ff6000;
+	text-decoration: none;
+}
+
+ul{
+	list-style-type:none;
+}
+
+li{
+	list-style-type:none;
+}
+
+ul.vlan li{
+	border-bottom:1px solid #ccc;
+}
+
+.vlan-list-ports a {
+	font-family: monospace;
+	font-weight:bold;
+}
+
+.menu-image {
+    margin:3px;
+    float:right;
+}
+
+li.switch-group-member {
+	margin-left:5%;
+}
+
+li.active {
+	background-color:#F8F8F8;
+}
+
+li.switch-group {
+	background-color:#FAFAFA;
+}
+
+li.menu-title {
+	background-color:#F8F8F8;
+	padding:1em;
+	font-weight:bold;
+	color:#877777;
+}
+
+li.nav .nav-sidebar:focus {
+    background-color: red;
+}
+
+.comparative-view-column {
+		width: 45%;
+		float:left;
+		clear:right;
+}
+
+.infoBox {
+		background-color:#F8F8F8;
+		padding:1em;
+		width: 45%;
+		float: right;
+		border: 1px solid #E7E7E7;
+		color: #000;
+}
+
+.infoBox li {
+	padding:0.5em;
+}
+
+ .errors {
+		margin: 0;
+		padding:0.5em;
+		width: 95%;
+		border: 1px solid RED;	
+		color: red;
+}
+
+.errors li {
+	padding:0.5em;
+}
+
+.errors h3 {
+	font-size:1.5em;
+}
+
+.switch_table_container_small {
+	margin-top:1em;
+}
+
+#sidebar a:hover{
+	background-color:transparent;
+}
+
+
+#footer{
+	background-color:#F8F8F8;
+	border-top: 1px solid #E7E7E7;
+	color:#73777e;
+	text-align:center;
+	padding:3em 0 1em 0;
+	margin-top:3em;
+}
+
+#footer a{
+	font-size:1em;
+}
+
+#copyleft {
+	text-align:right;
+	font-style:italic;
+}
+

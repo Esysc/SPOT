@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<switchs>
+	<group>
+		<id>1</id>
+		<name>place 1</name>
+	</group>
+	<group>
+		<id>2</id>
+		<name>place 2</name>
+	</group>
+	<switch>
+		<id>1</id>
+		<name>Example 1 (switches.xml) : with snmp V3, enabled in dashboard, planned for backup task</name>
+		<ip>127.0.0.1</ip>
+		<dashboard>1</dashboard>
+		<plannedForBackup>1</plannedForBackup>
+		<snmpVersion>3</snmpVersion>
+		<snmpV3User>user_sha</snmpV3User>
+		<snmpV3Passphrase>the_public_passphrase</snmpV3Passphrase>
+		<snmpV3AuthProtocol>SHA</snmpV3AuthProtocol>
+		<snmpV3PrivProtocol>AES</snmpV3PrivProtocol>
+		<snmpV3PrivPassphrase>the_prviate_passphrase</snmpV3PrivPassphrase>
+		<snmpV3SecLevel>authPriv</snmpV3SecLevel>
+		<group>1</group>
+	</switch>
+	<switch>
+		<id>2</id>
+		<name>Example 2 (switches.xml) : with snmp default version, community and other parameters taken from config.conf</name>
+		<ip>0.0.0.0</ip>
+		<group>2</group>
+	</switch>
+	<switch>
+		<id>3</id>
+		<name>Example 3 (switches.xml) : with snmp V3, user, passphrase etc. taken from config.conf</name>
+		<ip>1.1.1.1</ip>
+		<snmpVersion>3</snmpVersion>
+		<group>2</group>
+	</switch>
+	<switch>
+		<id>4</id>
+		<name>Example 4 (switches.xml) : with snmp V2</name>
+		<ip>2.2.2.2</ip>
+		<snmpVersion>2</snmpVersion>
+		<community>myCommunity (needs to have Unrestricted-access)</community>
+		<group>1</group>
+	</switch>
+	<switch>
+		<id>5</id>
+		<name>Example 5 (switches.xml) : planned for configuration backup, using custom ssh password</name>
+		<ip>3.3.3.3</ip>
+		<plannedForBackup>1</plannedForBackup>
+		<sshUser>manager</sshUser>
+		<sshPassword>myPassword</sshPassword>
+	</switch>
+	<switch>
+		<id>6</id>
+		<name>Example 6 (switches.xml) : compatibility activated for HP switches coming from 3Com range</name>
+		<ip>10.0.0.1</ip>
+		<en3comCompat>1</en3comCompat>
+	</switch>
+</switchs>

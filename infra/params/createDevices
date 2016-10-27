@@ -1,0 +1,13 @@
+for i in {12..24}
+do
+ip=$((200 + $i))
+if [ $i -lt 10 ]; then
+des="0$i"
+else
+des="$i"
+
+fi
+
+python exp.py 192.168.1.$ip
+
+done
