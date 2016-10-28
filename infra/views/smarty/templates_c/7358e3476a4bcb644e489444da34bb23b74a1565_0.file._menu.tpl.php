@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-10-27 18:18:51
+/* Smarty version 3.1.28, created on 2016-10-28 10:06:22
   from "/var/www/SPOT/infra/views/partial_commons/_menu.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_581228eb6f5d59_09249624',
+  'unifunc' => 'content_581306fe5665a8_74226600',
   'file_dependency' => 
   array (
     '7358e3476a4bcb644e489444da34bb23b74a1565' => 
     array (
       0 => '/var/www/SPOT/infra/views/partial_commons/_menu.tpl',
-      1 => 1477584965,
+      1 => 1477640402,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_581228eb6f5d59_09249624 ($_smarty_tpl) {
+function content_581306fe5665a8_74226600 ($_smarty_tpl) {
 ?>
 <div class="container">
     <div class="row row-left">
@@ -179,7 +179,7 @@ $_smarty_tpl->tpl_vars['__smarty_section_i'] = $__section_i_3_saved;
                             </ul>
                         </li>
 
-                        <li ><a href="comparative_view_form.php" class="btn btn-default"><?php echo $_smarty_tpl->tpl_vars['LBL_1_compare']->value;?>
+                        <li ><a href="comparative_view_form.php" class="btn btn-default" id="compare"><?php echo $_smarty_tpl->tpl_vars['LBL_1_compare']->value;?>
 
                                 <span> <img src="web/images/next.png" style="display:inline"/></span></a></li>
 

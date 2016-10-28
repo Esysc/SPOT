@@ -93,6 +93,7 @@ $(document).ready(function () {
                 hideSpinner();
 
                 $('div.col-md-9').html(data)
+                $('a[href*=' + switch_id + ']').trigger('click');
                 $('#default').on('click', function (e) {
                     e.preventDefault();
                     showSpinner();
@@ -107,17 +108,17 @@ $(document).ready(function () {
                     });
                 });
                 $('#displayconf').on('click', function (e) {
-                e.preventDefault();
+                    e.preventDefault();
 
-                showSpinner();
-                var href = $(this).attr('href');
-                $('#delete_selected_vlans').remove();
+                    showSpinner();
+                    var href = $(this).attr('href');
+                    $('#delete_selected_vlans').remove();
 
-                $.get(href, function (data) {
-                    $('#toolTipsSwitchDetails').after(data)
-                    hideSpinner();
+                    $.get(href, function (data) {
+                        $('#toolTipsSwitchDetails').after(data)
+                        hideSpinner();
+                    })
                 })
-            })
             });
         })
 
@@ -197,13 +198,40 @@ $(document).ready(function () {
     });
     $('#dashboard').on('click', function (e) {
         e.preventDefault();
-         $('#listitems li').find('span').removeClass('label-success').addClass('label-default')
+        $('#listitems li').find('span').removeClass('label-success').addClass('label-default')
         showSpinner();
         var href = $(this).attr('href');
         $.get(href, function (data) {
             $('div.col-md-9').html(data)
             hideSpinner();
             $('#listdash').paginate({itemsPerPage: 5});
+        })
+    });
+
+    $('#compare').on('click', function (e) {
+        e.preventDefault();
+        $('#listitems li').find('span').removeClass('label-success').addClass('label-default')
+        showSpinner();
+        var href = $(this).attr('href');
+        $.get(href, function (data) {
+            $('div.col-md-9').html(data)
+            hideSpinner();
+            $('select').chosen();
+            $('#comparative_view').on('submit', function (e) {
+                e.preventDefault();
+                showSpinner();
+                var href = $(this).attr('action');
+                var sw1 = $('#switch_id_1').val();
+                var sw2 = $('#switch_id_2').val();
+                var postdata = "switch_id_1=" + sw1 + "&switch_id_2=" + sw2;
+                $.post(href, postdata, function (data) {
+                    $('div.col-md-9').html(data)
+                    hideSpinner();
+                    $('.map').attr('disabled');
+                    $('.map').on('click', function(e){ e.preventDefault();  });
+                     
+                });
+            });
         })
     });
     $('#logout').on('click', function () {

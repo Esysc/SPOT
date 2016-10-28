@@ -74,7 +74,7 @@
                             </ul>
                         </li>
 
-                        <li ><a href="comparative_view_form.php" class="btn btn-default">{$LBL_1_compare}
+                        <li ><a href="comparative_view_form.php" class="btn btn-default" id="compare">{$LBL_1_compare}
                                 <span> <img src="web/images/next.png" style="display:inline"/></span></a></li>
 
                         {if $ENABLE_CONFIGURATION_BACKUP_MANAGEMENT}

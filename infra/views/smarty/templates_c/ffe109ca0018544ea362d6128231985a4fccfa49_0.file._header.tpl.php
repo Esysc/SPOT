@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-10-27 18:18:51
+/* Smarty version 3.1.28, created on 2016-10-28 10:06:22
   from "/var/www/SPOT/infra/views/partial_commons/_header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_581228eb634815_41982246',
+  'unifunc' => 'content_581306fe4acc09_73360553',
   'file_dependency' => 
   array (
     'ffe109ca0018544ea362d6128231985a4fccfa49' => 
     array (
       0 => '/var/www/SPOT/infra/views/partial_commons/_header.tpl',
-      1 => 1477585129,
+      1 => 1477585144,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_581228eb634815_41982246 ($_smarty_tpl) {
+function content_581306fe4acc09_73360553 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -83,7 +83,7 @@ function content_581228eb634815_41982246 ($_smarty_tpl) {
                                             <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                            <li><a href="index.php"><strong>HUME - <?php echo $_smarty_tpl->tpl_vars['TITLE']->value;?>
+                                            <li><a href="index.php"><strong>HOME - <?php echo $_smarty_tpl->tpl_vars['TITLE']->value;?>
 </strong></a></li>
                                             <li><a href="#" id="logout">Logout</a></li>
 
