@@ -689,6 +689,7 @@ class MySwitch {
             /**
              * 	Returns used ports (tagged and untagged) depends on conf.php SHOW_TAGGED_PORTS and SHOW_UNTAGGED_PORTS parameters
              */
+           
             if (SHOW_TAGGED_PORTS && SHOW_UNTAGGED_PORTS) {
                 $result = array_merge($this->getUntaggedPorts($vlan_id, $force_snmp_request), $this->getTaggedPorts($vlan_id, $force_snmp_request));
             } elseif (SHOW_TAGGED_PORTS && !SHOW_UNTAGGED_PORTS) {

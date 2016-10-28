@@ -93,7 +93,7 @@ $(document).ready(function () {
                 hideSpinner();
 
                 $('div.col-md-9').html(data)
-                $('a[href*=' + switch_id + ']').trigger('click');
+               // $('a[href*=' + switch_id + ']').trigger('click');
                 $('#default').on('click', function (e) {
                     e.preventDefault();
                     showSpinner();
