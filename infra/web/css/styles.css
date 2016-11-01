@@ -8,6 +8,12 @@ and open the template in the editor.
     Author     : cristall
 */
 
+#rack {
+    position:fixed;
+    top: 10px;
+    right: 5px;
+        
+}
 .switch-carousel{
     
     width:5em;

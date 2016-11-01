@@ -28,6 +28,8 @@
 </form>
 
 <button class="btn btn-primary" id="default" data-switch="{$mySwitch->getIp()}">Reload Default</button>
+
+
 <div id="results" class="well" style="display:none"></div>
 
 <div class="modal fade" id="list_vlans_modal">
@@ -49,5 +51,14 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+
+    <div id="rack">
+        
+            <img src="{$myRack}" />
+
+      
+    </div>
 
 

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-10-28 16:55:37
+/* Smarty version 3.1.28, created on 2016-11-01 08:46:11
   from "/var/www/SPOT/infra/views/partial_commons/_errors.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_581366e928e864_75762021',
+  'unifunc' => 'content_5818484363b8b4_60357916',
   'file_dependency' => 
   array (
     '17367a31d56289e06b2051c6c434f9fe8a1ac21e' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_581366e928e864_75762021 ($_smarty_tpl) {
+function content_5818484363b8b4_60357916 ($_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['errors']->value) {?>
 	<div class="errors">
 		<h3><?php echo $_smarty_tpl->tpl_vars['MSG_ERRORS_OCCURED']->value;?>

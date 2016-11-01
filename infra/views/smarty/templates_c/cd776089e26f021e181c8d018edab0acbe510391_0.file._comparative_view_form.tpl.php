@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-10-28 16:34:55
+/* Smarty version 3.1.28, created on 2016-10-28 19:03:32
   from "/var/www/SPOT/infra/views/partial_commons/_comparative_view_form.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_5813620f469204_34739631',
+  'unifunc' => 'content_581384e4def000_45797211',
   'file_dependency' => 
   array (
     'cd776089e26f021e181c8d018edab0acbe510391' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5813620f469204_34739631 ($_smarty_tpl) {
+function content_581384e4def000_45797211 ($_smarty_tpl) {
 ?>
 <form action="comparative_view.php" method="post" id="comparative_view">
 	<fieldset class="form-group">
