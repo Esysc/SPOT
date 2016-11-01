@@ -139,48 +139,6 @@ class Port {
             }
         }
         $title.=$status;
-        switch ($this->getId()) {
-            case 1:
-            case 11:
-                $shelf = "shelfA";
-                break;
-                ;
-            case 2:
-            case 12:
-                $shelf = "shelfB";
-                break;
-                ;
-            case 3:
-            case 13:
-                $shelf = "shelfC";
-                break;
-                ;
-            case 4:
-            case 14:
-                $shelf = "shelfD";
-                break;
-                ;
-            case 5:
-            case 15:
-                $shelf = "shelfE";
-                break;
-                ;
-            case 6:
-            case 16:
-                $shelf = "shelfF";
-                break;
-                ;
-            case 7:
-            case 17:
-                $shelf = "shelfG";
-                break;
-                ;
-            default:
-                $shelf = "";
-                break;
-                ;
-        }
-        $title.=" - " . $shelf;
 
         if ($this->untagged) {
             if ($this->isUp()) {
@@ -205,8 +163,8 @@ class Port {
         } else {
             return("ERROR : a port must be either tagged or untagged");
         }
-        
-        if (strpos($this->getNameAliasOrId(), "Trk") !== false) {
+
+        if (strpos($this->getNameAliasOrId(), "Trk") !== false || ( $this->isUp() && $this->vlan_id == 1)) {
             $return = "<button style=\"color:" . $color . "\" class=\"label $badge label-as-badge map\" title=\"" . $title . "\" onclick=\"return false\"><strong>" . $this->getNameAliasOrId() . "</strong></button>";
         } elseif (($this->untagged) || ($this->tagged && ALLOW_PORT_TAGGING)) {
             $return = "<a style=\"color:" . $color . "\" class=\"label $badge label-as-badge map\" href=\"edit_port_form.php?port_id=" . $this->getId() . "&amp;switch_id=" . $this->id_switch . "&amp;source_vlan=" . $this->vlan_id . "\" title=\"" . $title . "\">" . $this->getNameAliasOrId() . "</a>";
@@ -219,7 +177,6 @@ class Port {
         return $return;
     }
 
-    
     public function getId() {
         return $this->id;
     }

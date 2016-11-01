@@ -101,7 +101,10 @@ function getMacs($switchIP, $port_id) {
     $macs = shell_exec("perl /usr/sbin/switchlabel.pl " . $switchIP . " public | grep -w 'port" . $port_id . "'");
     $results = explode("-", $macs);
     if (isset($results[0]) && $results[0] != NULL) {
-        $arp = shell_exec("arp -a | grep -i " . trim($results[0] . " | awk -F '(' '{print $2}' | awk -F ')' '{print $1   }' "));
+        $arp = file_get_contents("http://spmgt.my.compnay.com/arp.php?mac=".trim($results[0]));
+        if ($arp == "") {
+            $arp = file_get_contents("http://spdrbl01.my.compnay.com/arp.php?mac=".trim($results[0]));
+        }
         $arp = ($arp == "" ) ? "IP not found." : $arp;
         echo "<span class='infoBox pull-left'><strong>MAC: </strong>" . $results[0] . "<br /><strong>IP:</strong> " . $arp . "</span>";
     } else {
@@ -116,8 +119,10 @@ function getNet($switchIP, $port_id) {
     $results = explode("-", $macs);
     if (isset($results[0]) && $results[0] != NULL) {
 
-        $arp = shell_exec("sudo arp -a | grep -i " . trim($results[0] . " | awk -F '(' '{print $2}' | awk -F ')' '{print $1   }' | head -1 "));
-       
+        $arp = file_get_contents("http://spmgt.my.compnay.com/arp.php?mac=".trim($results[0]));
+        if ($arp == "") {
+            $arp = file_get_contents("http://spdrbl01.my.compnay.com/arp.php?mac=".trim($results[0]));
+        }
         $arp = ($arp == "" ) ? "N/A" : trim($arp);
         return " IP: " . $arp;
     } else {
