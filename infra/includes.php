@@ -108,15 +108,18 @@ function getMacs($switchIP, $port_id) {
         echo "<span class='infoBox pull-left'>No data querying arp table.</span>";
     }
 }
+
 function getNet($switchIP, $port_id) {
 
-    
+
     $macs = shell_exec("perl /usr/sbin/switchlabel.pl " . $switchIP . " public | grep -w 'port" . $port_id . "'");
     $results = explode("-", $macs);
     if (isset($results[0]) && $results[0] != NULL) {
-        $arp = shell_exec("arp -a | grep -i " . trim($results[0] . " | awk -F '(' '{print $2}' | awk -F ')' '{print $1   }' "));
-        $arp = ($arp == "" ) ? "N/A" : $arp;
-        return " IP: " . $arp ;
+
+        $arp = shell_exec("sudo arp -a | grep -i " . trim($results[0] . " | awk -F '(' '{print $2}' | awk -F ')' '{print $1   }' | head -1 "));
+       
+        $arp = ($arp == "" ) ? "N/A" : trim($arp);
+        return " IP: " . $arp;
     } else {
         return "No data";
     }
@@ -124,7 +127,7 @@ function getNet($switchIP, $port_id) {
 
 function drawRack($r, $racktemplate, $id_switch) {
     $switch = MySwitch::retrieveById($id_switch);
-    
+
 
     $template = imagecreatefrompng($racktemplate);
 
@@ -184,23 +187,24 @@ function drawRackDevice(&$img, $text, $pos = 'center', $switch = NULL) {
                     if ($switch != NULL) {
                         $switch_ip = $switch->getIp();
                         $port_id = intval(preg_replace('/[^0-9]+/', '', $color), 10);
-                         $macs = getNet($switch_ip,$port_id);
-                         
-                         $color .=$macs;
+                        $macs = getNet($switch_ip, $port_id);
+
+                        $color .=$macs;
                     }
-                   
                 } elseif (strpos($color, 'DOWN')) {
                     $text_colour = imagecolorallocate($img, 255, 0, 0);
                 } else {
                     $text_colour = imagecolorallocate($img, 0, 0, 0);
                 }
-
-                imageCenterString($img, 3, $color, $text_colour, $key * 50);
+                $lines = explode('-',$color);
+                foreach ($lines as $l => $line) {
+                    imageCenterString($img, 3, $line, $text_colour, $key * 60 + ($l -1) * 30 );
+                }
             }
         } else {
             if ($switch != NULL)
                 $switchname = $switch->getName();
-                $text = $switchname;
+            $text = $switchname;
             $width = ceil(strlen($text) * 16);
             $x = imagesx($img) - $width - 8;
             $y = imagesy($img) - 16;
@@ -224,7 +228,7 @@ function imageCenterString(&$img, $font, $text, $color, $y = 0) {
         array(7.6, 16),
         array(8.5, 16));
     $width = ceil(strlen($text) * $num[$font][0]);
-    $x = imagesx($img) - $width - 8;
+    $x = imagesx($img) - $width -8;
     $y = imagesy($img) - ($num[$font][1] + 2) + $y;
     imagestring($img, $font, $x / 2, $y / 2, $text, $color);
 }
