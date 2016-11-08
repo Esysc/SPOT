@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-11-01 10:45:56
+/* Smarty version 3.1.28, created on 2016-11-08 17:33:14
   from "/var/www/SPOT/infra/views/partial_commons/_footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_58186454ca5f93_89194520',
+  'unifunc' => 'content_5821fe4abd69c2_62619299',
   'file_dependency' => 
   array (
     '4255755cbe59c11fbf60e171620bc70f686de8c0' => 
     array (
       0 => '/var/www/SPOT/infra/views/partial_commons/_footer.tpl',
-      1 => 1477554115,
+      1 => 1478279878,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58186454ca5f93_89194520 ($_smarty_tpl) {
+function content_5821fe4abd69c2_62619299 ($_smarty_tpl) {
 ?>
 		</div><!--/.row-->
 	</div><!--/.container-->
@@ -43,7 +43,7 @@ function content_58186454ca5f93_89194520 ($_smarty_tpl) {
 		<?php }?>
 	</p>
 </div>
-
+        <center>  <div class="diffres well-large"></div> </center>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <?php echo '<script'; ?>
  type="javascript" src="/SPOT/infra/web/css/bootstrap/js/bootstrap.min.js"><?php echo '</script'; ?>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-11-01 10:45:56
+/* Smarty version 3.1.28, created on 2016-11-08 17:33:14
   from "/var/www/SPOT/infra/views/partial_commons/_menu.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_58186454c8b888_54395805',
+  'unifunc' => 'content_5821fe4abbc9b1_07253884',
   'file_dependency' => 
   array (
     '7358e3476a4bcb644e489444da34bb23b74a1565' => 
     array (
       0 => '/var/www/SPOT/infra/views/partial_commons/_menu.tpl',
-      1 => 1477640402,
+      1 => 1478517792,
       2 => 'file',
     ),
   ),
@@ -19,14 +19,14 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58186454c8b888_54395805 ($_smarty_tpl) {
+function content_5821fe4abbc9b1_07253884 ($_smarty_tpl) {
 ?>
 <div class="container">
     <div class="row row-left">
         <div class="col-md-3 sidebar" id="sidebar">
             <ul class="nav nav-sidebar">
-                
-                    <!--<li class="menu-home"><a href="index.php"><?php echo $_smarty_tpl->tpl_vars['LBL_1_home']->value;?>
+
+    <!--<li class="menu-home"><a href="index.php"><?php echo $_smarty_tpl->tpl_vars['LBL_1_home']->value;?>
 </a></li>-->
                 <?php if ($_smarty_tpl->tpl_vars['DISPLAY_DASHBOARD']->value) {?>
                     <li ><a  href="dashboard.php" class="btn btn-default" id="dashboard"><?php echo $_smarty_tpl->tpl_vars['LBL_1_dashboard']->value;?>
@@ -35,7 +35,7 @@ function content_58186454c8b888_54395805 ($_smarty_tpl) {
                 <?php }?>
                 <li class="menu-title"><?php echo $_smarty_tpl->tpl_vars['LBL_1_switches']->value;?>
 
-                <div id="listitems-pagination" style="display:none" class="pull-right">
+                    <div id="listitems-pagination" style="display:none" class="pull-right">
                         <button id="listitems-previous" href="#" class="disabled btn btn-success">&laquo; Previous</button> 
                         <button id="listitems-next" href="#" class="btn btn-success">Next &raquo;</button> 
                     </div>
@@ -166,10 +166,22 @@ for ($__section_i_3_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_i']-
                                                 <img src="web/images/procurve.jpg" rel="tooltip" title="<?php echo $_smarty_tpl->tpl_vars['mySwitchs']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_i']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index'] : null)]->getIp();?>
  - <?php echo $_smarty_tpl->tpl_vars['mySwitchs']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_i']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index'] : null)]->getName();?>
 " />
+
                                                 <div class="textoverlay"><span class="label label-default"><?php echo $_smarty_tpl->tpl_vars['mySwitchs']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_i']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index'] : null)]->getName();?>
-</span></div></a></li>
-                                            <?php }?>
-                                        <?php
+</span></div></a>
+                                            <p class="diff" ipattr='<?php echo $_smarty_tpl->tpl_vars['mySwitchs']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_i']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index'] : null)]->getIp();?>
+'></p>
+                                           
+                                        </li>
+
+                                    <?php }?>
+
+
+
+
+
+
+                                <?php
 }
 }
 if ($__section_i_3_saved) {

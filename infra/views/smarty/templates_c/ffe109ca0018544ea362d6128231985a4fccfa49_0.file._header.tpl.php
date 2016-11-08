@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-11-01 10:45:56
+/* Smarty version 3.1.28, created on 2016-11-08 17:33:14
   from "/var/www/SPOT/infra/views/partial_commons/_header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_58186454b80dd9_86709208',
+  'unifunc' => 'content_5821fe4aaeff28_18303986',
   'file_dependency' => 
   array (
     'ffe109ca0018544ea362d6128231985a4fccfa49' => 
     array (
       0 => '/var/www/SPOT/infra/views/partial_commons/_header.tpl',
-      1 => 1477585144,
+      1 => 1478621957,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58186454b80dd9_86709208 ($_smarty_tpl) {
+function content_5821fe4aaeff28_18303986 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -35,6 +35,8 @@ function content_58186454b80dd9_86709208 ($_smarty_tpl) {
         <link rel="stylesheet" type="text/css" media="screen" href="web/css/style.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="web/css/styles.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="web/css/chosen.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="web/css/font-awesome/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="web/css/fontAwesomeAnimated.css" />
 
         <?php echo '<script'; ?>
  type="text/javascript" src="web/js/jquery-1.11.3.min.js"><?php echo '</script'; ?>
@@ -74,8 +76,9 @@ function content_58186454b80dd9_86709208 ($_smarty_tpl) {
 
                         <table class="table table-striped table-responsive">
                             <tr>
+
                                 <th class="btn btn-info"    >
-                                    
+
                                     <div class="dropdown">
                                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                             Welcome <?php echo $_smarty_tpl->tpl_vars['USER']->value;?>
@@ -90,6 +93,9 @@ function content_58186454b80dd9_86709208 ($_smarty_tpl) {
                                         </ul>
                                     </div>
                                 </th>
+                               <td class="btn btn-info btn-sm check">
+                                    Check configuration globally
+                                </td> 
                                 <td class="btn btn-primary btn-sm">
                                     UP tagged port
                                 </td>

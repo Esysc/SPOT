@@ -93,7 +93,7 @@ $(document).ready(function () {
                 hideSpinner();
 
                 $('div.col-md-9').html(data)
-               // $('a[href*=' + switch_id + ']').trigger('click');
+                // $('a[href*=' + switch_id + ']').trigger('click');
                 $('#default').on('click', function (e) {
                     e.preventDefault();
                     showSpinner();
@@ -228,8 +228,10 @@ $(document).ready(function () {
                     $('div.col-md-9').html(data)
                     hideSpinner();
                     $('.map').attr('disabled');
-                    $('.map').on('click', function(e){ e.preventDefault();  });
-                     
+                    $('.map').on('click', function (e) {
+                        e.preventDefault();
+                    });
+
                 });
             });
         })
@@ -240,5 +242,27 @@ $(document).ready(function () {
         });
 
     });
+    function setIntervalAndExecute(fn, t) {
+        fn();
+        return(setInterval(fn, t));
+    }
+    $(document).on('click', '.check', function (e) {
+        e.preventDefault();
+        $('button').addClass('disabled');
+       if (! confirm('Are you sure? This request may take 1 minutes or two...')) return false;
 
-})
+        $('.diff').each(function () {
+            showSpinner()
+            $(this).load('get_diff.php?switch_ip=' + $(this).attr('ipattr'))
+
+
+
+
+        });
+        $(window).load(function(){
+            hideSpinner();
+            $('button').removeClass('disabled');
+        });
+
+    });
+});

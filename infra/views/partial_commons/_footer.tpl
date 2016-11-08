@@ -15,7 +15,7 @@
 		{/if}
 	</p>
 </div>
-
+        <center>  <div class="diffres well-large"></div> </center>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script type="javascript" src="/SPOT/infra/web/css/bootstrap/js/bootstrap.min.js"></script>
 

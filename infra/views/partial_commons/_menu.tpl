@@ -2,14 +2,14 @@
     <div class="row row-left">
         <div class="col-md-3 sidebar" id="sidebar">
             <ul class="nav nav-sidebar">
-                
-                    <!--<li class="menu-home"><a href="index.php">{$LBL_1_home}</a></li>-->
+
+    <!--<li class="menu-home"><a href="index.php">{$LBL_1_home}</a></li>-->
                 {if $DISPLAY_DASHBOARD}
                     <li ><a  href="dashboard.php" class="btn btn-default" id="dashboard">{$LBL_1_dashboard} <span><img src="web/images/next.png" style="display:inline"/></span></a></li>
 
                 {/if}
                 <li class="menu-title">{$LBL_1_switches}
-                <div id="listitems-pagination" style="display:none" class="pull-right">
+                    <div id="listitems-pagination" style="display:none" class="pull-right">
                         <button id="listitems-previous" href="#" class="disabled btn btn-success">&laquo; Previous</button> 
                         <button id="listitems-next" href="#" class="btn btn-success">Next &raquo;</button> 
                     </div>
@@ -68,9 +68,20 @@
                                             {/if} 
                                             <a  href="list_vlans.php?switch_id={$mySwitchs[i]->getId()}" {if $SHOW_SWITCH_IP_MAIN_MENU} title="{$mySwitchs[i]->getIp()} {/if}">
                                                 <img src="web/images/procurve.jpg" rel="tooltip" title="{$mySwitchs[i]->getIp()} - {$mySwitchs[i]->getName()}" />
-                                                <div class="textoverlay"><span class="label label-default">{$mySwitchs[i]->getName()}</span></div></a></li>
-                                            {/if}
-                                        {/section}
+
+                                                <div class="textoverlay"><span class="label label-default">{$mySwitchs[i]->getName()}</span></div></a>
+                                            <p class="diff" ipattr='{$mySwitchs[i]->getIp()}'></p>
+                                           
+                                        </li>
+
+                                    {/if}
+
+
+
+
+
+
+                                {/section}
                             </ul>
                         </li>
 

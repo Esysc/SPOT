@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-11-01 10:58:05
+/* Smarty version 3.1.28, created on 2016-11-08 17:33:08
   from "/var/www/SPOT/infra/views/list_vlans.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_5818672dcf4df9_25101277',
+  'unifunc' => 'content_5821fe44f2ef15_95027184',
   'file_dependency' => 
   array (
     '679d120dfbdeb169a536c799fb862bdff6279a25' => 
     array (
       0 => '/var/www/SPOT/infra/views/list_vlans.tpl',
-      1 => 1477914098,
+      1 => 1478009244,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:partial_commons".((string)$_smarty_tpl->tpl_vars[\'SYSTEM_PATH_SEPARATOR\']->value)."_list_vlans-switch_table_container.tpl' => 1,
   ),
 ),false)) {
-function content_5818672dcf4df9_25101277 ($_smarty_tpl) {
+function content_5821fe44f2ef15_95027184 ($_smarty_tpl) {
 ?>
 
 <?php if ($_smarty_tpl->tpl_vars['HIDE_DETAILS_BOX']->value && !$_smarty_tpl->tpl_vars['DISABLE_DETAILS_BOX']->value) {?>
@@ -91,13 +91,18 @@ function content_5818672dcf4df9_25101277 ($_smarty_tpl) {
 
 
 
-    <div id="rack">
-        
-            <img src="<?php echo $_smarty_tpl->tpl_vars['myRack']->value;?>
-" />
+<div id="rack">
 
-      
-    </div>
+    <img src="<?php echo $_smarty_tpl->tpl_vars['myRack']->value;?>
+"  usemap="#Map"/>
+    <map name="Map">
+        <area shape="rect" coords="5,5,317,50" href="http://<?php echo $_smarty_tpl->tpl_vars['mySwitch']->value->getIp();?>
+" alt="Switch web page" title="Switch web page" >
+       
+    </map>
+
+
+</div>
 
 
 <?php }

@@ -11,6 +11,8 @@
         <link rel="stylesheet" type="text/css" media="screen" href="web/css/style.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="web/css/styles.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="web/css/chosen.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="web/css/font-awesome/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="web/css/fontAwesomeAnimated.css" />
 
         <script type="text/javascript" src="web/js/jquery-1.11.3.min.js"></script>
         <script src="web/js/chosen.jquery.js" type="text/javascript" ></script>
@@ -38,8 +40,9 @@
 
                         <table class="table table-striped table-responsive">
                             <tr>
+
                                 <th class="btn btn-info"    >
-                                    
+
                                     <div class="dropdown">
                                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                             Welcome {$USER}
@@ -52,6 +55,9 @@
                                         </ul>
                                     </div>
                                 </th>
+                               <td class="btn btn-info btn-sm check">
+                                    Check configuration globally
+                                </td> 
                                 <td class="btn btn-primary btn-sm">
                                     UP tagged port
                                 </td>

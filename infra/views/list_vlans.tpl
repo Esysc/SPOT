@@ -54,11 +54,15 @@
 
 
 
-    <div id="rack">
-        
-            <img src="{$myRack}" />
+<div id="rack">
 
-      
-    </div>
+    <img src="{$myRack}"  usemap="#Map"/>
+    <map name="Map">
+        <area shape="rect" coords="5,5,317,50" href="http://{$mySwitch->getIp()}" alt="Switch web page" title="Switch web page" >
+       
+    </map>
+
+
+</div>
 
 
