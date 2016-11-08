@@ -248,7 +248,7 @@ $(document).ready(function () {
     }
     $(document).on('click', '.check', function (e) {
         e.preventDefault();
-        $('button').addClass('disabled');
+        $(this).attr('disabled', true);
        if (! confirm('Are you sure? This request may take 1 minutes or two...')) return false;
 
         $('.diff').each(function () {
@@ -261,7 +261,7 @@ $(document).ready(function () {
         });
         $(window).load(function(){
             hideSpinner();
-            $('button').removeClass('disabled');
+           
         });
 
     });
