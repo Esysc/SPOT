@@ -249,20 +249,23 @@ $(document).ready(function () {
     $(document).on('click', '.check', function (e) {
         e.preventDefault();
         $(this).attr('disabled', true);
-       if (! confirm('Are you sure? This request may take 1 minutes or two...')) return false;
+        if (!confirm('Are you sure? This request may take 1 minutes or two...'))
+            return false;
 
         $('.diff').each(function () {
+            var counter = 0;
             showSpinner()
-            $(this).load('get_diff.php?switch_ip=' + $(this).attr('ipattr'))
+            $(this).load('get_diff.php?switch_ip=' + $(this).attr('ipattr'), function () {
+                counter++;
+                if (counter > 24)
+                    hideSpinner();
+            })
 
 
 
 
         });
-        $(window).load(function(){
-            hideSpinner();
-           
-        });
+
 
     });
 });
