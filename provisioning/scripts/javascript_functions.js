@@ -259,7 +259,7 @@ $(document).on('click', '.modal-footer button', function(){  $('#servermsg').htm
         $(this).nextAll('b.checkhostname').remove();
         var ValidHostnameRegex = new RegExp("^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])$");
 
-        if (!$(this).val().match(ValidHostnameRegex) || $(this).val().length <= 4)
+        if (!$(this).val().match(ValidHostnameRegex) || $(this).val().length < 4)
         {
 
             // fieldname = $(this).prop('name');
@@ -270,7 +270,7 @@ $(document).on('click', '.modal-footer button', function(){  $('#servermsg').htm
 
             var text = '<b class="badge badge-warning checkhostname">Hostname ' + $(this).val() + ' not valid</b>';
             if ($(this).val().length <= 4)
-                text = '<b class="badge badge-warning checkhostname">Hostname should be at least 5 chars long. ' + $(this).val() + ' is ' + $(this).val().length + '.</b>';
+                text = '<b class="badge badge-warning checkhostname">Hostname should be at least 4 chars long. ' + $(this).val() + ' is ' + $(this).val().length + '.</b>';
 
             $(this).after(text);
             $(this).val('');
