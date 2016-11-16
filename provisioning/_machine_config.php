@@ -60,8 +60,6 @@ define("CHARTPHP_DBHOST", $adoDBconn);
 define("CHARTPHP_DBUSER", GlobalConfig::$CONNECTION_SETTING->Username);
 define("CHARTPHP_DBPASS", GlobalConfig::$CONNECTION_SETTING->Password);
 define("CHARTPHP_DBNAME", GlobalConfig::$CONNECTION_SETTING->DBName);
-
-
 GlobalConfig::$CONNECTION_SETTING->BootstrapSQL = "SET SQL_BIG_SELECTS=1";
 
 /** the root url of the application with trailing slash, for example http://localhost/spot/ */

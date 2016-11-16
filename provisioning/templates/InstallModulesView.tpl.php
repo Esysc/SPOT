@@ -426,7 +426,7 @@ $this->display('_Header.tpl.php');
                 if (oss[index] === "WINDOWS") {
                     scriptID = 32 // release Download
                 }
-                console.log('script id:' + scriptID + "oss[index] : " + oss[index])
+               
                 datastring = JSON.stringify(argstring);
                 var number = index + counter;
                 var salesOrder = SO + number;

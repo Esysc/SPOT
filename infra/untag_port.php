@@ -9,7 +9,7 @@
  * Foundation.  Please see the file COPYING for details.  */
 
 include_once("includes.php");
-
+ini_set('display_errors', 1);
 $port_id = $_POST["port_id"];
 $switch_id = $_POST["switch_id"];
 $source_vlan = $_POST["source_vlan"];

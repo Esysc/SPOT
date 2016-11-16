@@ -33,6 +33,13 @@ and open the template in the editor.
     font-size:1em;
     display:block;
 }
+
+.buttonoverlay {
+    position:relative;
+    bottom : 1.5em;
+    left:8.5em;
+    font-weight: bold;
+}
 .modal .modal-dialog {
   width: 90%;
   height: 50em;

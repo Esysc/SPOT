@@ -69,51 +69,51 @@
                                             <a  href="list_vlans.php?switch_id={$mySwitchs[i]->getId()}" {if $SHOW_SWITCH_IP_MAIN_MENU} title="{$mySwitchs[i]->getIp()} {/if}">
                                                 <img src="web/images/procurve.jpg" rel="tooltip" title="{$mySwitchs[i]->getIp()} - {$mySwitchs[i]->getName()}" />
 
-                                                <div class="textoverlay"><span class="label label-default">{$mySwitchs[i]->getName()}</span></div></a>
-                                            <p class="diff" ipattr='{$mySwitchs[i]->getIp()}'></p>
-                                           
+                                                <div class="textoverlay"><span class="label label-default">{$mySwitchs[i]->getName()}</span></div></a>  
+                                            <button class="buttonoverlay diff label label-primary" ipattr='{$mySwitchs[i]->getIp()}' id='{$mySwitchs[i]->getName()}'>Check config</button>
+                                            
                                         </li>
-
-                                    {/if}
-
-
+                                        
+                                        {/if}
 
 
 
 
-                                {/section}
-                            </ul>
-                        </li>
 
-                        <li ><a href="comparative_view_form.php" class="btn btn-default" id="compare">{$LBL_1_compare}
-                                <span> <img src="web/images/next.png" style="display:inline"/></span></a></li>
 
-                        {if $ENABLE_CONFIGURATION_BACKUP_MANAGEMENT}
-                            <li class="menu-title">{$LBL_1_backup}</li>
-                            <li>
-                                <a href="backup_all_configs.php">{$LBL_1_backup_exec}<img class="menu-image" src="web/images/warning.png" height="16px" width="16px" title="{$LBL_1_backup_warning}" alt="backup_warning"></img></a>
-                            </li>
-                            <li><a href="browse_config_files.php">{$LBL_1_browse_backups}</a></li>
-                            <li><a href="show_log.php">{$LBL_1_show_log}</a></li>
-                            {/if}
+                        {/section}
                     </ul>
-                    </div>
-                    {if $LEFT_MENU_HIDE_SWITCHES_GROUP_MEMBERS}
-                        {if $gid gt 1}
-                            <script type="text/javascript">
-                                {assign var=i value=0}
-                                {while $i <= $gid+1}
-                                    {literal}
+                </li>
+
+                <li ><a href="comparative_view_form.php" class="btn btn-default" id="compare">{$LBL_1_compare}
+                        <span> <img src="web/images/next.png" style="display:inline"/></span></a></li>
+
+                {if $ENABLE_CONFIGURATION_BACKUP_MANAGEMENT}
+                    <li class="menu-title">{$LBL_1_backup}</li>
+                    <li>
+                        <a href="backup_all_configs.php">{$LBL_1_backup_exec}<img class="menu-image" src="web/images/warning.png" height="16px" width="16px" title="{$LBL_1_backup_warning}" alt="backup_warning"></img></a>
+                    </li>
+                    <li><a href="browse_config_files.php">{$LBL_1_browse_backups}</a></li>
+                    <li><a href="show_log.php">{$LBL_1_show_log}</a></li>
+                    {/if}
+            </ul>
+        </div>
+        {if $LEFT_MENU_HIDE_SWITCHES_GROUP_MEMBERS}
+            {if $gid gt 1}
+                <script type="text/javascript">
+                    {assign var=i value=0}
+                    {while $i <= $gid+1}
+                        {literal}
                                         $("#groupDetails-link_{/literal}{$i}{literal}").click(function () {
                                             $("#groupDetails_{/literal}{$i}{literal}").toggle();
                                         });
-                                    {/literal}
-                                    {assign var=i value=$i+1}
-                                {/while}{literal}
-                                {/literal}
-                            </script>
-                        {/if}
-                    {/if}
+                        {/literal}
+                        {assign var=i value=$i+1}
+                    {/while}{literal}
+                    {/literal}
+                </script>
+            {/if}
+        {/if}
 
-                    <!-- main area -->
-                    <div class="col-md-9">
+        <!-- main area -->
+        <div class="col-md-9">

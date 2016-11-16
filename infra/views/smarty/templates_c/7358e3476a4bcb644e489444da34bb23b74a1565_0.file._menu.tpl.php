@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-11-11 11:55:48
+/* Smarty version 3.1.28, created on 2016-11-16 18:40:24
   from "/var/www/SPOT/infra/views/partial_commons/_menu.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_5825a3b446e488_09615763',
+  'unifunc' => 'content_582c9a08b41630_07268411',
   'file_dependency' => 
   array (
     '7358e3476a4bcb644e489444da34bb23b74a1565' => 
     array (
       0 => '/var/www/SPOT/infra/views/partial_commons/_menu.tpl',
-      1 => 1478517792,
+      1 => 1479221876,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5825a3b446e488_09615763 ($_smarty_tpl) {
+function content_582c9a08b41630_07268411 ($_smarty_tpl) {
 ?>
 <div class="container">
     <div class="row row-left">
@@ -168,74 +168,75 @@ for ($__section_i_3_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_i']-
 " />
 
                                                 <div class="textoverlay"><span class="label label-default"><?php echo $_smarty_tpl->tpl_vars['mySwitchs']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_i']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index'] : null)]->getName();?>
-</span></div></a>
-                                            <p class="diff" ipattr='<?php echo $_smarty_tpl->tpl_vars['mySwitchs']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_i']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index'] : null)]->getIp();?>
-'></p>
-                                           
+</span></div></a>  
+                                            <button class="buttonoverlay diff label label-primary" ipattr='<?php echo $_smarty_tpl->tpl_vars['mySwitchs']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_i']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index'] : null)]->getIp();?>
+' id='<?php echo $_smarty_tpl->tpl_vars['mySwitchs']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_i']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index'] : null)]->getName();?>
+'>Check config</button>
+                                            
                                         </li>
-
-                                    <?php }?>
-
-
+                                        
+                                        <?php }?>
 
 
 
 
-                                <?php
+
+
+                        <?php
 }
 }
 if ($__section_i_3_saved) {
 $_smarty_tpl->tpl_vars['__smarty_section_i'] = $__section_i_3_saved;
 }
 ?>
-                            </ul>
-                        </li>
+                    </ul>
+                </li>
 
-                        <li ><a href="comparative_view_form.php" class="btn btn-default" id="compare"><?php echo $_smarty_tpl->tpl_vars['LBL_1_compare']->value;?>
+                <li ><a href="comparative_view_form.php" class="btn btn-default" id="compare"><?php echo $_smarty_tpl->tpl_vars['LBL_1_compare']->value;?>
 
-                                <span> <img src="web/images/next.png" style="display:inline"/></span></a></li>
+                        <span> <img src="web/images/next.png" style="display:inline"/></span></a></li>
 
-                        <?php if ($_smarty_tpl->tpl_vars['ENABLE_CONFIGURATION_BACKUP_MANAGEMENT']->value) {?>
-                            <li class="menu-title"><?php echo $_smarty_tpl->tpl_vars['LBL_1_backup']->value;?>
+                <?php if ($_smarty_tpl->tpl_vars['ENABLE_CONFIGURATION_BACKUP_MANAGEMENT']->value) {?>
+                    <li class="menu-title"><?php echo $_smarty_tpl->tpl_vars['LBL_1_backup']->value;?>
 </li>
-                            <li>
-                                <a href="backup_all_configs.php"><?php echo $_smarty_tpl->tpl_vars['LBL_1_backup_exec']->value;?>
+                    <li>
+                        <a href="backup_all_configs.php"><?php echo $_smarty_tpl->tpl_vars['LBL_1_backup_exec']->value;?>
 <img class="menu-image" src="web/images/warning.png" height="16px" width="16px" title="<?php echo $_smarty_tpl->tpl_vars['LBL_1_backup_warning']->value;?>
 " alt="backup_warning"></img></a>
-                            </li>
-                            <li><a href="browse_config_files.php"><?php echo $_smarty_tpl->tpl_vars['LBL_1_browse_backups']->value;?>
+                    </li>
+                    <li><a href="browse_config_files.php"><?php echo $_smarty_tpl->tpl_vars['LBL_1_browse_backups']->value;?>
 </a></li>
-                            <li><a href="show_log.php"><?php echo $_smarty_tpl->tpl_vars['LBL_1_show_log']->value;?>
+                    <li><a href="show_log.php"><?php echo $_smarty_tpl->tpl_vars['LBL_1_show_log']->value;?>
 </a></li>
-                            <?php }?>
-                    </ul>
-                    </div>
-                    <?php if ($_smarty_tpl->tpl_vars['LEFT_MENU_HIDE_SWITCHES_GROUP_MEMBERS']->value) {?>
-                        <?php if ($_smarty_tpl->tpl_vars['gid']->value > 1) {?>
-                            <?php echo '<script'; ?>
+                    <?php }?>
+            </ul>
+        </div>
+        <?php if ($_smarty_tpl->tpl_vars['LEFT_MENU_HIDE_SWITCHES_GROUP_MEMBERS']->value) {?>
+            <?php if ($_smarty_tpl->tpl_vars['gid']->value > 1) {?>
+                <?php echo '<script'; ?>
  type="text/javascript">
-                                <?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(0, null);
+                    <?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(0, null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'i', 0);?>
-                                <?php
+                    <?php
 while ($_smarty_tpl->tpl_vars['i']->value <= $_smarty_tpl->tpl_vars['gid']->value+1) {?>
-                                    
+                        
                                         $("#groupDetails-link_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 ").click(function () {
                                             $("#groupDetails_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 ").toggle();
                                         });
-                                    
-                                    <?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable($_smarty_tpl->tpl_vars['i']->value+1, null);
+                        
+                        <?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable($_smarty_tpl->tpl_vars['i']->value+1, null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'i', 0);?>
-                                <?php }?>
-
-                                
-                            <?php echo '</script'; ?>
->
-                        <?php }?>
                     <?php }?>
 
-                    <!-- main area -->
-                    <div class="col-md-9">
+                    
+                <?php echo '</script'; ?>
+>
+            <?php }?>
+        <?php }?>
+
+        <!-- main area -->
+        <div class="col-md-9">
 <?php }
 }

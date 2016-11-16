@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-11-11 11:55:48
+/* Smarty version 3.1.28, created on 2016-11-16 18:40:24
   from "/var/www/SPOT/infra/views/partial_commons/_header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_5825a3b43a67d1_51617509',
+  'unifunc' => 'content_582c9a08a624c5_39646362',
   'file_dependency' => 
   array (
     'ffe109ca0018544ea362d6128231985a4fccfa49' => 
     array (
       0 => '/var/www/SPOT/infra/views/partial_commons/_header.tpl',
-      1 => 1478621957,
+      1 => 1479282046,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5825a3b43a67d1_51617509 ($_smarty_tpl) {
+function content_582c9a08a624c5_39646362 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -93,9 +93,7 @@ function content_5825a3b43a67d1_51617509 ($_smarty_tpl) {
                                         </ul>
                                     </div>
                                 </th>
-                               <td class="btn btn-info btn-sm check">
-                                    Check configuration globally
-                                </td> 
+                              
                                 <td class="btn btn-primary btn-sm">
                                     UP tagged port
                                 </td>

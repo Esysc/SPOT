@@ -55,9 +55,7 @@
                                         </ul>
                                     </div>
                                 </th>
-                               <td class="btn btn-info btn-sm check">
-                                    Check configuration globally
-                                </td> 
+                              
                                 <td class="btn btn-primary btn-sm">
                                     UP tagged port
                                 </td>

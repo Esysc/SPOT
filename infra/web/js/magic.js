@@ -28,7 +28,6 @@ $(document).ready(function () {
                 $('#list_vlans').html(data);
                 $('#list_vlans_modal').modal('show');
                 var port_id = $('#port_id').val();
-
                 if (port_id > 24) {
                     $('#getMacTable').hide();
                 } else {
@@ -42,7 +41,6 @@ $(document).ready(function () {
             }
 
         });
-
     });
     $(document).on('click', 'div.switch_table_container_small a', function (e) {
 
@@ -69,7 +67,6 @@ $(document).ready(function () {
             }
 
         });
-
     });
     /*
      * Prevent edit port form submit
@@ -85,13 +82,11 @@ $(document).ready(function () {
         var postdata = "switch_id=" + switch_id + "&source_vlan=" + source_vlan + "&port_id=" + port_id + "&dest_vlan=" + dest_vlan;
         $.post(url, postdata, function (data) {
             $('#message').html(data);
-
             showSpinner();
             var href = "list_vlans.php";
             $('#list_vlans_modal').modal('hide');
             $.get(href, postdata, function (data) {
                 hideSpinner();
-
                 $('div.col-md-9').html(data)
                 // $('a[href*=' + switch_id + ']').trigger('click');
                 $('#default').on('click', function (e) {
@@ -109,11 +104,9 @@ $(document).ready(function () {
                 });
                 $('#displayconf').on('click', function (e) {
                     e.preventDefault();
-
                     showSpinner();
                     var href = $(this).attr('href');
                     $('#delete_selected_vlans').remove();
-
                     $.get(href, function (data) {
                         $('#toolTipsSwitchDetails').after(data)
                         hideSpinner();
@@ -135,8 +128,8 @@ $(document).ready(function () {
     });
     $(document).on('hidden.bs.modal', function () {
 
-        // showSpinner();
-        // location.reload();
+// showSpinner();
+// location.reload();
     })
     // Show the spiner loading pages
     function showProgress() {
@@ -149,15 +142,11 @@ $(document).ready(function () {
         var href = $(this).attr('href') ? $(this).attr('href') : '';
         if (href !== '' && href !== "#")
             showProgress();
-
     });
     showProgress();
     $('img').addClass('img-rounded img-responsive')
 
     $('#listitems').paginate({itemsPerPage: 10});
-
-
-
     $('#listitems li').children("a").on('click', function (e) {
         $('#listitems li').find('span').removeClass('label-success').addClass('label-default')
         var span = $(this).children().children("span");
@@ -171,22 +160,22 @@ $(document).ready(function () {
                 e.preventDefault();
                 showSpinner();
                 $('.switch_table_container').fadeTo(1000, 0.4);
+                $('button').attr('disabled', true)
                 var host = $(this).attr('data-switch');
                 var postdata = "host=" + host;
                 $.post('loadDefault.php', postdata, function (data) {
                     $.get(href, function (data) {
                         hideSpinner();
+                         $('button').attr('disabled', false)
                         $('div.col-md-9').html(data)
                     });
                 });
             });
             $('#displayconf').on('click', function (e) {
                 e.preventDefault();
-
                 showSpinner();
                 var href = $(this).attr('href');
                 $('#delete_selected_vlans').remove();
-
                 $.get(href, function (data) {
                     $('#toolTipsSwitchDetails').after(data)
                     hideSpinner();
@@ -207,7 +196,6 @@ $(document).ready(function () {
             $('#listdash').paginate({itemsPerPage: 5});
         })
     });
-
     $('#compare').on('click', function (e) {
         e.preventDefault();
         $('#listitems li').find('span').removeClass('label-success').addClass('label-default')
@@ -231,7 +219,6 @@ $(document).ready(function () {
                     $('.map').on('click', function (e) {
                         e.preventDefault();
                     });
-
                 });
             });
         })
@@ -240,32 +227,80 @@ $(document).ready(function () {
         $.post('login_form.php', 'logout=true', function (data) {
             window.location.href = 'login_form.php?logout=true';
         });
-
     });
     function setIntervalAndExecute(fn, t) {
         fn();
         return(setInterval(fn, t));
     }
-    $(document).on('click', '.check', function (e) {
+
+    $(document).on('click', '.diff', function (e) {
         e.preventDefault();
-        $(this).attr('disabled', true);
-        if (!confirm('Are you sure? This request may take 1 minutes or two...'))
-            return false;
 
-        $('.diff').each(function () {
-            var counter = 0;
-            showSpinner()
-            $(this).load('get_diff.php?switch_ip=' + $(this).attr('ipattr'), function () {
-                counter++;
-                if (counter > 24)
-                    hideSpinner();
-            })
+        /*
+         * Insert remote command to DB and parse the results
+         */
+        var scriptID = 33; /* the script ID for rancidDiff */
+        var rancid_server = "x.x.x.204"
+        var url = "/SPOT/provisioning/api/remotecommands/";
 
+        var switch_ip = $(this).attr('ipattr');
+        var classToAttr = $(this).attr('id');
+        var ele = $(this);
+        ele.replaceWith('<span class="buttonoverlay ' + classToAttr + '"><img src="web/images/loader.gif" title="Loading... please wait"/></span>');
 
+        var options = {0: " -H " + switch_ip};
+        options = JSON.stringify(options);
+        var command = {
+            salesorder: 99999999,
+            rack: 25,
+            shelf: "Z",
+            clientaddress: rancid_server,
+            arguments: options,
+            exesequence: 0,
+            returnstdout: "Waiting for command execution",
+            executionflag: 1,
+            scriptid: scriptID
 
+        }
+        var Jcommand = JSON.stringify(command);
+        //Post the remote command to get executed
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: Jcommand,
+            success: function (data) {
+                var mymon = setInterval(function () {
+                    var commandId = data.remotecommandid;
+                    var url = "/SPOT/provisioning/api/remotecommands/" + commandId
 
-        });
+                    // Need to be a separate ajax call
+                    var temp = "/SPOT/provisioning/api/tempdata/" + commandId;
+                    $.ajax({
+                        url: temp,
+                        type: "GET",
+                        success: function (a) {
 
-
+                            if (typeof a === 'object' && typeof a.message !== 'undefined') {
+                                if (a.message === '') {
+                                    $('span.' + classToAttr).addClass('label label-success').html('Config OK');
+                                } else {
+                                    $('span.' + classToAttr).html(a.message);
+                                    $('span.' + classToAttr).find('img').attr('title', "Loading.... Please wait")
+                                }
+                                if (a.status === 'END') {
+                                    if (a.message !== '')
+                                        $('span.' + classToAttr).removeClass('buttonoverlay');
+                                    clearInterval(mymon);
+                                }
+                            }
+                        }
+                    });
+                }, 1000);
+            },
+            error: function (data) {
+                console("Error");
+                $(this).html("An error occured:  " + data.statusText + " " + data.responseText);
+            }
+        })
     });
 });

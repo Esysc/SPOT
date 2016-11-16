@@ -9,7 +9,7 @@
  * Foundation.  Please see the file COPYING for details.  */
 
 include_once("includes.php");
-
+include_once("share.php");
 if (isset($_GET["switch_ip"])) {
 
     $switch_ip = $_GET["switch_ip"];
@@ -17,7 +17,7 @@ if (isset($_GET["switch_ip"])) {
     die("ERREUR : Parametre(s) incorrect(s)");
 }
 
-
+curlGet($url);
 
 $diff = shell_exec("sudo su - rancid /var/lib/rancid/rancidDiff $switch_ip &");
 if (trim($diff) !== '') {

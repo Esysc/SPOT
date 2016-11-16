@@ -8,7 +8,9 @@ session_start();
 include_once("_global_config.php");
 include_once("_app_config.php");
 include_once("_machine_config.php");
-
+function is_xhr() {
+  return @ $_SERVER[ 'HTTP_X_REQUESTED_WITH' ] === 'XMLHttpRequest';
+}
 if (!GlobalConfig::$CONNECTION_SETTING) {
     throw new Exception('GlobalConfig::$CONNECTION_SETTING is not configured.  Are you missing _machine_config.php?');
 }
@@ -16,7 +18,8 @@ if (!GlobalConfig::$CONNECTION_SETTING) {
 if (!isset($_SERVER['HTTP_USER_AGENT']))
     $_SERVER['HTTP_USER_AGENT'] = 'unknown';
 
-if (strpos($_SERVER['HTTP_USER_AGENT'], 'perl') === FALSE && strpos($_SERVER['HTTP_USER_AGENT'], 'Mozilla/4.0') === FALSE) {
+
+if ((strpos($_SERVER['HTTP_USER_AGENT'], 'perl') === FALSE ||  ! is_xhr)  && strpos($_SERVER['HTTP_USER_AGENT'], 'Mozilla/4.0') === FALSE) {
 
 
     if (empty(array_intersect($custip, $URL)) && empty(array_intersect($productiondb, $URL)) && ! isset($_SESSION['right'])) {
@@ -59,7 +62,6 @@ try {
 
     $url = RequestUtil::GetCurrentURL();
     $isApiRequest = (strpos($url, 'api/') !== false);
-
     if ($isApiRequest) {
         $result = new stdClass();
         $result->success = false;
