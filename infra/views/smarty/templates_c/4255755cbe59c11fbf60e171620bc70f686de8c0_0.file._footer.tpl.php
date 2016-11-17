@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-11-16 18:40:24
+/* Smarty version 3.1.28, created on 2016-11-17 17:56:50
   from "/var/www/SPOT/infra/views/partial_commons/_footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_582c9a08b5a610_14099202',
+  'unifunc' => 'content_582de15272b5f5_08812757',
   'file_dependency' => 
   array (
     '4255755cbe59c11fbf60e171620bc70f686de8c0' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_582c9a08b5a610_14099202 ($_smarty_tpl) {
+function content_582de15272b5f5_08812757 ($_smarty_tpl) {
 ?>
 		</div><!--/.row-->
 	</div><!--/.container-->

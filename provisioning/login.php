@@ -45,6 +45,7 @@
                 <p class="text-info">This app is compatible with Chrome (all versions), Firefox (all versions) </p>
             </div>
             <?php
+            
             if (!isset($_GET['log'])) {
                 ?>
 

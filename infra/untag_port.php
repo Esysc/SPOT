@@ -9,7 +9,6 @@
  * Foundation.  Please see the file COPYING for details.  */
 
 include_once("includes.php");
-ini_set('display_errors', 1);
 $port_id = $_POST["port_id"];
 $switch_id = $_POST["switch_id"];
 $source_vlan = $_POST["source_vlan"];
@@ -25,10 +24,8 @@ if ($port->isUntagged()) { // isUntagged in source vlan (the vlan on wihch the p
     if ($source_vlan != $dest_vlan) {
         try {
             $mySwitch->untagPort($port_id, $dest_vlan);
-            $db = New SQLite3Database('web/db/conf.db');
-            $db->connect();
-            $db->insert('TRACE', array('SWITCH' => $mySwitch->getName()));
             
+           
         } catch (Exception $e) {
             $errors[] = $e;
         }

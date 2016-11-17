@@ -148,7 +148,7 @@ $(document).ready(function () {
 
     $('#listitems').paginate({itemsPerPage: 10});
     $('#listitems li').children("a").on('click', function (e) {
-        $('#listitems li').find('span').removeClass('label-success').addClass('label-default')
+        $('#listitems li').each( function() { $(this).find('span').first().removeClass('label-success').addClass('label-default')});
         var span = $(this).children().children("span");
         span.removeClass('label-default').addClass('label-success')
 
@@ -166,7 +166,7 @@ $(document).ready(function () {
                 $.post('loadDefault.php', postdata, function (data) {
                     $.get(href, function (data) {
                         hideSpinner();
-                         $('button').attr('disabled', false)
+                        $('button').attr('disabled', false)
                         $('div.col-md-9').html(data)
                     });
                 });
@@ -281,15 +281,21 @@ $(document).ready(function () {
                         success: function (a) {
 
                             if (typeof a === 'object' && typeof a.message !== 'undefined') {
-                                if (a.message === '') {
-                                    $('span.' + classToAttr).addClass('label label-success').html('Config OK');
-                                } else {
-                                    $('span.' + classToAttr).html(a.message);
-                                    $('span.' + classToAttr).find('img').attr('title', "Loading.... Please wait")
+                                if (a.status === 'RUNNING') {
+                                    if (a.message !== '') {
+                                        
+                                        $('span.' + classToAttr).html(a.message);
+                                        $('span.' + classToAttr).find('img').attr('title', "Loading.... Please wait")
+                                    }
                                 }
                                 if (a.status === 'END') {
-                                    if (a.message !== '')
+                                    if (a.message !== '') {
                                         $('span.' + classToAttr).removeClass('buttonoverlay');
+                                        $('span.' + classToAttr).html(a.message);
+                                    } else { 
+                                        $('span.' + classToAttr).addClass('label label-success').html('Config OK');
+                                    }
+                                    
                                     clearInterval(mymon);
                                 }
                             }
@@ -298,7 +304,7 @@ $(document).ready(function () {
                 }, 1000);
             },
             error: function (data) {
-                console("Error");
+                console.log("Error");
                 $(this).html("An error occured:  " + data.statusText + " " + data.responseText);
             }
         })

@@ -8,9 +8,14 @@ session_start();
 include_once("_global_config.php");
 include_once("_app_config.php");
 include_once("_machine_config.php");
+
 function is_xhr() {
-  return @ $_SERVER[ 'HTTP_X_REQUESTED_WITH' ] === 'XMLHttpRequest';
+    if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+        return true;
+    } else
+        return false;
 }
+
 if (!GlobalConfig::$CONNECTION_SETTING) {
     throw new Exception('GlobalConfig::$CONNECTION_SETTING is not configured.  Are you missing _machine_config.php?');
 }
@@ -19,19 +24,19 @@ if (!isset($_SERVER['HTTP_USER_AGENT']))
     $_SERVER['HTTP_USER_AGENT'] = 'unknown';
 
 
-if ((strpos($_SERVER['HTTP_USER_AGENT'], 'perl') === FALSE ||  ! is_xhr)  && strpos($_SERVER['HTTP_USER_AGENT'], 'Mozilla/4.0') === FALSE) {
+if (strpos($_SERVER['HTTP_USER_AGENT'], 'perl') === FALSE && strpos($_SERVER['HTTP_USER_AGENT'], 'Mozilla/4.0') === FALSE) {
 
 
-    if (empty(array_intersect($custip, $URL)) && empty(array_intersect($productiondb, $URL)) && ! isset($_SESSION['right'])) {
+    if (empty(array_intersect($infra, $URL)) && empty(array_intersect($productiondb, $URL)) && !isset($_SESSION['right'])) {
         if (isset($_SESSION['right'])) {
             switch ($_SESSION['right']) {
 
 
                 case 2:
-                    // header('Location: ./adresses');
+// header('Location: ./adresses');
                     break;
                 case 10:
-                    //  header('Location: index.php');  
+//  header('Location: index.php');  
                     break;
                 default:
                     header('Location: login.php');
@@ -40,8 +45,7 @@ if ((strpos($_SERVER['HTTP_USER_AGENT'], 'perl') === FALSE ||  ! is_xhr)  && str
         } else {
             header('Location: login.php');
         }
-    } 
-    
+    }
 }
 
 
@@ -56,9 +60,9 @@ try {
             $gc->GetPhreezer(), $gc->GetRenderEngine(), '', $gc->GetContext(), $gc->GetRouter()
     );
 } catch (exception $ex) {
-    // This is the global error handler which will be called in the event of
-    // uncaught errors.  If the endpoint appears to be an API request then
-    // render it as JSON, otherwise attempt to render a friendly HTML page
+// This is the global error handler which will be called in the event of
+// uncaught errors.  If the endpoint appears to be an API request then
+// render it as JSON, otherwise attempt to render a friendly HTML page
 
     $url = RequestUtil::GetCurrentURL();
     $isApiRequest = (strpos($url, 'api/') !== false);
@@ -78,7 +82,7 @@ try {
         try {
             $gc->GetRenderEngine()->display("DefaultErrorFatal.tpl");
         } catch (Exception $ex2) {
-            // this means there is an error with the template, in which case we can't display it nicely
+// this means there is an error with the template, in which case we can't display it nicely
             echo "<style>* { font-family: verdana, arial, helvetica, sans-serif; }</style>\n";
             echo "<h1>Fatal Error:</h1>\n";
             echo '<h3>' . htmlentities($ex->getMessage()) . "</h3>\n";
@@ -89,5 +93,4 @@ try {
         }
     }
 }
-
 ?>

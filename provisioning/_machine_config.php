@@ -24,7 +24,7 @@ require_once("verysimple/HTTP/RequestUtil.php");
  * The only method to have more than one DB par APP is to create an array of possible routes and apply a new connection string when have it in the URL
  * The following configuration is on two DB but with switch/case use  it can be extended to n DB
  */
-$custip = array('adresses', 'ranges', 'customer_ip_inventory', 'hotline', 'hotlinesyncdate', 'ip_valid_ranges', 'exportIP', 'pmon');
+$infra = array('tempdata', 'remotecommands');
 $productiondb = array('tblorderses', 'tblorders', 'loadvisio');
 $URL = RequestUtil::GetUrlParts();
 GlobalConfig::$CONNECTION_SETTING = new ConnectionSetting();

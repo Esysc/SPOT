@@ -35,8 +35,8 @@ class MySwitch {
     private $egress_ports_hexa = array();
     private $snmpVersion = SNMP_DEFAULT_VERSION;
     private $snmpV3User = SNMP_V3_DEFAULT_USER;
-    private $nmpV3Passphrase = SNMP_V3_DEFAULT_PASSPHRASE;
-    private $nmpV3PrivPassphrase = SNMP_V3_DEFAULT_PRIV_PASSPHRASE;
+    private $snmpV3Passphrase = SNMP_V3_DEFAULT_PASSPHRASE;
+    private $snmpV3PrivPassphrase = SNMP_V3_DEFAULT_PRIV_PASSPHRASE;
     private $snmpV3AuthProtocol = SNMP_V3_DEFAULT_AUTH_PROTOCOL;
     private $snmpV3PrivProtocol = SNMP_V3_DEFAULT_PRIV_PROTOCOL;
     private $snmpV3SecLevel = SNMP_V3_DEFAULT_SEC_LEVEL;
