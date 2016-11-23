@@ -294,6 +294,9 @@ $(document).ready(function () {
                                         $('span.' + classToAttr).html(a.message);
                                     } else { 
                                         $('span.' + classToAttr).addClass('label label-success').html('Config OK');
+                                        setTimeout(function() {
+                                            $('span.' + classToAttr).replaceWith(ele);
+                                        }, 5000)
                                     }
                                     
                                     clearInterval(mymon);
