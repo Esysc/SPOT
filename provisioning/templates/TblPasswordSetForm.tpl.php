@@ -20,8 +20,8 @@ $this->display('_Header.tpl.php');
 
 
         $(document).on('change', '.salesorder', function () {
-            var salesorder = $(this).val();
-
+            var salesorder = $('.salesorder').val();
+            console.log('salesorder is :' + salesorder)
             var SOarr = salesorder.split('|');
             var SO = SOarr[0];
             var crm_system_id;
@@ -47,7 +47,7 @@ $this->display('_Header.tpl.php');
                 type: 'GET',
                 success: function (data) {
                     var obj = JSON.parse(data);
-                   // console.log(data);
+                    console.log(data);
                     crm_system_id = obj.crm_system_id;
                     if (typeof crm_system_id !== 'undefined')
                         if (Math.floor(crm_system_id) != crm_system_id && !$.isNumeric(crm_system_id))
@@ -100,7 +100,7 @@ $this->display('_Header.tpl.php');
                 }
             });
         });
-        $('#salesel').on('change', function () {
+        $(document).on('change', '#salesel', function () {
             var salesorder = $('.salesorder').val();
             var SOarr = salesorder.split('|');
             var SO = SOarr[0].trim();
@@ -108,7 +108,7 @@ $this->display('_Header.tpl.php');
 
             $.get("/SPOT/provisioning/api/tblprogresses?salesorder=" + SO, function (jsonResult) {
                 var Jdata = jsonResult.rows[0].data;
-                //console.log('salesel change function' + Jdata);
+                console.log('salesel change function' + Jdata);
                 var Jsonspecs = JSON.parse(Jdata);
                 $.each(Jsonspecs.clients, function (i, o) {
 
@@ -153,7 +153,7 @@ $this->display('_Header.tpl.php');
                 var scriptID = 9; // script to parse a subnet
             }
             if ($(this).val() == "0") {
-               // console.log('value is 0');
+                console.log('value is 0');
                 $('.password').hide();
                 if ($salesel) {
                     // console.log($salesel);
