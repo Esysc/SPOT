@@ -183,7 +183,7 @@ var page = {
     showDetailDialog: function (m) {
 
         //Remove html in .results div
-        
+
         $('.results').html('');
         // show the modal dialog
         $('#provisioningnotificationsDetailDialog').modal({show: true});
@@ -243,7 +243,7 @@ var page = {
         }
 
         $('.timepicker-default').timepicker({defaultTime: 'value'});
-        
+
 
 
         if (showDeleteButton) {
@@ -293,6 +293,9 @@ var page = {
 
 
             });
+            $('#complete').on('click', function(e) {
+               page.updateModel(100); 
+            });
             $('#excel').on('click', function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -339,7 +342,9 @@ var page = {
     /**
      * update the model that is currently displayed in the dialog
      */
-    updateModel: function () {
+    updateModel: function (progress) {
+        if (typeof progress === 'undefined')
+            progress = $('input#progress').val();
         // reset any previous errors
         $('#modelAlert').html('');
         $('.control-group').removeClass('error');
@@ -357,7 +362,7 @@ var page = {
             'configuredip': $('textarea#configuredip').val(),
             'startdate': $('input#startdate').val() + ' ' + $('input#startdate-time').val(),
             'status': $('textarea#status').val(),
-            'progress': $('input#progress').val(),
+            'progress': progress,
             'image': $('textarea#image').val(),
             'firmware': $('textarea#firmware').val(),
             'ram': $('textarea#ram').val(),

@@ -5,6 +5,7 @@ $this->assign('nav', '');
 $this->display('_Header.tpl.php');
 
 $yearBase = "2014";
+
 $radminStock = json_decode(apiWrapper('http://' . GlobalConfig::$SYSPROD_SERVER->MGT . '/SPOT/provisioning/api/tempdatas?filter=RADMIN'))->rows[0]->message;
 
 // Get total results from stored provisioned machines trough this gui
@@ -25,7 +26,7 @@ $totLinDas = $LINUX->totalResults;
 ?>
 
 <script>
-    $('document').ready(function() {
+    $('document').ready(function () {
 
         var mdt = '<?php echo GlobalConfig::$SYSPROD_SERVER->MDT; ?>';
         var drbl = '<?php echo GlobalConfig::$SYSPROD_SERVER->DRBL; ?>';
@@ -41,10 +42,10 @@ $totLinDas = $LINUX->totalResults;
             data: 'hosts=' + serializedData,
             cache: false,
             async: true,
-            beforeSend: function(data) {
+            beforeSend: function (data) {
                 $('#alive').html('Checking Sysprod Servers recheability   <img src="/SPOT/provisioning/images/loader.gif" />');
             },
-            success: function(data) {
+            success: function (data) {
 
                 var alive = JSON.parse(data);
                 var html = '';
@@ -236,7 +237,7 @@ $totLinDas = $LINUX->totalResults;
                 url: tempurl,
                 type: 'PUT',
                 data: JSON.stringify(lic),
-                success: function(data) {
+                success: function (data) {
 
                     if (reset == true) {
 
@@ -244,7 +245,7 @@ $totLinDas = $LINUX->totalResults;
 
                     var date = data.timestamps;
 
-                    $('.date').html('<p class="pull-right"><small><span class="icon-time"></span> Last update of stock license occured ' + date +'</small></p>');
+                    $('.date').html('<p class="pull-right"><small><span class="icon-time"></span> Last update of stock license occured ' + date + '</small></p>');
                 }
             });
             var url = 'http://<?php echo GlobalConfig::$SYSPROD_SERVER->DRBL; ?>/Logs/RadminActServerLog/index.php';
@@ -255,7 +256,7 @@ $totLinDas = $LINUX->totalResults;
                 dataType: 'jsonp',
                 jsonp: "callback",
                 data: send,
-                success: function(data)
+                success: function (data)
                 {
                     console.log(data);
                     var rep = JSON.parse(data);
@@ -269,14 +270,14 @@ $totLinDas = $LINUX->totalResults;
                     $('#response').html('<div class="' + divclass + '"><strong>Number of activated hosts: ' + response + ' Number of available license: ' + diff + '. Check performed considering ' + licnum + ' stock license</strong></div>');
 
                 },
-                error: function(data) {
+                error: function (data) {
                     console.log(data);
                 }
             });
 
         }
 
-        $('#check').on('click', function(e) {
+        $('#check').on('click', function (e) {
             e.preventDefaults;
             licnum = $('#licnum').val();
             radmin(licnum, false);
@@ -284,13 +285,13 @@ $totLinDas = $LINUX->totalResults;
 
         });
 
-        $('#reset').on('click', function(e) {
+        $('#reset').on('click', function (e) {
             e.preventDefaults;
             $('#confirm').remove();
             $('#servermsg').html('Are you sure ? The log file will be cleaned.');
             $('.modal-footer').append('<p id="confirm" class="btn  btn-info">Proceed</p>');
             $('#basicModal').modal();
-            $('#confirm').on('click', function() {
+            $('#confirm').on('click', function () {
                 $('#close').trigger('click');
                 licnum = $('#licnum').val();
                 radmin(licnum, true);
@@ -312,8 +313,8 @@ $totLinDas = $LINUX->totalResults;
     <!-- underscore template for the collection -->
 
 
-<span class="icon icon-smile">
-        
+    <span class="icon icon-smile">
+
     </span> More <a href="/SPOT/provisioning/stats/" >charts</a>   
 
 

@@ -439,6 +439,7 @@ $this->display('_Header.tpl.php');
         <div class="modal-footer">
             <!--<button class="btn" data-dismiss="modal" >Cancel</button>
             <button id="saveProvisioningnotificationsButton" class="btn btn-primary">Save Changes</button>-->
+            <button class="btn btn-info btn-mini" id="complete" >Set to complete</button>
             <button class="btn btn-success btn-mini" id="excel" >Excel Export</button>
             <button class="btn btn-warning btn-mini" id="pdf" >PDF Export</button>
         </div> 
