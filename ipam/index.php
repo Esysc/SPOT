@@ -150,9 +150,10 @@ if ($_GET['page'] == "install") {
 
         <!-- body -->
         <body>
-          <!-- wrapper -->
+            <!-- wrapper -->
             <div class="wrapper">
 
+                
                 <!-- jQuery error -->
                 <div class="jqueryError">
                     <div class='alert alert-danger' style="width:400px;margin:auto">jQuery error!</div>

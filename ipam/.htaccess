@@ -1,3 +1,6 @@
+# Redirect globally the site to new address
+#Redirect 301 / http://chx-raripam-01/
+
 <IfModule mod_rewrite.c>
 
 # apache auth basic auth example

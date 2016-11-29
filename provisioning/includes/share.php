@@ -137,6 +137,7 @@ function tokenCheck($url, $header = "", $user = "admin", $pass = "***REMOVED***"
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_USERPWD, "$user:$pass");
     curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file_path);
     curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file_path);
     curl_setopt($ch, CURLOPT_TIMEOUT, 30); //timeout in seconds

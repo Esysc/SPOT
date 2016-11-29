@@ -13,6 +13,10 @@ if (!empty($_SERVER['PHP_AUTH_USER'])) {
     }
     exit();
 }
+/*
+ * if the site is the development one, put here true, otherwise put false
+ */
+$DEV = true;
 ?>
 
 <!DOCTYPE HTML>
@@ -54,8 +58,8 @@ if (!empty($_SERVER['PHP_AUTH_USER'])) {
                 if ($("[rel=tooltip]").length) {
                     $("[rel=tooltip]").tooltip();
                 }
-               // $('select').chosen();
-                   
+                // $('select').chosen();
+
             });
         </script>
         <!--[if lt IE 9]>
@@ -125,19 +129,48 @@ if (!empty($_SERVER['PHP_AUTH_USER'])) {
 
                     <?php
                     # include proper subpage
-                    if ($_GET['page'] == "login") {
-                        include_once('login_form.php');
-                    } else if ($_GET['page'] == "request_ip") {
-                        include_once('request_ip_form.php');
-                    } else if ($_GET['page'] == "request_subnet") {
-                        include_once('request_subnet_form.php');
-                    } else if ($_GET['page'] == "request_dismiss") {
-                        include_once('request_subnet_dismiss.php');
+                    if ($DEV == false) {
+                        if ($_GET['page'] == "login") {
+                            include_once('login_form.php');
+                        } else if ($_GET['page'] == "request_ip") {
+                            include_once('request_ip_form.php');
+                        } else if ($_GET['page'] == "request_subnet") {
+                            include_once('request_subnet_form.php');
+                        } else if ($_GET['page'] == "request_dismiss") {
+                            include_once('request_subnet_dismiss.php');
+                        } else {
+                            $_GET['subnetId'] = "404";
+                            print "<div id='error'>";
+                            include_once('app/error.php');
+                            print "</div>";
+                        }
                     } else {
-                        $_GET['subnetId'] = "404";
-                        print "<div id='error'>";
-                        include_once('app/error.php');
-                        print "</div>";
+                        ?>
+
+                        <div class="hero-unit infos" style="background-color:black;">
+                            This site is only for development. You will be redirect automatically to <a href="http://chx-raripam-01" style="color:green;">Mycompany Ipam</a>
+                            in <span id="counter" style="color:red">10</span> seconds. Please, update your bookmark!
+                        </div>
+
+                        <script>
+                            
+                            function countDown(i, callback) {
+                                callback = callback || function () {
+                                };
+                                var int = setInterval(function () {
+                                    $('#counter').html(i);
+                                    i-- || (clearInterval(int), callback());
+                                }, 1000);
+                            }
+
+                            countDown(10, function () {
+                                location.href = 'http://chx-raripam-01';
+                            });
+
+
+
+                        </script>
+                        <?php
                     }
                     ?>
 
