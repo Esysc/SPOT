@@ -33,6 +33,7 @@ if ($User->settings->enableLocations != "1") {
     } else {
 
         # sensor check
+        
         if (isset($gmaps_api_key)) {
             $key = strlen($gmaps_api_key) > 0 ? "?key=" . $gmaps_api_key : "";
         }
