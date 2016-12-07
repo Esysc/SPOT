@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-11-25 16:37:13
+/* Smarty version 3.1.28, created on 2016-12-05 18:07:21
   from "/var/www/SPOT/infra/views/edit_port_form_popup.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_58385aa99899d8_79181437',
+  'unifunc' => 'content_58459ec983c889_92343786',
   'file_dependency' => 
   array (
     '101299c1cde2bd1ee6c2b3243644784a59606ed4' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58385aa99899d8_79181437 ($_smarty_tpl) {
+function content_58459ec983c889_92343786 ($_smarty_tpl) {
 ?>
 
 <p style="font-size:1.5em;">Port <b><?php echo $_smarty_tpl->tpl_vars['port_id']->value;?>

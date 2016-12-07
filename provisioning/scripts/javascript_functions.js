@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-function blinker() {
-	$('.blinking').fadeOut(1000);
-	$('.blinking').fadeIn(1000);
-}
-setInterval(blinker, 2000);
+    function blinker() {
+        $('.blinking').fadeOut(1000);
+        $('.blinking').fadeIn(1000);
+    }
+    setInterval(blinker, 2000);
 
     $('.imagename').on('change', function () {
 
@@ -21,7 +21,9 @@ setInterval(blinker, 2000);
 
 
     $.ajaxSettings.data = null; // hack for google chrome
-$(document).on('click', '.modal-footer button', function(){  $('#servermsg').html(''); });
+    $(document).on('click', '.modal-footer button', function () {
+        $('#servermsg').html('');
+    });
 
 
     function disableF5(e) {
@@ -56,11 +58,11 @@ $(document).on('click', '.modal-footer button', function(){  $('#servermsg').htm
         e.preventDefault();
 
     });
-    function showAlarm(id1,id2,msg) {
+    function showAlarm(id1, id2, msg) {
         $('#' + id1).removeClass('alert-success');
-            $('#' + id1).addClass('alert-danger');
-            $('#' + id2).html(msg);
-             $('#' + id1).slideDown(400);
+        $('#' + id1).addClass('alert-danger');
+        $('#' + id2).html(msg);
+        $('#' + id1).slideDown(400);
     }
     function dismissAlarm(id1, id2, msg) {
         if ($('#' + id1).is(':visible'))
@@ -81,16 +83,16 @@ $(document).on('click', '.modal-footer button', function(){  $('#servermsg').htm
     }
     var popcontent = '';
     var BGscriptname = '';
-    var count, 
-    d = new Date();
+    var count,
+            d = new Date();
     var socketCommands = io.connect('ws://chx-sysprod-01:8001');
     socketCommands.on('reconnecting', function () {
         showAlarm('remotecommandsSocket', 'notif1', 'Warning Attempting to re-connect to http://chx-sysprod-01:8001. This is not a big issue, it\' only about monitoring');
-       
+
     });
     socketCommands.on('error', function (e) {
-         showAlarm('remotecommandsSocket', 'notif1', 'System' + e + '. This is not a big issue, it\' only about monitoring');
-       
+        showAlarm('remotecommandsSocket', 'notif1', 'System' + e + '. This is not a big issue, it\' only about monitoring');
+
     });
     socketCommands.on('data', function (data) {
         dismissAlarm('remotecommandsSocket', 'notif1', 'GOOD! http://chx-sysprod-01:8001 is available again!');
@@ -162,63 +164,63 @@ $(document).on('click', '.modal-footer button', function(){  $('#servermsg').htm
 
 
 
-    var socketCommands2 = io.connect('ws://chx-sysprod-01:8002');
-    socketCommands2.on('reconnecting', function () {
-        showAlarm('provisioningSocket', 'notif2', 'System Attempting to re-connect to http://chx-sysprod-01:8002. This is not a big issue, it\' only about monitoring');
-        
-    });
-    socketCommands2.on('error', function (e) {
-        showAlarm('provisioningSocket', 'notif2', 'System' + e + ' conecting  to http://chx-sysprod-01:8002. This is not a big issue, it\' only about monitoring');
-       
-    });
-    socketCommands2.on('data', function (data) {
-        d = new Date();
-        dismissAlarm('provisioningSocket', 'notif2', 'GOOD! http://chx-sysprod-01:8002 is available again!');
-
-
-        if (data) {
-            var objects = data.rows;
-
-            if (objects.length > 0) {
-                popcontent += '</p><table class="table table-striped table-bordered table-condensed table-responsive table-hover"><tr><th><strong><center>Provisioning</center></strong></th></tr>';
-                var index = 0;
-                $.each(objects, function (key, val) {
-                    index++;
-                    count++;
-                    popcontent += '<tr><td><strong>Provisioning n. ' + index + '</strong></tr></td>';
-                    popcontent += '<tr><td><strong>Notifid: </strong>' + val.notifid + '</td></tr>';
-                    popcontent += '<tr><td><strong>Hostname:  </strong> ' + val.hostname + '</td></tr>';
-                    popcontent += '<tr><td><strong>Progress:  </strong><div class="progress progress-striped active"><div class="bar" role="progressbar" aria-valuenow="' + val.progress + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + val.progress + '%"> <span class="sr-only" >' + val.progress + '% Complete</span></div></div>' + val.status + '</td></tr>';
-                    popcontent += '<tr><td><strong>Timestamp:  </strong>' + val.update + '</td></tr>';
-
-                });
-
-                popcontent += '</table>';
-                // $('#monitoring').html('<img src="/SPOT/provisioning/images/on.gif"/>');
-                $('#ok').remove();
-                $('#monitoring').remove();
-                $('#pendings').after('<a  id="monitoring"></a>');
-                $('#monitoring').html('Background operations <span class="badge badge-warning">' + count + '</span>');
-                // $this.webuiPopover().hide();
-                $('#monitoring').webuiPopover({
-                    title: 'Processes still executing..',
-                    content: popcontent,
-                    placement: 'bottom-left',
-                    trigger: 'hover',
-                    animation: 'pop',
-                    type: 'html',
-                    cache: true
-                });
-            }
-
-        }
-
-
-
-
-
-    });
-   
+    /*   var socketCommands2 = io.connect('ws://chx-sysprod-01:8002');
+     socketCommands2.on('reconnecting', function () {
+     showAlarm('provisioningSocket', 'notif2', 'System Attempting to re-connect to http://chx-sysprod-01:8002. This is not a big issue, it\' only about monitoring');
+     
+     });
+     socketCommands2.on('error', function (e) {
+     showAlarm('provisioningSocket', 'notif2', 'System' + e + ' conecting  to http://chx-sysprod-01:8002. This is not a big issue, it\' only about monitoring');
+     
+     });
+     socketCommands2.on('data', function (data) {
+     d = new Date();
+     dismissAlarm('provisioningSocket', 'notif2', 'GOOD! http://chx-sysprod-01:8002 is available again!');
+     
+     
+     if (data) {
+     var objects = data.rows;
+     
+     if (objects.length > 0) {
+     popcontent += '</p><table class="table table-striped table-bordered table-condensed table-responsive table-hover"><tr><th><strong><center>Provisioning</center></strong></th></tr>';
+     var index = 0;
+     $.each(objects, function (key, val) {
+     index++;
+     count++;
+     popcontent += '<tr><td><strong>Provisioning n. ' + index + '</strong></tr></td>';
+     popcontent += '<tr><td><strong>Notifid: </strong>' + val.notifid + '</td></tr>';
+     popcontent += '<tr><td><strong>Hostname:  </strong> ' + val.hostname + '</td></tr>';
+     popcontent += '<tr><td><strong>Progress:  </strong><div class="progress progress-striped active"><div class="bar" role="progressbar" aria-valuenow="' + val.progress + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + val.progress + '%"> <span class="sr-only" >' + val.progress + '% Complete</span></div></div>' + val.status + '</td></tr>';
+     popcontent += '<tr><td><strong>Timestamp:  </strong>' + val.update + '</td></tr>';
+     
+     });
+     
+     popcontent += '</table>';
+     // $('#monitoring').html('<img src="/SPOT/provisioning/images/on.gif"/>');
+     $('#ok').remove();
+     $('#monitoring').remove();
+     $('#pendings').after('<a  id="monitoring"></a>');
+     $('#monitoring').html('Background operations <span class="badge badge-warning">' + count + '</span>');
+     // $this.webuiPopover().hide();
+     $('#monitoring').webuiPopover({
+     title: 'Processes still executing..',
+     content: popcontent,
+     placement: 'bottom-left',
+     trigger: 'hover',
+     animation: 'pop',
+     type: 'html',
+     cache: true
+     });
+     }
+     
+     }
+     
+     
+     
+     
+     
+     });
+     */
     if (popcontent === '<p class="alert alert-info"><strong>Last checked: ' + d.toLocaleTimeString() + '</strong></p>') {
         $('#monitoring').remove();
         $('#ok').remove();
@@ -235,7 +237,7 @@ $(document).on('click', '.modal-footer button', function(){  $('#servermsg').htm
         });
 
 
-   }
+    }
     $('.bgop').on('click', function () {
         //    $('#myModalLabel').text('Background Operations Details: (' + count + ' current)')
         var cssclass = '';
@@ -562,10 +564,10 @@ function IPAddressKeyOnly(e) {
  * @param {number} scriptID
  * @returns {content of stdout in @name ele}
  */
-function runScript (ip, name, id, scriptID) {
+function runScript(ip, name, id, scriptID) {
     var req = new AjaxRequest(id);
     req.setMethod('POST');
-    var params = "ip=" + encodeURIComponent(ip) + "&id=" + encodeURIComponent(name) + "&scriptID=" + scriptID ;
+    var params = "ip=" + encodeURIComponent(ip) + "&id=" + encodeURIComponent(name) + "&scriptID=" + scriptID;
     req.loadXMLDoc("includes/runScript.php", params);
 }
 

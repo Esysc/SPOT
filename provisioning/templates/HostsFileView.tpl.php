@@ -54,6 +54,8 @@ $this->display('_Header.tpl.php');
             // trigger the update
             subnet.trigger("chosen:updated");
         });
+
+
         // Get all the sales order in the tblprogress table
         $.get("/SPOT/provisioning/api/tblprogresses", function (jsonResult) {
             var Jdata = jsonResult.rows;
@@ -106,7 +108,22 @@ $this->display('_Header.tpl.php');
                         return $(this).text() == $('#subnet').val();
                     }).attr('selected', true).trigger('chosen:updated');
 
+                    var settings = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "/SPOT/ipam/api/SYS01/sections/1/subnets/?filter_by=subnet&filter_value="+$('#subnet').val(),
+                        "method": "GET",
+                        "headers": {
+                            "token": "<?php echo $_SESSION['token']; ?>",
+                            "cache-control": "no-cache",
+                            "postman-token": "64638560-aa42-f5d7-871d-b885334d4e37"
+                        }
+                    }
 
+                    $.ajax(settings).done(function (response) {
+                        console.log(response);
+
+                    });
 
                     var n = $(".extraHosts").length;
                     if (n > 0) {
@@ -115,11 +132,11 @@ $this->display('_Header.tpl.php');
                         $('#export').hide();
                     }
 
-                  
+
                 }
             });
 
-           
+
 
 
 

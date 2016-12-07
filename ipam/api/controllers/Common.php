@@ -102,15 +102,15 @@ class Common_api_functions {
 	 */
 	protected function init_object ($Object_name, $Database) {
 		// admin fix
-		if($Object_name=="Admin")	    { $this->$Object_name	= new $Object_name ($Database, false); }
+		if($Object_name=="Admin")	    { $this->{$Object_name}	= new $Object_name ($Database, false); }
 		// User fix
-		elseif($Object_name=="User")	{ $this->$Object_name	= new $Object_name ($Database, true); $this->$Object_name->user = null; }
+		elseif($Object_name=="User")	{ $this->{$Object_name}	= new $Object_name ($Database, true); $this->{$Object_name}->user = null; }
 		// default
-		else					        { $this->$Object_name	= new $Object_name ($Database); }
+		else					        { $this->{$Object_name}	= new $Object_name ($Database); }
 		// set exit method
-		$this->$Object_name->Result->exit_method = "exception";
+		$this->{$Object_name}->Result->exit_method = "exception";
 		// set API flag
-		$this->$Object_name->api = true;
+		$this->{$Object_name}->api = true;
 	}
 
 	/**
@@ -243,6 +243,8 @@ class Common_api_functions {
 	/**
 	 * Validates filter_by
 	 *
+	 *  Takes first result, checks all keys against provided filter_by value
+	 *
 	 * @access protected
 	 * @param mixed $result
 	 * @return void
@@ -253,11 +255,17 @@ class Common_api_functions {
 		else					{ $result_tmp = $result; }
 
 		$error = true;
-		foreach ($result_tmp as $k=>$v) {
-			if ($k==$this->_params->filter_by) {
-				$error = false;
-			}
+		if(is_array($result_tmp)) {
+    		foreach ($result_tmp as $k=>$v) {
+    			if ($k==$this->_params->filter_by) {
+    				$error = false;
+    			}
+    		}
 		}
+		else {
+    		$error = false;
+		}
+
 		// die
 		if ($error)							{ $this->Response->throw_exception(400, 'Invalid filter value'); }
 	}
@@ -581,6 +589,24 @@ class Common_api_functions {
 	}
 
 	/**
+	 * Returns array of possible permissions
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function get_possible_permissions () {
+		// set
+		$permissions = array(
+    		            "na"=>0,
+    		            "ro"=>1,
+    		            "rw"=>2,
+    		            "rwa"=>3
+                        );
+        // return
+		return $permissions;
+	}
+
+	/**
 	 * This method removes all folders if controller is subnets
 	 *
 	 * @access protected
@@ -676,9 +702,9 @@ class Common_api_functions {
 			// match
 			if(array_key_exists($v, $this->_params)) {
 				// replace
-				$this->_params->$k = $this->_params->$v;
+				$this->_params->{$k} = $this->_params->{$v};
 				// remove
-				unset($this->_params->$v);
+				unset($this->_params->{$v});
 			}
 		}
 	}
@@ -700,10 +726,10 @@ class Common_api_functions {
 				if(array_key_exists($k, $this->keys)) {
 					// replace
 					$key = $this->keys[$k];
-					$result_remapped->$key = $v;
+					$result_remapped->{$key} = $v;
 				}
 				else {
-					$result_remapped->$k = $v;
+					$result_remapped->{$k} = $v;
 				}
 			}
 		}
@@ -722,15 +748,14 @@ class Common_api_functions {
 					if(array_key_exists($k, $this->keys)) {
 						// replace
 						$key_val = $this->keys[$k];
-						$result_remapped[$m]->$key_val = $v;
+						$result_remapped[$m]->{$key_val} = $v;
 					}
 					else {
-						$result_remapped[$m]->$k = $v;
+						$result_remapped[$m]->{$k} = $v;
 					}
 				}
 			}
 		}
-
 
 		# result
 		return $result_remapped;
