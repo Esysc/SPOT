@@ -5,23 +5,22 @@
  * ************************* */
 
 
-$address = $_GET['address'];
-# fetch all locations
-# if none than print
 if (!isset($_GET['address'])) {
    return false;
 } else {
 
-
-
+$address = $_GET['address'];
+# fetch all locations
+# if none than print
     // Prepare string address for google api request
 
     $address = str_replace(" ", "+", $address);
     $address = str_replace(",", "+", $address);
     $address = str_replace("++", "+", $address);
 
-    $geocode = file_get_contents('http://maps.google.com/maps/api/geocode/json?address=' . $address . '&sensor=false');
-
+    $geocode = file_get_contents('http://maps.google.com/maps/api/geocode/json?address=' . $address);
+    echo $geocode;
+/*
     $output = json_decode($geocode);
     
     if ($output->status === "OK") {
@@ -34,6 +33,9 @@ if (!isset($_GET['address'])) {
     } else {
         return false;
     }
+ * 
+ * Temporarely disabled to countour the corporate restricion
+ */
 }
         
 
