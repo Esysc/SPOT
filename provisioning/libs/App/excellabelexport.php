@@ -1,8 +1,8 @@
 <?php
-
 session_start();
 ini_set("memory_limit", "-1");
 ini_set("set_time_limit", "0");
+
 set_time_limit(0);
 if (!isset($_GET['title'])) {
     echo "<br />No Session Variable Present, nothing to Export.";
@@ -432,7 +432,7 @@ $objPHPExcel->setActiveSheetIndex(0);                      // set to first works
 if ($debug) {
     fclose($handle);
 }
-$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8');
 header("Content-Disposition: attachment;filename=$fname");
 header('Cache-Control: max-age=0');

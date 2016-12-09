@@ -573,9 +573,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a href="http://spmgt.my.compnay.com/SPOT/ipam" class="url" target="_blank">Customer IP Inventory</a>
-                                </li>
+                                
                                 <li <?php
                                 if ($this->nav == 'tblorderses') {
                                     echo 'class="active"';
@@ -741,12 +739,14 @@
          */
         $url = "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/user/";
         if (!isset($_SESSION['token']) || $_SESSION['token'] === '') {
+          
             $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
         } else {
             // Check validity of token
             $reponse = json_decode(tokenCheck($url, array("token: " . $_SESSION['token'])));
             if ($reponse == false) {
-                $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
+                //var_dump(tokenGet($url));
+               // $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
             }
         }
         

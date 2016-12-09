@@ -211,7 +211,7 @@ $this->display('_Header.tpl.php');
                 data: data,
                 success: function (data) {
 
-                    var url = 'libs/App/excellabelexport.php?title=' + filename + '.xlsx';
+                    var url = 'libs/App/excellabelexport.php?title=' + filename + '.xls';
 
                     window.location.href = url;
 

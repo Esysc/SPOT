@@ -1,33 +1,33 @@
 <?php
+
 session_start();
-require_once 'mail_function.php';
+include('/usr/share/php/libphp-phpmailer/class.phpmailer.php');
+include('/usr/share/php/libphp-phpmailer/class.smtp.php');
 $domain = '@mycompany.com';
 $email_address = $_SESSION['email'];
-$options = Array('base_dn'            => 'DC=hq,DC=k,DC=grp',
-		'account_suffix'     => '@my.compnay.com',
-		'domain_controllers' => Array('auriga.my.compnay.com'),
-		'use_ad'             => true,
-		);
+$options = Array('base_dn' => 'DC=hq,DC=k,DC=grp',
+    'account_suffix' => '@my.compnay.com',
+    'domain_controllers' => Array('auriga.my.compnay.com'),
+    'use_ad' => true,
+);
 
 
 
-$my_file = $_SESSION['filename'].'.xls';
-		$my_path = $_SERVER['DOCUMENT_ROOT']."/SPOT/log/";
-		$my_name = 'SPOT System Production';
-		//$my_name = 'sysprod_sw_delivery'.$domain;
-		$my_mail = 'SPOT'.$domain;
-		$my_replyto = 'SPOT'.$domain;
-		$my_subject = "[".$_SESSION['SALESORDER']."] Access File";
-		if(isset($_SESSION['email'])){
-		$my_to = $_SESSION['email'];
-		}
-		else
-		{
-			$my_to = 'system.production@mycompany.com';
-		}
-		$my_mail = $my_to;
-		$my_replyto = $my_to;
-		$my_message = '
+$my_file = $_SESSION['filename'] . '.xls';
+$my_path = $_SERVER['DOCUMENT_ROOT'] . "/SPOT/log/";
+$my_name = 'sysprod_sw_delivery@mycompany.com';
+//$my_name = 'sysprod_sw_delivery'.$domain;
+$my_mail = 'SPOT' . $domain;
+$my_replyto = 'SPOT' . $domain;
+$my_subject = "[" . $_SESSION['SALESORDER'] . "] Access File";
+if (isset($_SESSION['email'])) {
+    $my_to = $_SESSION['email'];
+} else {
+    $my_to = 'system.production@mycompany.com';
+}
+$my_mail = $my_to;
+$my_replyto = $my_to;
+$my_message = '
 		<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40"><head><meta http-equiv=Content-Type content="text/html; charset=iso-8859-1"><meta name=Generator content="Microsoft Word 14 (filtered medium)"><style><!--
 		/* Font Definitions */
 		@font-face
@@ -75,6 +75,18 @@ div.WordSection1
 $title = $_SESSION['title'];
 $filename = $_SESSION['filename'];
 $usermail = $my_replyto;
-
-mail_attachment($my_file, $my_path, $my_to, $my_mail, $my_name, $my_replyto, $my_subject, $my_message);
+$mail = new PHPMailer;
+$mail->From = $my_name;
+$mail->FromName = "SPOT System Production";
+$mail->addAddress($my_to, $_SESSION['ipamusername']);
+//Provide file path and name of the attachments
+$mail->addAttachment($my_path . "/" . $my_file, $my_file);
+$mail->isHTML(true);
+$mail->Subject = $my_subject;
+$mail->Body = $my_message;
+if (!$mail->send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+    echo "Message has been sent successfully";
+}
 ?>

@@ -4,6 +4,7 @@ session_start();
 ini_set("memory_limit", "-1");
 ini_set("set_time_limit", "0");
 set_time_limit(0);
+
 require_once("config.php");
 if (!isset($_SESSION['var'])) {
     echo "<br />No Table Variable Present, nothing to Export.";
@@ -31,6 +32,14 @@ if (!isset($_SESSION['debug'])) {
     $debug = false;
 } else {
     $debug = true;
+    $logfile = SITE_DIR . "/log/exportlog.txt";
+    if (file_exists($logfile)) {
+        $handle = fopen($logfile, 'w+');
+    } else {
+        $handle = fopen($logfile, 'w+');
+
+        chmod($filename, 0777);
+    }
     $handle = fopen(SITE_DIR . "/log/exportlog.txt", "w");
     fwrite($handle, "\nDebugging On...");
 }
@@ -542,7 +551,6 @@ $objPHPExcel->setActiveSheetIndex(0);                      // set to first works
 if ($debug) {
     fclose($handle);
 }
-
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 $filePath = '/var/www/SPOT/log/' . $fname . '.xls';

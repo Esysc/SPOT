@@ -394,7 +394,7 @@ var page = {
             wait: true,
             success: function () {
                 // All OK , pass to phase 2
-                var url = "includes/excelexport_pass.php";
+                var url = "/SPOT/provisioning/includes/excelexport_pass.php";
 
 
                 $.ajax({
