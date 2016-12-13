@@ -16,6 +16,16 @@ $this->display('_Header.tpl.php');
 <script>
 
     $(document).ready(function () {
+        function refineUrl()
+        {
+            //get full url
+            var url = window.location.href;
+
+            //get the part after before ?
+            var value = url.split("?")[0];
+            return value;
+        }
+       
         $('#details').on('click', function () {
             $('#basicModal').show();
         });
@@ -67,11 +77,23 @@ $this->display('_Header.tpl.php');
                 }
             });
             $('#salesel').chosen();
+<?php if (isset($_GET['salesorder'])) { ?>
+                $('#salesel').val('<?php echo $_GET['salesorder']; ?>');
+                $('#salesel').trigger('chosen:updated');
+<?php } ?>
+
         });
         var SO;
+        var salesorder;
         $('#salesel').on('change', function () {
-
-            var salesorder = $('#salesel').val();
+            salesorder = $('#salesel').val();
+            var url = refineUrl(window.location.href);
+            url += "?salesorder=" + salesorder;
+            window.location.href = url;
+        });
+<?php if (isset($_GET['salesorder'])) { ?>
+            
+            salesorder = '<?php echo $_GET['salesorder']; ?>';
             var SOarr = salesorder.split('|');
             var release = SOarr[0].trim();
             $('#release').val(release);
@@ -80,6 +102,7 @@ $this->display('_Header.tpl.php');
             $('.release').show();
             SO = SOarr[1].trim();
             var ACR = SOarr[2].trim();
+            $('.info').html('Salesorder: ' + SO + " Customer Acr: " + ACR);
             $.get("/SPOT/provisioning/api/tblprogresses?salesorder=" + SO, function (jsonResult) {
                 $('.network').show();
                 var Jdata = jsonResult.rows[0].data;
@@ -302,7 +325,7 @@ $this->display('_Header.tpl.php');
                     }
                 });
             });
-        });
+<?php } ?>
         $(document).on('click', '.uncheck', function () {
             var myId = $(this).attr('id');
             var checkboxes = $('.' + myId);
@@ -426,7 +449,7 @@ $this->display('_Header.tpl.php');
                 if (oss[index] === "WINDOWS") {
                     scriptID = 32 // release Download
                 }
-               
+
                 datastring = JSON.stringify(argstring);
                 var number = index + counter;
                 var salesOrder = SO + number;
@@ -493,7 +516,7 @@ $this->display('_Header.tpl.php');
             });
             function createTR(data) {
                 var commandId = data.remotecommandid;
-                
+
                 var e = $('<table id="stdout' + commandId + '" class="table-bordered table-responsive table table-striped"></table>');
                 $('#monitorContainer').append(e);
             }
@@ -520,7 +543,7 @@ $this->display('_Header.tpl.php');
                                 type: "GET",
                                 success: function (a) {
                                     if (typeof a === 'object' && typeof a.message !== 'undefined') {
-                                         
+
                                         if ($(a.message).hasClass('blinking')) {
                                             $('#' + commandId).html(a.message);
                                             $('div ', '#' + commandId).append('<span class="loader progress progress-striped active pull-right"><span class="bar"></span></span>');
@@ -528,10 +551,10 @@ $this->display('_Header.tpl.php');
                                             $('#' + commandId).html(a.message)
                                             clearInterval(mymon);
                                         }
-                                          } 
+                                    }
 
 
-                                    
+
                                 }
                             });
                             $('#stdout' + commandId).html('<tr><th id="' + commandId + '"><div class="alert alert-danger blinking">Executing command ID ' + commandId + '<span class="loader progress progress-striped active pull-right"><span class="bar"></span></span></div></th></tr><tr><td><pre class="prettyprint">' + returnstdout + "</pre><code> " + returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
@@ -562,10 +585,11 @@ $this->display('_Header.tpl.php');
 
         <tr class="salesel">
             <th>
-                <label for="salesel"><strong>
+                
                         Select a stored SO
-                    </strong>
+                  
                 </label>
+                 <div class="info pull-right"></div>
             </th>
         </tr>
         <tr class="salesel">
@@ -576,6 +600,7 @@ $this->display('_Header.tpl.php');
                     </option>
 
                 </select>
+               
                 <div class="pull-right release">
                     <input type="text"  id="release"  value="" required />&nbsp;<span id="check"> <a href="javascript: void(0)" id="disable"><i class="checkrelease icon-forward "></a></i>Check release path</span>
 

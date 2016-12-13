@@ -54,6 +54,8 @@ if ($_GET['page'] == "install") {
     require("app/login/index.php");
 } elseif ($_GET['page'] == "opensearch") {
     require("app/tools/search/opensearch.php");
+} elseif ($_GET['page'] == "genpass") {
+    require("app/login/index.php");
 } else {
     # verify that user is logged in
     $User->check_user_session();
@@ -153,7 +155,7 @@ if ($_GET['page'] == "install") {
             <!-- wrapper -->
             <div class="wrapper">
 
-                
+
                 <!-- jQuery error -->
                 <div class="jqueryError">
                     <div class='alert alert-danger' style="width:400px;margin:auto">jQuery error!</div>

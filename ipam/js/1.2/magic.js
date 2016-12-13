@@ -3534,7 +3534,7 @@ $(document).ready(function () {
 
 
         var address = $('input[name=address').val();
-        $.get('app/admin/locations/find_geocode_from_address.php?address=' + address, function (data) {
+        $.get('http://maps.google.com/maps/api/geocode/json?address=' + address, function (data) {
             if (data) {
                 var obj = JSON.parse(data);
                 $('input[name="lat"]').val(obj.lat);
@@ -3542,6 +3542,9 @@ $(document).ready(function () {
                 $('input[name=address').val(obj.long_name);
 
 
+            }
+            else {
+                alert('Cannot connect to maps.google.com!');
             }
         });
 

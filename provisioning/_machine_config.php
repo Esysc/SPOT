@@ -35,11 +35,11 @@ GlobalConfig::$CONNECTION_SETTING->Type = "MySQL_PDO";
 GlobalConfig::$CONNECTION_SETTING->Charset = "utf8";
 GlobalConfig::$CONNECTION_SETTING->Multibyte = true;
 GlobalConfig::$CONNECTION_SETTING->DBName = "spot";
-if (!empty(array_intersect($custip, $URL))) {
+/*if (!empty(array_intersect($custip, $URL))) {
 
 
     GlobalConfig::$CONNECTION_SETTING->DBName = "custip";
-}
+} */
 if (!empty(array_intersect($productiondb, $URL))) {
     /** database connection settings */
     GlobalConfig::$CONNECTION_SETTING->DBName = "drbl";

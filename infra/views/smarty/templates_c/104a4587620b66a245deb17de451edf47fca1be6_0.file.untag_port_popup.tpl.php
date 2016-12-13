@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-12-05 18:07:24
+/* Smarty version 3.1.28, created on 2016-12-12 09:44:44
   from "/var/www/SPOT/infra/views/untag_port_popup.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_58459ecc6f0a08_91490442',
+  'unifunc' => 'content_584e637c85bcd1_72003364',
   'file_dependency' => 
   array (
     '104a4587620b66a245deb17de451edf47fca1be6' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58459ecc6f0a08_91490442 ($_smarty_tpl) {
+function content_584e637c85bcd1_72003364 ($_smarty_tpl) {
 ?>
 
 <p><?php echo $_smarty_tpl->tpl_vars['LBL_0_untag_success_port_id']->value;?>
