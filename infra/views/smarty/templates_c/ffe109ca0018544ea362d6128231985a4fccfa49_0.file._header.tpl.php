@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-12-12 12:15:37
+/* Smarty version 3.1.28, created on 2016-12-15 09:25:18
   from "/var/www/SPOT/infra/views/partial_commons/_header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_584e86d98a2d37_24601440',
+  'unifunc' => 'content_5852536e01c454_51410351',
   'file_dependency' => 
   array (
     'ffe109ca0018544ea362d6128231985a4fccfa49' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_584e86d98a2d37_24601440 ($_smarty_tpl) {
+function content_5852536e01c454_51410351 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">

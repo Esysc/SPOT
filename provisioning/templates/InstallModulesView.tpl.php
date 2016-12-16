@@ -77,10 +77,6 @@ $this->display('_Header.tpl.php');
                 }
             });
             $('#salesel').chosen();
-<?php if (isset($_GET['salesorder'])) { ?>
-                $('#salesel').val('<?php echo $_GET['salesorder']; ?>');
-                $('#salesel').trigger('chosen:updated');
-<?php } ?>
 
         });
         var SO;
@@ -92,7 +88,8 @@ $this->display('_Header.tpl.php');
             window.location.href = url;
         });
 <?php if (isset($_GET['salesorder'])) { ?>
-            
+            $('#salesel').html('Selected'); //Yes, it's a normal behaviour, Selected is the key word and you don't need to trigger chosen updated
+            //$('#salesel').trigger('chosen:updated');
             salesorder = '<?php echo $_GET['salesorder']; ?>';
             var SOarr = salesorder.split('|');
             var release = SOarr[0].trim();
