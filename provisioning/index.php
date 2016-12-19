@@ -16,6 +16,12 @@ function is_xhr() {
         return false;
 }
 
+if (isset($_SERVER['REQUEST_URI'])) {
+    $request = '?location='.urlencode($_SERVER['REQUEST_URI']);
+} else {
+    $request = '';
+}
+
 if (!GlobalConfig::$CONNECTION_SETTING) {
     throw new Exception('GlobalConfig::$CONNECTION_SETTING is not configured.  Are you missing _machine_config.php?');
 }
@@ -39,11 +45,11 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'perl') === FALSE && strpos($_SERVER['HT
 //  header('Location: index.php');  
                     break;
                 default:
-                    header('Location: login.php');
+                    header('Location: login.php'.$request);
                     break;
             }
         } else {
-            header('Location: login.php');
+            header('Location: login.php'.$request);
         }
     }
 }

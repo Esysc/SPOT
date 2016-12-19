@@ -177,10 +177,18 @@
                 } else {
                     $_SESSION['right'] = 10;
                 }
+                $url = '';
+                if (isset($_GET['location'])) {
+                    $link = $_GET['location'];
+                    $link_hash = explode('/', $link);
+                    $url = end($link_hash);
+                }
+               
                 ?>
+                
                 <script>
                     setTimeout(function () {
-
+                        
                         $('#login').slideUp('slow').fadeOut(function () {
 
                             window.open('<?php echo $SERVERROOT . $url; ?>', '_self');
@@ -212,6 +220,7 @@
         }
 
         include("templates/_Footer.tpl.php");
+        
         ?>
     </div>
 
