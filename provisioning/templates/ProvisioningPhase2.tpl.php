@@ -317,9 +317,9 @@ if (isset($_SESSION['CSV'])) {
                 });
         function findDuplicate() {
             $('.checkbadge').remove();
-            var textArr = $(".checkdup").get();
+            var textArr = $(".checkdup:visible").get();
             var idArr = [];
-            $('.checkdup').each(function () {
+            $('.checkdup:visible').each(function () {
                 idArr.push(this.id);
             });
             var len = textArr.length;
@@ -694,7 +694,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                 var scriptID = 5;
                                 var clientaddress = $.trim($("#clientaddress" + level).val());
                                 // Next line is commented out because the script is run from client directly
-                                // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                            ?>';
+                                // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                                   ?>';
                                 break;
                             case 'LINUX':
 
@@ -739,13 +739,13 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                                 }
 
 
-                                //  var clientaddress = '<?php // echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                                             ?>';
+                                //  var clientaddress = '<?php // echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                                                    ?>';
 
                                 var clientaddress = $.trim($("#clientaddress" + level).val());
                                 //      console.log("clientaddress: " + clientaddress);
                                 break;
                         }
-                        // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                                             ?>';
+                        // var clientaddress = '<?php //echo GlobalConfig::$SYSPROD_SERVER->DRBL;                                                                    ?>';
                         break;
                 }
 
@@ -889,9 +889,9 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
         $('#runcommander').on('click', function (e) {
             var button = $(this);
             button.hide();
-           // var command = 'ssh -i .ssh/id_rsa  cristall@my.compnay.com@chx-sysprod-01 "cmd /c C:\\SPOT\\nodejs\\nssm-2.24\\win64\\nssm restart SPOT_check_racks"';
-        var command = ' winexe -U administrator%***REMOVED*** //chx-sysprod-01 "cmd /c C:\\SPOT\\nodejs\\nssm-2.24\\win64\\nssm restart SPOT_check_racks"';
-        var url = "/SPOT/provisioning/api/remotecommands/";
+            // var command = 'ssh -i .ssh/id_rsa  cristall@my.compnay.com@chx-sysprod-01 "cmd /c C:\\SPOT\\nodejs\\nssm-2.24\\win64\\nssm restart SPOT_check_racks"';
+            var command = ' winexe -U administrator%***REMOVED*** //chx-sysprod-01 "cmd /c C:\\SPOT\\nodejs\\nssm-2.24\\win64\\nssm restart SPOT_check_racks"';
+            var url = "/SPOT/provisioning/api/remotecommands/";
             e.preventDefault();
             var scriptID = 100; // the scriptID runCommander
             var rack = '25';
@@ -938,7 +938,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
             }
             ;
             function monitoring(data) {
-                
+
                 var setIntervalID = setInterval(function () {
 
                     var commandId = data.remotecommandid;
@@ -952,21 +952,22 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
 
                             var arguments = data.arguments;
                             var error = data.returncode;
-                            if (data.returnstdout === '' ) data.returnstdout = "The command has not been yet executed... please wait....";
+                            if (data.returnstdout === '')
+                                data.returnstdout = "The command has not been yet executed... please wait....";
                             //stdout ID if you want the modal to display
                             $('#stdout' + commandId).html('<tr><th>Running command ' + arguments + ' on host ' + host + '</th></tr><tr><td><pre class="prettyprint">' + data.returnstdout + "</pre><code> " + data.returnstderr + '</code><code>Exit code: ' + error + '</code></pre></td><tr>');
                         }
                     });
-                    $('#close').on('click', function() {
-                    $('#runcommander').show();
-                    clearInterval(setIntervalID);
-                    
+                    $('#close').on('click', function () {
+                        $('#runcommander').show();
+                        clearInterval(setIntervalID);
+
                     });
                 }, 2000);
             }
 
         });
-        
+
     });</script>
 
 <style>
@@ -1390,9 +1391,38 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                 });
             });
             $('input:checkbox').on('click', function () {
-                console.log($(this).val())
+                //  console.log($(this).val())
             });
-            console.log($('input:checkbox').val());
+            //console.log($('input:checkbox').val());
+            $(document).on('change', '.imagename', function () {
+                //Filter fields to show only pertinents input fileds
+                var subIot = "IOT";
+                var subWin = "DEPLOY";
+                var subClonezilla = 'MGT';
+                //Check loop not so logic, but a quick way to check all values 
+                $('.loop').each(function () {
+                    var level = $(this).val();
+                    var imagename = $('#imagename' + level).val();
+                    //Check 1
+                    if (imagename.indexOf(subWin) != -1 || imagename.indexOf(subClonezilla) != -1) {
+                        $('#windows' + level).show();
+                        // Ok it's a window deployment, going to check 2
+                        if (imagename.indexOf(subIot) != -1) {
+                            $('#productkey' + level).attr('disabled', true).show();
+                            $('#progress' + level).hide();
+                            $('i#progress' + level).after('<div id="keymsg' + level + '" class="label label-info">IOT image activation goes through VAMT3.1!<p>The VAMT server is at x.x.x.228!</p></div>')
+                            //  $(this).next('.productkey').find('input').hide();
+
+                        } else {
+                            $('#productkey' + level).attr('disabled', false).show();
+                            $('#progress' + level).show();
+                            $('#keymsg' + level).remove();
+                        }
+                    } else {
+                        $('#windows' + level).hide();
+                    }
+                });
+            });
         })
     </script>
     <?php
