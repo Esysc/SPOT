@@ -11,7 +11,7 @@ Web application source code
 
 
 [TODO]
-### What I would like to do (my be in other life?) ###
+### What I would like to do (may be in other life?) ###
 
 * Real time monitoring without polling
 * Bootstrap4 migration
