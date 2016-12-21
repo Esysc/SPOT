@@ -573,7 +573,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                
+
                                 <li <?php
                                 if ($this->nav == 'tblorderses') {
                                     echo 'class="active"';
@@ -737,17 +737,36 @@
         /*
          * Get the tocken to request data to ipam api
          */
-        $url = "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/user/";
-        if (!isset($_SESSION['token']) || $_SESSION['token'] === '') {
-          
-            $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
-        } else {
-            // Check validity of token
-            $reponse = json_decode(tokenCheck($url, array("token: " . $_SESSION['token'])));
-            if ($reponse == false) {
-                //var_dump(tokenGet($url));
-               // $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
+        //$url = "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/user/";
+        $url = "http://chx-raripam-01.my.compnay.com/api/SYS01/user/";
+        if (tokenGet($url) != false) {
+            if (!isset($_SESSION['token']) || $_SESSION['token'] === '') {
+
+                $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
+            } else {
+                // Check validity of token
+                $reponse = json_decode(tokenCheck($url, array("token: " . $_SESSION['token'])));
+                if ($reponse == false) {
+                    //var_dump(tokenGet($url));
+                    // $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
+                }
             }
+            ?>
+            <script>
+                $(document).ready(function () {
+                    $('.alert-info').after('<div class="label label-success pull-right">IPAM is Alive</div>');
+                });
+            </script>   
+            <?php
+        } else {
+            ?>
+            <script>
+                $(document).ready(function () {
+                    $('.alert-info').after('<div class="label label-warning pull-right">IPAM not reacheable</div>');
+                });
+            </script>   
+            <?php
         }
+            
         
 

@@ -39,6 +39,10 @@ array_multisort($imagetarget, $ostarget, $image);
 array_unshift($imagetarget, $imgtarget);
 array_unshift($image, $img);
 array_unshift($ostarget, $ostarg);
+$header = array("token: " . $_SESSION['token']);
+$apiCall = CallAPI('GET', 'http://chx-raripam-01.my.compnay.com/api/SYS01/sections/1/subnets/', false,$header);
+$rawResults = json_decode($apiCall, true);
+$networks = $rawResults['data'];
 ?>
 <script>
     /*
@@ -61,7 +65,7 @@ array_unshift($ostarget, $ostarg);
         var tz = $('.tz');
         tz.chosen({allow_single_deselect: true});
         var network = $('.network');
-        network.chosen({allow_single_deselect: true});
+        network.chosen({allow_single_deselect: true , width: '600px'});
         var chosen = network.data('chosen');
         // Bind the keyup event to the search box input
         chosen.dropdown.find('input').on('keyup', function (e)
@@ -78,29 +82,8 @@ array_unshift($ostarget, $ostarg);
                 network.trigger("chosen:updated");
             }
         });
-        // lOAD RESUTLS FROM IPAM 
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "/SPOT/ipam/api/SYS01/sections/1/subnets/",
-            "method": "GET",
-            "headers": {
-                "token": "<?php echo $_SESSION['token']; ?>",
-                "cache-control": "no-cache",
-                "postman-token": "64638560-aa42-f5d7-871d-b885334d4e37"
-            }
-        }
-        $('.loader').html(' <img src="/SPOT/provisioning/images/loader.gif" />').attr({title: "Loading subnets from NAGRA ipam"});
-        $.ajax(settings).done(function (response) {
-            $('.loader').html('');
-            $.each(response.data, function (obj) {
-                network
-                        .append($('<option>', {value: response.data[obj].subnet})
-                                .text(response.data[obj].subnet));
-            })
-            // trigger the update
-            network.trigger("chosen:updated");
-        });
+        
+        
         $('#stopshelf').chosen({display_disabled_options: false});
         $('#stopshelf').chosen().change(function () {
             $('#stopshelf').trigger('change');
@@ -640,19 +623,26 @@ array_unshift($ostarget, $ostarg);
                                 </table>
                             </div>
                             <div id="networkdiv" title="Network definition">
-                                
+
                                 <table  class="collection table table-bordered table-hover">
                                     <tr>
                                         <th>
                                             <span class="icon-signal"></span> CTRL Network Selection
+                                            
                                         </th>
                                     </tr>
                                     <tr>
                                         <td>
                                             <select name="network" id="network" class="chosen network" data-placeholder="Choose the subnet"  required="required">
                                                 <?php
-                                                foreach ($subnet as $value) {
-                                                    echo "<option value='$value'>$value</option>";
+                                                
+                                                foreach ($networks as $subnets) {
+                                                    
+                                                    $value = $subnets['subnet'];
+                                                    $mask = $subnets['mask'];
+                                                    $account = $subnets['Account'];
+                                                    $systemname = $subnets['System Name'];
+                                                    echo "<option value='$value'>$value/$mask - $account - $systemname</option>";
                                                 }
                                                 ?>
                                             </select>
@@ -719,6 +709,7 @@ array_unshift($ostarget, $ostarg);
             </div>
         </div>
     </div> <!-- /container -->
+    
     <?php
 } // End of if exist a selected order for thi session
 $this->display('_Footer.tpl.php');

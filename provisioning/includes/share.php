@@ -151,7 +151,42 @@ function tokenCheck($url, $header = "", $user = "admin", $pass = "***REMOVED***"
     return $results;
 }
 
+//Generic call to a api. for Ipam auth is in the header.
+function CallAPI($method, $url, $data = false, $header = false) {
+    $curl = curl_init();
 
+    switch ($method) {
+        case "POST":
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            if ($data)
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            break;
+        case "PUT":
+            curl_setopt($curl, CURLOPT_PUT, 1);
+            break;
+        default:
+            if ($data)
+                $url = sprintf("%s?%s", $url, http_build_query($data));
+    }
+    if ($header)
+        
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+    // Optional Authentication:
+   // curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    //curl_setopt($curl, CURLOPT_USERPWD, "admin:***REMOVED***");
+
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+    $result = curl_exec($curl);
+    $chapierr = curl_errno($curl);
+    $cherrmsg = curl_error($curl);
+    curl_close($curl);
+
+    return $result;
+}
 
 /*
  * Scope: get all memos ID for the given url and return a xml string

@@ -3,6 +3,14 @@ $this->assign('title', 'SPOT | Generate hosts file');
 $this->assign('nav', 'hostsfile');
 
 $this->display('_Header.tpl.php');
+$header = array("token: " . $_SESSION['token']);
+$apiCall = CallAPI('GET', 'http://chx-raripam-01.my.compnay.com/api/SYS01/sections/1/subnets/', false, $header);
+$rawResults = json_decode($apiCall, true);
+if ($rawResults != false) {
+    $networks = $rawResults['data'];
+} else {
+    header('http://login.php?log=off');
+}
 ?>
 <link href="bootstrap/css/jquery-labelauty.css" rel="stylesheet" />
 
@@ -10,7 +18,7 @@ $this->display('_Header.tpl.php');
 
     $(document).ready(function () {
         var subnet = $('.subnet');
-        subnet.chosen({allow_single_deselect: true, });
+        subnet.chosen({allow_single_deselect: true, width: '600px'});
         subnet.on('change', function () {
             subnet.trigger('chosen:updated');
             // console.log('change')
@@ -21,39 +29,6 @@ $this->display('_Header.tpl.php');
             }
         });
 
-        // lOAD RESUTLS FROM IPAM 
-        // console.log("<?php echo $_SESSION['token']; ?>")
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "/SPOT/ipam/api/SYS01/sections/1/subnets/",
-            "method": "GET",
-            "headers": {
-                "token": "<?php echo $_SESSION['token']; ?>",
-                "cache-control": "no-cache",
-                "postman-token": "64638560-aa42-f5d7-871d-b885334d4e37"
-            }
-        }
-        $('.loader').html(' <img src="/SPOT/provisioning/images/loader.gif" />').attr({title: "Loading subnets from NAGRA ipam"});
-        $.ajax(settings).done(function (response) {
-            $('.loader').html('');
-            subnet
-                    .append($('<option>', {value: ""})
-                            .text(""));
-
-            $.each(response.data, function (obj) {
-                subnet
-                        .append($('<option>', {value: response.data[obj].id})
-                                .text(response.data[obj].subnet));
-
-            })
-            $(".subnet option").each(function () {
-                if ($(this).text() === $('#subnet').val())
-                    $(this).attr("selected", "selected");
-            });
-            // trigger the update
-            subnet.trigger("chosen:updated");
-        });
 
 
         // Get all the sales order in the tblprogress table
@@ -103,13 +78,14 @@ $this->display('_Header.tpl.php');
                     });
 
                     // trigger the update
-                     $('.subnet').attr('selected', false).trigger('change').trigger('chosen:updated');
-                    $(".subnet option").filter(function () {
-                        //may want to use $.trim in here
-                        return $(this).text() == $('#subnet').val();
-                        console.log 
-                    }).attr('selected', true).trigger('chosen:updated');
-                    $('.subnet').trigger('change')
+                    // $('.subnet').attr('selected', false).trigger('change')
+                    //$('.subnet').trigger('chosen:updated');
+
+                    $(".subnet").find("[data-attr='" + $('#subnet').val() + "']").attr('selected', true);
+                    $('.subnet').trigger('chosen:updated');
+
+
+
                     var n = $(".extraHosts").length;
                     if (n > 0) {
                         $('#export').show();
@@ -227,7 +203,7 @@ $this->display('_Header.tpl.php');
             $('#errormsg').html('').hide();
             $('.loader').html(' <img src="/SPOT/provisioning/images/loader.gif" />').attr({title: "Creating hosts in IPAM inventory....."});
             //$('.subnet').trigger('change')
-            var subnetId = $('#subnet').val();
+            var subnetId = $('.subnet').val();
             //console.log('subnetID: '+ subnetId);
 
             $('.ipaddress').each(function () {
@@ -236,11 +212,15 @@ $this->display('_Header.tpl.php');
                 if (ipaddress !== "") {
                     var hostname = $(this).nextAll('input').first().focus().val();
 
+                    var url = "http://chx-raripam-01.my.compnay.com/api/SYS01/addresses/create/?subnetId=" + subnetId + "&hostname=" + hostname + "&description=Added from SPOT&ip_addr=" + ipaddress;
+                    var data = {url: url};
                     var settings = {
                         "async": true,
                         "crossDomain": true,
-                        "url": "/SPOT/ipam/api/SYS01/addresses/create/?subnetId=" + subnetId + "&hostname=" + hostname + "&description=Added from SPOT&ip_addr=" + ipaddress,
-                        dataType: 'json',
+                        // "url": "/SPOT/ipam/api/SYS01/addresses/create/?subnetId=" + subnetId + "&hostname=" + hostname + "&description=Added from SPOT&ip_addr=" + ipaddress,
+                        "url": "/SPOT/provisioning/includes/postIpam.php",
+                        "dataType": 'json',
+                        "data": data,
                         "type": "POST",
                         "headers": {
                             "token": "<?php echo $_SESSION['token']; ?>",
@@ -305,7 +285,16 @@ $this->display('_Header.tpl.php');
             </td>
             <td>
                 <select  class="subnet" data-placeholder="Choose the subnet" >
-
+                    <?php
+                    foreach ($networks as $subnets) {
+                        $id = $subnets['id'];
+                        $value = $subnets['subnet'];
+                        $mask = $subnets['mask'];
+                        $account = $subnets['Account'];
+                        $systemname = $subnets['System Name'];
+                        echo "<option value='$id' data-attr='$value'>$value/$mask - $account - $systemname</option>";
+                    }
+                    ?>
                 </select>
                 <span class="loader"></span>
                 <input type="hidden" id="subnet" />
