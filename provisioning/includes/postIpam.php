@@ -9,6 +9,7 @@ function myUrlEncode($string) {
     return str_replace($entities, $replacements, urlencode($string));
 }
 
+$error = "<strong>An error occured, may be the token is not valid. Try to logout and login again, then run this action again.</strong>";
 if (!isset($_POST['url']))
     return false;
 $url = myUrlEncode($_POST['url']);
@@ -17,7 +18,15 @@ require "share.php";
 require "config.php";
 $header = array("token: " . $_SESSION['token'], 'Content-Type: application/json', 'Accept: application/json');
 $apiCall = CallAPI('POST', $url, false, $header);
-var_dump($apiCall);
-//echo $_SESSION['token'];
-//echo $apiCall;
+if ($apiCall != false) {
+    $results = json_decode($apiCall);
+    echo array2table((array) $results);
+    if ($results->code == 403)
+        echo $error;
+} else {
+    
+    echo $error;
+}
+
+//print_r($results);
 ?>

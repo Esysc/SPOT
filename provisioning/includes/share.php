@@ -3,9 +3,9 @@
 require_once("config.php");
 
 function print_r_V2($array) {
-    $table = "<table class='table-condensed table-bordered'>";
+    $table = "<table class='table table-responsive table-condensed table-bordered'>";
     foreach ($array as $key => $val) {
-        $table .= "<tr><td>" . $key . "</td><td>";
+        $table .= "<tr><th>" . $key . "</th><td>";
         if (is_array($array[$key])) {
             $table .= print_r_V2($array[$key]);
             $table .= "</td></tr>";
@@ -14,7 +14,55 @@ function print_r_V2($array) {
     } $table .= "</table>";
     return $table;
 }
+function array2table($array, $recursive = false, $null = '&nbsp;')
+{
+    // Sanity check
+    if (empty($array) || !is_array($array)) {
+        return false;
+    }
 
+    if (!isset($array[0]) || !is_array($array[0])) {
+        $array = array($array);
+    }
+
+    // Start the table
+    $table = "<table class='table table-responsive table-condensed table-bordered'>\n";
+
+    // The header
+    $table .= "\t<tr>";
+    // Take the keys from the first row as the headings
+    foreach (array_keys($array[0]) as $heading) {
+        $table .= '<th>' . $heading . '</th>';
+    }
+    $table .= "</tr>\n";
+
+    // The body
+    foreach ($array as $row) {
+        $table .= "\t<tr>" ;
+        foreach ($row as $cell) {
+            $table .= '<td>';
+
+            // Cast objects
+            if (is_object($cell)) { $cell = (array) $cell; }
+            
+            if ($recursive === true && is_array($cell) && !empty($cell)) {
+                // Recursive mode
+                $table .= "\n" . array2table($cell, true, true) . "\n";
+            } else {
+                $table .= (strlen($cell) > 0) ?
+                    htmlspecialchars((string) $cell) :
+                    $null;
+            }
+
+            $table .= '</td>';
+        }
+
+        $table .= "</tr>\n";
+    }
+
+    $table .= '</table>';
+    return $table;
+}
 function prettyprint($code, $id) {
     echo '<pre class="prettyprint linenums" id="' . $id . '">', str_replace("\t", str_repeat("&nbsp", 4), htmlspecialchars($code)), '</pre>';
 }

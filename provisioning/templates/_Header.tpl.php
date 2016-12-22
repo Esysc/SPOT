@@ -740,17 +740,10 @@
         //$url = "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/user/";
         $url = "http://chx-raripam-01.my.compnay.com/api/SYS01/user/";
         if (tokenGet($url) != false) {
-            if (!isset($_SESSION['token']) || $_SESSION['token'] === '') {
+           
 
                 $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
-            } else {
-                // Check validity of token
-                $reponse = json_decode(tokenCheck($url, array("token: " . $_SESSION['token'])));
-                if ($reponse == false) {
-                    //var_dump(tokenGet($url));
-                    // $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
-                }
-            }
+           
             ?>
             <script>
                 $(document).ready(function () {
