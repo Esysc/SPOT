@@ -32,7 +32,7 @@ function array2table($array, $recursive = false, $null = '&nbsp;')
     $table .= "\t<tr>";
     // Take the keys from the first row as the headings
     foreach (array_keys($array[0]) as $heading) {
-        $table .= '<th>' . $heading . '</th>';
+        $table .= '<th>' . preg_replace('/(?<!\ )[A-Z]/', ' $0', $heading) . '</th>';
     }
     $table .= "</tr>\n";
 
@@ -173,7 +173,6 @@ function tokenGet($url, $header = "", $user = "admin", $pass = "***REMOVED***") 
 
     return $results;
 }
-
 function tokenCheck($url, $header = "", $user = "admin", $pass = "***REMOVED***") {
     $cookie = "share_cookie.txt";
     $tmp = sys_get_temp_dir();

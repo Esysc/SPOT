@@ -94,7 +94,9 @@ class DefaultController extends AppBaseController {
     public function runCommander() {
         $this->Render('CommanderView.tpl');
     }
-
+public function vamtView() {
+        $this->Render('VamtListview.tpl');
+    }
     public function logWrapper() {
 
 

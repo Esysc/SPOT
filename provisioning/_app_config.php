@@ -128,6 +128,8 @@ GlobalConfig::$ROUTE_MAP = array(
     'GET:setassgly' => array('route' => 'Default.setAssemblyGly'),
     //Run commander
     'GET:commander' => array('route' => 'Default.runCommander'),
+    // Route for VAMT view database
+    'GET:vamt' => array('route' => 'Default.vamtView'),
     //Give the route for the log wrapper
     
     'POST:api/logWrapper/(:num)/(:any)' => array('route' => 'Default.logWrapper', 'params' => array('remotecommandid' => 2, 'copy' => 3)),

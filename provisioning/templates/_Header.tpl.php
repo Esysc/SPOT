@@ -376,15 +376,16 @@
                                     }
                                     ?>><a href="./dhcpmap">Dhcp/Bootp Table Mapping</a></li>
                                     <li <?php
+                                    if ($this->nav == 'vamt') {
+                                        echo 'class="active"';
+                                    }
+                                    ?>><a href="./vamt">Vamt report</a></li>
+                                    <li <?php
                                     if ($this->nav == 'pxeinv') {
                                         echo 'class="active"';
                                     }
                                     ?>><a href="./pxeinv">Pxe clients inventory</a></li>
-                                    <li <?php
-                                    if ($this->nav == 'sysprodracksmappings') {
-                                        echo 'class="active"';
-                                    }
-                                    ?>><a href="./sysprodracksmappings">Racks Mappings</a></li>
+
                                     <li><a target="_blank" href="http://spmon01.my.compnay.com:7767/dashboard">Sysprod Monitoring</a></li>
 
                                 </ul>
@@ -453,6 +454,11 @@
                                                     echo 'class="active"';
                                                 }
                                                 ?>><a href="./tempdatas">Temporary data table</a></li>
+                                                <li <?php
+                                                if ($this->nav == 'sysprodracksmappings') {
+                                                    echo 'class="active"';
+                                                }
+                                                ?>><a href="./sysprodracksmappings">Racks Mappings</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item dropdown dropdown-submenu">
@@ -740,10 +746,9 @@
         //$url = "http://" . GlobalConfig::$SYSPROD_SERVER->MGT . "/SPOT/ipam/api/SYS01/user/";
         $url = "http://chx-raripam-01.my.compnay.com/api/SYS01/user/";
         if (tokenGet($url) != false) {
-           
 
-                $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
-           
+
+            $_SESSION['token'] = json_decode(tokenGet($url))->data->token;
             ?>
             <script>
                 $(document).ready(function () {

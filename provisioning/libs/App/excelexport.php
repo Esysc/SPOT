@@ -42,6 +42,7 @@ if(strlen($htmltable) == strlen(strip_tags($htmltable)) ) {
 	echo "<br />Invalid HTML Table after Stripping Tags, nothing to Export.";
 	exit;
 }
+
 $htmltable = str_replace("<br />", "\n", $htmltable);
 $htmltable = str_replace("<br/>", "\n", $htmltable);
 $htmltable = str_replace("<br>", "\n", $htmltable);
@@ -430,13 +431,15 @@ $objPHPExcel->setActiveSheetIndex(0);                      // set to first works
 if($debug) {
 	fclose($handle);
 }
-$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8');
 header("Content-Disposition: attachment;filename=$fname");
 header('Cache-Control: max-age=0');
 header('Content-Transfer-Encoding: binary');
 //$objWriter->save($fname);
 $objWriter->save('php://output');
+
 exit;
 function innerHTML($node) {
 	$doc = $node->ownerDocument;

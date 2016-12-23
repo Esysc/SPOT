@@ -363,7 +363,7 @@ var page = {
                     data: {datatoPdf: htmlDiv},
                     success: function (data) {
                         var title = $('input#salesorder').val();
-                        var url = 'libs/App/excelexport.php?var=datatoPdf&debug=false&title=' + title + ".xlsx";
+                        var url = 'libs/App/excelexport.php?var=datatoPdf&debug=false&title=' + title + ".xls";
                         // $('#tblprogressDetailDialog').modal('hide');
                         window.location.assign(url);
 

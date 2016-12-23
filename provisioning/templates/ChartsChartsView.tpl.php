@@ -297,7 +297,7 @@ $totLinDas = $LINUX->totalResults;
                 radmin(licnum, true);
             });
         })
-
+        
     });
 </script>
 <div class="container">
@@ -395,6 +395,7 @@ $totLinDas = $LINUX->totalResults;
             </td>
         </tr>
     </table>
+    
 
 </div> <!-- /container -->
 
