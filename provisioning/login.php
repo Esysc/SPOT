@@ -171,6 +171,7 @@
 
 
                 $_SESSION['login'] = "$username";
+                //$_SESSION['pass'] = "$password";
                 if ($_SESSION['login'] === "mycompanyuser") {
 
                     $_SESSION['right'] = 99;

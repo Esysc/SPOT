@@ -740,6 +740,7 @@
             $this->display('_Footer.tpl.php');
             exit;
         }
+       
         /*
          * Get the tocken to request data to ipam api
          */

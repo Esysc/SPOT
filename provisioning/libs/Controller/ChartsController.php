@@ -155,7 +155,7 @@ ORDER BY total,USER";
         unset($p);
         $p = new chartphp();
         $p->title = '<p class="well">Model distribution ' . $thisYear . '</p>';
-        $p->chart_type = "pie";
+        $p->chart_type = "bar";
         $p->height = '600px';
         $p->xlabel = "        ";
         $p->ylabel = "Qty";

@@ -56,5 +56,3 @@ echo $return;
 
 
 mssql_free_result($result);
-
-
