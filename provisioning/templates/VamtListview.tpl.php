@@ -18,8 +18,9 @@ $this->display('_Header.tpl.php');
         });
         $(document).on('mouseover', '#export', function () {
             $(this).css('cursor', 'pointer');
-            $(this).attr('title', 'Click to export in excel');
+            $(this).tooltip();
         });
+        
         $(document).on('click', '#export', function (e) {
             var htmlDiv = $(this).html();
             e.preventDefault();
@@ -48,7 +49,7 @@ $this->display('_Header.tpl.php');
         <i class="icon-th-list"></i> Vamt report
 
     </h1>
-    <table   class="table table-auto-wide table-responsive table-condensed">
+    <table   class="table table-auto-wide table-responsive table-condensed table-striped">
         <tr>
             <th><center>Windows IOT activation status (Read only from chx-sysprod-01)</center></th>
         </tr>

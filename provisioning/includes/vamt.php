@@ -20,7 +20,10 @@ function unsetNumKeys($row) {
     }
     return $row;
 }
-
+/*
+ * VAMT is defined in /etc/freetds/freetds.conf
+ * mssql_connect is a wrapper, it needs freetds to connect to mssql servers
+ */
 $connection = mssql_connect('VAMT', 'sa', '***REMOVED***');
 
 if (!$connection) {
@@ -34,8 +37,10 @@ $stmt = "SELECT  [KeyDescription]
       ,[KeyValue]
       ,[RemainingActivations]
       ,[SupportedEditions]
-      ,[SupportedSKU]
       ,[KeyTypeName]
+      ,[UserRemarks]
+      ,[LastUpdate]
+      ,[LastErrorCode]
   FROM [VAMT].[api].[ProductKey]";
 $result = mssql_query($stmt);
 $return1 = mssql_fetch_array($result);
@@ -50,7 +55,7 @@ $stmt = "SELECT  [FullyQualifiedDomainName]
 //$result = mssql_query('SELECT * FROM base.ProductKey');
 $result = mssql_query($stmt);
 $return2 = mssql_fetch_array($result);
-$return = array2table(unsetNumKeys($return1))."<div id='export'>".array2table(unsetNumKeys($return2))."</div>";
+$return = array2table(unsetNumKeys($return1))."<div id='export' title='Click this table to export in excel.'>".array2table(unsetNumKeys($return2))."</div>";
 
 echo $return;
 
