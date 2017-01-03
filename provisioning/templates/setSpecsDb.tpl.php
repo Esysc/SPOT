@@ -112,8 +112,12 @@ $this->display('_Header.tpl.php');
             $('#salesorder').val(SO);
             var tdEle = $('#report');
             //SO = '';
+            $('#salesel_chosen').remove();
+            $('tr.salesel th').html('<h3 class="text-center text-info">'+salesorder+' Selected</h3>');
             var btn = $('<a href="includes/getInstallationReport.php?sales_order_ref=' + SO + '" id="generate_report" class="btn btn-info pull-right">' + SO + ' Installation Report</a>');
             tdEle.append(btn);
+            var extLink = $('<a href="http://sysproddb.my.compnay.com/sales_order.php?page=salesOrderDetails&sales_order_ref=' + SO + '&details=1" target="_blank" class="btn btn-warning pull-left">Syslog order link</a>');
+            tdEle.append(extLink);
             $(this).remove();
             // Get all data from DB x salesorder
             $.ajax({
@@ -420,7 +424,7 @@ $this->display('_Header.tpl.php');
             counter++;
             $('.delRow').remove();
             e.preventDefault();
-            $(this).closest('tr').before('<tr><td><label>Subnet</label><input type="text" ui="Subnet used" id="subnet_'+counter+'" class="subnet required" name="network" placeholder="Subnet used" data-attr="' + counter + '"/></td><td><label>Netmask</label><select class="chosen" name="netmask" data-attr="' + counter + '"><option selected value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option></select></td><td><label>Network name</label><select class="chosen" name="network_name" id="row' + counter + '" data-attr="' + counter + '" required><option value="10<>CTRL">CTRL vlan 10</option><option value="70<>BUSINESS-ML">BUSINESS-ML vlan 70</option><option value="100<>MGMT">MGMT vlan 100</option></select><a href="#" class="btn btn-action delRow pull-right"><i class="icon-minus-sign icon-white"></i> Remove this entry</a></td></tr>');
+            $(this).closest('tr').before('<tr><td><label>Subnet</label><input type="text" ui="Subnet used" id="subnet_' + counter + '" class="subnet required" name="network" placeholder="Subnet used" data-attr="' + counter + '"/></td><td><label>Netmask</label><select class="chosen" name="netmask" data-attr="' + counter + '"><option selected value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option></select></td><td><label>Network name</label><select class="chosen" name="network_name" id="row' + counter + '" data-attr="' + counter + '" required><option value="10<>CTRL">CTRL vlan 10</option><option value="70<>BUSINESS-ML">BUSINESS-ML vlan 70</option><option value="100<>MGMT">MGMT vlan 100</option></select><a href="#" class="btn btn-action delRow pull-right"><i class="icon-minus-sign icon-white"></i> Remove this entry</a></td></tr>');
             $('.chosen').chosen();
         });
         $(document).on('click', '.delRow', function (event) {
