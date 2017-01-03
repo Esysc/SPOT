@@ -9,9 +9,10 @@ if (isset($_POST['value'])) {
     $selected = '';
 }
 ?>
+<script type="text/javascript" src="scripts/clipboard.js"></script>
 <script>
     $(document).ready(function () {
-
+        $('[data-toggle="tooltip"]').tooltip();
         var elm = document.getElementById('value'),
                 df = document.createDocumentFragment();
         for (var i = 8; i <= 42; i++) {
@@ -29,87 +30,13 @@ if (isset($_POST['value'])) {
         if (ref !== '')
             document.getElementById('value').value = ref;
         $('#value').chosen();
-        $('body').on('click', 'button.copy', function(e) {
-            e.stopPropagation();
-             e.preventDefault();
-             CopyToClipboard();
+        $('body').on('click', 'button.copy', function (e) {
+
+            e.preventDefault();
+
         });
-        
-         function CopyToClipboard () {
-             
-            var input = document.getElementById ("toClipboard");
-            console.log(input);
-            var textToClipboard = input.value;
-            
-            var success = true;
-            if (window.clipboardData) { // Internet Explorer
-                window.clipboardData.setData ("Text", textToClipboard);
-            }
-            else {
-                    // create a temporary element for the execCommand method
-                var forExecElement = CreateElementForExecCommand (textToClipboard);
 
-                        /* Select the contents of the element 
-                            (the execCommand for 'copy' method works on the selection) */
-                SelectContent (forExecElement);
 
-                var supported = true;
-
-                    // UniversalXPConnect privilege is required for clipboard access in Firefox
-                try {
-                    if (window.netscape && netscape.security) {
-                        netscape.security.PrivilegeManager.enablePrivilege ("UniversalXPConnect");
-                    }
-
-                        // Copy the selected content to the clipboard
-                        // Works in Firefox and in Safari before version 5
-                    success = document.execCommand ("copy", false, null);
-                }
-                catch (e) {
-                    success = false;
-                }
-                
-                    // remove the temporary element
-                document.body.removeChild (forExecElement);
-            }
-
-            if (success) {
-                var msg = "  The text is on the clipboard, try to paste it!";
-                $('.msg').html(msg);
-            }
-            else {
-                var msg = "   Your browser doesn't allow clipboard access!";
-                $('.msg').html(msg);
-                $('#toClipboard').removeAttr('disabled');
-            }
-        }
-
-        function CreateElementForExecCommand (textToClipboard) {
-            var forExecElement = document.createElement ("div");
-                // place outside the visible area
-            forExecElement.style.position = "absolute";
-            forExecElement.style.left = "-10000px";
-            forExecElement.style.top = "-10000px";
-                // write the necessary text into the element and append to the document
-            forExecElement.textContent = textToClipboard;
-            document.body.appendChild (forExecElement);
-                // the contentEditable mode is necessary for the  execCommand method in Firefox
-            forExecElement.contentEditable = true;
-
-            return forExecElement;
-        }
-
-        function SelectContent (element) {
-                // first create a range
-            var rangeToSelect = document.createRange ();
-            rangeToSelect.selectNodeContents (element);
-
-                // select the contents
-            var selection = window.getSelection ();
-            selection.removeAllRanges ();
-            selection.addRange (rangeToSelect);
-        }
-   
     });
 </script>
 
@@ -224,9 +151,24 @@ if (isset($_POST['value'])) {
         if (isset($_POST['usesymbols']))
             $available_sets .= 's';
         $password = generateStrongPassword($lenght, $add_dashes, $available_sets);
-        echo '<script>$("#generated").html(\'<div class="alert alert-success" role="alert">Your generated password is:  '
-        . ' <input type="text" disabled id="toClipboard" value="' . $password . '"/>   '
-    .'<button class="btn btn-mini copy" >  Copy   Value    </button><span class="msg"></span></div>\'); </script>';
+        echo '<script>
+            function feedback(clipboard) {
+            var msg;
+            clipboard.on("success", function(e) {
+                msg = "  Copied!";
+                $(".msg").html(msg);
+                 $(".copy").attr("data-original-title", msg);
+            });
+            clipboard.on("error", function(e) {
+                msg = "   Your browser doesn\'t allow clipboard access, copy and paste manually!";
+            $(".msg").html(msg);
+             $(".copy").attr("data-original-title", msg);
+            });
+         }
+            var clipboard = new Clipboard(".copy");
+            $("#generated").html(\'<div class="alert alert-success" role="alert">Your generated password is:  '
+        . ' <input type="text" readonly id="toClipboard" value="' . $password . '"/>   '
+        . '<button class="btn btn-mini copy" data-clipboard-action="copy" data-clipboard-target="#toClipboard" onclick="feedback(clipboard);"  title="Copy Value" data-toggle="tooltip">  Copy   Value    </button><span class="msg"></span></div>\'); </script>';
     }
     ?>
 

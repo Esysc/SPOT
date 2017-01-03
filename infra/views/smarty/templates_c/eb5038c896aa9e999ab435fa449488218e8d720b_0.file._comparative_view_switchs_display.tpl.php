@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-12-12 12:16:31
+/* Smarty version 3.1.28, created on 2017-01-03 14:25:16
   from "/var/www/SPOT/infra/views/partial_commons/_comparative_view_switchs_display.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_584e870f020f99_56310869',
+  'unifunc' => 'content_586ba63c7c6103_76637517',
   'file_dependency' => 
   array (
     'eb5038c896aa9e999ab435fa449488218e8d720b' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_584e870f020f99_56310869 ($_smarty_tpl) {
+function content_586ba63c7c6103_76637517 ($_smarty_tpl) {
 $__section_s_0_saved = isset($_smarty_tpl->tpl_vars['__smarty_section_s']) ? $_smarty_tpl->tpl_vars['__section_s'] : false;
 $__section_s_0_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['selected_switchs']->value) ? count($_loop) : max(0, (int) $_loop));
 $__section_s_0_total = $__section_s_0_loop;
