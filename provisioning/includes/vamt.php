@@ -56,7 +56,6 @@ $stmt = "SELECT  [FullyQualifiedDomainName]
 $result = mssql_query($stmt);
 $return2 = mssql_fetch_array($result);
 $return = array2table(unsetNumKeys($return1))."<div id='export' title='Click this table to export in excel.'>".array2table(unsetNumKeys($return2))."</div>";
-
 echo $return;
 
 

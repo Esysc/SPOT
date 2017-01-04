@@ -26,13 +26,13 @@ function array2table($array, $recursive = false, $null = '&nbsp;')
     }
 
     // Start the table
-    $table = "<table class='table table-responsive table-condensed table-bordered'>\n";
+    $table = "<table class='table table-responsive table-condensed table-bordered table-striped'>\n";
 
     // The header
     $table .= "\t<tr>";
     // Take the keys from the first row as the headings
     foreach (array_keys($array[0]) as $heading) {
-        $table .= '<th>' . preg_replace('/(?<!\ )[A-Z]/', ' $0', $heading) . '</th>';
+        $table .= '<th>' . preg_replace('/(?<!^)((?<![[:upper:]])[[:upper:]]|[[:upper:]](?![[:upper:]]))/', ' $0', $heading) . '</th>';
     }
     $table .= "</tr>\n";
 
