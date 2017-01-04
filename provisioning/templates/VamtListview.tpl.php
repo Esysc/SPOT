@@ -8,11 +8,13 @@ $this->display('_Header.tpl.php');
 
 <script>
     $(document).ready(function () {
-
+        var loader = ' <img src="/SPOT/provisioning/images/loader.gif" id="loader" />'
+        $('.loader').html(loader);
         $.ajax({
             url: '/SPOT/provisioning/includes/vamt.php',
             success: function (data) {
                 $('#iot').html(data);
+                 $('.loader').hide();
             }
 
         });
@@ -20,7 +22,7 @@ $this->display('_Header.tpl.php');
             $(this).css('cursor', 'pointer');
             $(this).tooltip();
         });
-        
+
         $(document).on('click', '#export', function (e) {
             var htmlDiv = $(this).html();
             e.preventDefault();
@@ -49,6 +51,7 @@ $this->display('_Header.tpl.php');
         <i class="icon-th-list"></i> Vamt report
 
     </h1>
+    <div class="loader text-center" ></div>
     <table   class="table table-auto-wide table-responsive table-condensed table-striped">
         <tr>
             <th><center>Windows IOT activation status (Read only from chx-sysprod-01)</center></th>

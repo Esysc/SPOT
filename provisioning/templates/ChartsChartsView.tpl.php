@@ -218,9 +218,9 @@ $totLinDas = $LINUX->totalResults;
         radmin(licnum, false);
         function radmin(licnum, reset) {
             //Update the db within new value
-            var tempurl = 'http://<?php echo GlobalConfig::$SYSPROD_SERVER->MGT; ?>/SPOT/provisioning/api/tempdata/RADMIN';
+            var tempurl = 'http://<?php echo $_SERVER['SERVER_NAME']; ?>/SPOT/provisioning/api/tempdata/RADMIN';
 
-            var lic = {message: licnum};
+            var lic = {'message': licnum};
             // This means we are inserting a new value
             if (reset == true) {
                 var currentdate = new Date();
@@ -230,7 +230,6 @@ $totLinDas = $LINUX->totalResults;
                         + currentdate.getHours() + ":"
                         + currentdate.getMinutes() + ":"
                         + currentdate.getSeconds();
-                console.log(datetime);
                 lic.timestamps = datetime;
             }
             $.ajax({
@@ -238,7 +237,6 @@ $totLinDas = $LINUX->totalResults;
                 type: 'PUT',
                 data: JSON.stringify(lic),
                 success: function (data) {
-
                     if (reset == true) {
 
                     }
@@ -258,7 +256,6 @@ $totLinDas = $LINUX->totalResults;
                 data: send,
                 success: function (data)
                 {
-                    console.log(data);
                     var rep = JSON.parse(data);
                     response = rep.total;
                     var diff = licnum - rep.total;
@@ -271,7 +268,6 @@ $totLinDas = $LINUX->totalResults;
 
                 },
                 error: function (data) {
-                    console.log(data);
                 }
             });
 
@@ -355,7 +351,7 @@ $totLinDas = $LINUX->totalResults;
 
     <table   class="table">
         <tr>
-            <th colspan="3"><center>Radmin activation Count (Approximate). The count is done parsing the AS log file.<span id="alive" class="pull-right"></span></center></th>
+            <th colspan="3"><center>Radmin activation Count . The count is done parsing the AS log file.<span id="alive" class="pull-right"></span></center></th>
         </tr>
         <tr>
 
@@ -366,7 +362,7 @@ $totLinDas = $LINUX->totalResults;
             </td>
             <td>
                 <label for="licnum">
-                    Number of license you want to check
+                    Number of license you want to check. Go to <a href="https://www.radmin.com/support/activationscheck.php" target="_blank" >Radmin check site</a> and check the value after inserting the license key.
                 </label>
                 <input type="text" style="width:50px;" value="<?php echo $radminStock; ?>" title="Put the number of license available" id="licnum" />  
                 <div class="date"></div>
