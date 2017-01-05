@@ -120,7 +120,7 @@ function curlGet($url, $sharepoint = false) {
     return $results;
 }
 
-function curlPost($url, $postfields) {
+function curlPost($url, $postfields, $SSL=false) {
     $cookie = "share_cookie.txt";
     $tmp = sys_get_temp_dir();
     $cookie_file_path = $tmp . "/" . $cookie;
@@ -133,6 +133,7 @@ function curlPost($url, $postfields) {
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_USERPWD, SYSPROD_USER);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $SSL);
     curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file_path);
     curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file_path);
     curl_setopt($ch, CURLOPT_TIMEOUT, 30); //timeout in seconds
@@ -144,6 +145,7 @@ function curlPost($url, $postfields) {
     $results = $chresult;
 
     return $results;
+    //return $cherrmsg;
 }
 
 /* POST to ipam api to get token */

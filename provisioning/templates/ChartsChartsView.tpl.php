@@ -6,8 +6,9 @@ $this->display('_Header.tpl.php');
 
 $yearBase = "2014";
 
-$radminStock = json_decode(apiWrapper('http://' . GlobalConfig::$SYSPROD_SERVER->MGT . '/SPOT/provisioning/api/tempdatas?filter=RADMIN'))->rows[0]->message;
-
+$RADMIN = json_decode(apiWrapper('http://' . GlobalConfig::$SYSPROD_SERVER->MGT . '/SPOT/provisioning/api/tempdatas?filter=RADMIN'))->rows[0];
+$radminStock = $RADMIN->message;
+$radminKey = $RADMIN->data;
 // Get total results from stored provisioned machines trough this gui
 $WINDOWS = json_decode(apiWrapper('http://' . GlobalConfig::$SYSPROD_SERVER->MGT . '/SPOT/provisioning/api/provisioningactions?os=WINDOWS'));
 $AIX = json_decode(apiWrapper('http://' . GlobalConfig::$SYSPROD_SERVER->MGT . '/SPOT/provisioning/api/provisioningactions?os=AIX'));
@@ -24,7 +25,14 @@ $totWinDas = $WINDOWS->totalResults;
 $totAixDas = $AIX->totalResults;
 $totLinDas = $LINUX->totalResults;
 ?>
-
+<style>
+    #green {
+        color: green;
+    }
+    #red {
+        color: red;
+    }
+</style>
 <script>
     $('document').ready(function () {
 
@@ -34,6 +42,22 @@ $totLinDas = $LINUX->totalResults;
             0: mdt,
             1: drbl
         };
+        function radminQuery(lickey) {
+             $('.radminQuery').html('<img src="/SPOT/provisioning/images/loader.gif" alt="Contacting radmin DB" title="Contacting radmin DB"/>');
+            $.ajax({
+                url: "includes/checkRadmin.php",
+                type: "post",
+                data: 'lickey=' + lickey,
+                cache: false,
+                async: true,
+                success: function (data) {
+
+                    $('.radminQuery').html(data);
+
+                }
+
+            });
+        }
 
         var serializedData = JSON.stringify(servers);
         $.ajax({
@@ -213,10 +237,11 @@ $totLinDas = $LINUX->totalResults;
         }
 
         var licnum = $('#licnum').val();
+        var lickey = $('#lickey').val();
         var response = '';
 
-        radmin(licnum, false);
-        function radmin(licnum, reset) {
+        radmin(licnum, false, lickey);
+        function radmin(licnum, reset, lickey) {
             //Update the db within new value
             var tempurl = 'http://<?php echo $_SERVER['SERVER_NAME']; ?>/SPOT/provisioning/api/tempdata/RADMIN';
 
@@ -231,6 +256,7 @@ $totLinDas = $LINUX->totalResults;
                         + currentdate.getMinutes() + ":"
                         + currentdate.getSeconds();
                 lic.timestamps = datetime;
+                lic.data = lickey;
             }
             $.ajax({
                 url: tempurl,
@@ -276,7 +302,9 @@ $totLinDas = $LINUX->totalResults;
         $('#check').on('click', function (e) {
             e.preventDefaults;
             licnum = $('#licnum').val();
-            radmin(licnum, false);
+            lickey = $('#lickey').val();
+            radmin(licnum, false, lickey);
+            radminQuery(lickey);
 
 
         });
@@ -290,10 +318,12 @@ $totLinDas = $LINUX->totalResults;
             $('#confirm').on('click', function () {
                 $('#close').trigger('click');
                 licnum = $('#licnum').val();
-                radmin(licnum, true);
+                lickey = $('#lickey').val();
+                radmin(licnum, true, lickey);
             });
         })
-        
+
+        radminQuery(lickey);
     });
 </script>
 <div class="container">
@@ -351,7 +381,13 @@ $totLinDas = $LINUX->totalResults;
 
     <table   class="table">
         <tr>
-            <th colspan="3"><center>Radmin activation Count . The count is done parsing the AS log file.<span id="alive" class="pull-right"></span></center></th>
+            <th colspan="3">
+                
+        <center>
+            Radmin activation Count . The count is done parsing the AS log file. Please align the value within the Radmin answer below:<span id="alive" class="pull-right"></span>
+        <div class="radminQuery"></div>
+        </center>
+        </th>
         </tr>
         <tr>
 
@@ -359,13 +395,20 @@ $totLinDas = $LINUX->totalResults;
 
             </td>
             <td id="legend">
+
             </td>
             <td>
                 <label for="licnum">
                     Number of license you want to check. Go to <a href="https://www.radmin.com/support/activationscheck.php" target="_blank" >Radmin check site</a> and check the value after inserting the license key.
                 </label>
                 <input type="text" style="width:50px;" value="<?php echo $radminStock; ?>" title="Put the number of license available" id="licnum" />  
+                <p> <label for="lickey">
+                        License key used for check.
+                    </label>
+                    <input type="text" style="width:350px;" placeholder= "RADPR-XXXXXX-XXXXXXXX-XXXXXXXX" value="<?php echo $radminKey; ?>" title="License key" id="lickey" />
+                </p>
                 <div class="date"></div>
+
                 <p class="breadcrumb"><small>
                         The stock value is read from the DB. If you change the value here, it will be updated in the DB as well. The consumed license, are checked directly against the AS log file.
 
@@ -377,7 +420,7 @@ $totLinDas = $LINUX->totalResults;
                     Check Again
                 </button>
                 <label for="reset">
-                    Reset the activation count
+                    Reset the activation count and store the license key
                 </label>
                 <button class="btn btn-info btn-mini" id="reset">
                     Reset Activation Count
@@ -391,7 +434,7 @@ $totLinDas = $LINUX->totalResults;
             </td>
         </tr>
     </table>
-    
+
 
 </div> <!-- /container -->
 
