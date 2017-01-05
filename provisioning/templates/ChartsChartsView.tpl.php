@@ -78,7 +78,7 @@ $totLinDas = $LINUX->totalResults;
             //Populate data for the chart
             var os = new Array();
             var aix = {};
-            aix.text = "Aix total: " + aixtot;
+            aix.text = "Aix : " + aixtot;
             aix.value = aixtot;
             aix.color = "#FEFD01";
             aix.label = "AIX OS";
@@ -86,7 +86,7 @@ $totLinDas = $LINUX->totalResults;
 
             os.push(aix);
             var win = {};
-            win.text = "Windows total: " + wintot;
+            win.text = "Windows : " + wintot;
             win.value = wintot;
             win.color = "#0040FF";
             win.label = "Microsoft OS";
@@ -95,7 +95,7 @@ $totLinDas = $LINUX->totalResults;
 
 
             var lin = {};
-            lin.text = "Linux total: " + lintot;
+            lin.text = "Linux : " + lintot;
             lin.value = lintot;
             lin.color = "#00FF00";
             lin.label = "Redhat OS";
