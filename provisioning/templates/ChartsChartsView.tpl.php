@@ -8,6 +8,7 @@ $yearBase = "2014";
 
 $RADMIN = json_decode(apiWrapper('http://' . GlobalConfig::$SYSPROD_SERVER->MGT . '/SPOT/provisioning/api/tempdatas?filter=RADMIN'))->rows[0];
 $radminStock = $RADMIN->message;
+$radminProcessed = $RADMIN->dwprocessed;
 $radminKey = $RADMIN->data;
 // Get total results from stored provisioned machines trough this gui
 $WINDOWS = json_decode(apiWrapper('http://' . GlobalConfig::$SYSPROD_SERVER->MGT . '/SPOT/provisioning/api/provisioningactions?os=WINDOWS'));
@@ -38,12 +39,26 @@ $totLinDas = $LINUX->totalResults;
 
         var mdt = '<?php echo GlobalConfig::$SYSPROD_SERVER->MDT; ?>';
         var drbl = '<?php echo GlobalConfig::$SYSPROD_SERVER->DRBL; ?>';
+        var radminAnswer;
+        var stockLic;
+        var usedLic;
         var servers = {
             0: mdt,
             1: drbl
         };
+        function getNumbers(inputString) {
+            var regex = /\d+\.\d+|\.\d+|\d+/g,
+                    results = [],
+                    n;
+
+            while (n = regex.exec(inputString)) {
+                results.push(parseFloat(n[0]));
+            }
+
+            return results;
+        }
         function radminQuery(lickey) {
-             $('.radminQuery').html('<img src="/SPOT/provisioning/images/loader.gif" alt="Contacting radmin DB" title="Contacting radmin DB"/>');
+            $('.radminQuery').html('<img src="/SPOT/provisioning/images/loader.gif" alt="Contacting radmin DB" title="Contacting radmin DB"/>');
             $.ajax({
                 url: "includes/checkRadmin.php",
                 type: "post",
@@ -53,6 +68,21 @@ $totLinDas = $LINUX->totalResults;
                 success: function (data) {
 
                     $('.radminQuery').html(data);
+                    radminAnswer = getNumbers($(data).text());
+                    if (typeof radminAnswer !== 'string' && radminAnswer.length != 0) {
+
+                        var act = radminAnswer[1] - radminAnswer[2];
+                        RadminChart(radminAnswer[1], act, radminAnswer[2], '#radmin', '#legend');
+                        radmin(radminAnswer[1], true, lickey, radminAnswer[2], false);
+                        $('#licnum').val(radminAnswer[1]);
+                        var divclass = 'alert alert-success';
+                        if (radminAnswer[2] <= 5)
+                            divclass = 'alert alert-danger';
+                        $('#response').html('<div class="' + divclass + '"><strong>Number of activated hosts: ' + act + ' Number of available license: ' + radminAnswer[2] + '. Check performed considering ' + radminAnswer[1] + ' stock license<span class="pull-right"><u>&reg; Radmin source</u></span></strong></div>');
+
+                    }
+
+
 
                 }
 
@@ -240,8 +270,8 @@ $totLinDas = $LINUX->totalResults;
         var lickey = $('#lickey').val();
         var response = '';
 
-        radmin(licnum, false, lickey);
-        function radmin(licnum, reset, lickey) {
+        radmin(licnum, false, lickey, false,true);
+        function radmin(licnum, reset, lickey, dwprocessed, update) {
             //Update the db within new value
             var tempurl = 'http://<?php echo $_SERVER['SERVER_NAME']; ?>/SPOT/provisioning/api/tempdata/RADMIN';
 
@@ -257,6 +287,7 @@ $totLinDas = $LINUX->totalResults;
                         + currentdate.getSeconds();
                 lic.timestamps = datetime;
                 lic.data = lickey;
+                lic.dwprocessed = dwprocessed;
             }
             $.ajax({
                 url: tempurl,
@@ -272,6 +303,7 @@ $totLinDas = $LINUX->totalResults;
                     $('.date').html('<p class="pull-right"><small><span class="icon-time"></span> Last update of stock license occured ' + date + '</small></p>');
                 }
             });
+
             var url = 'http://<?php echo GlobalConfig::$SYSPROD_SERVER->DRBL; ?>/Logs/RadminActServerLog/index.php';
             var send = 'limit=' + licnum + '&reset=' + reset;
             $.ajax({
@@ -282,32 +314,39 @@ $totLinDas = $LINUX->totalResults;
                 data: send,
                 success: function (data)
                 {
-                    var rep = JSON.parse(data);
-                    response = rep.total;
-                    var diff = licnum - rep.total;
+                    var diff;
+                    if (typeof <?php echo $radminProcessed; ?> !== 'undefined') {
+                        diff = <?php echo $radminProcessed; ?>;
+                        response = <?php echo $radminStock; ?> - diff;
+                    } else {
+                        var rep = JSON.parse(data);
+                        response = rep.total;
+                        diff = licnum - response;
+                    }
                     var divclass = 'alert alert-success';
                     if (diff <= 5)
                         divclass = 'alert alert-danger';
-
-                    RadminChart(licnum, rep.total, diff, '#radmin', '#legend');
-                    $('#response').html('<div class="' + divclass + '"><strong>Number of activated hosts: ' + response + ' Number of available license: ' + diff + '. Check performed considering ' + licnum + ' stock license</strong></div>');
-
+                    if (typeof update !== 'undefined' && update == true) {
+                        RadminChart(licnum, response, diff, '#radmin', '#legend');
+                        $('#response').html('<div class="' + divclass + '"><strong>Number of activated hosts: ' + response + ' Number of available license: ' + diff + '. Check performed considering ' + licnum + ' stock license<span class="pull-right"><u>Approximated from local source</u></span></strong></div>');
+                    }
                 },
                 error: function (data) {
                 }
             });
-
         }
 
         $('#check').on('click', function (e) {
             e.preventDefaults;
             licnum = $('#licnum').val();
             lickey = $('#lickey').val();
-            radmin(licnum, false, lickey);
+            radmin(licnum, false, lickey,false, true);
             radminQuery(lickey);
 
 
-        });
+
+        }
+        );
 
         $('#reset').on('click', function (e) {
             e.preventDefaults;
@@ -319,7 +358,8 @@ $totLinDas = $LINUX->totalResults;
                 $('#close').trigger('click');
                 licnum = $('#licnum').val();
                 lickey = $('#lickey').val();
-                radmin(licnum, true, lickey);
+                radmin(licnum, true, lickey, false, true);
+                radminQuery(lickey);
             });
         })
 
@@ -382,10 +422,10 @@ $totLinDas = $LINUX->totalResults;
     <table   class="table">
         <tr>
             <th colspan="3">
-                
+
         <center>
             Radmin activation Count . The count is done parsing the AS log file. Please align the value within the Radmin answer below:<span id="alive" class="pull-right"></span>
-        <div class="radminQuery"></div>
+            <div class="radminQuery"></div>
         </center>
         </th>
         </tr>

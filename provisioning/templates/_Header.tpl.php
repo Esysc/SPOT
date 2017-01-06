@@ -99,12 +99,12 @@
         <link rel="stylesheet" href="styles/chartphp.css">
         <link rel="stylesheet" href="bootstrap/css/jquery-ui.css">
 
-        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.css" />
-        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.css" />
+        <link rel="stylesheet" type="text/css" href="http://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.css" />
+        <link rel="stylesheet" type="text/css" href="http://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.css" />
 
-        <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
-        <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.min.js"></script>
-        <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>
+        <script type="text/javascript" src="http://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
+        <script type="text/javascript" src="http://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.min.js"></script>
+        <script type="text/javascript" src="http://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>
 
         <style>
             body #basicModal {
