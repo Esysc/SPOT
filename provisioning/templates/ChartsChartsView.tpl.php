@@ -364,6 +364,7 @@ $totLinDas = $LINUX->totalResults;
         })
 
         radminQuery(lickey);
+     //   $('#sysmon').trigger('click');
     });
 </script>
 <div class="container">
@@ -450,7 +451,7 @@ $totLinDas = $LINUX->totalResults;
                 <div class="date"></div>
 
                 <p class="breadcrumb"><small>
-                        The stock value is read from the DB. If you change the value here, it will be updated in the DB as well. The consumed license, are checked directly against the AS log file.
+                        The stock value is read from Famatech answer and stored automatically in local DB. If Famatech is not available, only local source will be displayed.
 
                     </small></p>
                 <label for="check">

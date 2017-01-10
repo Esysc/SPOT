@@ -41,7 +41,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-57-precomposed.png" />
-
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <script src="scripts/jquery-1.8.2.min.js" ></script>
 
 
@@ -137,12 +137,11 @@
         </script>
 
         <script type="text/javascript">
-            $(document.body).ready(function () {
+            $(document).ready(function () {
 
 
 
-
-                $('.url').on('click', function (e, fullScreen, url) {
+                $('.url').on('click', function (e, url) {
 
                     var mask = new ax5.ui.mask();
                     var modal = new ax5.ui.modal();
@@ -150,83 +149,64 @@
                     var modalCallBack = function () {
                         modal.close();
                     };
-
-                    if (typeof fullScreen === 'undefined') {
-                        fullScreen = false;
-                    } else {
-                        btn = $('<button class="btn btn-primary" type="button">Close</button>').click(function () {
-                            modal.close();
-                        });
-                    }
-                    console.log(fullScreen);
                     e.preventDefault();
                     var a = $(this);
                     if (typeof url === 'undefined')
                         url = a.attr('href');
-                    console.log(url);
                     modal.setConfig({
-                        width: 600,
-                        height: 1000,
+                        theme: "info",
+                        width: 800,
+                        height: 800,
                         iframeLoadingMsg: ' <img src="/SPOT/provisioning/images/loader.gif" />',
                         iframe: {
                             method: "get",
                             url: url,
                             param: "callBack=modalCallBack"
                         },
-                        fullScreen: fullScreen,
+                        // fullScreen: fullScreen,
                         header: {
-                            theme: "danger",
+
                             title: url,
+                           
                             btns: {
+                                left: {
+                                    label: '<i class="fa fa-align-left" aria-hidden="true"></i>', onClick: function () {
+                                        modal.align({left: "left", top: "top"});
+                                    }
+                                },
+                                center: {
+                                    label: '<i class="fa fa-align-center" aria-hidden="true"></i>', onClick: function () {
+                                        modal.align({left: "center", top: "middle"});
+                                    }
+                                },
+                                right: {
+                                    label: '<i class="fa fa-align-right" aria-hidden="true"></i>', onClick: function () {
+                                        modal.align({left: "right", top: "top"});
+                                    }
+                                },
                                 minimize: {
-                                    label: '<button type="button" class="close"  title="Minimize"  aria-hidden="true">&darr;</button>', onClick: function () {
+                                    label: '<i class="fa fa-minus-circle" aria-hidden="true"></i>', onClick: function () {
                                         modal.minimize();
                                     }
                                 },
                                 maximize: {
-                                    label: '<button type="button" class="close"  title="Maximize"  aria-hidden="true">&uarr;</button>', onClick: function () {
+                                    label: '<i class="fa fa-plus-circle" aria-hidden="true"></i>', onClick: function () {
                                         modal.maximize();
-
-                                    }
-                                },
-                                fullscreen: {
-                                    label: '<button type="button" class="close"  title="Fullscreen"  aria-hidden="true">&vArr;</button>', onClick: function () {
-
-                                        modal.close();
-                                        a.trigger('click', [true, url]);
-
-
-                                    }
-                                },
-                                newtab: {
-                                    label: '<button type="button" class="close"  title="Open in a new tab"  aria-hidden="true">&neArr;</button>', onClick: function () {
-
-                                        modal.close();
-                                        window.open(url);
-
-
                                     }
                                 },
                                 close: {
-                                    label: '<button type="button" class="close"  title="Close"  aria-hidden="true">&times;</button>', onClick: function () {
+                                    label: '<i class="fa fa-times-circle" aria-hidden="true"></i>', onClick: function () {
                                         modal.close();
                                     }
                                 }
                             }
                         }
                     });
-
-
-
                     modal.open({}, function () {
-                        if (fullScreen) {
-                            this.$.body
-                                    .css({padding: 20})
-                                    .prepend(btn);
-                        }
+                        modal.align({left: "left", top: "top"});
+                        
                     });
                 });
-
             });
         </script>
 
@@ -386,7 +366,7 @@
                                     }
                                     ?>><a href="./pxeinv">Pxe clients inventory</a></li>
 
-                                    <li><a target="_blank" href="http://spmon01.my.compnay.com:7767/dashboard">Sysprod Monitoring</a></li>
+                                    <li><a class="url" target="_blank" id="sysmon" href="http://spmon01.my.compnay.com:7767/dashboard">Sysprod Monitoring</a></li>
 
                                 </ul>
                             </li>
@@ -740,7 +720,7 @@
             $this->display('_Footer.tpl.php');
             exit;
         }
-       
+
         /*
          * Get the tocken to request data to ipam api
          */
@@ -753,7 +733,7 @@
             ?>
             <script>
                 $(document).ready(function () {
-                    $('.alert-info').after('<div class="label label-success pull-right">IPAM is Alive</div>');
+                    $('h2.alert-info').after('<div class="label label-success pull-right">IPAM is Alive</div>');
                 });
             </script>   
             <?php
@@ -761,7 +741,7 @@
             ?>
             <script>
                 $(document).ready(function () {
-                    $('.alert-info').after('<div class="label label-warning pull-right">IPAM not reacheable</div>');
+                    $('h2.alert-info').after('<div class="label label-warning pull-right">IPAM not reacheable</div>');
                 });
             </script>   
             <?php
