@@ -65,6 +65,7 @@ if ($rawResults != false) {
                 success: function (jsonResult) {
                     var Jdata = jsonResult.rows[0].data;
                     var Jsonspecs = JSON.parse(Jdata);
+
                     $('#subnet').val(Jsonspecs.network).trigger('chosen:updated)');
 
                     $.each(Jsonspecs.clients, function (i, o) {
@@ -74,18 +75,18 @@ if ($rawResults != false) {
                         }).appendTo('#container');
                         $("input[name^=ipaddress]:eq(" + i + ")").val(o.ip);
                         $("input[name^=hostname]:eq(" + i + ")").val(o.hostname);
-
                     });
-
                     // trigger the update
                     // $('.subnet').attr('selected', false).trigger('change')
                     //$('.subnet').trigger('chosen:updated');
-
-                    $(".subnet").find("[data-attr='" + $('#subnet').val() + "']").attr('selected', true);
+                    if ($(".subnet").find("[data-attr='" + $('#subnet').val() + "']").length > 0) {
+                        $(".subnet").find("[data-attr='" + $('#subnet').val() + "']").attr('selected', true);
+                        $('#exportIpam').attr('disabled', false); 
+                    } else {
+                        $(".subnet").find('option:first-child').attr('selected', true);
+                        $('#exportIpam').attr('disabled', true); 
+                    }
                     $('.subnet').trigger('chosen:updated');
-
-
-
                     var n = $(".extraHosts").length;
                     if (n > 0) {
                         $('#export').show();
@@ -96,11 +97,6 @@ if ($rawResults != false) {
 
                 }
             });
-
-
-
-
-
         });
         $('<div/>', {
             'class': 'extraHosts', html: GetHtml()
@@ -285,6 +281,7 @@ if ($rawResults != false) {
             </td>
             <td>
                 <select  class="subnet" data-placeholder="Choose the subnet" >
+                    <option></option>
                     <?php
                     foreach ($networks as $subnets) {
                         $id = $subnets['id'];
@@ -315,14 +312,14 @@ if ($rawResults != false) {
         <table class="main table-bordered table-responsive table table-striped">
             <tr class="network"><th colspan="2">
 
-            <div id="export">
-                <center>Hosts in database</center>
-                <button class='pull-right btn btn-primary' id='exportHosts'>Export hosts file</button>
+                    <div id="export">
+                        <center>Hosts in database</center>
+                        <button class='pull-right btn btn-primary' id='exportHosts'>Export hosts file</button>
 
-                <button class='pull-left btn btn-success' id='exportLabels'>Create Excel for Labels</button>
-                <center><button class='btn btn-warning' id='exportIpam'>Add hosts to IPAM</button></center>
-            </div>
-            </th></tr>
+                        <button class='pull-left btn btn-success' id='exportLabels'>Create Excel for Labels</button>
+                        <center><button class='btn btn-warning' id='exportIpam'>Add hosts to IPAM</button></center>
+                    </div>
+                </th></tr>
 
 
 
