@@ -440,7 +440,7 @@ $totLinDas = $LINUX->totalResults;
             </td>
             <td>
                 <label for="licnum">
-                    Number of license you want to check. Go to <a href="https://www.radmin.com/support/activationscheck.php" target="_blank" >Radmin check site</a> and check the value after inserting the license key.
+                    Number of license you want to check. Go to <a href="https://www.radmin.com/support/activationscheck.php"  target="_blank" >Radmin check site</a> and check the value after inserting the license key.
                 </label>
                 <input type="text" style="width:50px;" value="<?php echo $radminStock; ?>" title="Put the number of license available" id="licnum" />  
                 <p> <label for="lickey">

@@ -141,34 +141,52 @@
 
 
 
-                $('.url').on('click', function (e, url) {
+                $('body').on('click', '.url', function (e, fullScreen, url) {
 
                     var mask = new ax5.ui.mask();
                     var modal = new ax5.ui.modal();
+                    var width;
+                    var height;
                     var btn;
                     var modalCallBack = function () {
                         modal.close();
                     };
+                    if (typeof fullScreen === 'undefined') {
+
+                        fullScreen = false;
+                        width = 800;
+                        height = 800;
+                    } else {
+                        fullScreen = true;
+                        width = "100%";
+                        height = 1000;
+                    }
                     e.preventDefault();
                     var a = $(this);
                     if (typeof url === 'undefined')
                         url = a.attr('href');
                     modal.setConfig({
                         theme: "info",
-                        width: 800,
-                        height: 800,
+                        width: width,
+                        height: height,
                         iframeLoadingMsg: ' <img src="/SPOT/provisioning/images/loader.gif" />',
                         iframe: {
                             method: "get",
                             url: url,
                             param: "callBack=modalCallBack"
                         },
-                        // fullScreen: fullScreen,
+                        fullscreen: fullScreen,
                         header: {
 
                             title: url,
-                           
+
                             btns: {
+                                fullscreen: {
+                                    label: '<i class="fa fa-arrows-alt" aria-hidden="true"></i>', onClick: function () {
+                                        modal.close();
+                                        a.trigger('click', [true, url]);
+                                    }
+                                },
                                 left: {
                                     label: '<i class="fa fa-align-left" aria-hidden="true"></i>', onClick: function () {
                                         modal.align({left: "left", top: "top"});
@@ -204,7 +222,7 @@
                     });
                     modal.open({}, function () {
                         modal.align({left: "left", top: "top"});
-                        
+
                     });
                 });
             });
