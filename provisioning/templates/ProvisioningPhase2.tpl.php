@@ -1410,7 +1410,7 @@ if (isset($_SESSION['releasename']) && $_SESSION['releasename'] !== '') {
                         if (imagename.indexOf(subIot) != -1) {
                             $('#productkey' + level).attr('disabled', true).show();
                             $('#progress' + level).hide();
-                            $('i#progress' + level).after('<div id="keymsg' + level + '" class="label label-info">IOT image activation goes through VAMT3.1!<p>The VAMT server is at x.x.x.228!</p></div>')
+                            $('i#progress' + level).after('<div id="keymsg' + level + '" class="label label-info">IOT image activation goes through VAMT3.1!<p>The VAMT server is at chx-sysprod-01! Install locally the VAMT console on your pc, ask an administrator to grant you to SQL database.</p></div>')
                             //  $(this).next('.productkey').find('input').hide();
 
                         } else {
