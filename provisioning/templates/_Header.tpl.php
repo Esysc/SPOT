@@ -183,22 +183,27 @@
                             btns: {
                                 fullscreen: {
                                     label: '<i class="fa fa-arrows-alt" aria-hidden="true"></i>', onClick: function () {
-                                        modal.close();
-                                        a.trigger('click', [true, url]);
+                                       // modal.close();
+                                       // a.trigger('click', [true, url]);
+                                      modal.css({width:"100%", height: 1000});
+                                       
                                     }
                                 },
                                 left: {
                                     label: '<i class="fa fa-align-left" aria-hidden="true"></i>', onClick: function () {
+                                        modal.css({width:800, height: 800});
                                         modal.align({left: "left", top: "top"});
                                     }
                                 },
                                 center: {
                                     label: '<i class="fa fa-align-center" aria-hidden="true"></i>', onClick: function () {
+                                        modal.css({width:800, height: 800});
                                         modal.align({left: "center", top: "middle"});
                                     }
                                 },
                                 right: {
                                     label: '<i class="fa fa-align-right" aria-hidden="true"></i>', onClick: function () {
+                                        modal.css({width:800, height: 800});
                                         modal.align({left: "right", top: "top"});
                                     }
                                 },
@@ -209,6 +214,7 @@
                                 },
                                 maximize: {
                                     label: '<i class="fa fa-plus-circle" aria-hidden="true"></i>', onClick: function () {
+                                        modal.css({width:800, height: 800});
                                         modal.maximize();
                                     }
                                 },
